@@ -1,1 +1,1097 @@
-Hola mundo!
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiberoMatico - Soporte, Publicidad y Capacitación con IA</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Alpine.js para interactividad (Pestañas, Cotizador, Menú Móvil) -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Google Fonts: Plus Jakarta Sans para estética Tech Premium -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#030712',
+                            darkblue: '#0b1528',
+                            blue: '#0284c7',
+                            cyan: '#06b6d4',
+                            emerald: '#10b981',
+                            indigo: '#6366f1',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glow-blue {
+            box-shadow: 0 0 25px -5px rgba(2, 132, 199, 0.4);
+        }
+        .glow-cyan {
+            box-shadow: 0 0 25px -5px rgba(6, 182, 212, 0.4);
+        }
+        .glow-indigo {
+            box-shadow: 0 0 25px -5px rgba(99, 102, 241, 0.4);
+        }
+        .text-glow {
+            text-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-slate-100 font-sans selection:bg-brand-cyan selection:text-brand-dark">
+
+    <!-- BOTÓN FLOTANTE WHATSAPP -->
+    <a href="https://wa.me/51966788168?text=Hola%20LiberoMatico%20vi%20su%20web%20y%20deseo%20consultar%20por%20sus%20servicios" 
+       target="_blank" 
+       class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform flex items-center justify-center glow-blue group"
+       title="Contáctanos por WhatsApp">
+        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.963C16.588 2.01 14.12 1.01 11.508 1.01c-5.44 0-9.866 4.372-9.87 9.802 0 1.714.475 3.387 1.378 4.869L2.048 21.12l5.7-.966zm13.107-5.59c-.327-.162-1.93-.938-2.228-1.045-.297-.108-.513-.162-.727.162-.216.324-.836 1.046-1.025 1.262-.188.216-.377.243-.704.082-.327-.162-1.379-.501-2.628-1.598-.972-.855-1.628-1.912-1.819-2.236-.19-.324-.02-.5-.181-.66-.146-.144-.327-.377-.49-.566-.163-.189-.217-.324-.326-.54-.109-.217-.055-.404-.027-.567.027-.162.216-.513.324-.674.108-.162.144-.27.216-.405.072-.135.036-.253-.018-.362-.054-.108-.513-1.216-.704-1.66-.185-.44-.37-.379-.51-.385-.132-.006-.283-.006-.435-.006-.15 0-.397.054-.604.27-.206.216-.787.756-.787 1.841 0 1.085.8 2.135.91 2.284.11.15 1.574 2.371 3.81 3.315.533.225.95.359 1.274.459.536.168 1.024.144 1.408.088.428-.063 1.319-.53 1.506-1.04.188-.51.188-.947.132-1.04-.057-.092-.206-.146-.534-.308z"/>
+        </svg>
+        <span class="absolute right-16 bg-brand-darkblue text-emerald-400 font-bold px-3 py-1.5 rounded-lg text-sm border border-emerald-500/30 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            ¿Cómo te ayudamos hoy?
+        </span>
+    </a>
+
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-40 bg-brand-dark/80 backdrop-blur-md border-b border-slate-800" x-data="{ mobileMenu: false }">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-blue to-brand-cyan flex items-center justify-center font-black text-2xl text-white shadow-lg transition-transform group-hover:scale-105">
+                    M
+                </div>
+                <div>
+                    <span class="text-2xl font-bold tracking-tight text-white">Libero<span class="text-brand-cyan">Matico</span></span>
+                    <p class="text-[10px] text-slate-400 uppercase tracking-widest -mt-1 font-semibold">Tecnología e IA</p>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#soporte" class="text-slate-300 hover:text-brand-blue font-medium transition-colors">Soporte TI</a>
+                <a href="#publicidad" class="text-slate-300 hover:text-brand-cyan font-medium transition-colors">Publicidad y Medios</a>
+                <a href="#capacitacion" class="text-slate-300 hover:text-brand-indigo font-medium transition-colors">Capacitación</a>
+                <a href="#cotizador" class="text-slate-300 hover:text-brand-cyan font-medium transition-colors bg-brand-blue/10 px-4 py-2 rounded-lg border border-brand-blue/30">Cotizador</a>
+            </nav>
+
+            <!-- CTA Desktop -->
+            <div class="hidden md:flex items-center gap-4">
+                <a href="tel:+51966788168" class="text-slate-300 hover:text-white flex items-center gap-2 text-sm font-medium">
+                    <i data-lucide="phone" class="w-4 h-4 text-brand-cyan"></i>
+                    +51 966 788 168
+                </a>
+                <a href="https://wa.me/51966788168" target="_blank" class="bg-brand-cyan hover:bg-cyan-500 text-brand-dark font-bold px-5 py-2.5 rounded-xl transition-all shadow-md hover:shadow-cyan-500/20 flex items-center gap-2">
+                    <i data-lucide="message-square" class="w-4 h-4"></i>
+                    Contáctanos
+                </a>
+            </div>
+
+            <!-- Hamburger Button -->
+            <button @click="mobileMenu = !mobileMenu" class="md:hidden text-slate-300 focus:outline-none p-2 rounded-lg hover:bg-slate-800">
+                <i data-lucide="menu" class="w-6 h-6" x-show="!mobileMenu"></i>
+                <i data-lucide="x" class="w-6 h-6" x-show="mobileMenu" style="display: none;"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div x-show="mobileMenu" 
+             x-transition:enter="transition ease-out duration-200"
+             x-transition:enter-start="opacity-0 -translate-y-4"
+             x-transition:enter-end="opacity-100 translate-y-0"
+             x-transition:leave="transition ease-in duration-150"
+             x-transition:leave-start="opacity-100 translate-y-0"
+             x-transition:leave-end="opacity-0 -translate-y-4"
+             class="md:hidden bg-brand-darkblue border-b border-slate-800 px-4 py-6 space-y-4" style="display: none;">
+            <a @click="mobileMenu = false" href="#soporte" class="block text-lg text-slate-300 hover:text-brand-blue font-medium py-2">Soporte Informático</a>
+            <a @click="mobileMenu = false" href="#publicidad" class="block text-lg text-slate-300 hover:text-brand-cyan font-medium py-2">Creador de Publicidad</a>
+            <a @click="mobileMenu = false" href="#capacitacion" class="block text-lg text-slate-300 hover:text-brand-indigo font-medium py-2">Capacitación y Cursos</a>
+            <a @click="mobileMenu = false" href="#cotizador" class="block text-lg text-slate-300 hover:text-brand-cyan font-medium py-2">Cotizador Express</a>
+            
+            <hr class="border-slate-800">
+            
+            <div class="flex flex-col gap-4">
+                <a href="tel:+51966788168" class="text-slate-300 flex items-center gap-2 text-sm font-medium">
+                    <i data-lucide="phone" class="w-5 h-5 text-brand-cyan"></i>
+                    +51 966 788 168
+                </a>
+                <a href="https://wa.me/51966788168" target="_blank" class="w-full text-center bg-brand-cyan text-brand-dark font-bold py-3 rounded-xl flex items-center justify-center gap-2">
+                    <i data-lucide="message-square" class="w-5 h-5"></i>
+                    WhatsApp Directo
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative overflow-hidden pt-16 pb-24 lg:pt-24 lg:pb-32 border-b border-slate-900">
+        <!-- Background Tech Elements -->
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-brand-blue/20 via-brand-dark to-brand-dark -z-10"></div>
+        <div class="absolute top-20 left-10 w-72 h-72 bg-brand-cyan/10 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-brand-indigo/10 rounded-full blur-3xl -z-10"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Copy -->
+                <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-brand-blue/10 border border-brand-blue/30 text-brand-cyan text-sm font-semibold tracking-wide uppercase">
+                        <span class="w-2 h-2 rounded-full bg-brand-cyan animate-pulse"></span>
+                        Potencia tu negocio con IA y Tecnología
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-6xl font-black text-white leading-tight">
+                        Soluciones <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue via-brand-cyan to-brand-indigo">Tecnológicas</span> que Impulsan tu Éxito
+                    </h1>
+                    
+                    <p class="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto lg:mx-0">
+                        Hacemos que tu tecnología funcione como debe, creamos publicidad que vende y te capacitamos para liderar el futuro empresarial con Inteligencia Artificial.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#cotizador" class="w-full sm:w-auto text-center bg-gradient-to-r from-brand-blue to-brand-cyan text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:scale-[1.02] transition-transform glow-cyan flex items-center justify-center gap-2">
+                            <i data-lucide="calculator" class="w-5 h-5"></i>
+                            Cotizar Servicio Ahora
+                        </a>
+                        <a href="#soporte" class="w-full sm:w-auto text-center bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 px-8 py-4 rounded-xl font-bold hover:scale-[1.02] transition-all flex items-center justify-center gap-2">
+                            Explorar Soluciones
+                            <i data-lucide="arrow-down" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+
+                    <!-- Trust Pillars -->
+                    <div class="grid grid-cols-3 gap-4 pt-8 border-t border-slate-800/60 max-w-md mx-auto lg:mx-0">
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-extrabold text-brand-blue">100%</p>
+                            <p class="text-xs text-slate-400 mt-1">Garantizado</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-extrabold text-brand-cyan">Rápido</p>
+                            <p class="text-xs text-slate-400 mt-1">Soporte Express</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-extrabold text-brand-indigo">Con IA</p>
+                            <p class="text-xs text-slate-400 mt-1">Automatizado</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Graphic (Simulated Premium UI & Hardware Mockup) -->
+                <div class="lg:col-span-5 relative mt-10 lg:mt-0">
+                    <div class="relative mx-auto max-w-[420px] rounded-2xl bg-gradient-to-br from-brand-blue/30 via-slate-900 to-brand-dark p-1 shadow-2xl border border-slate-800">
+                        <div class="bg-brand-darkblue rounded-xl p-6 space-y-6">
+                            
+                            <!-- Header Status -->
+                            <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                                <div class="flex items-center gap-2">
+                                    <span class="w-3.5 h-3.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                    <span class="text-xs font-semibold text-slate-300">SOPORTE EN LÍNEA ACTIVO</span>
+                                </div>
+                                <span class="text-[11px] text-slate-400 font-mono">ID: LIBERO-2026</span>
+                            </div>
+
+                            <!-- Screen mockup elements -->
+                            <div class="space-y-4">
+                                <!-- Feature 1: IT Support -->
+                                <div class="flex items-start gap-4 p-3 bg-slate-900/60 rounded-xl border border-brand-blue/20">
+                                    <div class="p-2.5 bg-brand-blue/10 rounded-lg text-brand-blue">
+                                        <i data-lucide="cpu" class="w-5 h-5"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-white">Soporte Informático</h4>
+                                        <p class="text-xs text-slate-400">Optimización de PCs, Laptops, Redes y Software.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Feature 2: Ads & Design -->
+                                <div class="flex items-start gap-4 p-3 bg-slate-900/60 rounded-xl border border-brand-cyan/20">
+                                    <div class="p-2.5 bg-brand-cyan/10 rounded-lg text-brand-cyan">
+                                        <i data-lucide="sparkles" class="w-5 h-5"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-white">Marketing Digital e IA</h4>
+                                        <p class="text-xs text-slate-400">Vídeos promocionales y campañas efectivas.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Feature 3: Training -->
+                                <div class="flex items-start gap-4 p-3 bg-slate-900/60 rounded-xl border border-brand-indigo/20">
+                                    <div class="p-2.5 bg-brand-indigo/10 rounded-lg text-brand-indigo">
+                                        <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-white">Capacitación de Vanguardia</h4>
+                                        <p class="text-xs text-slate-400">IA para profesionales y herramientas digitales.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Interactive Quote Button preview -->
+                            <a href="#cotizador" class="block w-full py-3 bg-brand-blue/10 hover:bg-brand-blue/20 text-center font-bold text-sm text-brand-cyan rounded-xl transition-all border border-brand-cyan/30">
+                                Probar Asistente Virtual
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Absolute Decorative Icons -->
+                    <div class="absolute -top-6 -right-6 w-16 h-16 rounded-xl bg-slate-900 flex items-center justify-center border border-slate-800 shadow-xl animate-bounce" style="animation-duration: 3s">
+                        <i data-lucide="monitor" class="w-7 h-7 text-brand-cyan"></i>
+                    </div>
+                    <div class="absolute -bottom-6 -left-6 w-16 h-16 rounded-xl bg-slate-900 flex items-center justify-center border border-slate-800 shadow-xl animate-bounce" style="animation-duration: 4s">
+                        <i data-lucide="video" class="w-7 h-7 text-brand-indigo"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TRIPLE ACCENT BADGES FOR THE BRAND -->
+    <section class="py-8 bg-slate-950 border-b border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Badge 1 -->
+                <div class="flex items-center gap-4 p-4 bg-brand-darkblue/50 rounded-xl border border-slate-800">
+                    <div class="p-3 bg-brand-blue/10 rounded-xl text-brand-blue">
+                        <i data-lucide="shield-check" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-white text-sm">SERVICIO CONFIABLE</h4>
+                        <p class="text-xs text-slate-400">Atención técnica garantizada y transparente.</p>
+                    </div>
+                </div>
+                <!-- Badge 2 -->
+                <div class="flex items-center gap-4 p-4 bg-brand-darkblue/50 rounded-xl border border-slate-800">
+                    <div class="p-3 bg-brand-cyan/10 rounded-xl text-brand-cyan">
+                        <i data-lucide="zap" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-white text-sm">SOLUCIONES RÁPIDAS</h4>
+                        <p class="text-xs text-slate-400">Optimizamos tus tiempos y recursos de inmediato.</p>
+                    </div>
+                </div>
+                <!-- Badge 3 -->
+                <div class="flex items-center gap-4 p-4 bg-brand-darkblue/50 rounded-xl border border-slate-800">
+                    <div class="p-3 bg-brand-indigo/10 rounded-xl text-brand-indigo">
+                        <i data-lucide="users" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-white text-sm">ATENCIÓN PERSONALIZADA</h4>
+                        <p class="text-xs text-slate-400">Analizamos las necesidades específicas de tu negocio.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIVISION SECTIONS SEPARATOR -->
+    <div class="py-6 text-center bg-slate-900/40">
+        <p class="text-sm text-slate-400 font-semibold tracking-wider uppercase">Nuestras Tres Unidades de Servicio</p>
+    </div>
+
+    <!-- SECCIÓN 1: SOPORTE INFORMÁTICO (FLYER 1) -->
+    <section id="soporte" class="py-20 bg-brand-dark relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-brand-blue font-extrabold text-sm tracking-widest uppercase">Unidad de Soporte TI</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white">
+                    Soporte Informático Integral
+                </h2>
+                <p class="text-lg text-slate-300">
+                    “Hacemos que tu tecnología funcione como debe.” Soluciones de soporte técnico de primer nivel para mantener tu infraestructura operativa.
+                </p>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Service 1 -->
+                <div class="bg-brand-darkblue/40 border border-slate-800 rounded-2xl p-6 hover:border-brand-blue/50 transition-all hover:scale-[1.02] group">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="p-3 bg-brand-blue/10 rounded-xl text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition-all">
+                            <i data-lucide="wrench" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-white">Mantenimiento de PCs y Laptops</h3>
+                    </div>
+                    <p class="text-sm text-slate-400">
+                        Reparación de hardware y software con diagnóstico preciso para evitar fallas futuras.
+                    </p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-brand-darkblue/40 border border-slate-800 rounded-2xl p-6 hover:border-brand-blue/50 transition-all hover:scale-[1.02] group">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="p-3 bg-brand-blue/10 rounded-xl text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition-all">
+                            <i data-lucide="gauge" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-white">Optimización de Rendimiento</h3>
+                    </div>
+                    <p class="text-sm text-slate-400">
+                        Aceleración completa del sistema operativo para que trabajes sin esperas molestas.
+                    </p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-brand-darkblue/40 border border-slate-800 rounded-2xl p-6 hover:border-brand-blue/50 transition-all hover:scale-[1.02] group">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="p-3 bg-brand-blue/10 rounded-xl text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition-all">
+                            <i data-lucide="shield-alert" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-white">Eliminación de Virus y Malware</h3>
+                    </div>
+                    <p class="text-sm text-slate-400">
+                        Limpieza profunda de amenazas, troyanos, ransomware e instalación de defensas robustas.
+                    </p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="bg-brand-darkblue/40 border border-slate-800 rounded-2xl p-6 hover:border-brand-blue/50 transition-all hover:scale-[1.02] group">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="p-3 bg-brand-blue/10 rounded-xl text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition-all">
+                            <i data-lucide="database" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-white">Recuperación de Datos</h3>
+                    </div>
+                    <p class="text-sm text-slate-400">
+                        Rescate de información valiosa de discos dañados, formateados o archivos eliminados accidentalmente.
+                    </p>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="bg-brand-darkblue/40 border border-slate-800 rounded-2xl p-6 hover:border-brand-blue/50 transition-all hover:scale-[1.02] group">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="p-3 bg-brand-blue/10 rounded-xl text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition-all">
+                            <i data-lucide="settings" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-white">Instalación de Software</h3>
+                    </div>
+                    <p class="text-sm text-slate-400">
+                        Configuración avanzada de sistemas operativos, suites de diseño, utilidades y aplicaciones corporativas.
+                    </p>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="bg-brand-darkblue/40 border border-slate-800 rounded-2xl p-6 hover:border-brand-blue/50 transition-all hover:scale-[1.02] group">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="p-3 bg-brand-blue/10 rounded-xl text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition-all">
+                            <i data-lucide="hard-drive" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-white">Actualización de SSD y RAM</h3>
+                    </div>
+                    <p class="text-sm text-slate-400">
+                        Multiplica la velocidad de tu equipo instalando unidades de estado sólido y expandiendo memoria.
+                    </p>
+                </div>
+
+                <!-- Service 7 -->
+                <div class="bg-brand-darkblue/40 border border-slate-800 rounded-2xl p-6 hover:border-brand-blue/50 transition-all hover:scale-[1.02] group">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="p-3 bg-brand-blue/10 rounded-xl text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition-all">
+                            <i data-lucide="keyboard" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-white">Cambio de Teclados y Pantallas</h3>
+                    </div>
+                    <p class="text-sm text-slate-400">
+                        Reemplazo rápido y garantizado de pantallas rotas, teclas dañadas o fallas físicas.
+                    </p>
+                </div>
+
+                <!-- Service 8 -->
+                <div class="bg-brand-darkblue/40 border border-slate-800 rounded-2xl p-6 hover:border-brand-blue/50 transition-all hover:scale-[1.02] group">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="p-3 bg-brand-blue/10 rounded-xl text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition-all">
+                            <i data-lucide="gamepad-2" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-white">Soporte para Equipos Gamer</h3>
+                    </div>
+                    <p class="text-sm text-slate-400">
+                        Optimización de latencia, overclocking seguro y mantenimiento de sistemas de refrigeración de alto rendimiento.
+                    </p>
+                </div>
+
+                <!-- Service 9 -->
+                <div class="bg-brand-darkblue/40 border border-slate-800 rounded-2xl p-6 hover:border-brand-blue/50 transition-all hover:scale-[1.02] group">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="p-3 bg-brand-blue/10 rounded-xl text-brand-blue group-hover:bg-brand-blue group-hover:text-white transition-all">
+                            <i data-lucide="pen-tool" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-white">Estaciones de Diseño y Video</h3>
+                    </div>
+                    <p class="text-sm text-slate-400">
+                        Soporte técnico dedicado para estaciones de trabajo de arquitectura, edición de video y animación 3D.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Call to action inner block -->
+            <div class="mt-16 bg-gradient-to-r from-brand-blue/10 to-brand-cyan/10 rounded-3xl p-8 sm:p-12 border border-brand-blue/30 text-center max-w-4xl mx-auto space-y-6">
+                <p class="text-2xl sm:text-3xl font-black text-white italic">
+                    "Tu tecnología debe ayudarte a avanzar, no a detenerte."
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="https://wa.me/51966788168?text=Hola%20LiberoMatico%20deseo%20asistencia%20tecnica%20de%20soporte%20informatico" target="_blank" class="bg-brand-blue hover:bg-sky-600 text-white font-bold px-8 py-3.5 rounded-xl transition-all shadow-md hover:shadow-brand-blue/20 flex items-center gap-2">
+                        <i data-lucide="phone-call" class="w-5 h-5"></i>
+                        Solicitar Soporte Técnico
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 2: CREADOR DE PUBLICIDAD (FLYER 2) -->
+    <section id="publicidad" class="py-20 bg-slate-950 relative overflow-hidden">
+        <!-- Visual light effect -->
+        <div class="absolute right-0 top-1/4 w-[500px] h-[500px] bg-brand-cyan/10 rounded-full blur-3xl -z-10"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Content Column Left -->
+                <div class="lg:col-span-6 space-y-8">
+                    <div class="space-y-4">
+                        <span class="text-brand-cyan font-extrabold text-sm tracking-widest uppercase">Creador de Publicidad</span>
+                        <h2 class="text-3xl sm:text-5xl font-black text-white leading-tight">
+                            Hacemos que tu negocio se vea <span class="text-brand-cyan">PROFESIONAL</span> y venda <span class="text-brand-cyan">MÁS</span>
+                        </h2>
+                        <p class="text-lg text-slate-300">
+                            No solo diseñamos, hacemos que tu marca se recuerde. Creamos estrategias de contenido adaptadas a las plataformas del momento para conectar con tus clientes reales.
+                        </p>
+                    </div>
+
+                    <!-- Advertising specialties list -->
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <!-- Specialty 1 -->
+                        <div class="flex items-start gap-3">
+                            <div class="p-2 bg-brand-cyan/10 rounded-lg text-brand-cyan mt-1">
+                                <i data-lucide="image" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Flyers para Redes</h4>
+                                <p class="text-xs text-slate-400 mt-1">Diseños llamativos listos para Instagram, Facebook y estados de WhatsApp.</p>
+                            </div>
+                        </div>
+
+                        <!-- Specialty 2 -->
+                        <div class="flex items-start gap-3">
+                            <div class="p-2 bg-brand-cyan/10 rounded-lg text-brand-cyan mt-1">
+                                <i data-lucide="smartphone" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Reels Publicitarios</h4>
+                                <p class="text-xs text-slate-400 mt-1">Videos cortos estructurados con ganchos altamente persuasivos.</p>
+                            </div>
+                        </div>
+
+                        <!-- Specialty 3 -->
+                        <div class="flex items-start gap-3">
+                            <div class="p-2 bg-brand-cyan/10 rounded-lg text-brand-cyan mt-1">
+                                <i data-lucide="clapperboard" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Edición de Video</h4>
+                                <p class="text-xs text-slate-400 mt-1">Cortes, efectos de sonido y colorización cinematográfica.</p>
+                            </div>
+                        </div>
+
+                        <!-- Specialty 4 -->
+                        <div class="flex items-start gap-3">
+                            <div class="p-2 bg-brand-cyan/10 rounded-lg text-brand-cyan mt-1">
+                                <i data-lucide="feather" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Copywriting Persuasivo</h4>
+                                <p class="text-xs text-slate-400 mt-1">Textos de ventas que enganchan y llaman directamente a la acción.</p>
+                            </div>
+                        </div>
+
+                        <!-- Specialty 5 -->
+                        <div class="flex items-start gap-3">
+                            <div class="p-2 bg-brand-cyan/10 rounded-lg text-brand-cyan mt-1">
+                                <i data-lucide="megaphone" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Diseño de Campañas</h4>
+                                <p class="text-xs text-slate-400 mt-1">Estrategias integrales multicanal para lanzamientos y promociones.</p>
+                            </div>
+                        </div>
+
+                        <!-- Specialty 6 -->
+                        <div class="flex items-start gap-3">
+                            <div class="p-2 bg-brand-cyan/10 rounded-lg text-brand-cyan mt-1">
+                                <i data-lucide="video" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Videos Promocionales</h4>
+                                <p class="text-xs text-slate-400 mt-1">Excelente producción audiovisual para productos, servicios o marcas.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Formula -->
+                    <div class="p-5 bg-brand-darkblue rounded-xl border border-brand-cyan/20">
+                        <p class="text-center font-bold text-sm tracking-widest text-slate-300 uppercase">
+                            Ideas + Diseño + Estrategia = <span class="text-brand-cyan text-glow">Resultados</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Advertising mockup & metrics showcase (Right) -->
+                <div class="lg:col-span-6 relative">
+                    <div class="bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 rounded-3xl p-8 space-y-8 relative overflow-hidden">
+                        
+                        <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                            <i data-lucide="trending-up" class="text-brand-cyan w-5 h-5"></i>
+                            Estructura de Conversión Digital
+                        </h3>
+
+                        <!-- Grid representing flyer 2 pillars -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <!-- Pillar 1 -->
+                            <div class="p-4 bg-brand-dark/60 rounded-xl border border-slate-800 text-center space-y-2">
+                                <div class="w-10 h-10 rounded-full bg-brand-cyan/15 flex items-center justify-center mx-auto text-brand-cyan">
+                                    <i data-lucide="eye" class="w-5 h-5"></i>
+                                </div>
+                                <h5 class="font-bold text-xs text-white">ATENCIÓN</h5>
+                                <p class="text-[10px] text-slate-400">Contenido que impacta en el primer segundo.</p>
+                            </div>
+
+                            <!-- Pillar 2 -->
+                            <div class="p-4 bg-brand-dark/60 rounded-xl border border-slate-800 text-center space-y-2">
+                                <div class="w-10 h-10 rounded-full bg-brand-cyan/15 flex items-center justify-center mx-auto text-brand-cyan">
+                                    <i data-lucide="heart" class="w-5 h-5"></i>
+                                </div>
+                                <h5 class="font-bold text-xs text-white">INTERÉS</h5>
+                                <p class="text-[10px] text-slate-400">Contenido de valor que retiene a tu audiencia.</p>
+                            </div>
+
+                            <!-- Pillar 3 -->
+                            <div class="p-4 bg-brand-dark/60 rounded-xl border border-slate-800 text-center space-y-2">
+                                <div class="w-10 h-10 rounded-full bg-brand-cyan/15 flex items-center justify-center mx-auto text-brand-cyan">
+                                    <i data-lucide="wallet" class="w-5 h-5"></i>
+                                </div>
+                                <h5 class="font-bold text-xs text-white">ACCIÓN</h5>
+                                <p class="text-[10px] text-slate-400">Resultados reales con llamadas a la acción claras.</p>
+                            </div>
+                        </div>
+
+                        <!-- Brand quality labels footer -->
+                        <div class="pt-6 border-t border-slate-800 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+                            <div>
+                                <p class="text-xs font-bold text-white">Diseños Pro</p>
+                                <p class="text-[10px] text-slate-500">Exclusivos</p>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-white">Entrega Rápida</p>
+                                <p class="text-[10px] text-slate-500">Puntualidad</p>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-white">Atención</p>
+                                <p class="text-[10px] text-slate-500">100% Humana</p>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold text-white">Satisfacción</p>
+                                <p class="text-[10px] text-slate-500">Garantizada</p>
+                            </div>
+                        </div>
+
+                        <!-- Call to action button specifically for publicity -->
+                        <div class="pt-4">
+                            <a href="https://wa.me/51966788168?text=Hola%20LiberoMatico%20deseo%20cotizar%20servicios%20de%20dise%C3%B1o%20y%20creacion%20de%20publicidad" target="_blank" class="w-full text-center block bg-brand-cyan hover:bg-cyan-500 text-brand-dark font-extrabold py-4 rounded-xl transition-all shadow-md">
+                                ¡Quiero Despegar Mi Marca Ahora!
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 3: CAPACITACIONES (FLYER 3) -->
+    <section id="capacitacion" class="py-20 bg-brand-dark relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-brand-indigo font-extrabold text-sm tracking-widest uppercase">Capacitación que Transforma tu Futuro</span>
+                <h2 class="text-3xl sm:text-5xl font-black text-white">
+                    Aprende. Aplica. Crece.
+                </h2>
+                <p class="text-lg text-slate-300">
+                    “Más conocimiento. Más herramientas. Mejores resultados.” Capacitaciones prácticas, actualizadas y 100% aplicables para profesionales, emprendedores y pequeños negocios.
+                </p>
+            </div>
+
+            <!-- Program Grid (The 8 main training programs) -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Course 1 -->
+                <div class="bg-brand-darkblue/50 border border-slate-800/80 rounded-2xl p-6 flex flex-col justify-between hover:border-brand-indigo/40 hover:translate-y-[-4px] transition-all">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-brand-indigo/10 flex items-center justify-center text-brand-indigo">
+                            <i data-lucide="laptop" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-bold text-lg text-white">1. Informática para Profesionales</h4>
+                        <p class="text-sm text-slate-400">Domina las herramientas esenciales para trabajar con máxima eficiencia y seguridad.</p>
+                    </div>
+                    <span class="mt-4 text-xs font-semibold text-brand-indigo uppercase tracking-wider">Altamente Aplicable</span>
+                </div>
+
+                <!-- Course 2 -->
+                <div class="bg-brand-darkblue/50 border border-slate-800/80 rounded-2xl p-6 flex flex-col justify-between hover:border-brand-indigo/40 hover:translate-y-[-4px] transition-all">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-brand-indigo/10 flex items-center justify-center text-brand-indigo">
+                            <i data-lucide="brain-circuit" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-bold text-lg text-white">2. Inteligencia Artificial Aplicada</h4>
+                        <p class="text-sm text-slate-400">Aprende a usar la IA para automatizar tareas rutinarias, analizar informes y tomar decisiones.</p>
+                    </div>
+                    <span class="mt-4 text-xs font-semibold text-brand-indigo uppercase tracking-wider">Tendencia Mundial</span>
+                </div>
+
+                <!-- Course 3 -->
+                <div class="bg-brand-darkblue/50 border border-slate-800/80 rounded-2xl p-6 flex flex-col justify-between hover:border-brand-indigo/40 hover:translate-y-[-4px] transition-all">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-brand-indigo/10 flex items-center justify-center text-brand-indigo">
+                            <i data-lucide="trending-up" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-bold text-lg text-white">3. Productividad Digital</h4>
+                        <p class="text-sm text-slate-400">Más enfoque, menos desorden en tu ecosistema. Organiza tu tiempo y automatiza flujos.</p>
+                    </div>
+                    <span class="mt-4 text-xs font-semibold text-brand-indigo uppercase tracking-wider">Ahorra Horas Diarias</span>
+                </div>
+
+                <!-- Course 4 -->
+                <div class="bg-brand-darkblue/50 border border-slate-800/80 rounded-2xl p-6 flex flex-col justify-between hover:border-brand-indigo/40 hover:translate-y-[-4px] transition-all">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-brand-indigo/10 flex items-center justify-center text-brand-indigo">
+                            <i data-lucide="cloud" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-bold text-lg text-white">4. Google Workspace</h4>
+                        <p class="text-sm text-slate-400">Domina Gmail, Drive, Docs, Sheets, Calendar y más. Trabaja en la nube como un pro.</p>
+                    </div>
+                    <span class="mt-4 text-xs font-semibold text-brand-indigo uppercase tracking-wider">Esencial Corporativo</span>
+                </div>
+
+                <!-- Course 5 -->
+                <div class="bg-brand-darkblue/50 border border-slate-800/80 rounded-2xl p-6 flex flex-col justify-between hover:border-brand-indigo/40 hover:translate-y-[-4px] transition-all">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-brand-indigo/10 flex items-center justify-center text-brand-indigo">
+                            <i data-lucide="sparkles" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-bold text-lg text-white">5. ChatGPT y Otras IA</h4>
+                        <p class="text-sm text-slate-400">Aprovecha al máximo ChatGPT y herramientas de diseño para redactar, investigar y crear.</p>
+                    </div>
+                    <span class="mt-4 text-xs font-semibold text-brand-indigo uppercase tracking-wider">Foco Práctico</span>
+                </div>
+
+                <!-- Course 6 -->
+                <div class="bg-brand-darkblue/50 border border-slate-800/80 rounded-2xl p-6 flex flex-col justify-between hover:border-brand-indigo/40 hover:translate-y-[-4px] transition-all">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-brand-indigo/10 flex items-center justify-center text-brand-indigo">
+                            <i data-lucide="play" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-bold text-lg text-white">6. Edición de Video Profesional</h4>
+                        <p class="text-sm text-slate-400">Aprende a editar videos para redes sociales, tu negocio, presentaciones o proyectos.</p>
+                    </div>
+                    <span class="mt-4 text-xs font-semibold text-brand-indigo uppercase tracking-wider">Creatividad Rentable</span>
+                </div>
+
+                <!-- Course 7 -->
+                <div class="bg-brand-darkblue/50 border border-slate-800/80 rounded-2xl p-6 flex flex-col justify-between hover:border-brand-indigo/40 hover:translate-y-[-4px] transition-all">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-brand-indigo/10 flex items-center justify-center text-brand-indigo">
+                            <i data-lucide="smartphone" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-bold text-lg text-white">7. Computadoras y Celulares</h4>
+                        <p class="text-sm text-slate-400">Trucos, configuraciones y excelentes prácticas para exprimir tus dispositivos al máximo.</p>
+                    </div>
+                    <span class="mt-4 text-xs font-semibold text-brand-indigo uppercase tracking-wider">De Básico a Avanzado</span>
+                </div>
+
+                <!-- Course 8 -->
+                <div class="bg-brand-darkblue/50 border border-slate-800/80 rounded-2xl p-6 flex flex-col justify-between hover:border-brand-indigo/40 hover:translate-y-[-4px] transition-all">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-brand-indigo/10 flex items-center justify-center text-brand-indigo">
+                            <i data-lucide="store" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-bold text-lg text-white">8. Negocios y Emprendedores</h4>
+                        <p class="text-sm text-slate-400">Herramientas digitales esenciales, marketing enfocado, atención y administración inteligente.</p>
+                    </div>
+                    <span class="mt-4 text-xs font-semibold text-brand-indigo uppercase tracking-wider">Escala tu Negocio</span>
+                </div>
+
+            </div>
+
+            <!-- Key facts / Methodologies -->
+            <div class="mt-16 bg-slate-900 border border-slate-800 rounded-3xl p-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-slate-800">
+                    <div class="px-4">
+                        <div class="mx-auto w-10 h-10 rounded-full bg-brand-indigo/15 text-brand-indigo flex items-center justify-center mb-2">
+                            <i data-lucide="check-square" class="w-5 h-5"></i>
+                        </div>
+                        <h5 class="font-bold text-slate-200 text-sm">Clases Prácticas</h5>
+                        <p class="text-xs text-slate-500 mt-1">100% personalizadas</p>
+                    </div>
+                    <div class="px-4">
+                        <div class="mx-auto w-10 h-10 rounded-full bg-brand-indigo/15 text-brand-indigo flex items-center justify-center mb-2">
+                            <i data-lucide="monitor" class="w-5 h-5"></i>
+                        </div>
+                        <h5 class="font-bold text-slate-200 text-sm">Modalidad Flexible</h5>
+                        <p class="text-xs text-slate-500 mt-1">Presencial y Online</p>
+                    </div>
+                    <div class="px-4">
+                        <div class="mx-auto w-10 h-10 rounded-full bg-brand-indigo/15 text-brand-indigo flex items-center justify-center mb-2">
+                            <i data-lucide="layers" class="w-5 h-5"></i>
+                        </div>
+                        <h5 class="font-bold text-slate-200 text-sm">Nivel Ajustado</h5>
+                        <p class="text-xs text-slate-500 mt-1">Para todos los perfiles</p>
+                    </div>
+                    <div class="px-4">
+                        <div class="mx-auto w-10 h-10 rounded-full bg-brand-indigo/15 text-brand-indigo flex items-center justify-center mb-2">
+                            <i data-lucide="rocket" class="w-5 h-5"></i>
+                        </div>
+                        <h5 class="font-bold text-slate-200 text-sm">Inmediato</h5>
+                        <p class="text-xs text-slate-500 mt-1">Aplica desde el día 1</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to action training footer -->
+            <div class="mt-12 text-center">
+                <p class="text-brand-indigo font-bold text-base mb-4">INVIERTE EN TI, POTENCIA TU TRABAJO Y HAZ CRECER TU NEGOCIO.</p>
+                <a href="https://wa.me/51966788168?text=Hola%20LiberoMatico%20quiero%20informacion%20sobre%20sus%20capacitaciones%20y%20cursos" target="_blank" class="inline-flex items-center gap-2 bg-gradient-to-r from-brand-indigo to-violet-600 text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:scale-105 transition-transform glow-indigo">
+                    <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+                    Inscribirme o Consultar Temario
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- INTERACTIVE SECTION: EXPRESS BUDGET CALCULATOR & ASSISTANT (HIGH CONVERTING) -->
+    <section id="cotizador" class="py-20 bg-slate-950 relative border-t border-slate-900" x-data="{
+        category: 'soporte',
+        selectedServices: [],
+        username: '',
+        addRemoveService(service) {
+            if (this.selectedServices.includes(service)) {
+                this.selectedServices = this.selectedServices.filter(item => item !== service);
+            } else {
+                this.selectedServices.push(service);
+            }
+        },
+        generateWhatsAppLink() {
+            if (this.selectedServices.length === 0) {
+                alert('Por favor, selecciona al menos un servicio para cotizar.');
+                return;
+            }
+            let baseMessage = 'Hola LiberoMatico! 👋 Mi nombre es ' + (this.username ? this.username : 'un cliente interesado') + '.\n\n';
+            baseMessage += 'Me gustaría recibir información y cotizar los siguientes servicios:\n';
+            this.selectedServices.forEach((srv, idx) => {
+                baseMessage += '- ' + srv + '\n';
+            });
+            baseMessage += '\nQuedo atento a su respuesta para coordinar. ¡Muchas gracias!';
+            
+            let encoded = encodeURIComponent(baseMessage);
+            window.open('https://wa.me/51966788168?text=' + encoded, '_blank');
+        }
+    }">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center mb-12 space-y-4">
+                <span class="text-brand-cyan font-extrabold text-sm tracking-widest uppercase">Cotizador Inteligente</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white">Diseña tu Plan Tecnológico</h2>
+                <p class="text-sm sm:text-base text-slate-400">
+                    Selecciona las soluciones de soporte, publicidad o capacitación que tu marca o negocio requiere. Te responderemos al instante por WhatsApp con una propuesta a tu medida.
+                </p>
+            </div>
+
+            <!-- Calculator Form Container -->
+            <div class="bg-gradient-to-b from-brand-darkblue to-brand-dark p-6 sm:p-10 rounded-3xl border border-slate-800 shadow-xl space-y-8">
+                
+                <!-- Input Name -->
+                <div class="space-y-2">
+                    <label class="block text-sm font-semibold text-slate-300">¿Cuál es tu nombre?</label>
+                    <input type="text" x-model="username" placeholder="Ingresa tu nombre completo" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-slate-200 focus:outline-none focus:border-brand-cyan transition-colors">
+                </div>
+
+                <!-- Tabs Selectors for the 3 Categories -->
+                <div class="space-y-3">
+                    <label class="block text-sm font-semibold text-slate-300">Paso 1: Elige una categoría de interés</label>
+                    <div class="grid grid-cols-3 gap-2 p-1 bg-slate-900 rounded-xl border border-slate-800">
+                        <button @click="category = 'soporte'" :class="category === 'soporte' ? 'bg-brand-blue text-white' : 'text-slate-400 hover:text-white'" class="py-2.5 rounded-lg text-xs sm:text-sm font-bold transition-all">Soporte TI</button>
+                        <button @click="category = 'publicidad'" :class="category === 'publicidad' ? 'bg-brand-cyan text-brand-dark' : 'text-slate-400 hover:text-white'" class="py-2.5 rounded-lg text-xs sm:text-sm font-bold transition-all">Publicidad</button>
+                        <button @click="category = 'capacitacion'" :class="category === 'capacitacion' ? 'bg-brand-indigo text-white' : 'text-slate-400 hover:text-white'" class="py-2.5 rounded-lg text-xs sm:text-sm font-bold transition-all">Capacitación</button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Choose Services list depending on category -->
+                <div class="space-y-4">
+                    <label class="block text-sm font-semibold text-slate-300">Paso 2: Marca los servicios que deseas cotizar</label>
+
+                    <!-- SOPORTE SERVICES -->
+                    <div x-show="category === 'soporte'" class="grid sm:grid-cols-2 gap-3" x-transition>
+                        <button @click="addRemoveService('Mantenimiento y Reparación de PC/Laptop')" :class="selectedServices.includes('Mantenimiento y Reparación de PC/Laptop') ? 'border-brand-blue bg-brand-blue/10 text-white' : 'border-slate-800 bg-slate-900/60 text-slate-400'" class="p-4 rounded-xl border text-left text-sm font-semibold transition-all flex justify-between items-center">
+                            <span>Mantenimiento de PC/Laptop</span>
+                            <i data-lucide="check" class="w-4 h-4 text-brand-blue" x-show="selectedServices.includes('Mantenimiento y Reparación de PC/Laptop')"></i>
+                        </button>
+                        <button @click="addRemoveService('Optimización de Rendimiento')" :class="selectedServices.includes('Optimización de Rendimiento') ? 'border-brand-blue bg-brand-blue/10 text-white' : 'border-slate-800 bg-slate-900/60 text-slate-400'" class="p-4 rounded-xl border text-left text-sm font-semibold transition-all flex justify-between items-center">
+                            <span>Optimización de Rendimiento</span>
+                            <i data-lucide="check" class="w-4 h-4 text-brand-blue" x-show="selectedServices.includes('Optimización de Rendimiento')"></i>
+                        </button>
+                        <button @click="addRemoveService('Eliminación de Virus y Malware')" :class="selectedServices.includes('Eliminación de Virus y Malware') ? 'border-brand-blue bg-brand-blue/10 text-white' : 'border-slate-800 bg-slate-900/60 text-slate-400'" class="p-4 rounded-xl border text-left text-sm font-semibold transition-all flex justify-between items-center">
+                            <span>Eliminación de Virus / Malware</span>
+                            <i data-lucide="check" class="w-4 h-4 text-brand-blue" x-show="selectedServices.includes('Eliminación de Virus y Malware')"></i>
+                        </button>
+                        <button @click="addRemoveService('Recuperación de Datos/Información')" :class="selectedServices.includes('Recuperación de Datos/Información') ? 'border-brand-blue bg-brand-blue/10 text-white' : 'border-slate-800 bg-slate-900/60 text-slate-400'" class="p-4 rounded-xl border text-left text-sm font-semibold transition-all flex justify-between items-center">
+                            <span>Recuperación de Datos</span>
+                            <i data-lucide="check" class="w-4 h-4 text-brand-blue" x-show="selectedServices.includes('Recuperación de Datos/Información')"></i>
+                        </button>
+                        <button @click="addRemoveService('Instalación y Configuración de Software')" :class="selectedServices.includes('Instalación y Configuración de Software') ? 'border-brand-blue bg-brand-blue/10 text-white' : 'border-slate-800 bg-slate-900/60 text-slate-400'" class="p-4 rounded-xl border text-left text-sm font-semibold transition-all flex justify-between items-center">
+                            <span>Instalación de Software</span>
+                            <i data-lucide="check" class="w-4 h-4 text-brand-blue" x-show="selectedServices.includes('Instalación y Configuración de Software')"></i>
+                        </button>
+                        <button @click="addRemoveService('Actualización SSD y RAM')" :class="selectedServices.includes('Actualización SSD y RAM') ? 'border-brand-blue bg-brand-blue/10 text-white' : 'border-slate-800 bg-slate-900/60 text-slate-400'" class="p-4 rounded-xl border text-left text-sm font-semibold transition-all flex justify-between items-center">
+                            <span>Actualización de SSD y Memoria RAM</span>
+                            <i data-lucide="check" class="w-4 h-4 text-brand-blue" x-show="selectedServices.includes('Actualización SSD y RAM')"></i>
+                        </button>
+                        <button @click="addRemoveService('Soporte Especializado Gamer/Diseño')" :class="selectedServices.includes('Soporte Especializado Gamer/Diseño') ? 'border-brand-blue bg-brand-blue/10 text-white' : 'border-slate-800 bg-slate-900/60 text-slate-400'" class="p-4 rounded-xl border text-left text-sm font-semibold transition-all flex justify-between items-center">
+                            <span>Soporte Gamer & Diseño</span>
+                            <i data-lucide="check" class="w-4 h-4 text-brand-blue" x-show="selectedServices.includes('Soporte Especializado Gamer/Diseño')"></i>
+                        </button>
+                    </div>
+
+                    <!-- PUBLICIDAD SERVICES -->
+                    <div x-show="category === 'publicidad'" class="grid sm:grid-cols-2 gap-3" x-transition style="display: none;">
+                        <button @click="addRemoveService('Flyers de Alto Impacto')" :class="selectedServices.includes('Flyers de Alto Impacto') ? 'border-brand-cyan bg-brand-cyan/10 text-white' : 'border-slate-800 bg-slate-900/60 text-slate-400'" class="p-4 rounded-xl border text-left text-sm font-semibold transition-all flex justify-between items-center">
+                            <span>Flyers para Redes Sociales</span>
+                            <i data-lucide="check" class="w-4 h-4 text-brand-cyan" x-show="selectedServices.includes('Flyers de Alto Impacto')"></i>
+                        </button>
+                        <button @click="addRemoveService('Reels Publicitarios Dinámicos')" :class="selectedServices.includes('Reels Publicitarios Dinámicos') ? 'border-brand-cyan bg-brand-cyan/10 text-white' : 'border-slate-800 bg-slate-900/60 text-slate-400'" class="p-4 rounded-xl border text-left text-sm font-semibold transition-all flex justify-between items-center">
+                            <span>Reels Publicitarios</span>
+                            <i data-lucide="check" class="w-4 h-4 text-brand-cyan" x-show="selectedServices.includes('Reels Publicitarios Dinámicos')"></i>
+                        </button>
+                        <button @click="addRemoveService('Edición de Video Profesional')" :class="selectedServices.includes('Edición de Video Profesional') ? 'border-brand-cyan bg-brand-cyan/10 text-white' : 'border-slate-800 bg-slate-900/60 text-slate-400'" class="p-4 rounded-xl border text-left text-sm font-semibold transition-all flex justify-between items-center">
+                            <span>Edición de Video</span>
+                            <i data-lucide="check" class="w-4 h-4 text-brand-cyan" x-show="selectedServices.includes('Edición de Video Profesional')"></i>
+                        </button>
+                        <button @click="addRemoveService('Copywriting y Textos de Venta')" :class="selectedServices.includes('Copywriting y Textos de Venta') ? 'border-brand-cyan bg-brand-cyan/10 text-white' : 'border-slate-800 bg-slate-900/60 text-slate-400'" class="p-4 rounded-xl border text-left text-sm font-semibold transition-all flex justify-between items-center">
+                            <span>Copywriting Persuasivo</span>
+                            <i data-lucide="check" class="w-4 h-4 text-brand-cyan" x-show="selectedServices.includes('Copywriting y Textos de Venta')"></i>
+                        </button>
+                        <button @click="addRemoveService('Diseño de Campañas y Contenido Completo')" :class="selectedServices.includes('Diseño de Campañas y Contenido Completo') ? 'border-brand-cyan bg-brand-cyan/10 text-white' : 'border-slate-800 bg-slate-900/60 text-slate-400'" class="p-4 rounded-xl border text-left text-sm font-semibold transition-all flex justify-between items-center">
+                            <span>Diseño de Campañas Integrales</span>
+                            <i data-lucide="check" class="w-4 h-4 text-brand-cyan" x-show="selectedServices.includes('Diseño de Campañas y Contenido Completo')"></i>
+                        </button>
+                    </div>
+
+                    <!-- CAPACITACION SERVICES -->
+                    <div x-show="category === 'capacitacion'" class="grid sm:grid-cols-2 gap-3" x-transition style="display: none;">
+                        <button @click="addRemoveService('Capacitación en Inteligencia Artificial Aplicada')" :class="selectedServices.includes('Capacitación en Inteligencia Artificial Aplicada') ? 'border-brand-indigo bg-brand-indigo/10 text-white' : 'border-slate-800 bg-slate-900/60 text-slate-400'" class="p-4 rounded-xl border text-left text-sm font-semibold transition-all flex justify-between items-center">
+                            <span>IA Aplicada al Trabajo</span>
+                            <i data-lucide="check" class="w-4 h-4 text-brand-indigo" x-show="selectedServices.includes('Capacitación en Inteligencia Artificial Aplicada')"></i>
+                        </button>
+                        <button @click="addRemoveService('Curso Completo de ChatGPT y otras IA')" :class="selectedServices.includes('Curso Completo de ChatGPT y otras IA') ? 'border-brand-indigo bg-brand-indigo/10 text-white' : 'border-slate-800 bg-slate-900/60 text-slate-400'" class="p-4 rounded-xl border text-left text-sm font-semibold transition-all flex justify-between items-center">
+                            <span>ChatGPT y otras Herramientas IA</span>
+                            <i data-lucide="check" class="w-4 h-4 text-brand-indigo" x-show="selectedServices.includes('Curso Completo de ChatGPT y otras IA')"></i>
+                        </button>
+                        <button @click="addRemoveService('Productividad Digital y Google Workspace')" :class="selectedServices.includes('Productividad Digital y Google Workspace') ? 'border-brand-indigo bg-brand-indigo/10 text-white' : 'border-slate-800 bg-slate-900/60 text-slate-400'" class="p-4 rounded-xl border text-left text-sm font-semibold transition-all flex justify-between items-center">
+                            <span>Productividad y Google Workspace</span>
+                            <i data-lucide="check" class="w-4 h-4 text-brand-indigo" x-show="selectedServices.includes('Productividad Digital y Google Workspace')"></i>
+                        </button>
+                        <button @click="addRemoveService('Curso de Edición de Video Profesional')" :class="selectedServices.includes('Curso de Edición de Video Profesional') ? 'border-brand-indigo bg-brand-indigo/10 text-white' : 'border-slate-800 bg-slate-900/60 text-slate-400'" class="p-4 rounded-xl border text-left text-sm font-semibold transition-all flex justify-between items-center">
+                            <span>Curso de Edición de Video</span>
+                            <i data-lucide="check" class="w-4 h-4 text-brand-indigo" x-show="selectedServices.includes('Curso de Edición de Video Profesional')"></i>
+                        </button>
+                        <button @click="addRemoveService('Informática para Profesionales y Ofimática')" :class="selectedServices.includes('Informática para Profesionales y Ofimática') ? 'border-brand-indigo bg-brand-indigo/10 text-white' : 'border-slate-800 bg-slate-900/60 text-slate-400'" class="p-4 rounded-xl border text-left text-sm font-semibold transition-all flex justify-between items-center">
+                            <span>Informática Esencial</span>
+                            <i data-lucide="check" class="w-4 h-4 text-brand-indigo" x-show="selectedServices.includes('Informática para Profesionales y Ofimática')"></i>
+                        </button>
+                        <button @click="addRemoveService('Capacitación Especial para Emprendedores')" :class="selectedServices.includes('Capacitación Especial para Emprendedores') ? 'border-brand-indigo bg-brand-indigo/10 text-white' : 'border-slate-800 bg-slate-900/60 text-slate-400'" class="p-4 rounded-xl border text-left text-sm font-semibold transition-all flex justify-between items-center">
+                            <span>Estrategia para Emprendedores</span>
+                            <i data-lucide="check" class="w-4 h-4 text-brand-indigo" x-show="selectedServices.includes('Capacitación Especial para Emprendedores')"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Action and List Selected Summary -->
+                <div class="space-y-4 pt-6 border-t border-slate-800">
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs font-semibold text-slate-400 self-center">Servicios marcados:</span>
+                        <template x-for="item in selectedServices" :key="item">
+                            <span class="px-3 py-1 bg-brand-cyan/15 text-brand-cyan text-xs font-bold rounded-lg border border-brand-cyan/20" x-text="item"></span>
+                        </template>
+                        <span x-show="selectedServices.length === 0" class="text-xs text-rose-400 font-semibold italic">Ningún servicio seleccionado</span>
+                    </div>
+
+                    <button @click="generateWhatsAppLink()" class="w-full py-4 bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-base rounded-xl transition-all shadow-md hover:shadow-emerald-500/20 flex items-center justify-center gap-2">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.963C16.588 2.01 14.12 1.01 11.508 1.01c-5.44 0-9.866 4.372-9.87 9.802 0 1.714.475 3.387 1.378 4.869L2.048 21.12l5.7-.966zm13.107-5.59c-.327-.162-1.93-.938-2.228-1.045-.297-.108-.513-.162-.727.162-.216.324-.836 1.046-1.025 1.262-.188.216-.377.243-.704.082-.327-.162-1.379-.501-2.628-1.598-.972-.855-1.628-1.912-1.819-2.236-.19-.324-.02-.5-.181-.66-.146-.144-.327-.377-.49-.566-.163-.189-.217-.324-.326-.54-.109-.217-.055-.404-.027-.567.027-.162.216-.513.324-.674.108-.162.144-.27.216-.405.072-.135.036-.253-.018-.362-.054-.108-.513-1.216-.704-1.66-.185-.44-.37-.379-.51-.385-.132-.006-.283-.006-.435-.006-.15 0-.397.054-.604.27-.206.216-.787.756-.787 1.841 0 1.085.8 2.135.91 2.284.11.15 1.574 2.371 3.81 3.315.533.225.95.359 1.274.459.536.168 1.024.144 1.408.088.428-.063 1.319-.53 1.506-1.04.188-.51.188-.947.132-1.04-.057-.092-.206-.146-.534-.308z"/>
+                        </svg>
+                        Enviar Cotización Directo a WhatsApp
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FREQUENTLY ASKED QUESTIONS -->
+    <section class="py-20 bg-brand-dark">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-brand-blue font-extrabold text-sm tracking-widest uppercase">FAQ</span>
+                <h2 class="text-3xl sm:text-4xl font-black text-white">Preguntas Frecuentes</h2>
+            </div>
+
+            <!-- FAQ Accordions via Alpine -->
+            <div class="space-y-4" x-data="{ activeIndex: null }">
+                
+                <!-- Q1 -->
+                <div class="bg-brand-darkblue/40 border border-slate-800 rounded-2xl overflow-hidden">
+                    <button @click="activeIndex = activeIndex === 1 ? null : 1" class="w-full px-6 py-5 text-left font-bold text-white flex justify-between items-center hover:bg-slate-900/60 transition-colors">
+                        <span>¿Los servicios de soporte informático son a domicilio o presenciales?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-brand-blue transition-transform" :class="activeIndex === 1 ? 'rotate-180' : ''"></i>
+                    </button>
+                    <div x-show="activeIndex === 1" x-transition class="px-6 pb-5 text-sm text-slate-400 border-t border-slate-800/50 pt-3">
+                        Ofrecemos ambas modalidades dependiendo de la complejidad del caso. Realizamos soporte remoto rápido para configuraciones y eliminación de malware, así como visitas técnicas presenciales o recepción en taller para reparaciones físicas de hardware y mantenimiento profundo.
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="bg-brand-darkblue/40 border border-slate-800 rounded-2xl overflow-hidden">
+                    <button @click="activeIndex = activeIndex === 2 ? null : 2" class="w-full px-6 py-5 text-left font-bold text-white flex justify-between items-center hover:bg-slate-900/60 transition-colors">
+                        <span>¿Cómo funciona el servicio de Creador de Publicidad?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-brand-blue transition-transform" :class="activeIndex === 2 ? 'rotate-180' : ''"></i>
+                    </button>
+                    <div x-show="activeIndex === 2" x-transition class="px-6 pb-5 text-sm text-slate-400 border-t border-slate-800/50 pt-3">
+                        Iniciamos con una breve asesoría para entender tu nicho de mercado. Luego, diseñamos los flyers, editamos los reels y estructuramos copys orientados a la conversión. Te entregamos el contenido en formatos óptimos, listo para publicar en tus redes sociales.
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="bg-brand-darkblue/40 border border-slate-800 rounded-2xl overflow-hidden">
+                    <button @click="activeIndex = activeIndex === 3 ? null : 3" class="w-full px-6 py-5 text-left font-bold text-white flex justify-between items-center hover:bg-slate-900/60 transition-colors">
+                        <span>¿Necesito conocimientos previos para los cursos de Inteligencia Artificial?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-brand-blue transition-transform" :class="activeIndex === 3 ? 'rotate-180' : ''"></i>
+                    </button>
+                    <div x-show="activeIndex === 3" x-transition class="px-6 pb-5 text-sm text-slate-400 border-t border-slate-800/50 pt-3">
+                        No. Nuestras capacitaciones están diseñadas "Para todos los niveles", tal como se indica en nuestros pilares de enseñanza. Partimos desde los fundamentos prácticos hasta la optimización avanzada mediante prompts personalizados para tu negocio.
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="bg-brand-darkblue/40 border border-slate-800 rounded-2xl overflow-hidden">
+                    <button @click="activeIndex = activeIndex === 4 ? null : 4" class="w-full px-6 py-5 text-left font-bold text-white flex justify-between items-center hover:bg-slate-900/60 transition-colors">
+                        <span>¿Cómo contacto directamente con LiberoMatico?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-brand-blue transition-transform" :class="activeIndex === 4 ? 'rotate-180' : ''"></i>
+                    </button>
+                    <div x-show="activeIndex === 4" x-transition class="px-6 pb-5 text-sm text-slate-400 border-t border-slate-800/50 pt-3">
+                        Puedes comunicarte directamente llamando o escribiendo por WhatsApp al número oficial de soporte: <span class="text-brand-cyan font-bold">+51 966788168</span>. Estaremos encantados de ayudarte.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER & BRAND TRUST DETAILS -->
+    <footer class="bg-slate-950 text-slate-400 pt-16 pb-8 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                
+                <!-- Col 1: About -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-blue to-brand-cyan flex items-center justify-center font-bold text-lg text-white">
+                            M
+                        </div>
+                        <span class="text-xl font-bold text-white">Libero<span class="text-brand-cyan">Matico</span></span>
+                    </div>
+                    <p class="text-xs text-slate-400">
+                        Líderes en Soporte Técnico, Publicidad Creativa Digital y Capacitaciones Modernas. Elevamos el nivel de profesionales y emprendedores con el poder de la Inteligencia Artificial.
+                    </p>
+                    <p class="text-xs text-brand-cyan font-semibold">
+                        📍 Perú | Atención a Nivel Nacional
+                    </p>
+                </div>
+
+                <!-- Col 2: Services Quick Links -->
+                <div class="space-y-4">
+                    <h4 class="font-bold text-white text-sm uppercase tracking-wider">Unidades</h4>
+                    <ul class="space-y-2.5 text-xs">
+                        <li><a href="#soporte" class="hover:text-white transition-colors">Soporte TI e Informático</a></li>
+                        <li><a href="#publicidad" class="hover:text-white transition-colors">Creador de Publicidad y Contenido</a></li>
+                        <li><a href="#capacitacion" class="hover:text-white transition-colors">Capacitaciones que Transforman</a></li>
+                        <li><a href="#cotizador" class="hover:text-white transition-colors">Cotizador Personalizado</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Direct Core Badges -->
+                <div class="space-y-4">
+                    <h4 class="font-bold text-white text-sm uppercase tracking-wider">Metodología</h4>
+                    <ul class="space-y-2.5 text-xs text-slate-400">
+                        <li class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-brand-cyan"></span> Contenido Actualizado
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-brand-cyan"></span> Aprende Haciendo
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-brand-cyan"></span> Aplica de Inmediato
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-brand-cyan"></span> Resultados Reales
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Contact & Phone -->
+                <div class="space-y-4">
+                    <h4 class="font-bold text-white text-sm uppercase tracking-wider">Canal Oficial</h4>
+                    <p class="text-xs text-slate-400">¿Tienes dudas o necesitas asistencia inmediata?</p>
+                    <div class="p-4 bg-brand-dark rounded-xl border border-slate-800 space-y-3">
+                        <div class="flex items-center gap-2.5">
+                            <i data-lucide="phone" class="w-4 h-4 text-brand-cyan"></i>
+                            <a href="tel:+51966788168" class="text-xs font-bold text-white hover:underline">+51 966788168</a>
+                        </div>
+                        <div class="flex items-center gap-2.5">
+                            <i data-lucide="mail" class="w-4 h-4 text-brand-cyan"></i>
+                            <span class="text-xs">contacto@liberomatico.com</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Line -->
+            <div class="pt-8 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+                <p>&copy; 2026 LiberoMatico. Todos los derechos reservados.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-white transition-colors">Términos del Servicio</a>
+                    <span>&middot;</span>
+                    <a href="#" class="hover:text-white transition-colors">Política de Privacidad</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
