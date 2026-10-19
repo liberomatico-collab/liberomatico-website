@@ -1,745 +1,1216 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LiberoMatico // Imagen Comercial y Digital</title>
-  <link rel="icon" type="image/jpeg" href="assets/liberomatico-logo.jpg">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>LiberoMatico // Rodrigo Guillermo Vázquez · Consultor Estratégico, Comercial y Tecnológico</title>
+  <meta name="description" content="Soluciones digitales para estructurar, mostrar y hacer crecer su negocio. Tecnología digital para hacer su negocio imposible de ignorar y estructurar crecimiento con consistencia." />
   
+  <!-- Favicon con Logo Transparente -->
+  <link rel="icon" type="image/png" href="assets/liberomatico-logo-transparent.png" />
+
   <!-- Tipografía Google: Plus Jakarta Sans -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
   <style>
     /* ==========================================================================
-       RESET TOTAL & BASE CINEMATOGRÁFICA
+       RESET Y ARQUITECTURA GENERAL
        ========================================================================== */
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :root {
+      --champagne: #e2c992;
+      --champagne-glow: rgba(226, 201, 146, 0.4);
+      --glass-bg: rgba(11, 15, 25, 0.68);
+      --glass-border: rgba(255, 255, 255, 0.18);
+      --glass-border-active: rgba(226, 201, 146, 0.6);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-blue: #38bdf8;
+      --whatsapp-green: #25d366;
     }
 
     html, body {
-      background-color: #030712;
-      color: #ffffff;
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      scroll-behavior: smooth;
-    }
-
-    /* ==========================================================================
-       TOP NAVIGATION
-       ========================================================================== */
-    .nav-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
       width: 100vw;
-      padding: 1.5rem 3.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
-      pointer-events: none;
-    }
-
-    .brand-group-link {
-      pointer-events: auto;
-      display: flex;
-      align-items: center;
-      gap: 1.1rem;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .brand-logo-box {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
+      height: 100vh;
       overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-      background: #0f172a;
-      flex-shrink: 0;
-      transition: transform 0.3s ease, border-color 0.3s ease;
-    }
-
-    .brand-group-link:hover .brand-logo-box {
-      transform: scale(1.04);
-      border-color: rgba(255, 255, 255, 0.45);
-    }
-
-    .brand-logo-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .brand-text-block {
-      display: flex;
-      flex-direction: column;
-      gap: 0.15rem;
-    }
-
-    .brand-logo {
-      font-size: 1.35rem;
-      font-weight: 900;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: #fff;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-    }
-
-    .brand-sub {
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.75);
-      text-shadow: 0 2px 8px rgba(0,0,0,0.8);
-    }
-
-    .nav-right {
-      pointer-events: auto;
-      display: flex;
-      align-items: center;
-    }
-
-    /* BOTÓN CONTACTO SUPERIOR SOLICITADO */
-    .nav-contact-btn {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
-      background: #059669;
-      padding: 0.75rem 1.4rem;
-      border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 6px 20px rgba(5, 150, 105, 0.35);
-      transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-      color: #ffffff;
-    }
-
-    .nav-contact-btn:hover {
-      background: #10b981;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(16, 185, 129, 0.45);
-    }
-
-    .nav-contact-icon {
-      width: 20px;
-      height: 20px;
-      fill: currentColor;
-      flex-shrink: 0;
-    }
-
-    .nav-contact-text {
-      display: flex;
-      flex-direction: column;
-      text-align: left;
-    }
-
-    .nav-contact-action {
-      font-size: 0.85rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      line-height: 1.1;
-    }
-
-    .nav-contact-sub {
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: rgba(255, 255, 255, 0.9);
-      margin-top: 0.15rem;
-      letter-spacing: 0.03em;
-    }
-
-    /* ==========================================================================
-       AUDIO DOCK CON ECUALIZADOR
-       ========================================================================== */
-    .audio-dock {
-      position: fixed;
-      bottom: 2.5rem;
-      right: 3.5rem;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      gap: 0.9rem;
-      cursor: pointer;
+      background-color: #030712;
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       user-select: none;
-      background: rgba(15, 23, 42, 0.6);
-      padding: 0.6rem 1.1rem;
-      border-radius: 9999px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
-      transition: background 0.3s ease, border-color 0.3s ease;
-    }
-
-    .audio-dock:hover {
-      background: rgba(15, 23, 42, 0.85);
-      border-color: rgba(255, 255, 255, 0.3);
-    }
-
-    .eq-visualizer {
-      display: flex;
-      align-items: flex-end;
-      gap: 3px;
-      height: 14px;
-    }
-
-    .eq-bar {
-      width: 2px;
-      height: 4px;
-      background: #fff;
-      transition: height 0.2s ease;
-    }
-
-    .audio-dock.active .eq-bar:nth-child(1) { animation: eqAnim 0.7s infinite 0.1s; }
-    .audio-dock.active .eq-bar:nth-child(2) { animation: eqAnim 0.7s infinite 0.3s; }
-    .audio-dock.active .eq-bar:nth-child(3) { animation: eqAnim 0.7s infinite 0.2s; }
-    .audio-dock.active .eq-bar:nth-child(4) { animation: eqAnim 0.7s infinite 0.4s; }
-
-    @keyframes eqAnim {
-      0%, 100% { height: 3px; }
-      50% { height: 14px; }
-    }
-
-    .audio-title {
-      font-family: monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.8);
+      -webkit-user-select: none;
     }
 
     /* ==========================================================================
-       ESCENARIO VISUAL PRINCIPAL (ESCENAS LATINOAMERICANAS EN VIVO)
+       FONDO INMERSIVO UNIVERSAL (FULLSCREEN CON TRANSICIÓN DINÁMICA)
        ========================================================================== */
-    .stage-container {
+    .bg-stage {
       position: fixed;
       inset: 0;
       width: 100vw;
       height: 100vh;
       z-index: 1;
       overflow: hidden;
-      background-color: #030712;
     }
 
-    .scene-layer {
+    .bg-slide {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       background-size: cover;
-      background-position: center;
+      background-position: center center;
+      background-repeat: no-repeat;
       opacity: 0;
-      transform: scale(1.05);
-      transition: opacity 1.3s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 2.2s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: scale(1.08);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
       will-change: opacity, transform;
     }
 
-    .scene-layer.active {
+    .bg-slide.active {
       opacity: 1;
-      transform: scale(1);
+      transform: scale(1.0);
     }
 
-    /* Viñeta cinematográfica invisible para legibilidad perfecta sin cajas */
-    .cinema-vignette {
+    /* Velo de cine y luz natural para proteger contraste */
+    .bg-stage::after {
+      content: "";
       position: absolute;
       inset: 0;
-      background: 
-        radial-gradient(circle at 75% 50%, rgba(3,7,18,0.2) 0%, rgba(3,7,18,0.78) 100%),
-        linear-gradient(to right, rgba(3,7,18,0.95) 0%, rgba(3,7,18,0.78) 46%, rgba(3,7,18,0.32) 100%),
-        linear-gradient(to bottom, rgba(3,7,18,0.65) 0%, transparent 25%, transparent 70%, rgba(3,7,18,0.92) 100%);
+      background: radial-gradient(circle at 50% 30%, rgba(3, 7, 18, 0.25) 0%, rgba(3, 7, 18, 0.75) 100%),
+                  linear-gradient(180deg, rgba(3, 7, 18, 0.5) 0%, rgba(3, 7, 18, 0.8) 100%);
+      pointer-events: none;
       z-index: 2;
-      pointer-events: none;
     }
 
-    /* ==========================================================================
-       TRACK NARRATIVO Y TIPOGRAFÍA FLOTANTE (0 CAJAS)
-       ========================================================================== */
-    .story-track {
-      position: relative;
-      z-index: 10;
+    /* Video Hero Cinemático - Encuadre Centrado en Rostro y Cabeza */
+    .bg-video-hero {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 12%;
+      z-index: 0;
     }
 
-    .scene-frame {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 0 4rem 0 10vw;
-      pointer-events: none;
+    /* Grid de Pilares Maestros */
+    .pilares-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.65rem;
+      margin: 1.1rem 0;
     }
-
-    .floating-narrative {
-      max-width: 820px;
-      pointer-events: auto;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    @media (min-width: 680px) {
+      .pilares-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
-
-    .scene-frame.in-view .floating-narrative {
-      opacity: 1;
-      transform: translateY(0);
+    .pilar-card {
+      background: rgba(11, 15, 25, 0.72);
+      border: 1px solid rgba(226, 201, 146, 0.28);
+      border-radius: 12px;
+      padding: 0.85rem;
+      backdrop-filter: blur(14px);
+      transition: all 0.25s ease;
     }
-
-    .eyebrow {
-      font-size: 0.82rem;
+    .pilar-card:hover {
+      border-color: var(--champagne);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(226, 201, 146, 0.15);
+    }
+    .pilar-head {
+      color: var(--champagne);
+      font-size: 0.78rem;
       font-weight: 800;
-      letter-spacing: 0.32em;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.3rem;
       text-transform: uppercase;
-      color: #38bdf8;
-      margin-bottom: 1.2rem;
-      display: inline-block;
-      text-shadow: 0 2px 20px rgba(56, 189, 248, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .pilar-text {
+      color: #cbd5e1;
+      font-size: 0.72rem;
+      line-height: 1.4;
     }
 
-    .eyebrow.gold {
-      color: #fbbf24;
-      text-shadow: 0 2px 20px rgba(251, 191, 36, 0.4);
-    }
-
-    .eyebrow.emerald {
-      color: #34d399;
-      text-shadow: 0 2px 20px rgba(52, 211, 153, 0.4);
-    }
-
-    .eyebrow.amber {
-      color: #f59e0b;
-      text-shadow: 0 2px 20px rgba(245, 158, 11, 0.4);
-    }
-
-    .title {
-      font-size: clamp(2.3rem, 5.2vw, 4.4rem);
-      font-weight: 900;
-      line-height: 1.06;
-      letter-spacing: -0.035em;
-      text-transform: uppercase;
-      margin-bottom: 1.8rem;
-      text-shadow: 0 10px 40px rgba(0, 0, 0, 0.85);
-    }
-
-    .summary {
-      font-size: clamp(1.05rem, 1.55vw, 1.3rem);
-      font-weight: 400;
-      line-height: 1.68;
-      color: rgba(248, 250, 252, 0.92);
-      max-width: 680px;
-      margin-bottom: 2.2rem;
-      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
-    }
-
-    .pill-tags {
+    /* Botonera de Contacto Multicanal */
+    .contact-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-bottom: 2rem;
+      gap: 0.55rem;
+      margin: 0.9rem 0;
     }
-
-    .pill-tag {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      padding: 0.45rem 0.9rem;
-      border-radius: 6px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(8px);
-    }
-
-    .action-link {
+    .btn-contact-pill {
       display: inline-flex;
       align-items: center;
-      gap: 0.8rem;
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 0.88rem;
+      gap: 0.45rem;
+      padding: 0.5rem 0.95rem;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 9999px;
+      color: #f8fafc;
+      font-size: 0.74rem;
       font-weight: 700;
-      letter-spacing: 0.15em;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .btn-contact-pill:hover {
+      background: rgba(226, 201, 146, 0.22);
+      border-color: var(--champagne);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+    .btn-contact-pill.whatsapp {
+      border-color: rgba(37, 211, 102, 0.4);
+    }
+    .btn-contact-pill.whatsapp:hover {
+      background: rgba(37, 211, 102, 0.2);
+      border-color: var(--whatsapp-green);
+    }
+
+    /* Ecosistema de Demos (Showcase Hub) */
+    .demos-section {
+      margin-top: 1.1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .demos-title {
+      font-size: 0.7rem;
       text-transform: uppercase;
-      border-bottom: 2px solid rgba(255, 255, 255, 0.4);
-      padding-bottom: 0.4rem;
-      transition: border-color 0.3s ease, gap 0.3s ease, color 0.3s ease;
+      letter-spacing: 0.08em;
+      color: var(--champagne);
+      font-weight: 800;
+      margin-bottom: 0.65rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .demos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+      gap: 0.5rem;
+    }
+    .demo-chip {
+      display: flex;
+      flex-direction: column;
+      padding: 0.55rem 0.75rem;
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 10px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+    }
+    .demo-chip:hover {
+      border-color: var(--accent-blue);
+      background: rgba(56, 189, 248, 0.15);
+      transform: translateY(-2px);
+    }
+    .demo-chip-name {
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    .demo-chip-tag {
+      font-size: 0.64rem;
+      color: var(--accent-blue);
+      margin-top: 0.15rem;
     }
 
-    .action-link:hover {
-      border-color: #38bdf8;
-      gap: 1.2rem;
-      color: #38bdf8;
+    /* Modo Bienvenida: Caja 100% Transparente para lucir el Video de Fondo */
+    .cockpit-box.is-welcome {
+      background: transparent !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      border: none !important;
+      box-shadow: none !important;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
     }
-
-    .action-link.emerald {
-      border-color: rgba(52, 211, 153, 0.6);
-      color: #34d399;
+    .cockpit-box.is-welcome .axis-x-rail {
+      background: rgba(11, 15, 25, 0.55);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-radius: 9999px;
+      margin: 0 auto 0 auto;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      width: fit-content;
+      max-width: 90vw;
     }
-
-    .action-link.emerald:hover {
-      border-color: #10b981;
-      color: #10b981;
-      gap: 1.4rem;
+    .cockpit-box.is-welcome .axis-y-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 2.5rem;
     }
-
-    /* SCROLL HINT CORREGIDO: "DESLICE HACIA ABAJO" */
-    .scroll-hint {
-      position: fixed;
-      bottom: 2.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 1000;
-      font-family: monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      opacity: 0.6;
-      color: #fff;
-      pointer-events: none;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-      transition: opacity 0.5s ease;
-      animation: pulseHint 2.5s infinite ease-in-out;
+    .cockpit-box.is-welcome #card-0 {
+      padding: 0 1.5rem !important;
     }
-
-    @keyframes pulseHint {
-      0%, 100% { opacity: 0.3; transform: translate(-50%, 0); }
-      50% { opacity: 0.9; transform: translate(-50%, 6px); }
+    .cockpit-box.is-welcome .cockpit-footer {
+      display: none;
     }
 
     /* ==========================================================================
-       RESPONSIVE MOBILE
+       CABECERA EN TRANSPARENT GLASS (TOP HUD)
        ========================================================================== */
-    @media (max-width: 900px) {
-      .nav-bar {
-        padding: 1.2rem 1.5rem;
+    .top-hud {
+      position: fixed;
+      top: 1rem;
+      left: 0;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      padding: 0 1.25rem;
+      z-index: 100;
+      pointer-events: none;
+    }
+
+    .hud-glass-bar {
+      pointer-events: auto;
+      width: 100%;
+      max-width: 1120px;
+      padding: 0.75rem 1.4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--glass-bg);
+      backdrop-filter: blur(28px) saturate(190%);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      border: 1px solid var(--glass-border);
+      border-radius: 9999px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    }
+
+    .brand-link {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand-logo-frame {
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.35));
+    }
+
+    .brand-logo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 0.98rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-main);
+    }
+
+    .brand-sub {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--champagne);
+      text-transform: uppercase;
+    }
+
+    .hud-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    /* Selector de Idioma con Banderitas */
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 9999px;
+      padding: 3px;
+      gap: 2px;
+      backdrop-filter: blur(12px);
+    }
+
+    .btn-lang {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.7rem;
+      background: transparent;
+      border: none;
+      border-radius: 9999px;
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .btn-lang:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .btn-lang.active {
+      color: #0b1120;
+      background: var(--champagne);
+      font-weight: 800;
+      box-shadow: 0 2px 8px rgba(226, 201, 146, 0.4);
+    }
+
+    .flag-icon {
+      width: 16px;
+      height: 12px;
+      border-radius: 2px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .btn-whatsapp-glass {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.42rem 0.95rem;
+      background: rgba(37, 211, 102, 0.16);
+      border: 1px solid rgba(37, 211, 102, 0.45);
+      border-radius: 9999px;
+      color: #ffffff;
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: all 0.25s ease;
+      backdrop-filter: blur(12px);
+      white-space: nowrap;
+    }
+
+    .btn-whatsapp-glass:hover {
+      background: rgba(37, 211, 102, 0.3);
+      box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
+      transform: translateY(-1px);
+    }
+
+    /* ==========================================================================
+       ESCENARIO PRINCIPAL & CONSOLA CARTESIANA (DUAL MÓVIL / DESKTOP)
+       ========================================================================== */
+    .stage-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5.5rem 1.5rem 2rem 1.5rem;
+    }
+
+    /* LA CAJITA DE LA MARQUESINA EN TRANSPARENT GLASS */
+    .cockpit-box {
+      width: 100%;
+      max-width: 980px;
+      max-height: calc(100vh - 8rem);
+      background: var(--glass-bg);
+      backdrop-filter: blur(32px) saturate(200%);
+      -webkit-backdrop-filter: blur(32px) saturate(200%);
+      border: 1px solid var(--glass-border);
+      border-radius: 28px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.65), inset 0 1px 2px rgba(255, 255, 255, 0.25);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+
+    /* ==========================================================================
+       EJE X: RIEL DE PESTAÑAS NAVEGABLE CON EL PULGAR
+       ========================================================================== */
+    .axis-x-rail {
+      display: flex;
+      gap: 0.5rem;
+      padding: 1rem 1.25rem 0.75rem 1.25rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      flex-shrink: 0;
+    }
+
+    .axis-x-rail::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1.1rem;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 9999px;
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .tab-pill:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: var(--text-main);
+    }
+
+    .tab-pill.active {
+      background: rgba(226, 201, 146, 0.18);
+      border-color: var(--champagne);
+      color: #ffffff;
+      box-shadow: 0 0 18px var(--champagne-glow);
+    }
+
+    .tab-num {
+      font-family: monospace;
+      font-size: 0.7rem;
+      opacity: 0.75;
+    }
+
+    /* ==========================================================================
+       EJE Y: CUERPO DE CONTENIDO DINÁMICO & FOTO HERO
+       ========================================================================== */
+    .axis-y-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 2rem;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.2) transparent;
+    }
+
+    .card-panel {
+      display: none;
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    .card-panel.active {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 2.2rem;
+      align-items: center;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Textos del HUD */
+    .hud-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      margin-bottom: 0.6rem;
+    }
+
+    .hud-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      line-height: 1.22;
+      color: #ffffff;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hud-desc {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #cbd5e1;
+      margin-bottom: 1.5rem;
+    }
+
+    .hud-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .metric-chip {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 0.85rem 1rem;
+    }
+
+    .metric-value {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--champagne);
+      font-family: monospace;
+      margin-bottom: 0.2rem;
+    }
+
+    .metric-label {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      line-height: 1.3;
+    }
+
+    /* Imagen interna complementaria */
+    .visual-frame {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5);
+      aspect-ratio: 4 / 3;
+      background: #0f172a;
+    }
+
+    .visual-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .visual-frame:hover img {
+      transform: scale(1.05);
+    }
+
+    .visual-badge {
+      position: absolute;
+      bottom: 0.85rem;
+      left: 0.85rem;
+      padding: 0.4rem 0.8rem;
+      background: rgba(11, 15, 25, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 9999px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 0.05em;
+    }
+
+    /* Botón de Acción Principal */
+    .btn-cta-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.85rem 1.6rem;
+      background: linear-gradient(135deg, #e2c992 0%, #bfa063 100%);
+      color: #0c0d0e;
+      font-size: 0.88rem;
+      font-weight: 800;
+      text-decoration: none;
+      border-radius: 9999px;
+      letter-spacing: 0.03em;
+      box-shadow: 0 10px 25px rgba(226, 201, 146, 0.35);
+      transition: all 0.25s ease;
+    }
+
+    .btn-cta-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 30px rgba(226, 201, 146, 0.5);
+    }
+
+    /* ==========================================================================
+       BARRA INFERIOR DE NAVEGACIÓN RÁPIDA (CONTROLES CARTESIANOS)
+       ========================================================================== */
+    .cockpit-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.85rem 1.4rem;
+      background: rgba(5, 8, 15, 0.4);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    .nav-arrow-group {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .btn-arrow {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.06);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-arrow:hover {
+      background: rgba(226, 201, 146, 0.25);
+      border-color: var(--champagne);
+    }
+
+    /* ==========================================================================
+       RESPONSIVE DESIGN: ADAPTACIÓN TOTAL PARA SMARTPHONES (MODO PULGAR)
+       ========================================================================== */
+    @media (max-width: 768px) {
+      .stage-container {
+        padding: 4.8rem 0.75rem 1rem 0.75rem;
       }
-      .brand-sub {
+
+      .cockpit-box {
+        max-height: calc(100vh - 6rem);
+        border-radius: 22px;
+      }
+
+      .card-panel.active {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+
+      .axis-y-content {
+        padding: 1.25rem 1rem;
+      }
+
+      .hud-title {
+        font-size: 1.35rem;
+      }
+
+      .hud-desc {
+        font-size: 0.85rem;
+        margin-bottom: 1.1rem;
+      }
+
+      .hud-metrics {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+      }
+
+      .visual-frame {
+        aspect-ratio: 16 / 9;
+      }
+
+      .top-hud {
+        padding: 0 0.5rem;
+      }
+
+      .hud-glass-bar {
+        padding: 0.5rem 0.85rem;
+        gap: 0.5rem;
+      }
+
+      .hud-actions {
+        gap: 0.4rem;
+      }
+
+      .btn-whatsapp-glass {
+        padding: 0.38rem 0.65rem;
+        font-size: 0.72rem;
+      }
+
+      .btn-whatsapp-glass svg {
         display: none;
       }
-      .scene-frame {
-        padding: 0 1.6rem;
-      }
-      .audio-dock {
-        bottom: 1.5rem;
-        right: 1.5rem;
-      }
-      .cinema-vignette {
-        background: 
-          linear-gradient(to right, rgba(3,7,18,0.96) 0%, rgba(3,7,18,0.88) 100%),
-          linear-gradient(to bottom, rgba(3,7,18,0.7) 0%, transparent 30%, rgba(3,7,18,0.96) 100%);
+
+      .brand-sub {
+        display: none; /* Ahorro de espacio en pantallas pequeñas */
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- 1. NAVEGACIÓN CON LOGOTIPO OFICIAL Y BOTÓN DE CONTACTO DIRECTO -->
-  <header class="nav-bar">
-    <a href="#" class="brand-group-link">
-      <div class="brand-logo-box">
-        <img src="assets/liberomatico-logo.jpg" alt="Logo LiberoMatico" class="brand-logo-img">
-      </div>
-      <div class="brand-text-block">
-        <span class="brand-logo">LIBEROMATICO</span>
-        <span class="brand-sub">IMAGEN COMERCIAL Y DIGITAL</span>
-      </div>
-    </a>
-    <div class="nav-right">
-      <a href="https://wa.me/51966788168?text=Hola%20Rodrigo,%20estuve%20revisando%20la%20web%20de%20LiberoMatico%20y%20quiero%20conversar%20sobre%20c%C3%B3mo%20potenciar%20la%20imagen%20comercial%20de%20mi%20negocio." 
-         target="_blank" 
-         class="nav-contact-btn" 
-         title="Contactar directamente por WhatsApp o llamar">
-        <svg class="nav-contact-icon" viewBox="0 0 24 24">
-          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.963C16.588 2.01 14.12 1.01 11.508 1.01c-5.44 0-9.866 4.372-9.87 9.802 0 1.714.475 3.387 1.378 4.869L2.048 21.12l5.7-.966zm13.107-5.59c-.327-.162-1.93-.938-2.228-1.045-.297-.108-.513-.162-.727.162-.216.324-.836 1.046-1.025 1.262-.188.216-.377.243-.704.082-.327-.162-1.379-.501-2.628-1.598-.972-.855-1.628-1.912-1.819-2.236-.19-.324-.02-.5-.181-.66-.146-.144-.327-.377-.49-.566-.163-.189-.217-.324-.326-.54-.109-.217-.055-.404-.027-.567.027-.162.216-.513.324-.674.108-.162.144-.27.216-.405.072-.135.036-.253-.018-.362-.054-.108-.513-1.216-.704-1.66-.185-.44-.37-.379-.51-.385-.132-.006-.283-.006-.435-.006-.15 0-.397.054-.604.27-.206.216-.787.756-.787 1.841 0 1.085.8 2.135.91 2.284.11.15 1.574 2.371 3.81 3.315.533.225.95.359 1.274.459.536.168 1.024.144 1.408.088.428-.063 1.319-.53 1.506-1.04.188-.51.188-.947.132-1.04-.057-.092-.206-.146-.534-.308z"/>
-        </svg>
-        <div class="nav-contact-text">
-          <span class="nav-contact-action">WhatsApp</span>
-          <span class="nav-contact-sub">o llame +51 966 788 168</span>
+  <!-- ==========================================================================
+       1. ESCENARIO DE FONDOS INMERSIVOS (PANTALLA COMPLETA 100VW x 100VH)
+       ========================================================================== -->
+  <div class="bg-stage">
+    <!-- Slide 0: Video Cinemático Shock Inicial (Bienvenida - Lanza) -->
+    <div class="bg-slide active" id="bg-0">
+      <video class="bg-video-hero" autoplay muted loop playsinline preload="auto">
+        <source src="assets/lanza.mp4" type="video/mp4" />
+        <source src="web_hero_video_blackgrown/ok/000.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <!-- Slide 1: El Diagnóstico -->
+    <div class="bg-slide" id="bg-1" style="background-image: url('assets/escena-0-hero-luz.jpg');"></div>
+    <!-- Slide 2: Soluciones -->
+    <div class="bg-slide" id="bg-2" style="background-image: url('assets/escena-3-oficina-laptop.jpg');"></div>
+    <!-- Slide 3: Mis Datos -->
+    <div class="bg-slide" id="bg-3" style="background-image: url('assets/escena-4-cierre-hogar.jpg');"></div>
+  </div>
+
+  <!-- ==========================================================================
+       2. CABECERA FLOTANTE EN TRANSPARENT GLASS (TOP HUD)
+       ========================================================================== -->
+  <header class="top-hud">
+    <div class="hud-glass-bar">
+      <a href="#" class="brand-link" onclick="goToSection(0); return false;">
+        <div class="brand-logo-frame">
+          <img src="assets/liberomatico-logo-transparent.png" alt="LiberoMatico Logo" style="max-height: 38px; width: auto;" />
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">Liberomatico</span>
+          <span class="brand-sub" data-i18n="brand_sub">Rodrigo Guillermo Vázquez - Estrategia Comercial y Digital</span>
         </div>
       </a>
+
+      <div class="hud-actions">
+        <!-- Selector Bilingüe ES / EN con Banderitas SVG Vectoriales -->
+        <div class="lang-switch" role="group" aria-label="Selector de Idioma">
+          <button type="button" class="btn-lang active" id="btnLangEs" onclick="setLanguage('es')" title="Español">
+            <svg class="flag-icon" viewBox="0 0 640 480" aria-hidden="true">
+              <path fill="#c60b1e" d="M0 0h640v480H0z"/>
+              <path fill="#ffc400" d="M0 120h640v240H0z"/>
+            </svg>
+            <span>ES</span>
+          </button>
+          <button type="button" class="btn-lang" id="btnLangEn" onclick="setLanguage('en')" title="English">
+            <svg class="flag-icon" viewBox="0 0 640 480" aria-hidden="true">
+              <path fill="#012169" d="M0 0h640v480H0z"/>
+              <path fill="#fff" d="m75 0 245 180L565 0h75v60L435 240l205 180v60h-75L320 300 75 480H0v-60l205-180L0 60V0z"/>
+              <path fill="#c8102e" d="m420 280 220 160v40L380 310zm-200-80L0 40V0l260 190zm380-160L390 190h70l180-130zM0 440l190-140h-70L0 400z"/>
+              <path fill="#fff" d="M240 0h160v480H240zM0 160h640v160H0z"/>
+              <path fill="#c8102e" d="M267 0h106v480H267zM0 187h640v106H0z"/>
+            </svg>
+            <span>EN</span>
+          </button>
+        </div>
+
+        <a href="https://wa.me/51966788168?text=Hola%20Rodrigo,%20vi%20tu%20web%20LiberoMatico%20y%20deseo%20coordinar" target="_blank" class="btn-whatsapp-glass" title="WhatsApp Línea 1">
+          <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.073-2.115-.515-1.815-.751-2.986-2.597-3.076-2.717-.091-.12-.734-.976-.734-1.862 0-.886.465-1.321.63-1.498.165-.177.36-.222.48-.222.12 0 .241.001.345.006.11.005.258-.042.404.307.147.349.504 1.228.549 1.318.045.09.075.195.015.315-.06.12-.09.195-.18.3-.09.105-.189.234-.27.315-.09.09-.184.188-.079.368.105.18.468.772 1.005 1.25.692.616 1.275.807 1.455.897.18.09.285.075.39-.045.105-.12.45-.525.57-.705.12-.18.24-.15.405-.09.165.06 1.05.495 1.23.585.18.09.3.135.345.21.045.075.045.435-.099.84z"/></svg>
+          <span>966 788 168</span>
+        </a>
+        <a href="https://wa.me/51963504596?text=Hola%20Rodrigo,%20vi%20tu%20web%20LiberoMatico%20y%20deseo%20coordinar" target="_blank" class="btn-whatsapp-glass" title="WhatsApp Línea 2">
+          <span>963 504 596</span>
+        </a>
+      </div>
     </div>
   </header>
 
-  <!-- 2. MOTOR DE AUDIO DINÁMICO (WEB AUDIO API SINTETIZADO) -->
-  <div id="audio-control" class="audio-dock" title="Activar sonido cinemático">
-    <div class="eq-visualizer">
-      <div class="eq-bar"></div>
-      <div class="eq-bar"></div>
-      <div class="eq-bar"></div>
-      <div class="eq-bar"></div>
-    </div>
-    <span class="audio-title">AUDIO [OFF]</span>
-  </div>
+  <!-- ==========================================================================
+       3. CONSOLA CARTESIANA (CAJITA FLOTANTE SOBRE TRANSPARENT GLASS)
+       ========================================================================== -->
+  <main class="stage-container">
+    <div class="cockpit-box is-welcome">
+      
+      <!-- EJE X: Riel Horizontal de Secciones (4 Estaciones) -->
+      <nav class="axis-x-rail" id="axisRail">
+        <button class="tab-pill active" onclick="goToSection(0)">
+          <span class="tab-num">00</span>
+          <span data-i18n="nav_0">Bienvenida</span>
+        </button>
+        <button class="tab-pill" onclick="goToSection(1)">
+          <span class="tab-num">01</span>
+          <span data-i18n="nav_1">El Diagnóstico</span>
+        </button>
+        <button class="tab-pill" onclick="goToSection(2)">
+          <span class="tab-num">02</span>
+          <span data-i18n="nav_2">Soluciones</span>
+        </button>
+        <button class="tab-pill" onclick="goToSection(3)">
+          <span class="tab-num">03</span>
+          <span data-i18n="nav_3">Mis Datos</span>
+        </button>
+      </nav>
 
-  <!-- INDICADOR FLOTANTE DE SCROLL REFORMULADO -->
-  <div class="scroll-hint">DESLICE HACIA ABAJO ↓</div>
+      <!-- EJE Y: Cuerpo de Contenido Dinámico -->
+      <div class="axis-y-content">
+        
+        <!-- CARD 0: BIENVENIDA (PUREZA CINEMÁTICA Y FOCO EN EL VIDEO) -->
+        <article class="card-panel active" id="card-0" style="padding: 1rem 1.5rem; align-items: center; justify-content: center;">
+          <div class="panel-info" style="max-width: 680px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; align-items: center;">
+            <h1 class="hud-title" data-i18n="hero_title" style="font-size: 2.1rem; font-weight: 800; color: #ffffff; letter-spacing: -0.01em; line-height: 1.3; margin-bottom: 1.35rem; text-shadow: 0 4px 25px rgba(0,0,0,0.95);">
+              Enfoque en mostrar lo que hace a su marca única.
+            </h1>
+            <button class="btn-cta-gold" onclick="goToSection(1)">
+              <span data-i18n="btn_enter">Entrar al Diagnóstico</span>
+              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </button>
+          </div>
+        </article>
 
-  <!-- 3. ESCENARIO VISUAL PRINCIPAL (ESCENAS CINEMATOGRÁFICAS EN VIVO) -->
-  <div class="stage-container">
-    <!-- Escena 0: El Dolor / Empresario en Lima con vista a la costa y celular mudo -->
-    <div class="scene-layer active" id="scene-0" style="background-image: url('assets/escena1-dolor-latino.jpg');"></div>
-    
-    <!-- Escena 1: La Solución / Rodrigo Vázquez en análisis y acuerdo de palabra -->
-    <div class="scene-layer" id="scene-1" style="background-image: url('assets/escena2-solucion-dividida.jpg');"></div>
-    
-    <!-- Escena 2: El Despliegue de Medios / Web, Flyer en mano, Video Wall y Brochure -->
-    <div class="scene-layer" id="scene-2" style="background-image: url('assets/escena3-medios-despliegue.jpg');"></div>
-    
-    <!-- Escena 3: Crecimiento Basado en Datos / Métricas de Demanda y Ventas -->
-    <div class="scene-layer" id="scene-3" style="background-image: url('assets/escena4-metricas-crecimiento.jpg');"></div>
+        <!-- CARD 1: EL DIAGNÓSTICO -->
+        <article class="card-panel" id="card-1">
+          <div class="panel-info">
+            <span class="hud-tag" data-i18n="card1_tag">La Brecha de Percepción // Punto Cero</span>
+            <h2 class="hud-title" data-i18n="card1_title">¿Cuántos clientes está perdiendo hoy simplemente porque desconocen el verdadero nivel de lo que ofrece?</h2>
+            <p class="hud-desc" data-i18n="card1_desc">
+              Hacemos que su empresa transmita el calibre que realmente tiene, conecte con las personas indicadas y opere con un sistema comercial ágil para que ninguna consulta quede sin cerrar.
+            </p>
+            <div style="margin-top: 1.5rem;">
+              <button class="btn-cta-gold" onclick="goToSection(2)">
+                <span data-i18n="btn_solutions">Ver Nuestras Soluciones</span>
+                <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="panel-visual">
+            <div class="visual-frame">
+              <img src="assets/escena-0-hero-luz.jpg" alt="Visión Corporativa LiberoMatico" />
+              <div class="visual-badge" data-i18n="card1_badge">Presencia de Gran Escala</div>
+            </div>
+          </div>
+        </article>
 
-    <!-- Viñeta invisible de contraste cinematográfico -->
-    <div class="cinema-vignette"></div>
-  </div>
+        <!-- CARD 2: SOLUCIONES (LOS 3 PILARES Y ECOSISTEMA DE DEMOS) -->
+        <article class="card-panel" id="card-2">
+          <div class="panel-info">
+            <span class="hud-tag" data-i18n="card2_tag">Los 3 Pilares Oficiales // Suite LiberoMatico</span>
+            <h2 class="hud-title" data-i18n="card2_title">Tecnología digital para hacer su negocio imposible de ignorar.</h2>
+            
+            <!-- Grid de Pilares -->
+            <div class="pilares-grid">
+              <div class="pilar-card">
+                <div class="pilar-head" data-i18n="card2_p1_title">01 · Comercial y Operativo</div>
+                <div class="pilar-text" data-i18n="card2_p1_desc">Diagnóstico, detección de costos de oportunidad y optimización de su operación comercial.</div>
+              </div>
+              <div class="pilar-card">
+                <div class="pilar-head" data-i18n="card2_p2_title">02 · Presencia Digital</div>
+                <div class="pilar-text" data-i18n="card2_p2_desc">Sitios web de validación, catálogos interactivos y producción audiovisual cinematográfica con narrativa comercial.</div>
+              </div>
+              <div class="pilar-card">
+                <div class="pilar-head" data-i18n="card2_p3_title">03 · Sistemas & Cierre</div>
+                <div class="pilar-text" data-i18n="card2_p3_desc">Aplicaciones ágiles a medida (control de inventario, pedidos, servicios o clientes) enlazadas al seguimiento y cierre de transacciones.</div>
+              </div>
+            </div>
 
-  <!-- 4. TRACK NARRATIVO SIN CAJAS -->
-  <main class="story-track">
+            <!-- Ecosistema de Demos Vivas -->
+            <div class="demos-section">
+              <div class="demos-title" data-i18n="card2_demos_title">Ecosistema de Demos & Proyectos Activos:</div>
+              <div class="demos-grid">
+                <a href="hr-legal/index.html" class="demo-chip">
+                  <span class="demo-chip-name">HR & Legal</span>
+                  <span class="demo-chip-tag" data-i18n="card2_demo_hr">Estudio Jurídico · Ver Demo</span>
+                </a>
+                <div class="demo-chip">
+                  <span class="demo-chip-name">Michael Constructora</span>
+                  <span class="demo-chip-tag" data-i18n="card2_demo_const">Ingeniería & Obra Civil</span>
+                </div>
+                <div class="demo-chip">
+                  <span class="demo-chip-name">NDC Modular</span>
+                  <span class="demo-chip-tag" data-i18n="card2_demo_mod">Showcase & Planos</span>
+                </div>
+                <div class="demo-chip">
+                  <span class="demo-chip-name">The Brickell Tower</span>
+                  <span class="demo-chip-tag" data-i18n="card2_demo_brick">Residencial Premium</span>
+                </div>
+                <div class="demo-chip">
+                  <span class="demo-chip-name">The New York Tower</span>
+                  <span class="demo-chip-tag" data-i18n="card2_demo_ny">Imagina Inmobiliaria</span>
+                </div>
+              </div>
+            </div>
 
-    <!-- FRAME 00 // EL DOLOR DE LA INVISIBILIDAD -->
-    <section class="scene-frame in-view" data-index="0" id="frame-0">
-      <div class="floating-narrative">
-        <span class="eyebrow amber">01 // EL DIAGNÓSTICO DEL PROBLEMA</span>
-        <h1 class="title">EL COSTO REAL DE NO TENER PRESENCIA DIGITAL</h1>
-        <p class="summary">
-          Infraestructura lista, oficina en marcha y un servicio de excelente nivel... pero el teléfono no suena y los clientes no entran. El mercado no adivina tu valor; si no te ve con la solvencia que tienes, simplemente le compra a tu competencia.
-        </p>
-        <a href="#frame-1" class="action-link" onclick="goToFrame(1); return false;">CÓMO LO SOLUCIONAMOS ↓</a>
+            <div style="margin-top: 1rem;">
+              <button class="btn-cta-gold" onclick="goToSection(3)">
+                <span data-i18n="btn_contact">Ver Datos de Contacto</span>
+                <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="panel-visual">
+            <div class="visual-frame">
+              <img src="assets/escena-3-oficina-laptop.jpg" alt="Validación y Soluciones Tecnológicas" />
+              <div class="visual-badge" data-i18n="card2_badge">Ecosistema de Soluciones</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 3: MIS DATOS (RODRIGO VÁZQUEZ & CONTACTO DIRECTO) -->
+        <article class="card-panel" id="card-3">
+          <div class="panel-info">
+            <span class="hud-tag" data-i18n="card3_tag">Dirección Estratégica // LiberoMatico</span>
+            <h2 class="hud-title">Rodrigo Guillermo Vázquez</h2>
+            <p class="hud-desc" data-i18n="card3_role" style="font-weight: 700; color: var(--champagne); margin-bottom: 0.35rem; font-size: 0.95rem;">
+              Consultor Estratégico, Comercial y Tecnológico
+            </p>
+            <p class="hud-desc" data-i18n="card3_desc">
+              Más de 30 años de trayectoria técnica e infraestructura IT, dirección creativa y visión de negocios internacionales. Enfoque en mostrar lo que hace a su negocio único y estructurar crecimiento con consistencia.
+            </p>
+            
+            <!-- Canales Directos -->
+            <div class="contact-actions" style="margin-top: 1.4rem;">
+              <a href="https://wa.me/51966788168?text=Hola%20Rodrigo,%20deseo%20agendar%20una%20reuni%C3%B3n%20estrat%C3%A9gica%20contigo" target="_blank" class="btn-contact-pill whatsapp">
+                <span>WhatsApp 1: +51 966 788 168</span>
+              </a>
+              <a href="https://wa.me/51963504596?text=Hola%20Rodrigo,%20deseo%20agendar%20una%20reuni%C3%B3n%20estrat%C3%A9gica%20contigo" target="_blank" class="btn-contact-pill whatsapp">
+                <span>WhatsApp 2: +51 963 504 596</span>
+              </a>
+              <a href="mailto:liberomatico@gmail.com" class="btn-contact-pill">
+                <span>liberomatico@gmail.com</span>
+              </a>
+              <a href="https://www.tiktok.com/@liberomatico" target="_blank" class="btn-contact-pill">
+                <span>TikTok: @liberomatico</span>
+              </a>
+            </div>
+          </div>
+          <div class="panel-visual">
+            <div class="visual-frame" style="background: radial-gradient(circle, #1e293b 0%, #0f172a 100%);">
+              <img src="assets/rodrigo-vazquez.png" alt="Rodrigo Vázquez · Consultor Senior" style="object-fit: contain; padding: 0.5rem;" />
+              <div class="visual-badge" data-i18n="card3_badge">Creativo Comercial y Estratega</div>
+            </div>
+          </div>
+        </article>
+
       </div>
-    </section>
 
-    <!-- FRAME 01 // DIAGNÓSTICO BASADO EN DATOS -->
-    <section class="scene-frame" data-index="1" id="frame-1">
-      <div class="floating-narrative">
-        <span class="eyebrow gold">02 // ANÁLISIS DE DATOS & ESTRATEGIA COMERCIAL</span>
-        <h2 class="title">DIAGNÓSTICO BASADO EN DATOS</h2>
-        <p class="summary">
-          Auditamos tus números comerciales, identificamos dónde estás perdiendo clientes y diseñamos la estrategia exacta para aumentar tu facturación.
-        </p>
-        <a href="#frame-2" class="action-link" onclick="goToFrame(2); return false;">VER EL DESPLIEGUE DE MEDIOS →</a>
-      </div>
-    </section>
-
-    <!-- FRAME 02 // EL DESPLIEGUE DE MEDIOS -->
-    <section class="scene-frame" data-index="2" id="frame-2">
-      <div class="floating-narrative">
-        <span class="eyebrow">03 // EL ECOSISTEMA COMERCIAL COMPLETO</span>
-        <h2 class="title">PRESENCIA TOTAL EN CADA PUNTO DE DECISIÓN</h2>
-        <p class="summary">
-          Implementamos los medios exactos que necesita tu negocio: web corporativa, video walls en tu local, contenido audiovisual y brochures comerciales.
-        </p>
-        <div class="pill-tags">
-          <span class="pill-tag">Web Corporativa</span>
-          <span class="pill-tag">Video Walls</span>
-          <span class="pill-tag">Contenido Audiovisual</span>
-          <span class="pill-tag">Brochures Comerciales</span>
+      <!-- BARRA DE PIE CON NAVEGACIÓN -->
+      <footer class="cockpit-footer" style="justify-content: flex-end;">
+        <div class="nav-arrow-group">
+          <button class="btn-arrow" onclick="prevSection()" title="Sección Anterior">←</button>
+          <button class="btn-arrow" onclick="nextSection()" title="Siguiente Sección">→</button>
         </div>
-        <a href="#frame-3" class="action-link" onclick="goToFrame(3); return false;">VER EL IMPACTO EN RESULTADOS →</a>
-      </div>
-    </section>
+      </footer>
 
-    <!-- FRAME 03 // RESULTADOS BASADOS EN DATOS Y CIERRE -->
-    <section class="scene-frame" data-index="3" id="frame-3">
-      <div class="floating-narrative">
-        <span class="eyebrow emerald">04 // EL RESULTADO BASADO EN DATOS</span>
-        <h2 class="title">CRECIMIENTO MEDIBLE EN DEMANDA Y VENTAS</h2>
-        <p class="summary">
-          Toda la estrategia confluye en métricas verificables: aumento en consultas calificadas, mayor tasa de cierre comercial y crecimiento sostenido de facturación. Criterio, datos y resultados tangibles.
-        </p>
-        <a href="https://wa.me/51966788168?text=Hola%20Rodrigo,%20estuve%20revisando%20la%20web%20de%20LiberoMatico%20y%20quiero%20conversar%20sobre%20c%C3%B3mo%20potenciar%20la%20imagen%20comercial%20de%20mi%20negocio." 
-           target="_blank" 
-           class="action-link emerald">
-          CONVERSAR DIRECTAMENTE POR WHATSAPP CON RODRIGO G. VÁZQUEZ →
-        </a>
-      </div>
-    </section>
-
+    </div>
   </main>
 
   <!-- ==========================================================================
-       CONTROLADOR INTERACTIVO DE SCROLLYTELLING Y SONIDO
+       4. LÓGICA JAVASCRIPT: SINCRONIZACIÓN FONDO INMERSIVO ➔ MARQUESINA
        ========================================================================== -->
   <script>
-    // -------------------------------------------------------------
-    // 1. MOTOR DE AUDIO CINEMÁTICO (WEB AUDIO API SINTETIZADO)
-    // -------------------------------------------------------------
-    class CinematicSoundEngine {
-      constructor() {
-        this.ctx = null;
-        this.isPlaying = false;
-        this.droneOsc = null;
-        this.droneHarmonic = null;
-        this.droneGain = null;
-      }
+    let currentIndex = 0;
+    const totalSections = 4;
+    const sectionNames = [
+      "00 // BIENVENIDA",
+      "01 // EL DIAGNÓSTICO",
+      "02 // SOLUCIONES",
+      "03 // MIS DATOS"
+    ];
 
-      init() {
-        if (this.ctx) return;
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        this.ctx = new AudioContext();
-      }
+    function goToSection(index) {
+      if (index < 0 || index >= totalSections) return;
+      currentIndex = index;
 
-      toggle() {
-        this.init();
-        if (this.ctx.state === 'suspended') {
-          this.ctx.resume();
-        }
-
-        this.isPlaying = !this.isPlaying;
-        if (this.isPlaying) {
-          this.startAtmosphericDrone();
+      // Conmutar Modo Bienvenida (Caja 100% transparente para ver el video completo)
+      const cockpit = document.querySelector('.cockpit-box');
+      if (cockpit) {
+        if (currentIndex === 0) {
+          cockpit.classList.add('is-welcome');
         } else {
-          this.stopAtmosphericDrone();
+          cockpit.classList.remove('is-welcome');
         }
-        return this.isPlaying;
       }
 
-      startAtmosphericDrone() {
-        if (!this.ctx) return;
-        this.droneOsc = this.ctx.createOscillator();
-        this.droneHarmonic = this.ctx.createOscillator();
-        this.droneGain = this.ctx.createGain();
-
-        this.droneOsc.type = 'sine';
-        this.droneOsc.frequency.setValueAtTime(55, this.ctx.currentTime);
-
-        this.droneHarmonic.type = 'sine';
-        this.droneHarmonic.frequency.setValueAtTime(110, this.ctx.currentTime);
-
-        this.droneGain.gain.setValueAtTime(0.001, this.ctx.currentTime);
-        this.droneGain.gain.exponentialRampToValueAtTime(0.035, this.ctx.currentTime + 3);
-
-        this.droneOsc.connect(this.droneGain);
-        this.droneHarmonic.connect(this.droneGain);
-        this.droneGain.connect(this.ctx.destination);
-
-        this.droneOsc.start();
-        this.droneHarmonic.start();
-      }
-
-      stopAtmosphericDrone() {
-        if (this.droneGain && this.ctx) {
-          this.droneGain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 1);
-          setTimeout(() => {
-            if (this.droneOsc) {
-              this.droneOsc.stop();
-              this.droneHarmonic.stop();
-              this.droneOsc.disconnect();
-              this.droneHarmonic.disconnect();
+      // 1. Conmutar Fondos Inmersivos de Pantalla Completa
+      for (let i = 0; i < totalSections; i++) {
+        const bg = document.getElementById(`bg-${i}`);
+        if (bg) {
+          if (i === currentIndex) {
+            bg.classList.add('active');
+            if (i === 0) {
+              const video = bg.querySelector('video');
+              if (video) video.play().catch(() => {});
             }
-          }, 1000);
+          } else {
+            bg.classList.remove('active');
+          }
         }
       }
 
-      playTransitionImpact() {
-        if (!this.isPlaying || !this.ctx) return;
-        const osc = this.ctx.createOscillator();
-        const gain = this.ctx.createGain();
-
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(95, this.ctx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(40, this.ctx.currentTime + 0.45);
-
-        gain.gain.setValueAtTime(0.07, this.ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.45);
-
-        osc.connect(gain);
-        gain.connect(this.ctx.destination);
-
-        osc.start();
-        osc.stop(this.ctx.currentTime + 0.45);
-      }
-
-      playClick() {
-        if (!this.isPlaying || !this.ctx) return;
-        const osc = this.ctx.createOscillator();
-        const gain = this.ctx.createGain();
-
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(1600, this.ctx.currentTime);
-
-        gain.gain.setValueAtTime(0.03, this.ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.03);
-
-        osc.connect(gain);
-        gain.connect(this.ctx.destination);
-
-        osc.start();
-        osc.stop(this.ctx.currentTime + 0.03);
-      }
-    }
-
-    const sound = new CinematicSoundEngine();
-    const audioDock = document.getElementById('audio-control');
-    const audioTitle = audioDock.querySelector('.audio-title');
-
-    audioDock.addEventListener('click', () => {
-      const active = sound.toggle();
-      audioDock.classList.toggle('active', active);
-      audioTitle.textContent = active ? 'AUDIO [ON]' : 'AUDIO [OFF]';
-    });
-
-    // -------------------------------------------------------------
-    // 2. SCROLLYTELLING OBSERVER & NAVEGACIÓN
-    // -------------------------------------------------------------
-    const frames = document.querySelectorAll('.scene-frame');
-    const sceneLayers = document.querySelectorAll('.scene-layer');
-    const scrollHint = document.querySelector('.scroll-hint');
-    let currentActiveIndex = 0;
-
-    function goToFrame(idx) {
-      if (frames[idx]) {
-        frames[idx].scrollIntoView({ behavior: 'smooth' });
-        sound.playClick();
-      }
-    }
-
-    // Ocultar indicador flotante de scroll al comenzar a navegar
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 80) {
-        scrollHint.style.opacity = '0';
-      } else {
-        scrollHint.style.opacity = '0.6';
-      }
-    }, { passive: true });
-
-    // Observador optimizado para móviles y escritorio (threshold 0.25)
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        const index = parseInt(entry.target.getAttribute('data-index'), 10);
-
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-
-          if (currentActiveIndex !== index) {
-            currentActiveIndex = index;
-
-            sceneLayers.forEach(layer => layer.classList.remove('active'));
-            const targetScene = document.getElementById(`scene-${index}`);
-            if (targetScene) targetScene.classList.add('active');
-
-            sound.playTransitionImpact();
-          }
+      // 2. Conmutar Pestañas del Riel (Eje X)
+      const tabs = document.querySelectorAll('.tab-pill');
+      tabs.forEach((tab, i) => {
+        if (i === currentIndex) {
+          tab.classList.add('active');
+          tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         } else {
-          entry.target.classList.remove('in-view');
+          tab.classList.remove('active');
         }
       });
-    }, {
-      root: null,
-      threshold: 0.25
+
+      // 3. Conmutar Paneles de Contenido (Eje Y)
+      for (let i = 0; i < totalSections; i++) {
+        const card = document.getElementById(`card-${i}`);
+        if (card) {
+          if (i === currentIndex) {
+            card.classList.add('active');
+          } else {
+            card.classList.remove('active');
+          }
+        }
+      }
+    }
+
+    function nextSection() {
+      const next = (currentIndex + 1) % totalSections;
+      goToSection(next);
+    }
+
+    function prevSection() {
+      const prev = (currentIndex - 1 + totalSections) % totalSections;
+      goToSection(prev);
+    }
+
+    // Navegación con teclado (Flechas Izquierda / Derecha)
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextSection();
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prevSection();
     });
 
-    frames.forEach(frame => observer.observe(frame));
+    // Soporte gestual táctil (Swipe para móviles)
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const stage = document.querySelector('.cockpit-box');
 
-    // Micro-foley en enlaces y botones
-    document.querySelectorAll('a').forEach(link => {
-      link.addEventListener('mouseenter', () => sound.playClick());
-    });
+    stage.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    stage.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+      const threshold = 45;
+      if (touchEndX < touchStartX - threshold) {
+        nextSection(); // Swipe izquierda -> siguiente
+      }
+      if (touchEndX > touchStartX + threshold) {
+        prevSection(); // Swipe derecha -> anterior
+      }
+    }
+    // ==========================================================================
+    // 4. MOTOR BILINGÜE REACTIVO (ESPAÑOL / INGLÉS)
+    // ==========================================================================
+    const translations = {
+      es: {
+        brand_sub: "Rodrigo Guillermo Vázquez - Estrategia Comercial y Digital",
+        nav_0: "Bienvenida",
+        nav_1: "El Diagnóstico",
+        nav_2: "Soluciones",
+        nav_3: "Mis Datos",
+        hero_title: "Enfoque en mostrar lo que hace a su marca única.",
+        btn_enter: "Entrar al Diagnóstico",
+        card1_tag: "La Brecha de Percepción // Punto Cero",
+        card1_title: "¿Cuántos clientes está perdiendo hoy simplemente porque desconocen el verdadero nivel de lo que ofrece?",
+        card1_desc: "Hacemos que su empresa transmita el calibre que realmente tiene, conecte con las personas indicadas y opere con un sistema comercial ágil para que ninguna consulta quede sin cerrar.",
+        card1_m1: "Tiempo límite para retener la atención de su comprador",
+        card1_m2: "Enfoque en rentabilidad, imagen y cierre por WhatsApp",
+        btn_solutions: "Ver Nuestras Soluciones",
+        card1_badge: "Presencia de Gran Escala",
+        card2_tag: "Los 3 Pilares Oficiales // Suite LiberoMatico",
+        card2_title: "Tecnología digital para hacer su negocio imposible de ignorar.",
+        card2_p1_title: "01 · Comercial y Operativo",
+        card2_p1_desc: "Diagnóstico, detección de costos de oportunidad y optimización de su operación comercial.",
+        card2_p2_title: "02 · Presencia Digital",
+        card2_p2_desc: "Sitios web de validación, catálogos interactivos y producción audiovisual cinematográfica con narrativa comercial.",
+        card2_p3_title: "03 · Sistemas & Cierre",
+        card2_p3_desc: "Aplicaciones ágiles a medida (control de inventario, pedidos, servicios o clientes) enlazadas al seguimiento y cierre de transacciones.",
+        card2_demos_title: "Ecosistema de Demos & Proyectos Activos:",
+        card2_demo_hr: "Estudio Jurídico · Ver Demo",
+        card2_demo_const: "Ingeniería & Obra Civil",
+        card2_demo_mod: "Showcase & Planos",
+        card2_demo_brick: "Residencial Premium",
+        card2_demo_ny: "Imagina Inmobiliaria",
+        btn_contact: "Ver Datos de Contacto",
+        card2_badge: "Ecosistema de Soluciones",
+        card3_tag: "Dirección Estratégica // LiberoMatico",
+        card3_role: "Consultor Estratégico, Comercial y Tecnológico",
+        card3_desc: "Más de 30 años de trayectoria técnica e infraestructura IT, dirección creativa y visión de negocios internacionales. Enfoque en mostrar lo que hace a su negocio único y estructurar crecimiento con consistencia.",
+        card3_badge: "Creativo Comercial y Estratega"
+      },
+      en: {
+        brand_sub: "Rodrigo Guillermo Vázquez - Business & Digital Strategy",
+        nav_0: "Welcome",
+        nav_1: "Diagnosis",
+        nav_2: "Solutions",
+        nav_3: "My Profile",
+        hero_title: "Focus on showcasing what makes your brand unique.",
+        btn_enter: "Enter the Diagnosis",
+        card1_tag: "The Perception Gap // Ground Zero",
+        card1_title: "How many valuable clients are you losing today simply because they are unaware of the true caliber of what you deliver?",
+        card1_desc: "We ensure your enterprise projects its true scale, connects with the right decision-makers, and operates with an agile sales engine so every qualified lead converts.",
+        btn_solutions: "Explore Solutions",
+        card1_badge: "Large-Scale Presence",
+        card2_tag: "Official 3 Pillars // LiberoMatico Suite",
+        card2_title: "Digital technology to make your business impossible to ignore.",
+        card2_p1_title: "01 · Commercial & Operations",
+        card2_p1_desc: "Strategic diagnosis, opportunity cost detection, and high-impact commercial workflow optimization.",
+        card2_p2_title: "02 · Digital Presence",
+        card2_p2_desc: "Authority websites, interactive catalogs, and cinematic video productions built with commercial narrative.",
+        card2_p3_title: "03 · Management Systems & Closing",
+        card2_p3_desc: "Tailored agile applications (inventory, orders, services, CRM) directly linked to sales follow-up and deal closing.",
+        card2_demos_title: "Live Demos Ecosystem & Active Showcases:",
+        card2_demo_hr: "Legal Firm · Live Demo",
+        card2_demo_const: "Engineering & Civil Works",
+        card2_demo_mod: "Showcase & Blueprints",
+        card2_demo_brick: "Luxury Residential",
+        card2_demo_ny: "Imagina Real Estate",
+        btn_contact: "Contact Rodrigo Directly",
+        card2_badge: "Solutions Ecosystem",
+        card3_tag: "Strategic Leadership // LiberoMatico",
+        card3_role: "Strategic, Commercial & Technology Consultant",
+        card3_desc: "Over 30 years of IT infrastructure mastery, creative film direction, and international business vision. Dedicated to showcasing what makes your business unique and structuring sustainable growth.",
+        card3_badge: "Commercial Creative & Strategist"
+      }
+    };
+
+    let currentLang = 'es';
+
+    function setLanguage(lang) {
+      if (!translations[lang]) return;
+      currentLang = lang;
+
+      // Actualizar estado visual de los botones
+      const btnEs = document.getElementById('btnLangEs');
+      const btnEn = document.getElementById('btnLangEn');
+      if (btnEs && btnEn) {
+        if (lang === 'es') {
+          btnEs.classList.add('active');
+          btnEn.classList.remove('active');
+        } else {
+          btnEn.classList.add('active');
+          btnEs.classList.remove('active');
+        }
+      }
+
+      // Actualizar todos los elementos con data-i18n
+      const trans = translations[lang];
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        if (trans[key]) {
+          el.textContent = trans[key];
+        }
+      });
+
+      // Actualizar atributo lang del documento
+      document.documentElement.lang = lang;
+    }
   </script>
 </body>
 </html>
