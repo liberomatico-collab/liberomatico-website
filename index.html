@@ -196,10 +196,11 @@
       color: #e2e8f0;
     }
 
-    /* ACORDEÓN LATERAL IZQUIERDO (ARRIBA-IZQ EN PC / PISO-IZQ EN MÓVIL) */
+    /* ACORDEÓN LATERAL IZQUIERDO (CENTRADO ENTRE TECHO Y PISO EN PC) */
     .left-accordion {
       position: fixed;
-      top: 6.2rem;
+      top: 50%;
+      transform: translateY(-50%);
       left: 2.8rem;
       z-index: 110;
       pointer-events: auto;
@@ -207,6 +208,7 @@
       flex-direction: column;
       align-items: flex-start;
       gap: 0.85rem;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .acc-group {
@@ -230,11 +232,17 @@
       gap: 0;
       text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95);
       transition: color 0.25s ease, transform 0.25s ease;
+      text-decoration: none;
     }
 
     .acc-trigger:hover {
       color: var(--champagne);
       transform: translateX(3px);
+    }
+
+    .acc-trigger.active {
+      color: var(--champagne);
+      text-shadow: 0 0 16px var(--champagne-glow);
     }
 
     .acc-group.open .acc-trigger {
@@ -337,10 +345,10 @@
       flex-shrink: 0;
     }
 
-    /* MARGEN DERECHO INFERIOR EN PC: WHATSAPP + REFERENTES + INFORMACIÓN */
+    /* MARGEN DERECHO INFERIOR EN PC: EXCLUSIVAMENTE BOTONES DE WHATSAPP (CON FONDO DE GLASS) */
     .whatsapp-dock {
       position: fixed;
-      bottom: 8.2rem;
+      bottom: 2.8rem;
       right: 2.6rem;
       z-index: 105;
       pointer-events: auto;
@@ -350,77 +358,48 @@
       gap: 0.75rem;
     }
 
-    .bottom-right-nav {
-      position: fixed;
-      bottom: 2.8rem;
-      right: 2.6rem;
-      z-index: 105;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 0.85rem;
-    }
-
-    .nav-item {
-      background: none;
-      border: none;
-      color: rgba(248, 250, 252, 0.82);
-      font-family: inherit;
-      font-size: 1.12rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      cursor: pointer;
-      padding: 0.25rem 0.95rem 0.25rem 0;
-      position: relative;
-      transition: color 0.25s ease, transform 0.25s ease;
-      white-space: nowrap;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: flex-end;
-      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95);
-      border-right: 2px solid rgba(255, 255, 255, 0.24);
-    }
-
-    .nav-item:hover {
-      color: #ffffff;
-      border-right-color: rgba(226, 201, 146, 0.75);
-      transform: translateX(-3px);
-    }
-
-    .nav-item.active {
-      color: var(--champagne);
-      font-weight: 700;
-      border-right: 2px solid var(--champagne);
-      box-shadow: 4px 0 12px -2px var(--champagne-glow);
-    }
-
     .btn-whatsapp-right {
       display: inline-flex;
       align-items: center;
-      justify-content: flex-end;
-      gap: 0.5rem;
-      padding: 0.25rem 0.95rem 0.25rem 0;
-      color: rgba(248, 250, 252, 0.94);
-      font-size: 1.04rem;
+      justify-content: center;
+      gap: 0.65rem;
+      width: 216px;
+      box-sizing: border-box;
+      padding: 0.55rem 1rem;
+      background: rgba(8, 14, 26, 0.68);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(37, 211, 102, 0.4);
+      border-radius: 9999px;
+      color: rgba(248, 250, 252, 0.96);
+      font-size: 0.98rem;
       font-weight: 700;
+      font-variant-numeric: tabular-nums;
       text-decoration: none;
-      letter-spacing: 0.04em;
-      border-right: 2px solid rgba(37, 211, 102, 0.8);
-      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95);
-      transition: all 0.25s ease;
+      letter-spacing: 0.03em;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
       white-space: nowrap;
     }
 
     .btn-whatsapp-right svg {
+      width: 24px;
+      height: 24px;
       color: var(--whatsapp-green);
       flex-shrink: 0;
+      transition: transform 0.25s ease;
     }
 
     .btn-whatsapp-right:hover {
-      color: var(--whatsapp-green);
-      border-right-color: var(--whatsapp-green);
-      transform: translateX(-3px);
+      background: rgba(15, 28, 42, 0.85);
+      border-color: rgba(37, 211, 102, 0.85);
+      box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      transform: translateX(-4px) scale(1.02);
+    }
+
+    .btn-whatsapp-right:hover svg {
+      transform: scale(1.1);
     }
 
     /* ==========================================================================
@@ -561,28 +540,18 @@
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
     }
 
-    /* DEMOS EN LÍNEA ABIERTA (SIN CAJITAS) */
+    /* LISTA DE CLIENTES CON LOGOTIPOS */
     .demos-open-bar {
-      margin-top: 1rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
-      max-width: 720px;
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      max-width: 760px;
       width: 100%;
-    }
-
-    .demos-open-label {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--champagne);
-      font-weight: 800;
-      margin-bottom: 1.1rem;
     }
 
     .demos-open-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 1.8rem;
+      gap: 2.2rem;
     }
 
     .demo-open-link {
@@ -590,26 +559,53 @@
       color: inherit;
       display: flex;
       flex-direction: column;
-      gap: 0.2rem;
-      padding-bottom: 0.4rem;
-      border-bottom: 1px solid rgba(56, 189, 248, 0.35);
+      align-items: flex-start;
+      gap: 0.25rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1.5px solid rgba(226, 201, 146, 0.35);
       transition: all 0.25s ease;
+      min-width: 160px;
     }
 
     .demo-open-link:hover {
-      border-bottom-color: var(--accent-blue);
-      transform: translateY(-2px);
+      border-bottom-color: var(--champagne);
+      transform: translateY(-3px);
+    }
+
+    .client-logo-box {
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-bottom: 0.45rem;
+    }
+
+    .client-logo-img {
+      max-height: 38px;
+      max-width: 135px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.7));
+      transition: transform 0.25s ease, filter 0.25s ease;
+    }
+
+    .demo-open-link:hover .client-logo-img {
+      transform: scale(1.05);
+      filter: drop-shadow(0 4px 14px rgba(226, 201, 146, 0.4));
     }
 
     .demo-open-name {
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       color: #ffffff;
+      line-height: 1.2;
     }
 
     .demo-open-tag {
-      font-size: 0.78rem;
-      color: var(--accent-blue);
+      font-size: 0.8rem;
+      color: var(--champagne);
+      font-weight: 600;
     }
 
     /* SECCIÓN 5: PERFIL Y CONTACTO EN COLUMNA IZQUIERDA PURA (SIN SOLAPAMIENTO) */
@@ -782,17 +778,26 @@
 
       .btn-whatsapp-right {
         flex: 1;
+        width: auto;
         justify-content: center;
-        padding: 0.42rem 0.6rem;
-        font-size: 0.78rem;
-        background: rgba(37, 211, 102, 0.12);
+        padding: 0.45rem 0.75rem;
+        font-size: 0.8rem;
+        background: rgba(8, 14, 26, 0.75);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
         border: 1px solid rgba(37, 211, 102, 0.45);
-        border-radius: 6px;
+        border-radius: 9999px;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+      }
+
+      .btn-whatsapp-right svg {
+        width: 20px;
+        height: 20px;
       }
 
       .btn-whatsapp-right:hover {
         transform: none;
-        background: rgba(37, 211, 102, 0.22);
+        background: rgba(15, 28, 42, 0.88);
       }
 
       /* EN MÓVIL ENCUADRAMOS EL VIDEO PARA OCULTAR EL ZÓCALO BLANCO INFERIOR */
@@ -808,6 +813,7 @@
         top: auto;
         bottom: 1.15rem;
         left: 1.15rem;
+        transform: none;
         z-index: 110;
         max-width: 48vw;
         flex-direction: column;
@@ -837,34 +843,6 @@
         line-height: 1.25;
         max-width: 46vw;
         padding: 0.15rem 0;
-      }
-
-      /* REFERENTES E INFORMACIÓN EN EL PISO DEL LADO DERECHO (SIN GLASS) */
-      .bottom-right-nav {
-        position: fixed;
-        bottom: 1.15rem;
-        right: 1.15rem;
-        left: auto;
-        flex-direction: column;
-        align-items: flex-end;
-        gap: 0.55rem;
-        padding: 0;
-        background: none;
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
-        border: none;
-      }
-
-      .nav-item {
-        padding: 0.2rem 0.65rem 0.2rem 0;
-        font-size: 0.92rem;
-        border-right: 2px solid rgba(255, 255, 255, 0.25);
-        border-bottom: none;
-      }
-
-      .nav-item.active {
-        border-right: 2px solid var(--champagne);
-        border-bottom: none;
       }
 
       /* LATERALES 100% LIBRES EN EL CUERPO CENTRAL */
@@ -962,10 +940,7 @@
             <img src="assets/liberomatico-logo-transparent.png" alt="LiberoMatico Logo" />
           </div>
           <div class="brand-text">
-            <div class="brand-top-row">
-              <span class="brand-title">LiberoMatico</span>
-              <span class="brand-author">- Rodrigo G. Vázquez</span>
-            </div>
+            <span class="brand-title">LiberoMatico</span>
           </div>
         </a>
       </div>
@@ -996,11 +971,11 @@
       <!-- BOTONES DE WHATSAPP (ABAJO-DER EN PC / EN EL TECHO EN MÓVIL) -->
       <div class="whatsapp-dock">
         <a href="https://wa.me/51966788168?text=Hola%20Rodrigo,%20vi%20tu%20web%20LiberoMatico%20y%20deseo%20coordinar" target="_blank" class="btn-whatsapp-right" title="WhatsApp Línea 1">
-          <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.073-2.115-.515-1.815-.751-2.986-2.597-3.076-2.717-.091-.12-.734-.976-.734-1.862 0-.886.465-1.321.63-1.498.165-.177.36-.222.48-.222.12 0 .241.001.345.006.11.005.258-.042.404.307.147.349.504 1.228.549 1.318.045.09.075.195.015.315-.06.12-.09.195-.18.3-.09.105-.189.234-.27.315-.09.09-.184.188-.079.368.105.18.468.772 1.005 1.25.692.616 1.275.807 1.455.897.18.09.285.075.39-.045.105-.12.45-.525.57-.705.12-.18.24-.15.405-.09.165.06 1.05.495 1.23.585.18.09.3.135.345.21.045.075.045.435-.099.84z"/></svg>
+          <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.073-2.115-.515-1.815-.751-2.986-2.597-3.076-2.717-.091-.12-.734-.976-.734-1.862 0-.886.465-1.321.63-1.498.165-.177.36-.222.48-.222.12 0 .241.001.345.006.11.005.258-.042.404.307.147.349.504 1.228.549 1.318.045.09.075.195.015.315-.06.12-.09.195-.18.3-.09.105-.189.234-.27.315-.09.09-.184.188-.079.368.105.18.468.772 1.005 1.25.692.616 1.275.807 1.455.897.18.09.285.075.39-.045.105-.12.45-.525.57-.705.12-.18.24-.15.405-.09.165.06 1.05.495 1.23.585.18.09.3.135.345.21.045.075.045.435-.099.84z"/></svg>
           <span>+51 966 788 168</span>
         </a>
         <a href="https://wa.me/51963504596?text=Hola%20Rodrigo,%20vi%20tu%20web%20LiberoMatico%20y%20deseo%20coordinar" target="_blank" class="btn-whatsapp-right" title="WhatsApp Línea 2">
-          <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.073-2.115-.515-1.815-.751-2.986-2.597-3.076-2.717-.091-.12-.734-.976-.734-1.862 0-.886.465-1.321.63-1.498.165-.177.36-.222.48-.222.12 0 .241.001.345.006.11.005.258-.042.404.307.147.349.504 1.228.549 1.318.045.09.075.195.015.315-.06.12-.09.195-.18.3-.09.105-.189.234-.27.315-.09.09-.184.188-.079.368.105.18.468.772 1.005 1.25.692.616 1.275.807 1.455.897.18.09.285.075.39-.045.105-.12.45-.525.57-.705.12-.18.24-.15.405-.09.165.06 1.05.495 1.23.585.18.09.3.135.345.21.045.075.045.435-.099.84z"/></svg>
+          <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.073-2.115-.515-1.815-.751-2.986-2.597-3.076-2.717-.091-.12-.734-.976-.734-1.862 0-.886.465-1.321.63-1.498.165-.177.36-.222.48-.222.12 0 .241.001.345.006.11.005.258-.042.404.307.147.349.504 1.228.549 1.318.045.09.075.195.015.315-.06.12-.09.195-.18.3-.09.105-.189.234-.27.315-.09.09-.184.188-.079.368.105.18.468.772 1.005 1.25.692.616 1.275.807 1.455.897.18.09.285.075.39-.045.105-.12.45-.525.57-.705.12-.18.24-.15.405-.09.165.06 1.05.495 1.23.585.18.09.3.135.345.21.045.075.045.435-.099.84z"/></svg>
           <span>+51 963 504 596</span>
         </a>
       </div>
@@ -1008,24 +983,24 @@
     </div>
   </header>
 
-  <!-- ACORDEÓN DE 3 PILARES (ARRIBA-IZQ EN PC / PISO-IZQ EN MÓVIL) -->
-  <div class="left-accordion" role="navigation" aria-label="Pilares LiberoMatico">
+  <!-- MENÚ / ACORDEÓN DE NAVEGACIÓN (MARGEN IZQUIERDO) -->
+  <nav class="left-accordion" role="navigation" aria-label="Navegación LiberoMatico">
 
     <!-- 1. ESTRATEGIA -->
     <div class="acc-group" id="acc-est">
-      <button type="button" class="acc-trigger" onclick="toggleAccordion('acc-est')">
+      <button type="button" class="acc-trigger" data-sec="1" onclick="toggleAccordion('acc-est', 'sec-1')">
         <span data-i18n="acc_1_title">Estrategia</span>
       </button>
       <div class="acc-panel">
-        <a href="#sec-1" class="acc-subitem" data-i18n="acc_1_sub1">Diagnóstico</a>
-        <a href="#sec-1" class="acc-subitem" data-i18n="acc_1_sub2">Atención Ágil</a>
-        <a href="#sec-1" class="acc-subitem" data-i18n="acc_1_sub3">Organización</a>
+        <a href="#sec-1" class="acc-subitem" data-i18n="acc_1_sub1">Conocer su Terreno</a>
+        <a href="#sec-1" class="acc-subitem" data-i18n="acc_1_sub2">Acompañar y Ordenar</a>
+        <a href="#sec-1" class="acc-subitem" data-i18n="acc_1_sub3">Potenciar su Valor</a>
       </div>
     </div>
 
     <!-- 2. PUBLICIDAD -->
     <div class="acc-group" id="acc-pub">
-      <button type="button" class="acc-trigger" onclick="toggleAccordion('acc-pub')">
+      <button type="button" class="acc-trigger" data-sec="2" onclick="toggleAccordion('acc-pub', 'sec-2')">
         <span data-i18n="acc_2_title">Publicidad</span>
       </button>
       <div class="acc-panel">
@@ -1037,7 +1012,7 @@
 
     <!-- 3. TECNOLOGÍA -->
     <div class="acc-group" id="acc-tec">
-      <button type="button" class="acc-trigger" onclick="toggleAccordion('acc-tec')">
+      <button type="button" class="acc-trigger" data-sec="3" onclick="toggleAccordion('acc-tec', 'sec-3')">
         <span data-i18n="acc_3_title">Tecnología</span>
       </button>
       <div class="acc-panel">
@@ -1047,16 +1022,20 @@
       </div>
     </div>
 
-  </div>
+    <!-- 4. CLIENTES -->
+    <div class="acc-group" id="acc-proy">
+      <a href="#sec-4" class="acc-trigger" data-sec="4">
+        <span data-i18n="nav_ref">Clientes</span>
+      </a>
+    </div>
 
-  <!-- MARGEN DERECHO INFERIOR: PROYECTOS + CONTACTO -->
-  <nav class="bottom-right-nav" aria-label="Proyectos y Contacto">
-    <a href="#sec-4" class="nav-item" data-sec="4">
-      <span data-i18n="nav_ref">Proyectos</span>
-    </a>
-    <a href="#sec-5" class="nav-item" data-sec="5">
-      <span data-i18n="nav_3">Contacto</span>
-    </a>
+    <!-- 5. CONTACTO -->
+    <div class="acc-group" id="acc-cont">
+      <a href="#sec-5" class="acc-trigger" data-sec="5">
+        <span data-i18n="nav_3">Contacto</span>
+      </a>
+    </div>
+
   </nav>
 
   <!-- ==========================================================================
@@ -1070,31 +1049,31 @@
     <!-- SECCIÓN 01: ESTRATEGIA -->
     <section class="open-section" id="sec-1" data-index="1">
       <h2 class="open-title" data-i18n="sec1_title">
-        Estructura y claridad para hacer crecer su negocio.
+        Primero conocemos su negocio, su nicho y su cliente. Después potenciamos lo que marca la diferencia con el resto.
       </h2>
       <p class="open-lead" data-i18n="sec1_desc">
-        Mostramos lo que hace único a su proyecto, conectando con las personas indicadas y facilitando cada contacto.
+        Nos sentamos con usted a entender cómo trabaja y qué valoran las personas que le compran. A partir de esa realidad, lo asistimos con tecnología y presencia visual para mostrar con fuerza lo que hace único a su proyecto.
       </p>
 
       <div class="pilares-open-grid">
         <div class="pilar-open-col">
-          <h3 class="pilar-open-title" data-i18n="sec1_p1_title">Diagnóstico</h3>
+          <h3 class="pilar-open-title" data-i18n="sec1_p1_title">Conocer su Terreno</h3>
           <p class="pilar-open-desc" data-i18n="sec1_p1_desc">
-            Revisión directa y honesta de su modelo comercial y de atención.
+            Entender a fondo cómo funciona su negocio hoy y qué busca exactamente su cliente.
           </p>
         </div>
 
         <div class="pilar-open-col">
-          <h3 class="pilar-open-title" data-i18n="sec1_p2_title">Atención Ágil</h3>
+          <h3 class="pilar-open-title" data-i18n="sec1_p2_title">Acompañar y Ordenar</h3>
           <p class="pilar-open-desc" data-i18n="sec1_p2_desc">
-            Canales simples y respuestas directas para atender sin demoras.
+            Asistencia práctica para que sus herramientas y canales de contacto respondan con agilidad.
           </p>
         </div>
 
         <div class="pilar-open-col">
-          <h3 class="pilar-open-title" data-i18n="sec1_p3_title">Organización</h3>
+          <h3 class="pilar-open-title" data-i18n="sec1_p3_title">Potenciar su Valor</h3>
           <p class="pilar-open-desc" data-i18n="sec1_p3_desc">
-            Alineación de recursos y tiempos para trabajar con tranquilidad.
+            Producción visual y digital que destaca lo mejor de su oficio y lo vuelve imposible de ignorar.
           </p>
         </div>
       </div>
@@ -1181,44 +1160,53 @@
 
       <div style="margin-top: 1.5rem;">
         <a href="#sec-4" class="btn-cta-gold">
-          <span data-i18n="btn_next_ref">Ver Referentes &amp; Demos</span>
+          <span data-i18n="btn_next_ref">Ver Clientes</span>
           <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
         </a>
       </div>
     </section>
 
-    <!-- SECCIÓN 04: REFERENTES (DEMOS & PROYECTOS ACTIVOS) -->
+    <!-- SECCIÓN 04: NUESTROS CLIENTES -->
     <section class="open-section" id="sec-4" data-index="4">
       <h2 class="open-title" data-i18n="sec4_title">
-        Trabajos y demostraciones en funcionamiento.
+        Nuestros Clientes
       </h2>
-      <p class="open-lead" data-i18n="sec4_desc">
-        Proyectos desarrollados para distintos sectores con dedicación y criterio visual.
-      </p>
 
-      <div class="demos-open-bar" style="margin-top: 1rem;">
-        <div class="demos-open-label" data-i18n="card2_demos_title">Demos y Proyectos Activos</div>
+      <div class="demos-open-bar">
         <div class="demos-open-list">
-          <a href="hr-legal/index.html" class="demo-open-link">
-            <span class="demo-open-name">HR &amp; Legal</span>
-            <span class="demo-open-tag" data-i18n="card2_demo_hr">Estudio Jurídico · Ver Demo</span>
+
+          <a href="https://www.riomayolands.com" target="_blank" rel="noopener noreferrer" class="demo-open-link">
+            <div class="client-logo-box">
+              <img src="assets/clients/logo_riomayo.png" alt="Río Mayo Lands" class="client-logo-img" />
+            </div>
+            <span class="demo-open-name">Río Mayo Lands</span>
+            <span class="demo-open-tag" data-i18n="card2_demo_rio">Desarrollo Inmobiliario · Ver Sitio</span>
           </a>
+
           <a href="michaelconstructora/index.html" target="_blank" class="demo-open-link">
+            <div class="client-logo-box">
+              <img src="assets/clients/logo_michael.png" alt="Michael Constructora" class="client-logo-img" />
+            </div>
             <span class="demo-open-name">Michael Constructora</span>
-            <span class="demo-open-tag" data-i18n="card2_demo_const">Ingeniería &amp; Obra Civil · Ver Demo</span>
+            <span class="demo-open-tag" data-i18n="card2_demo_const">Ingeniería &amp; Obra Civil · Ver Sitio</span>
           </a>
+
+          <a href="hr-legal/index.html" class="demo-open-link">
+            <div class="client-logo-box">
+              <img src="assets/clients/logo_hr_legal.svg" alt="HR & Legal" class="client-logo-img" />
+            </div>
+            <span class="demo-open-name">HR &amp; Legal</span>
+            <span class="demo-open-tag" data-i18n="card2_demo_hr">Estudio Jurídico · Ver Sitio</span>
+          </a>
+
           <div class="demo-open-link">
-            <span class="demo-open-name">NDC Modular</span>
-            <span class="demo-open-tag" data-i18n="card2_demo_mod">Showcase &amp; Planos</span>
+            <div class="client-logo-box">
+              <img src="assets/clients/logo_ndc.svg" alt="NDC Arquitectura y Construcción" class="client-logo-img" />
+            </div>
+            <span class="demo-open-name">NDC Arquitectura y Construcción</span>
+            <span class="demo-open-tag" data-i18n="card2_demo_mod">Diseño Modular &amp; Obra</span>
           </div>
-          <div class="demo-open-link">
-            <span class="demo-open-name">The Brickell Tower</span>
-            <span class="demo-open-tag" data-i18n="card2_demo_brick">Residencial Premium</span>
-          </div>
-          <div class="demo-open-link">
-            <span class="demo-open-name">The New York Tower</span>
-            <span class="demo-open-tag" data-i18n="card2_demo_ny">Imagina Inmobiliaria</span>
-          </div>
+
         </div>
       </div>
 
@@ -1264,7 +1252,7 @@
        ========================================================================== -->
   <script>
     const sections = document.querySelectorAll('.open-section');
-    const navItems = document.querySelectorAll('.nav-item');
+    const navItems = document.querySelectorAll('.left-accordion .acc-trigger');
     const bgSlides = document.querySelectorAll('.bg-slide');
 
     function activateSection(index) {
@@ -1294,7 +1282,7 @@
         }
       });
 
-      // Actualizar indicador en el Menú Derecho
+      // Actualizar indicador activo en el Menú Izquierdo (Estrategia, Publicidad, Tecnología, Proyectos, Contacto)
       navItems.forEach((nav) => {
         const secIdx = parseInt(nav.getAttribute('data-sec'), 10);
         if (secIdx === index) {
@@ -1305,8 +1293,8 @@
       });
     }
 
-    // Control del Acordeón Izquierdo (Estrategia / Publicidad / Tecnología)
-    function toggleAccordion(groupId) {
+    // Control del Acordeón Izquierdo con navegación suave por sección
+    function toggleAccordion(groupId, secId) {
       const groups = document.querySelectorAll('.acc-group');
       groups.forEach((grp) => {
         if (grp.id === groupId) {
@@ -1315,6 +1303,12 @@
           grp.classList.remove('open');
         }
       });
+      if (secId) {
+        const target = document.getElementById(secId);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
     }
 
     // Observador de Scroll para sincronizar fondos y menú automáticamente al bajar o subir
@@ -1339,9 +1333,9 @@
     const translations = {
       es: {
         acc_1_title: "Estrategia",
-        acc_1_sub1: "Diagnóstico",
-        acc_1_sub2: "Atención Ágil",
-        acc_1_sub3: "Organización",
+        acc_1_sub1: "Conocer su Terreno",
+        acc_1_sub2: "Acompañar y Ordenar",
+        acc_1_sub3: "Potenciar su Valor",
         acc_2_title: "Publicidad",
         acc_2_sub1: "Producción Visual",
         acc_2_sub2: "Presencia Local",
@@ -1350,17 +1344,17 @@
         acc_3_sub1: "Consultoría",
         acc_3_sub2: "Sitios Web",
         acc_3_sub3: "Aplicaciones Ágiles",
-        nav_ref: "Proyectos",
+        nav_ref: "Clientes",
         nav_3: "Contacto",
         sec1_tag: "Estrategia",
-        sec1_title: "Estructura y claridad para hacer crecer su negocio.",
-        sec1_desc: "Mostramos lo que hace único a su proyecto, conectando con las personas indicadas y facilitando cada contacto.",
-        sec1_p1_title: "Diagnóstico",
-        sec1_p1_desc: "Revisión directa y honesta de su modelo comercial y de atención.",
-        sec1_p2_title: "Atención Ágil",
-        sec1_p2_desc: "Canales simples y respuestas directas para atender sin demoras.",
-        sec1_p3_title: "Organización",
-        sec1_p3_desc: "Alineación de recursos y tiempos para trabajar con tranquilidad.",
+        sec1_title: "Primero conocemos su negocio, su nicho y su cliente. Después potenciamos lo que marca la diferencia con el resto.",
+        sec1_desc: "Nos sentamos con usted a entender cómo trabaja y qué valoran las personas que le compran. A partir de esa realidad, lo asistimos con tecnología y presencia visual para mostrar con fuerza lo que hace único a su proyecto.",
+        sec1_p1_title: "Conocer su Terreno",
+        sec1_p1_desc: "Entender a fondo cómo funciona su negocio hoy y qué busca exactamente su cliente.",
+        sec1_p2_title: "Acompañar y Ordenar",
+        sec1_p2_desc: "Asistencia práctica para que sus herramientas y canales de contacto respondan con agilidad.",
+        sec1_p3_title: "Potenciar su Valor",
+        sec1_p3_desc: "Producción visual y digital que destaca lo mejor de su oficio y lo vuelve imposible de ignorar.",
         btn_next_pub: "Ver Publicidad & Audiovisual",
         sec2_tag: "Publicidad",
         sec2_title: "Presencia audiovisual para destacar lo mejor de su trabajo.",
@@ -1381,16 +1375,15 @@
         sec3_p2_desc: "Páginas claras y modernas que respaldan la seriedad de su empresa.",
         sec3_p3_title: "Aplicaciones Ágiles",
         sec3_p3_desc: "Control simple de pedidos, citas y seguimiento conectado a WhatsApp.",
-        btn_next_ref: "Ver Referentes & Demos",
-        sec4_tag: "Proyectos",
-        sec4_title: "Trabajos y demostraciones en funcionamiento.",
+        btn_next_ref: "Ver Clientes",
+        sec4_tag: "Clientes",
+        sec4_title: "Nuestros Clientes",
         sec4_desc: "Proyectos desarrollados para distintos sectores con dedicación y criterio visual.",
-        card2_demos_title: "Demos y Proyectos Activos",
-        card2_demo_hr: "Estudio Jurídico · Ver Demo",
-        card2_demo_const: "Ingeniería & Obra Civil · Ver Demo",
-        card2_demo_mod: "Showcase & Planos",
-        card2_demo_brick: "Residencial Premium",
-        card2_demo_ny: "Imagina Inmobiliaria",
+        card2_demos_title: "Proyectos Activos",
+        card2_demo_rio: "Desarrollo Inmobiliario · Ver Sitio",
+        card2_demo_hr: "Estudio Jurídico · Ver Sitio",
+        card2_demo_const: "Ingeniería & Obra Civil · Ver Sitio",
+        card2_demo_mod: "Diseño Modular & Obra",
         btn_contact: "Información de Contacto",
         card3_tag: "Contacto Directo",
         card3_role: "Consultor Estratégico, Comercial y Tecnológico",
@@ -1398,9 +1391,9 @@
       },
       en: {
         acc_1_title: "Strategy",
-        acc_1_sub1: "Diagnosis",
-        acc_1_sub2: "Agile Service",
-        acc_1_sub3: "Organization",
+        acc_1_sub1: "Know Your Ground",
+        acc_1_sub2: "Assist & Structure",
+        acc_1_sub3: "Empower Your Value",
         acc_2_title: "Advertising",
         acc_2_sub1: "Visual Production",
         acc_2_sub2: "Local Presence",
@@ -1409,17 +1402,17 @@
         acc_3_sub1: "Consulting",
         acc_3_sub2: "Websites",
         acc_3_sub3: "Agile Apps",
-        nav_ref: "Projects",
+        nav_ref: "Clients",
         nav_3: "Contact",
         sec1_tag: "Strategy",
-        sec1_title: "Structure and clarity to grow your business.",
-        sec1_desc: "We showcase what makes your venture unique, connecting with the right audience and simplifying every interaction.",
-        sec1_p1_title: "Diagnosis",
-        sec1_p1_desc: "Direct and honest assessment of your commercial and customer-care model.",
-        sec1_p2_title: "Agile Service",
-        sec1_p2_desc: "Simple channels and immediate responses to attend customers without delays.",
-        sec1_p3_title: "Organization",
-        sec1_p3_desc: "Aligning resources and timelines to operate with clarity and confidence.",
+        sec1_title: "First we understand your business, your niche, and your client. Then we empower what sets you apart.",
+        sec1_desc: "We sit down with you to understand how you operate and what your clients genuinely value. From that reality, we assist you with tailored technology and visual media to showcase what makes your venture unique.",
+        sec1_p1_title: "Know Your Ground",
+        sec1_p1_desc: "Understanding in depth how your business operates today and what your clients genuinely seek.",
+        sec1_p2_title: "Assist & Structure",
+        sec1_p2_desc: "Hands-on collaboration to ensure your customer contact channels and tools respond with agility.",
+        sec1_p3_title: "Empower Your Value",
+        sec1_p3_desc: "Visual and digital production that spotlights the craft of your work and makes it impossible to ignore.",
         btn_next_pub: "Explore Advertising & Media",
         sec2_tag: "Advertising",
         sec2_title: "Audiovisual presence to highlight the best of your work.",
@@ -1440,16 +1433,15 @@
         sec3_p2_desc: "Clean, contemporary platforms that validate the seriousness of your company.",
         sec3_p3_title: "Agile Apps",
         sec3_p3_desc: "Simple management of orders, appointments, and follow-ups connected to WhatsApp.",
-        btn_next_ref: "View Projects & Demos",
-        sec4_tag: "Projects",
-        sec4_title: "Active projects and live demonstrations.",
+        btn_next_ref: "View Clients",
+        sec4_tag: "Clients",
+        sec4_title: "Our Clients",
         sec4_desc: "Deployments engineered across diverse sectors with craftsmanship and visual rigor.",
-        card2_demos_title: "Active Demos & Production Projects",
-        card2_demo_hr: "Legal Firm · Live Demo",
-        card2_demo_const: "Engineering & Civil Works · Live Demo",
-        card2_demo_mod: "Showcase & Blueprints",
-        card2_demo_brick: "Luxury Residential",
-        card2_demo_ny: "Imagina Real Estate",
+        card2_demos_title: "Featured Projects",
+        card2_demo_rio: "Real Estate Development · View Site",
+        card2_demo_hr: "Legal Firm · View Site",
+        card2_demo_const: "Engineering & Civil Works · View Site",
+        card2_demo_mod: "Modular Design & Construction",
         btn_contact: "Contact Information",
         card3_tag: "Direct Contact",
         card3_role: "Strategic, Commercial & Technology Consultant",
