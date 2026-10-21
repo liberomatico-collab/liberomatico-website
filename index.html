@@ -92,11 +92,6 @@
       z-index: 2;
     }
 
-    /* En la bienvenida dejamos el video al 100% de luz */
-    body.at-welcome .bg-stage::after {
-      background: linear-gradient(180deg, rgba(3, 7, 18, 0.35) 0%, transparent 45%, rgba(3, 7, 18, 0.5) 100%);
-    }
-
     .bg-slide video {
       position: absolute;
       inset: 0;
@@ -107,7 +102,6 @@
     }
 
     /* Ajustes finos de encuadre por reel según composición */
-    #bg-0 video { object-position: 50% 12%; }
     #bg-1 video { object-position: 50% 30%; }
     #bg-2 video { object-position: 50% 25%; }
     #bg-3 video { object-position: 50% 20%; }
@@ -291,7 +285,7 @@
       transform: translateX(3px);
     }
 
-    /* MARGEN DERECHO SUPERIOR: SELECTOR DE IDIOMA ES / EN */
+    /* MARGEN DERECHO SUPERIOR: CONTROL DE AUDIO SELECTIVO Y SELECTOR DE IDIOMA */
     .top-right-tools {
       position: fixed;
       top: 2.2rem;
@@ -299,9 +293,52 @@
       z-index: 105;
       pointer-events: auto;
       display: flex;
-      flex-direction: column;
-      align-items: flex-end;
+      flex-direction: row;
+      align-items: center;
+      gap: 0.85rem;
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+    }
+
+    /* BOTÓN SELECTOR DE AUDIO INTELIGENTE */
+    .btn-audio-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.35rem 0.8rem;
+      background: rgba(10, 15, 25, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(226, 201, 146, 0.32);
+      border-radius: 9999px;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-family: inherit;
+      outline: none;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    }
+
+    .btn-audio-toggle:hover {
+      color: #ffffff;
+      border-color: rgba(226, 201, 146, 0.65);
+      background: rgba(16, 24, 40, 0.9);
+      transform: translateY(-1px);
+    }
+
+    .btn-audio-toggle.active {
+      color: var(--champagne);
+      border-color: var(--champagne);
+      background: rgba(22, 32, 54, 0.9);
+      box-shadow: 0 0 16px rgba(226, 201, 146, 0.35);
+    }
+
+    .btn-audio-toggle .audio-icon {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
     }
 
     .lang-switch {
@@ -432,49 +469,41 @@
       }
     }
 
-    /* SECCIÓN 0: BIENVENIDA (ROSTRO Y CENTRO 100% DESPEJADOS, PIE AL RAS INFERIOR) */
-    #sec-0 {
+    /* SECCIONES CON TEXTO EN PARTE INFERIOR (ROSTROS Y CENTRO 100% DESPEJADOS) */
+    #sec-1,
+    #sec-2,
+    #sec-3 {
       justify-content: flex-end;
-      align-items: center;
-      text-align: center;
-      padding: 0 2rem 1.6rem 2rem;
+      align-items: flex-start;
+      padding-bottom: 5.5rem;
     }
 
-    .hero-open-wrap {
-      max-width: 880px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .hero-main-title {
-      font-size: clamp(1rem, 1.45vw, 1.3rem);
-      font-weight: 500;
-      color: rgba(248, 250, 252, 0.9);
-      letter-spacing: 0.04em;
-      line-height: 1.35;
+    .sec-bottom-wrap,
+    .sec1-bottom-wrap {
+      max-width: 760px;
+      margin-top: auto;
       margin-bottom: 0;
-      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
     }
 
-    .scroll-cue {
-      margin-top: 2.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      color: rgba(255, 255, 255, 0.65);
-      font-size: 0.72rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: color 0.25s ease;
+    .sec-title-single,
+    .sec1-title {
+      font-size: clamp(1.4rem, 2.3vw, 2.15rem);
+      font-weight: 700;
+      line-height: 1.35;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.95), 0 2px 10px rgba(0, 0, 0, 0.9);
+      margin-bottom: 0;
     }
 
-    .scroll-cue:hover {
+    .sec-sub-line {
+      font-size: clamp(0.95rem, 1.2vw, 1.12rem);
+      font-weight: 600;
       color: var(--champagne);
+      letter-spacing: 0.03em;
+      margin-top: 0.65rem;
+      margin-bottom: 0;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95);
     }
 
     /* TIPOGRAFÍA EDITORIAL EQUILIBRADA Y ARMONIOSA */
@@ -850,6 +879,26 @@
         padding: 7.5rem 1.5rem 8.5rem 1.5rem;
       }
 
+      #sec-1,
+      #sec-2,
+      #sec-3 {
+        justify-content: flex-end;
+        padding-top: 5rem;
+        padding-bottom: 7.5rem;
+      }
+
+      .sec-title-single,
+      .sec1-title {
+        font-size: clamp(1.2rem, 5.2vw, 1.55rem);
+        line-height: 1.35;
+      }
+
+      .sec-sub-line {
+        font-size: clamp(0.85rem, 3.8vw, 0.98rem);
+        margin-top: 0.5rem;
+        line-height: 1.4;
+      }
+
       .pilares-open-grid {
         grid-template-columns: 1fr;
         gap: 2.2rem;
@@ -883,37 +932,31 @@
     }
   </style>
 </head>
-<body class="at-welcome">
+<body>
 
   <!-- ==========================================================================
-       1. ESCENARIO DE FONDOS INMERSIVOS (PANTALLA COMPLETA · VIDEO REELS DINÁMICOS)
+       1. ESCENARIO DE FONDOS INMERSIVOS (PANTALLA COMPLETA · 5 REELS DINÁMICOS)
        ========================================================================== -->
   <div class="bg-stage">
-    <!-- Slide 0: Bienvenida (Video Hero) -->
-    <div class="bg-slide active" id="bg-0">
+    <!-- Slide 1: Estrategia (Red & Esfera Global) -->
+    <div class="bg-slide active" id="bg-1">
       <video autoplay muted playsinline preload="auto">
-        <source src="assets/reel_00_bienvenida.mp4" type="video/mp4" />
-      </video>
-    </div>
-    <!-- Slide 1: Estrategia (Miraflores Costa Verde + Negocios Locales) -->
-    <div class="bg-slide" id="bg-1">
-      <video muted playsinline preload="metadata">
         <source src="assets/reel_01_estrategia.mp4" type="video/mp4" />
       </video>
     </div>
-    <!-- Slide 2: Publicidad (POV Celular / Feed / Catálogo) -->
+    <!-- Slide 2: Publicidad (Dos personas en diálogo) -->
     <div class="bg-slide" id="bg-2">
       <video muted playsinline preload="metadata">
         <source src="assets/reel_02_publicidad.mp4" type="video/mp4" />
       </video>
     </div>
-    <!-- Slide 3: Tecnología (Conexión Humana & Red Global de Luz) -->
+    <!-- Slide 3: Tecnología (Espacio & Vitrina de Diseño) -->
     <div class="bg-slide" id="bg-3">
       <video muted playsinline preload="metadata">
         <source src="assets/reel_03_tecnologia.mp4" type="video/mp4" />
       </video>
     </div>
-    <!-- Slide 4: Referentes (Vitrina Cinematográfica de Proyectos) -->
+    <!-- Slide 4: Referentes (POV Catálogo en Celular) -->
     <div class="bg-slide" id="bg-4">
       <video muted playsinline preload="metadata">
         <source src="assets/reel_04_proyectos.mp4" type="video/mp4" />
@@ -935,7 +978,7 @@
 
       <!-- MARGEN IZQUIERDO SUPERIOR: LIBEROMATICO -->
       <div class="left-rail">
-        <a href="#sec-0" class="brand-link">
+        <a href="#sec-1" class="brand-link">
           <div class="brand-logo-frame">
             <img src="assets/liberomatico-logo-transparent.png" alt="LiberoMatico Logo" />
           </div>
@@ -945,8 +988,18 @@
         </a>
       </div>
 
-      <!-- MARGEN DERECHO SUPERIOR: SELECTOR DE IDIOMA + TAMAÑO DE FUENTE -->
+      <!-- MARGEN DERECHO SUPERIOR: CONTROL DE AUDIO SELECTIVO + SELECTOR DE IDIOMA -->
       <div class="top-right-tools">
+        <button type="button" class="btn-audio-toggle" id="btnAudioToggle" onclick="toggleAudio()" title="Activar / Silenciar Sonido" aria-label="Control de Sonido">
+          <svg class="audio-icon audio-icon-muted" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+          </svg>
+          <svg class="audio-icon audio-icon-active" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+          </svg>
+          <span class="audio-label" data-i18n="audio_toggle">Sonido</span>
+        </button>
+
         <div class="lang-switch" role="group" aria-label="Selector de Idioma">
           <button type="button" class="btn-lang active" id="btnLangEs" onclick="setLanguage('es')" title="Español">
             <svg class="flag-icon" viewBox="0 0 640 480" aria-hidden="true">
@@ -988,38 +1041,23 @@
 
     <!-- 1. ESTRATEGIA -->
     <div class="acc-group" id="acc-est">
-      <button type="button" class="acc-trigger" data-sec="1" onclick="toggleAccordion('acc-est', 'sec-1')">
+      <a href="#sec-1" class="acc-trigger" data-sec="1">
         <span data-i18n="acc_1_title">Estrategia</span>
-      </button>
-      <div class="acc-panel">
-        <a href="#sec-1" class="acc-subitem" data-i18n="acc_1_sub1">Conocer su Terreno</a>
-        <a href="#sec-1" class="acc-subitem" data-i18n="acc_1_sub2">Acompañar y Ordenar</a>
-        <a href="#sec-1" class="acc-subitem" data-i18n="acc_1_sub3">Potenciar su Valor</a>
-      </div>
+      </a>
     </div>
 
     <!-- 2. PUBLICIDAD -->
     <div class="acc-group" id="acc-pub">
-      <button type="button" class="acc-trigger" data-sec="2" onclick="toggleAccordion('acc-pub', 'sec-2')">
+      <a href="#sec-2" class="acc-trigger" data-sec="2">
         <span data-i18n="acc_2_title">Publicidad</span>
-      </button>
-      <div class="acc-panel">
-        <a href="#sec-2" class="acc-subitem" data-i18n="acc_2_sub1">Producción Visual</a>
-        <a href="#sec-2" class="acc-subitem" data-i18n="acc_2_sub2">Presencia Local</a>
-        <a href="#sec-2" class="acc-subitem" data-i18n="acc_2_sub3">Catálogos Claros</a>
-      </div>
+      </a>
     </div>
 
     <!-- 3. TECNOLOGÍA -->
     <div class="acc-group" id="acc-tec">
-      <button type="button" class="acc-trigger" data-sec="3" onclick="toggleAccordion('acc-tec', 'sec-3')">
+      <a href="#sec-3" class="acc-trigger" data-sec="3">
         <span data-i18n="acc_3_title">Tecnología</span>
-      </button>
-      <div class="acc-panel">
-        <a href="#sec-3" class="acc-subitem" data-i18n="acc_3_sub1">Consultoría</a>
-        <a href="#sec-3" class="acc-subitem" data-i18n="acc_3_sub2">Sitios Web</a>
-        <a href="#sec-3" class="acc-subitem" data-i18n="acc_3_sub3">Aplicaciones Ágiles</a>
-      </div>
+      </a>
     </div>
 
     <!-- 4. CLIENTES -->
@@ -1043,126 +1081,39 @@
        ========================================================================== -->
   <main class="open-flow">
 
-    <!-- SECCIÓN 00: BIENVENIDA (100% DESPEJADA PARA EL VIDEO) -->
-    <section class="open-section" id="sec-0" data-index="0"></section>
-
     <!-- SECCIÓN 01: ESTRATEGIA -->
     <section class="open-section" id="sec-1" data-index="1">
-      <h2 class="open-title" data-i18n="sec1_title">
-        Primero conocemos su negocio, su nicho y su cliente. Después potenciamos lo que marca la diferencia con el resto.
-      </h2>
-      <p class="open-lead" data-i18n="sec1_desc">
-        Nos sentamos con usted a entender cómo trabaja y qué valoran las personas que le compran. A partir de esa realidad, lo asistimos con tecnología y presencia visual para mostrar con fuerza lo que hace único a su proyecto.
-      </p>
-
-      <div class="pilares-open-grid">
-        <div class="pilar-open-col">
-          <h3 class="pilar-open-title" data-i18n="sec1_p1_title">Conocer su Terreno</h3>
-          <p class="pilar-open-desc" data-i18n="sec1_p1_desc">
-            Entender a fondo cómo funciona su negocio hoy y qué busca exactamente su cliente.
-          </p>
-        </div>
-
-        <div class="pilar-open-col">
-          <h3 class="pilar-open-title" data-i18n="sec1_p2_title">Acompañar y Ordenar</h3>
-          <p class="pilar-open-desc" data-i18n="sec1_p2_desc">
-            Asistencia práctica para que sus herramientas y canales de contacto respondan con agilidad.
-          </p>
-        </div>
-
-        <div class="pilar-open-col">
-          <h3 class="pilar-open-title" data-i18n="sec1_p3_title">Potenciar su Valor</h3>
-          <p class="pilar-open-desc" data-i18n="sec1_p3_desc">
-            Producción visual y digital que destaca lo mejor de su oficio y lo vuelve imposible de ignorar.
-          </p>
-        </div>
-      </div>
-
-      <div style="margin-top: 1.5rem;">
-        <a href="#sec-2" class="btn-cta-gold">
-          <span data-i18n="btn_next_pub">Ver Publicidad &amp; Audiovisual</span>
-          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
-        </a>
+      <div class="sec-bottom-wrap">
+        <h2 class="open-title sec-title-single" data-i18n="sec1_title">
+          Potenciamos lo que hace diferente a su marca
+        </h2>
+        <p class="sec-sub-line" data-i18n="sec1_sub">
+          Con mucho gusto lo ayudaremos
+        </p>
       </div>
     </section>
 
     <!-- SECCIÓN 02: PUBLICIDAD -->
     <section class="open-section" id="sec-2" data-index="2">
-      <h2 class="open-title" data-i18n="sec2_title">
-        Presencia audiovisual para destacar lo mejor de su trabajo.
-      </h2>
-      <p class="open-lead" data-i18n="sec2_desc">
-        Producción de calidad cinematográfica que capta interés genuino y lleva a las personas hacia su catálogo.
-      </p>
-
-      <div class="pilares-open-grid">
-        <div class="pilar-open-col">
-          <h3 class="pilar-open-title" data-i18n="sec2_p1_title">Producción Audiovisual</h3>
-          <p class="pilar-open-desc" data-i18n="sec2_p1_desc">
-            Videos cuidados que comunican con respeto y captan la mirada.
-          </p>
-        </div>
-
-        <div class="pilar-open-col">
-          <h3 class="pilar-open-title" data-i18n="sec2_p2_title">Presencia Local</h3>
-          <p class="pilar-open-desc" data-i18n="sec2_p2_desc">
-            Ubicación clara en Google Maps y redes para que lo encuentren fácil.
-          </p>
-        </div>
-
-        <div class="pilar-open-col">
-          <h3 class="pilar-open-title" data-i18n="sec2_p3_title">Catálogos Claros</h3>
-          <p class="pilar-open-desc" data-i18n="sec2_p3_desc">
-            Muestra limpia de productos y servicios con enlace directo a WhatsApp.
-          </p>
-        </div>
-      </div>
-
-      <div style="margin-top: 1.5rem;">
-        <a href="#sec-3" class="btn-cta-gold">
-          <span data-i18n="btn_next_tec">Ver Tecnología &amp; Sistemas</span>
-          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
-        </a>
+      <div class="sec-bottom-wrap">
+        <h2 class="open-title sec-title-single" data-i18n="sec2_title">
+          Presencia digital para conectar con la gente que necesita su producto.
+        </h2>
+        <p class="sec-sub-line" data-i18n="sec2_sub">
+          Catálogos online · Webs de validación · Gráfica digital y Reels
+        </p>
       </div>
     </section>
 
     <!-- SECCIÓN 03: TECNOLOGÍA -->
     <section class="open-section" id="sec-3" data-index="3">
-      <h2 class="open-title" data-i18n="sec3_title">
-        Herramientas digitales para tu mayor productividad
-      </h2>
-      <p class="open-lead" data-i18n="sec3_desc">
-        Software liviano y sitios web que dan confianza y ordenan la relación con sus clientes.
-      </p>
-
-      <div class="pilares-open-grid">
-        <div class="pilar-open-col">
-          <h3 class="pilar-open-title" data-i18n="sec3_p1_title">Consultoría</h3>
-          <p class="pilar-open-desc" data-i18n="sec3_p1_desc">
-            Orientación práctica para incorporar tecnología útil sin complicaciones.
-          </p>
-        </div>
-
-        <div class="pilar-open-col">
-          <h3 class="pilar-open-title" data-i18n="sec3_p2_title">Sitios Web</h3>
-          <p class="pilar-open-desc" data-i18n="sec3_p2_desc">
-            Páginas claras y modernas que respaldan la seriedad de su empresa.
-          </p>
-        </div>
-
-        <div class="pilar-open-col">
-          <h3 class="pilar-open-title" data-i18n="sec3_p3_title">Aplicaciones Ágiles</h3>
-          <p class="pilar-open-desc" data-i18n="sec3_p3_desc">
-            Control simple de pedidos, citas y seguimiento conectado a WhatsApp.
-          </p>
-        </div>
-      </div>
-
-      <div style="margin-top: 1.5rem;">
-        <a href="#sec-4" class="btn-cta-gold">
-          <span data-i18n="btn_next_ref">Ver Clientes</span>
-          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
-        </a>
+      <div class="sec-bottom-wrap">
+        <h2 class="open-title sec-title-single" data-i18n="sec3_title">
+          Tecnología que impulsa
+        </h2>
+        <p class="sec-sub-line" data-i18n="sec3_sub">
+          Software · Apps · Gestión · Control
+        </p>
       </div>
     </section>
 
@@ -1225,11 +1176,12 @@
         <p class="profile-role" data-i18n="card3_role">
           Consultor Estratégico, Comercial y Tecnológico
         </p>
-        <p class="open-lead" data-i18n="card3_desc" style="margin-bottom: 1.2rem;">
-          Acompañamiento personal para ordenar procesos, crear presencia digital y aplicar herramientas tecnológicas que sumen valor real a su empresa.
-        </p>
 
         <div class="contact-open-links">
+          <a href="https://www.liberomatico.com" target="_blank" class="open-contact-item">
+            <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+            <span>www.liberomatico.com</span>
+          </a>
           <a href="mailto:liberomatico@gmail.com" class="open-contact-item">
             <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
             <span>liberomatico@gmail.com</span>
@@ -1255,37 +1207,98 @@
     const navItems = document.querySelectorAll('.left-accordion .acc-trigger');
     const bgSlides = document.querySelectorAll('.bg-slide');
 
-    function activateSection(index) {
-      // Modo bienvenida para dar máxima luz al video inicial
-      if (index === 0) {
-        document.body.classList.add('at-welcome');
+    // ==========================================================================
+    // CONTROL DE AUDIO SELECTIVO (EXCLUSIVO PARA REEL 1 Y REEL DE CONTACTO)
+    // ==========================================================================
+    let isAudioEnabled = false;
+    let currentSection = 1;
+    // Secciones con audio autorizado: 1 (Estrategia) y 5 (Contacto)
+    // Secciones 2 (Publicidad), 3 (Tecnología) y 4 (Clientes) permanecen siempre mudas
+    const AUDIO_ALLOWED_SECTIONS = [1, 5];
+
+    function toggleAudio() {
+      isAudioEnabled = !isAudioEnabled;
+      const btn = document.getElementById('btnAudioToggle');
+      const iconMuted = btn ? btn.querySelector('.audio-icon-muted') : null;
+      const iconActive = btn ? btn.querySelector('.audio-icon-active') : null;
+      const label = btn ? btn.querySelector('.audio-label') : null;
+      const trans = translations[currentLang] || translations.es;
+
+      if (isAudioEnabled) {
+        if (btn) btn.classList.add('active');
+        if (iconMuted) iconMuted.style.display = 'none';
+        if (iconActive) iconActive.style.display = 'block';
+        if (label) label.textContent = trans.audio_toggle_on;
       } else {
-        document.body.classList.remove('at-welcome');
+        if (btn) btn.classList.remove('active');
+        if (iconMuted) iconMuted.style.display = 'block';
+        if (iconActive) iconActive.style.display = 'none';
+        if (label) label.textContent = trans.audio_toggle;
       }
 
-      // Actualizar Fondos Inmersivos en transición suave y reproducción única (1 sola vez)
-      bgSlides.forEach((bg, i) => {
+      // Sincronizar de inmediato el video de la sección actual
+      for (let i = 1; i <= 5; i++) {
+        const bg = document.getElementById(`bg-${i}`);
+        if (!bg) continue;
         const video = bg.querySelector('video');
-        if (i === index) {
+        if (!video) continue;
+
+        if (i === currentSection && isAudioEnabled && AUDIO_ALLOWED_SECTIONS.includes(i)) {
+          video.muted = false;
+          video.volume = 1.0;
+          if (video.ended) {
+            video.currentTime = 0;
+          }
+          video.play().catch(() => {});
+        } else {
+          video.muted = true;
+          video.volume = 0;
+        }
+      }
+    }
+
+    function activateSection(secNumber) {
+      currentSection = secNumber;
+
+      // Actualizar Fondos Inmersivos en transición suave y reproducción selectiva
+      for (let i = 1; i <= 5; i++) {
+        const bg = document.getElementById(`bg-${i}`);
+        if (!bg) continue;
+        const video = bg.querySelector('video');
+
+        if (i === secNumber) {
           bg.classList.add('active');
           if (video) {
-            // Se reproduce solo si no ha finalizado su única corrida
-            if (!video.ended) {
+            // Audio selectivo: solo activo en secciones autorizadas (Reel 1 y Contacto)
+            if (isAudioEnabled && AUDIO_ALLOWED_SECTIONS.includes(i)) {
+              video.muted = false;
+              video.volume = 1.0;
+              video.currentTime = 0; // Reproduce desde el inicio para escuchar la alocución completa
+            } else {
+              video.muted = true;
+              video.volume = 0;
+            }
+
+            if (!video.ended || (isAudioEnabled && AUDIO_ALLOWED_SECTIONS.includes(i))) {
               video.play().catch(() => {});
             }
           }
         } else {
           bg.classList.remove('active');
-          if (video && !video.ended) {
-            video.pause();
+          if (video) {
+            video.muted = true;
+            video.volume = 0;
+            if (!video.ended) {
+              video.pause();
+            }
           }
         }
-      });
+      }
 
       // Actualizar indicador activo en el Menú Izquierdo (Estrategia, Publicidad, Tecnología, Proyectos, Contacto)
       navItems.forEach((nav) => {
         const secIdx = parseInt(nav.getAttribute('data-sec'), 10);
-        if (secIdx === index) {
+        if (secIdx === secNumber) {
           nav.classList.add('active');
         } else {
           nav.classList.remove('active');
@@ -1347,7 +1360,8 @@
         nav_ref: "Clientes",
         nav_3: "Contacto",
         sec1_tag: "Estrategia",
-        sec1_title: "Primero conocemos su negocio, su nicho y su cliente. Después potenciamos lo que marca la diferencia con el resto.",
+        sec1_title: "Potenciamos lo que hace diferente a su marca",
+        sec1_sub: "Con mucho gusto lo ayudaremos",
         sec1_desc: "Nos sentamos con usted a entender cómo trabaja y qué valoran las personas que le compran. A partir de esa realidad, lo asistimos con tecnología y presencia visual para mostrar con fuerza lo que hace único a su proyecto.",
         sec1_p1_title: "Conocer su Terreno",
         sec1_p1_desc: "Entender a fondo cómo funciona su negocio hoy y qué busca exactamente su cliente.",
@@ -1357,7 +1371,8 @@
         sec1_p3_desc: "Producción visual y digital que destaca lo mejor de su oficio y lo vuelve imposible de ignorar.",
         btn_next_pub: "Ver Publicidad & Audiovisual",
         sec2_tag: "Publicidad",
-        sec2_title: "Presencia audiovisual para destacar lo mejor de su trabajo.",
+        sec2_title: "Presencia digital para conectar con la gente que necesita su producto.",
+        sec2_sub: "Catálogos online · Webs de validación · Gráfica digital y Reels",
         sec2_desc: "Producción de calidad cinematográfica que capta interés genuino y lleva a las personas hacia su catálogo.",
         sec2_p1_title: "Producción Audiovisual",
         sec2_p1_desc: "Videos cuidados que comunican con respeto y captan la mirada.",
@@ -1367,7 +1382,8 @@
         sec2_p3_desc: "Muestra limpia de productos y servicios con enlace directo a WhatsApp.",
         btn_next_tec: "Ver Tecnología & Sistemas",
         sec3_tag: "Tecnología",
-        sec3_title: "Herramientas digitales para tu mayor productividad",
+        sec3_title: "Tecnología que impulsa",
+        sec3_sub: "Software · Apps · Gestión · Control",
         sec3_desc: "Software liviano y sitios web que dan confianza y ordenan la relación con sus clientes.",
         sec3_p1_title: "Consultoría",
         sec3_p1_desc: "Orientación práctica para incorporar tecnología útil sin complicaciones.",
@@ -1387,7 +1403,9 @@
         btn_contact: "Información de Contacto",
         card3_tag: "Contacto Directo",
         card3_role: "Consultor Estratégico, Comercial y Tecnológico",
-        card3_desc: "Acompañamiento personal para ordenar procesos, crear presencia digital y aplicar herramientas tecnológicas que sumen valor real a su empresa."
+        card3_desc: "Acompañamiento personal para ordenar procesos, crear presencia digital y aplicar herramientas tecnológicas que sumen valor real a su empresa.",
+        audio_toggle: "Sonido",
+        audio_toggle_on: "Sonido ON"
       },
       en: {
         acc_1_title: "Strategy",
@@ -1405,7 +1423,8 @@
         nav_ref: "Clients",
         nav_3: "Contact",
         sec1_tag: "Strategy",
-        sec1_title: "First we understand your business, your niche, and your client. Then we empower what sets you apart.",
+        sec1_title: "We empower what sets your brand apart",
+        sec1_sub: "We will gladly assist you",
         sec1_desc: "We sit down with you to understand how you operate and what your clients genuinely value. From that reality, we assist you with tailored technology and visual media to showcase what makes your venture unique.",
         sec1_p1_title: "Know Your Ground",
         sec1_p1_desc: "Understanding in depth how your business operates today and what your clients genuinely seek.",
@@ -1415,7 +1434,8 @@
         sec1_p3_desc: "Visual and digital production that spotlights the craft of your work and makes it impossible to ignore.",
         btn_next_pub: "Explore Advertising & Media",
         sec2_tag: "Advertising",
-        sec2_title: "Audiovisual presence to highlight the best of your work.",
+        sec2_title: "Digital presence to connect with the people who need your product.",
+        sec2_sub: "Online catalogs · Validation websites · Digital graphics & Reels",
         sec2_desc: "Cinematic quality production that captures genuine attention and guides people toward your catalog.",
         sec2_p1_title: "Audiovisual Production",
         sec2_p1_desc: "Crafted videos that communicate with respect and captivate viewers.",
@@ -1425,7 +1445,8 @@
         sec2_p3_desc: "Transparent showcase of products and services linked directly to WhatsApp.",
         btn_next_tec: "Explore Tech & Systems",
         sec3_tag: "Technology",
-        sec3_title: "Digital tools for your highest productivity",
+        sec3_title: "Technology that drives",
+        sec3_sub: "Software · Apps · Management · Control",
         sec3_desc: "Lightweight software and modern websites that build confidence and streamline client relations.",
         sec3_p1_title: "Consulting",
         sec3_p1_desc: "Practical guidance to integrate effective technology without unnecessary friction.",
@@ -1445,7 +1466,9 @@
         btn_contact: "Contact Information",
         card3_tag: "Direct Contact",
         card3_role: "Strategic, Commercial & Technology Consultant",
-        card3_desc: "Hands-on collaboration to structure operations, build digital presence, and deploy tailored tech that brings genuine value."
+        card3_desc: "Hands-on collaboration to structure operations, build digital presence, and deploy tailored tech that brings genuine value.",
+        audio_toggle: "Sound",
+        audio_toggle_on: "Sound ON"
       }
     };
 
@@ -1474,6 +1497,11 @@
           el.textContent = trans[key];
         }
       });
+
+      const audioLabel = document.querySelector('.btn-audio-toggle .audio-label');
+      if (audioLabel) {
+        audioLabel.textContent = isAudioEnabled ? trans.audio_toggle_on : trans.audio_toggle;
+      }
 
       document.documentElement.lang = lang;
     }
