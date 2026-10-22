@@ -736,47 +736,60 @@
 
     /* ==========================================================================
        MODO PANTALLA ALTA / VERTICAL (9:16 MÓVIL O VENTANA MÁS ALTA QUE ANCHA):
-       - TECHO: MARCA + IDIOMA + BOTONES DE TELÉFONO WHATSAPP
-       - PISO IZQUIERDO: ACORDEÓN (ESTRATEGIA / PUBLICIDAD / TECNOLOGÍA)
-       - PISO DERECHO: REFERENTES + INFORMACIÓN
+       - TECHO: MARCA A LA IZQ + AUDIO E IDIOMA A LA DER (CABECERA ULTRA DESPEJADA)
+       - PISO IZQUIERDO: MENÚ ESTRATEGIA / PUBLICIDAD / TECNOLOGÍA / CLIENTES / CONTACTO
+       - PISO DERECHO: BOTONES WHATSAPP FLOTANTES EN LA ESQUINA INFERIOR DERECHA
+       - ZONA CENTRAL RESERVADA: TEXTO CON TECHO Y PISO BLINDADOS (CERO SOLAPAMIENTOS)
        ========================================================================== */
     @media (max-aspect-ratio: 1/1), (max-width: 960px) {
+      html {
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+      }
+
+      /* CABECERA COMPACTA DE UNA SOLA LÍNEA HORIZONTAL (CERO SOLAPAMIENTOS) */
       .top-hud {
         inset: 0 0 auto 0;
         width: 100%;
         pointer-events: auto;
-        background: linear-gradient(180deg, rgba(3, 7, 18, 0.94) 0%, rgba(3, 7, 18, 0.65) 82%, transparent 100%);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(6, 11, 20, 0.85);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(226, 201, 146, 0.2);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
       }
 
       .hud-bar {
-        padding: 0.65rem 1rem;
+        padding: 0.55rem 1rem;
         display: flex;
-        flex-direction: column;
-        gap: 0.55rem;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        box-sizing: border-box;
       }
 
       .left-rail {
         position: static;
-        width: 100%;
-        padding-right: 5rem; /* Deja libre el espacio para el switch de idiomas */
-        gap: 0;
+        width: auto;
+        padding-right: 0;
+        margin: 0;
+        display: flex;
+        align-items: center;
       }
 
       .brand-link {
         width: auto;
         display: inline-flex;
         align-items: center;
-        gap: 0.6rem;
+        gap: 0.55rem;
       }
 
       .brand-logo-frame {
-        width: 32px;
-        height: 32px;
-        min-width: 32px;
-        min-height: 32px;
+        width: 28px;
+        height: 28px;
+        min-width: 28px;
+        min-height: 28px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -784,60 +797,81 @@
       }
 
       .brand-title {
-        font-size: 1.05rem;
+        font-size: 0.95rem;
+        letter-spacing: 0.04em;
       }
 
       .brand-author {
-        font-size: 0.82rem;
+        display: none;
       }
 
-      /* IDIOMA Y AUDIO ARRIBA A LA DERECHA EN EL TECHO */
+      /* AUDIO E IDIOMA ALINEADOS EN EL EXTREMO DERECHO DEL TECHO */
       .top-right-tools {
-        position: absolute;
-        top: 0.65rem;
-        right: 1rem;
-        flex-direction: row;
+        position: static;
+        display: inline-flex;
         align-items: center;
-        gap: 0.55rem;
+        gap: 0.5rem;
+        margin-left: auto;
+        flex-shrink: 0;
       }
 
       .btn-audio-toggle {
-        width: 38px;
-        height: 38px;
+        width: 36px;
+        height: 36px;
       }
 
       .btn-audio-toggle .audio-icon {
-        width: 19px;
-        height: 19px;
+        width: 18px;
+        height: 18px;
       }
 
-      /* BOTONES DE WHATSAPP EN EL TECHO DEL CELULAR */
+      .lang-switch {
+        gap: 0.25rem;
+      }
+
+      .btn-lang {
+        padding: 0.25rem 0.45rem;
+        font-size: 0.72rem;
+      }
+
+      /* BOTONES DE WHATSAPP REUBICADOS EN EL PISO DERECHO DE LA PANTALLA */
       .whatsapp-dock {
-        position: static;
-        width: 100%;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        gap: 0.55rem;
+        position: fixed;
+        bottom: 1.15rem;
+        right: 1rem;
+        z-index: 110;
+        pointer-events: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 0.4rem;
+        width: auto;
+        max-width: 48vw;
       }
 
       .btn-whatsapp-right {
-        flex: 1;
+        flex: none;
         width: auto;
+        display: inline-flex;
+        align-items: center;
         justify-content: center;
-        padding: 0.45rem 0.75rem;
-        font-size: 0.8rem;
-        background: rgba(8, 14, 26, 0.75);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
+        gap: 0.45rem;
+        padding: 0.42rem 0.75rem;
+        font-size: 0.78rem;
+        font-weight: 700;
+        background: rgba(8, 14, 26, 0.78);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
         border: 1px solid rgba(37, 211, 102, 0.45);
         border-radius: 9999px;
-        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        color: rgba(248, 250, 252, 0.96);
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
       }
 
       .btn-whatsapp-right svg {
-        width: 20px;
-        height: 20px;
+        width: 17px;
+        height: 17px;
       }
 
       .btn-whatsapp-right:hover {
@@ -852,18 +886,18 @@
         transform-origin: 50% 18%;
       }
 
-      /* ACORDEÓN EN EL PISO DEL LADO IZQUIERDO (SIN GLASS, AUTOAJUSTE A MÁXIMO 48% DE PANTALLA) */
+      /* MENÚ EN EL PISO DEL LADO IZQUIERDO (MÁXIMO 48% DE PANTALLA) */
       .left-accordion {
         position: fixed;
         top: auto;
         bottom: 1.15rem;
-        left: 1.15rem;
+        left: 1rem;
         transform: none;
         z-index: 110;
-        max-width: 48vw;
+        max-width: 46vw;
         flex-direction: column;
         align-items: flex-start;
-        gap: 0.45rem;
+        gap: 0.35rem;
         padding: 0;
         background: none;
         backdrop-filter: none;
@@ -872,8 +906,9 @@
       }
 
       .acc-trigger {
-        font-size: 0.95rem;
-        padding: 0.15rem 0;
+        font-size: 0.88rem;
+        padding: 0.12rem 0;
+        line-height: 1.25;
       }
 
       .acc-panel {
@@ -890,29 +925,44 @@
         padding: 0.15rem 0;
       }
 
-      /* LATERALES 100% LIBRES EN EL CUERPO CENTRAL */
+      /* ZONA RESERVADA DE TEXTO CON SCROLL SNAP:
+         - TECHO LIBRE (4.8rem) PARA NO CHOCAR LA CABECERA NI ROSTROS
+         - PISO LIBRE (11.5rem) PARA NUNCA SOLAPARSE CON EL MENÚ NI WHATSAPP */
       .open-section {
-        padding: 7.5rem 1.5rem 8.5rem 1.5rem;
+        min-height: 100vh;
+        min-height: 100dvh;
+        box-sizing: border-box;
+        padding: 4.8rem 1.25rem 11.5rem 1.25rem;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
       }
 
       #sec-1,
       #sec-2,
       #sec-3 {
         justify-content: flex-end;
-        padding-top: 5rem;
-        padding-bottom: 7.5rem;
+        align-items: flex-start;
+        padding-top: 4.8rem;
+        padding-bottom: 11.5rem;
+      }
+
+      .sec-bottom-wrap,
+      .sec1-bottom-wrap {
+        max-width: 100%;
+        margin-top: auto;
+        margin-bottom: 0;
       }
 
       .sec-title-single,
       .sec1-title {
-        font-size: clamp(1.2rem, 5.2vw, 1.55rem);
+        font-size: clamp(1.18rem, 5vw, 1.48rem);
         line-height: 1.35;
       }
 
       .sec-sub-line {
-        font-size: clamp(0.85rem, 3.8vw, 0.98rem);
-        margin-top: 0.5rem;
-        line-height: 1.4;
+        font-size: clamp(0.85rem, 3.6vw, 0.95rem);
+        margin-top: 0.45rem;
+        line-height: 1.35;
       }
 
       .pilares-open-grid {
