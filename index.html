@@ -1001,10 +1001,99 @@
       #sec-4,
       #sec-5 {
         min-height: 100%;
-        height: 100%;
+        height: auto;
         justify-content: flex-end;
         align-items: flex-start;
         padding: 1.25rem 1.25rem;
+      }
+
+      /* SECCIÓN 4 (CLIENTES) EN MÓVIL: ARQUITECTURA LIMPIA CERO SOLAPAMIENTOS */
+      #sec-4 {
+        justify-content: flex-start;
+        gap: 0.8rem;
+      }
+
+      #sec-4 .open-title {
+        font-size: 1.28rem;
+        margin-bottom: 0.2rem;
+      }
+
+      #sec-4 .demos-open-bar {
+        margin-top: 0;
+        padding-top: 0;
+        width: 100%;
+      }
+
+      #sec-4 .demos-open-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.65rem;
+        width: 100%;
+      }
+
+      #sec-4 .demo-open-link {
+        flex-direction: row;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.45rem 0.65rem;
+        border-bottom: none;
+        border: 1px solid rgba(226, 201, 146, 0.22);
+        border-radius: 12px;
+        background: rgba(8, 14, 26, 0.65);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        min-width: 0;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      #sec-4 .client-logo-box {
+        height: 28px;
+        min-width: 68px;
+        max-width: 68px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0;
+        flex-shrink: 0;
+      }
+
+      #sec-4 .client-logo-img {
+        max-height: 26px;
+        max-width: 64px;
+      }
+
+      #sec-4 .demo-open-info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.12rem;
+        overflow: hidden;
+      }
+
+      #sec-4 .demo-open-name {
+        font-size: 0.88rem;
+        line-height: 1.2;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      #sec-4 .demo-open-tag {
+        font-size: 0.72rem;
+        line-height: 1.2;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      #sec-4 .sec4-btn-wrap {
+        margin-top: 0.4rem;
+      }
+
+      #sec-4 .btn-cta-gold {
+        padding: 0.55rem 1.2rem;
+        font-size: 0.8rem;
+        box-shadow: 0 8px 20px rgba(226, 201, 146, 0.25);
       }
 
       .sec-bottom-wrap,
@@ -1278,38 +1367,46 @@
             <div class="client-logo-box">
               <img src="assets/clients/logo_riomayo.png" alt="Río Mayo Lands" class="client-logo-img" />
             </div>
-            <span class="demo-open-name">Río Mayo Lands</span>
-            <span class="demo-open-tag" data-i18n="card2_demo_rio">Desarrollo Inmobiliario · Ver Sitio</span>
+            <div class="demo-open-info">
+              <span class="demo-open-name">Río Mayo Lands</span>
+              <span class="demo-open-tag" data-i18n="card2_demo_rio">Desarrollo Inmobiliario · Ver Sitio</span>
+            </div>
           </a>
 
           <a href="michaelconstructora/index.html" target="_blank" class="demo-open-link">
             <div class="client-logo-box">
               <img src="assets/clients/logo_michael.png" alt="Michael Constructora" class="client-logo-img" />
             </div>
-            <span class="demo-open-name">Michael Constructora</span>
-            <span class="demo-open-tag" data-i18n="card2_demo_const">Ingeniería &amp; Obra Civil · Ver Sitio</span>
+            <div class="demo-open-info">
+              <span class="demo-open-name">Michael Constructora</span>
+              <span class="demo-open-tag" data-i18n="card2_demo_const">Ingeniería &amp; Obra Civil · Ver Sitio</span>
+            </div>
           </a>
 
           <a href="hr-legal/index.html" class="demo-open-link">
             <div class="client-logo-box">
-              <img src="assets/clients/logo_hr_legal.svg" alt="HR & Legal" class="client-logo-img" />
+              <img src="assets/clients/logo_hr_legal.svg" alt="HR &amp; Legal" class="client-logo-img" />
             </div>
-            <span class="demo-open-name">HR &amp; Legal</span>
-            <span class="demo-open-tag" data-i18n="card2_demo_hr">Estudio Jurídico · Ver Sitio</span>
+            <div class="demo-open-info">
+              <span class="demo-open-name">HR &amp; Legal</span>
+              <span class="demo-open-tag" data-i18n="card2_demo_hr">Estudio Jurídico · Ver Sitio</span>
+            </div>
           </a>
 
           <div class="demo-open-link">
             <div class="client-logo-box">
               <img src="assets/clients/logo_ndc.svg" alt="NDC Arquitectura y Construcción" class="client-logo-img" />
             </div>
-            <span class="demo-open-name">NDC Arquitectura y Construcción</span>
-            <span class="demo-open-tag" data-i18n="card2_demo_mod">Diseño Modular &amp; Obra</span>
+            <div class="demo-open-info">
+              <span class="demo-open-name">NDC Arquitectura y Construcción</span>
+              <span class="demo-open-tag" data-i18n="card2_demo_mod">Diseño Modular &amp; Obra</span>
+            </div>
           </div>
 
         </div>
       </div>
 
-      <div style="margin-top: 1.8rem;">
+      <div class="sec4-btn-wrap" style="margin-top: 1.8rem;">
         <a href="#sec-5" class="btn-cta-gold">
           <span data-i18n="btn_contact">Información de Contacto</span>
           <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
