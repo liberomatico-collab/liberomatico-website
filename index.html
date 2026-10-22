@@ -780,9 +780,10 @@
        - ZONA CENTRAL RESERVADA: TEXTO CON TECHO Y PISO BLINDADOS (CERO SOLAPAMIENTOS)
        ========================================================================== */
     @media (max-aspect-ratio: 1/1), (max-width: 960px) {
-      html {
-        scroll-snap-type: y mandatory;
-        scroll-behavior: smooth;
+      html, body {
+        overflow: hidden;
+        height: 100%;
+        height: 100dvh;
       }
 
       /* CABECERA COMPACTA DE UNA SOLA LÍNEA HORIZONTAL (CERO SOLAPAMIENTOS) */
@@ -963,25 +964,47 @@
         padding: 0.15rem 0;
       }
 
-      /* ZONA RESERVADA DE TEXTO CON SCROLL SNAP:
-         - TECHO LIBRE (4.8rem) PARA NO CHOCAR LA CABECERA NI ROSTROS
-         - PISO LIBRE (11.5rem) PARA NUNCA SOLAPARSE CON EL MENÚ NI WHATSAPP */
+      /* CONTENEDOR DE SCROLL VERTICAL CON LÍMITES FÍSICOS ESTRICTOS:
+         - TECHO: 4.8rem (DESPEJA CABECERA Y ROSTROS)
+         - PISO: 12.5rem (TERMINA FÍSICAMENTE POR ENCIMA DE "ESTRATEGIA", DEL MENÚ Y DE WHATSAPP)
+         EL TEXTO EXISTE, ENTRA Y SALE EXCLUSIVAMENTE DENTRO DE ESTA VENTANA */
+      main.open-flow {
+        position: fixed;
+        top: 4.8rem;
+        bottom: 12.5rem;
+        left: 0;
+        right: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+        z-index: 20;
+      }
+
       .open-section {
-        min-height: 100vh;
-        min-height: 100dvh;
+        min-height: 100%;
+        height: 100%;
         box-sizing: border-box;
-        padding: 4.8rem 1.25rem 11.5rem 1.25rem;
+        padding: 1.25rem 1.25rem;
         scroll-snap-align: start;
         scroll-snap-stop: always;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
       }
 
       #sec-1,
       #sec-2,
-      #sec-3 {
+      #sec-3,
+      #sec-4,
+      #sec-5 {
+        min-height: 100%;
+        height: 100%;
         justify-content: flex-end;
         align-items: flex-start;
-        padding-top: 4.8rem;
-        padding-bottom: 11.5rem;
+        padding: 1.25rem 1.25rem;
       }
 
       .sec-bottom-wrap,
@@ -1008,12 +1031,7 @@
         gap: 2.2rem;
       }
 
-      #sec-5 {
-        justify-content: flex-end;
-        align-items: flex-start;
-        padding-top: 4.8rem;
-        padding-bottom: 11.5rem;
-      }
+      /* #sec-5 HEREDA LA MISMA GEOMETRÍA COMPACTA */
 
       .profile-open-layout {
         max-width: 100%;
@@ -1444,25 +1462,24 @@
       });
     }
 
-    // Control del Acordeón Izquierdo con navegación suave por sección
-    function toggleAccordion(groupId, secId) {
-      const groups = document.querySelectorAll('.acc-group');
-      groups.forEach((grp) => {
-        if (grp.id === groupId) {
-          grp.classList.toggle('open');
-        } else {
-          grp.classList.remove('open');
+    // Interceptar clics en enlaces del menú para desplazamiento perfecto en móvil y desktop
+    navItems.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
         }
       });
-      if (secId) {
-        const target = document.getElementById(secId);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
-    }
+    });
 
     // Observador de Scroll para sincronizar fondos y menú automáticamente al bajar o subir
+    const isMobileViewport = () => (window.innerWidth <= 960 || window.innerHeight > window.innerWidth);
+    const scrollContainer = isMobileViewport() ? document.querySelector('main.open-flow') : null;
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -1473,6 +1490,7 @@
         }
       });
     }, {
+      root: scrollContainer,
       threshold: 0.45
     });
 
