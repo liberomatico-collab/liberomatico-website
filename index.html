@@ -318,6 +318,21 @@
     }
 
     /* BOTÓN SELECTOR DE AUDIO INTELIGENTE (ESTILO CÁPSULA GLASS IDÉNTICO A WHATSAPP) */
+    @keyframes audioPulseGlow {
+      0% {
+        box-shadow: 0 0 0 0 rgba(226, 201, 146, 0.55), 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        border-color: rgba(226, 201, 146, 0.5);
+      }
+      50% {
+        box-shadow: 0 0 18px 4px rgba(226, 201, 146, 0.75), 0 8px 24px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+        border-color: var(--champagne);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(226, 201, 146, 0), 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        border-color: rgba(226, 201, 146, 0.5);
+      }
+    }
+
     .btn-audio-toggle {
       display: inline-flex;
       align-items: center;
@@ -329,7 +344,7 @@
       background: rgba(8, 14, 26, 0.68);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(226, 201, 146, 0.4);
+      border: 1px solid rgba(226, 201, 146, 0.5);
       border-radius: 9999px;
       color: rgba(248, 250, 252, 0.85);
       cursor: pointer;
@@ -337,6 +352,7 @@
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
       outline: none;
       flex-shrink: 0;
+      animation: audioPulseGlow 2.4s ease-in-out infinite;
     }
 
     .btn-audio-toggle:hover {
@@ -345,6 +361,7 @@
       color: #ffffff;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.25);
       transform: translateY(-2px) scale(1.05);
+      animation: none;
     }
 
     .btn-audio-toggle.active {
@@ -352,6 +369,7 @@
       border-color: var(--champagne);
       color: var(--champagne);
       box-shadow: 0 0 20px rgba(226, 201, 146, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      animation: none;
     }
 
     .btn-audio-toggle .audio-icon {
@@ -512,21 +530,22 @@
     .sec-title-single,
     .sec1-title {
       font-size: clamp(1.4rem, 2.3vw, 2.15rem);
-      font-weight: 700;
+      font-weight: 600;
       line-height: 1.35;
       color: #ffffff;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.015em;
       text-shadow: 0 4px 24px rgba(0, 0, 0, 0.95), 0 2px 10px rgba(0, 0, 0, 0.9);
       margin-bottom: 0;
     }
 
     .sec-sub-line {
       font-size: clamp(0.95rem, 1.2vw, 1.12rem);
-      font-weight: 600;
+      font-weight: 500;
       color: var(--champagne);
-      letter-spacing: 0.03em;
+      letter-spacing: 0.025em;
       margin-top: 0.65rem;
       margin-bottom: 0;
+      line-height: 1.45;
       text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95);
     }
 
@@ -537,12 +556,12 @@
 
     .open-title {
       font-size: clamp(1.35rem, 2.1vw, 1.95rem);
-      font-weight: 700;
+      font-weight: 600;
       line-height: 1.28;
       color: #ffffff;
       max-width: 640px;
       margin-bottom: 0.75rem;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.015em;
       text-shadow: 0 3px 18px rgba(0, 0, 0, 0.95);
     }
 
@@ -1106,13 +1125,17 @@
       .sec-title-single,
       .sec1-title {
         font-size: clamp(1.18rem, 5vw, 1.48rem);
+        font-weight: 600;
+        letter-spacing: -0.015em;
         line-height: 1.35;
       }
 
       .sec-sub-line {
         font-size: clamp(0.85rem, 3.6vw, 0.95rem);
+        font-weight: 500;
+        letter-spacing: 0.025em;
         margin-top: 0.45rem;
-        line-height: 1.35;
+        line-height: 1.4;
       }
 
       .pilares-open-grid {
@@ -1322,10 +1345,10 @@
     <section class="open-section" id="sec-1" data-index="1">
       <div class="sec-bottom-wrap">
         <h2 class="open-title sec-title-single" data-i18n="sec1_title">
-          Potenciamos lo que hace diferente a su marca
+          Potenciamos su Negocio u Organización
         </h2>
         <p class="sec-sub-line" data-i18n="sec1_sub">
-          Con mucho gusto lo ayudaremos
+          De forma organizada, orgánica y basada en resultados
         </p>
       </div>
     </section>
@@ -1337,7 +1360,7 @@
           Presencia digital para conectar con la gente que necesita su producto.
         </h2>
         <p class="sec-sub-line" data-i18n="sec2_sub">
-          Catálogos online · Webs de validación · Gráfica digital y Reels
+          Catálogos Online · Webs de Validación · Gráfica digital - Reels Aceleradores de Conversión
         </p>
       </div>
     </section>
@@ -1349,7 +1372,7 @@
           Tecnología que impulsa
         </h2>
         <p class="sec-sub-line" data-i18n="sec3_sub">
-          Software · Apps · Gestión · Control
+          Software a medida · Apps captadoras de pedidos · Gestión de recursos · Control organizacional
         </p>
       </div>
     </section>
@@ -1613,8 +1636,8 @@
         nav_ref: "Clientes",
         nav_3: "Contacto",
         sec1_tag: "Estrategia",
-        sec1_title: "Potenciamos lo que hace diferente a su marca",
-        sec1_sub: "Con mucho gusto lo ayudaremos",
+        sec1_title: "Potenciamos su Negocio u Organización",
+        sec1_sub: "De forma organizada, orgánica y basada en resultados",
         sec1_desc: "Nos sentamos con usted a entender cómo trabaja y qué valoran las personas que le compran. A partir de esa realidad, lo asistimos con tecnología y presencia visual para mostrar con fuerza lo que hace único a su proyecto.",
         sec1_p1_title: "Conocer su Terreno",
         sec1_p1_desc: "Entender a fondo cómo funciona su negocio hoy y qué busca exactamente su cliente.",
@@ -1625,7 +1648,7 @@
         btn_next_pub: "Ver Publicidad & Audiovisual",
         sec2_tag: "Publicidad",
         sec2_title: "Presencia digital para conectar con la gente que necesita su producto.",
-        sec2_sub: "Catálogos online · Webs de validación · Gráfica digital y Reels",
+        sec2_sub: "Catálogos Online · Webs de Validación · Gráfica digital - Reels Aceleradores de Conversión",
         sec2_desc: "Producción de calidad cinematográfica que capta interés genuino y lleva a las personas hacia su catálogo.",
         sec2_p1_title: "Producción Audiovisual",
         sec2_p1_desc: "Videos cuidados que comunican con respeto y captan la mirada.",
@@ -1636,7 +1659,7 @@
         btn_next_tec: "Ver Tecnología & Sistemas",
         sec3_tag: "Tecnología",
         sec3_title: "Tecnología que impulsa",
-        sec3_sub: "Software · Apps · Gestión · Control",
+        sec3_sub: "Software a medida · Apps captadoras de pedidos · Gestión de recursos · Control organizacional",
         sec3_desc: "Software liviano y sitios web que dan confianza y ordenan la relación con sus clientes.",
         sec3_p1_title: "Consultoría",
         sec3_p1_desc: "Orientación práctica para incorporar tecnología útil sin complicaciones.",
@@ -1676,8 +1699,8 @@
         nav_ref: "Clients",
         nav_3: "Contact",
         sec1_tag: "Strategy",
-        sec1_title: "We empower what sets your brand apart",
-        sec1_sub: "We will gladly assist you",
+        sec1_title: "We empower your Business or Organization",
+        sec1_sub: "Organized, organic, and results-driven",
         sec1_desc: "We sit down with you to understand how you operate and what your clients genuinely value. From that reality, we assist you with tailored technology and visual media to showcase what makes your venture unique.",
         sec1_p1_title: "Know Your Ground",
         sec1_p1_desc: "Understanding in depth how your business operates today and what your clients genuinely seek.",
@@ -1688,7 +1711,7 @@
         btn_next_pub: "Explore Advertising & Media",
         sec2_tag: "Advertising",
         sec2_title: "Digital presence to connect with the people who need your product.",
-        sec2_sub: "Online catalogs · Validation websites · Digital graphics & Reels",
+        sec2_sub: "Online Catalogs · Validation Websites · Digital Graphics - Conversion-Accelerating Reels",
         sec2_desc: "Cinematic quality production that captures genuine attention and guides people toward your catalog.",
         sec2_p1_title: "Audiovisual Production",
         sec2_p1_desc: "Crafted videos that communicate with respect and captivate viewers.",
@@ -1699,7 +1722,7 @@
         btn_next_tec: "Explore Tech & Systems",
         sec3_tag: "Technology",
         sec3_title: "Technology that drives",
-        sec3_sub: "Software · Apps · Management · Control",
+        sec3_sub: "Tailored Software · Order-Capturing Apps · Resource Management · Organizational Control",
         sec3_desc: "Lightweight software and modern websites that build confidence and streamline client relations.",
         sec3_p1_title: "Consulting",
         sec3_p1_desc: "Practical guidance to integrate effective technology without unnecessary friction.",
