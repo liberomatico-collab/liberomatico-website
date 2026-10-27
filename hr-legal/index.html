@@ -3,23 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HR & LEGAL CONSULTING S.A.C. | Estudio Jurídico</title>
-  <meta name="description" content="HR & LEGAL CONSULTING S.A.C. Estudio jurídico especializado en defensa administrativa ante SUNAFIL y Tribunal del OSCE, gestión de riesgos en Activos Críticos Nacionales y derecho laboral empresarial por plataformas electrónicas.">
+  <title>CORPORATIVO HR & LEGAL CONSULTING S.A.C. | Consultoría Legal Especializada & Gestión Pública</title>
+  <meta name="description" content="CORPORATIVO HR & LEGAL CONSULTING S.A.C. Consultoría Legal Especializada y Gestión Pública, Gestión de Riesgos en Activos Críticos Nacionales (ACN) y Gestión Estratégica del Talento Humano.">
   
-  <!-- Tipografía Oficial (Material 001.jpg): Cinzel (Romana Imperial) + Plus Jakarta Sans (Lectura Suiza) -->
+  <!-- Tipografía Oficial: Cinzel (Titulares) + Plus Jakarta Sans (Lectura Ejecutiva) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    /* ==========================================================================
-       SISTEMA DE IDENTIDAD VISUAL: MATERIAL 001.JPG (ELEGIDO POR MARCO ARAUJO)
-       - Fondo Primario: Azul Marino Imperial / Royal Navy (#0A2246)
-       - Superficie Contraste: Pizarra Marino Profundo (#061630)
-       - Oro Hot Stamping Foil: #C8A86B (Brillo: #DFC182 / Sombra: #9E7D4C)
-       - Tipografía Titulares: Cinzel (Romana Lapidaria en Mayúsculas con Kerning)
-       - Tipografía Lectura: Plus Jakarta Sans (Austera, limpia, ejecutiva)
-       ========================================================================== */
     :root {
       --bg-deep: #0A2246;
       --bg-surface: #061630;
@@ -28,19 +20,24 @@
       --gold-primary: #C8A86B;
       --gold-light: #DFC182;
       --gold-dark: #9E7D4C;
-      --gold-subtle: rgba(200, 168, 107, 0.18);
+      --gold-subtle: rgba(200, 168, 107, 0.14);
       
       --text-main: #FFFFFF;
-      --text-reading: #D0DBEA;
-      --text-muted: #8397B2;
+      --text-reading: #D6E0EE;
+      --text-muted: #8FA3BE;
       
-      --border-line: rgba(200, 168, 107, 0.28);
-      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-line: rgba(200, 168, 107, 0.36);
+      --border-subtle: rgba(255, 255, 255, 0.12);
+      
+      --glass-btn-bg: rgba(6, 22, 48, 0.14);
+      --glass-btn-hover: rgba(200, 168, 107, 0.18);
+      --glass-btn-active: rgba(200, 168, 107, 0.24);
+      --glass-card-bg: rgba(6, 22, 48, 0.16);
       
       --font-serif: 'Cinzel', Georgia, serif;
       --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
       
-      --container-width: 1140px;
+      --container-width: 1240px;
     }
 
     *, *::before, *::after {
@@ -58,7 +55,7 @@
       background-color: var(--bg-deep);
       color: var(--text-reading);
       font-family: var(--font-sans);
-      line-height: 1.65;
+      line-height: 1.6;
       font-weight: 300;
       -webkit-font-smoothing: antialiased;
     }
@@ -72,116 +69,187 @@
     .container {
       max-width: var(--container-width);
       margin: 0 auto;
-      padding: 0 1.5rem;
+      padding: 0 1.75rem;
     }
 
     /* ==========================================================================
-       CABECERA INSTITUCIONAL FIJA CON ESCUDO HERÁLDICO 001.JPG
+       CABECERA INSTITUCIONAL EN CRISTAL (TODOS LOS BOTONES TRANSPARENTES)
        ========================================================================== */
     .site-header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(10, 34, 70, 0.95);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(6, 22, 48, 0.22);
+      backdrop-filter: blur(12px) saturate(130%);
+      -webkit-backdrop-filter: blur(12px) saturate(130%);
       border-bottom: 1px solid var(--border-line);
-      padding: 0.9rem 0;
+      padding: 0.6rem 0;
     }
 
     .header-layout {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 0.85rem;
     }
 
     .brand-mark {
       display: flex;
       align-items: center;
+      gap: 0.85rem;
       text-decoration: none;
+      flex-shrink: 0;
     }
 
     .brand-logo-img {
-      height: 50px;
+      height: 44px;
       width: auto;
       display: block;
-      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
+      animation: logoSwissGlint 7s ease-in-out infinite;
     }
 
-    /* Navegación y Controles Superiores */
+    @keyframes logoSwissGlint {
+      0%, 36%, 100% {
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
+      }
+      16% {
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35)) drop-shadow(0 0 9px rgba(223, 193, 130, 0.42));
+      }
+    }
+
+    .brand-corp-text {
+      display: flex;
+      flex-direction: column;
+      border-left: 1px solid var(--border-line);
+      padding-left: 0.8rem;
+    }
+
+    .brand-corp-top {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      line-height: 1.2;
+    }
+
+    .brand-corp-sub {
+      font-size: 0.72rem;
+      font-weight: 400;
+      color: var(--text-reading);
+      line-height: 1.25;
+    }
+
+    /* Navegación y Controles Superiores Transparentes */
     .header-nav {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      flex-wrap: wrap;
+      gap: 0.5rem;
+      flex-wrap: nowrap;
     }
 
     .nav-links {
       display: flex;
       list-style: none;
-      gap: 0.6rem;
+      gap: 0.45rem;
     }
 
     .nav-btn {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
       font-family: var(--font-sans);
       font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      font-weight: 400;
+      letter-spacing: 0.02em;
       color: var(--text-main);
-      padding: 0.5rem 0.9rem;
-      background: linear-gradient(180deg, #11284E 0%, #0A1B36 100%);
+      padding: 0.42rem 0.8rem;
+      background: var(--glass-btn-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border: 1px solid var(--border-line);
-      border-radius: 3px;
-      box-shadow: 0 3px 0 #040C1A, 0 4px 8px rgba(0, 0, 0, 0.35);
-      transition: all 0.15s ease;
+      border-radius: 4px;
+      transition: all 0.2s ease;
       cursor: pointer;
+      white-space: nowrap;
     }
 
     .nav-btn:hover {
-      transform: translateY(2px);
-      box-shadow: 0 1px 0 #040C1A, 0 2px 4px rgba(0, 0, 0, 0.2);
+      background: var(--glass-btn-hover);
       border-color: var(--gold-light);
       color: var(--gold-light);
     }
 
-    .nav-btn:active {
-      transform: translateY(3px);
-      box-shadow: 0 0 0 #040C1A;
-    }
-
-    /* Grupo de Herramientas (Fuente + Idioma) */
-    .header-tools {
+    /* Un solo botón alargadito con Bandera Española y Bandera Gringa */
+    .lang-pill-btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.45rem;
-      padding-left: 0.35rem;
-      border-left: 1px solid var(--border-subtle);
+      gap: 0.42rem;
+      background: var(--glass-btn-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--border-line);
+      border-radius: 999px;
+      padding: 0.36rem 0.62rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .lang-pill-btn:hover {
+      background: var(--glass-btn-hover);
+      border-color: var(--gold-light);
+    }
+
+    .lang-pill-divider {
+      width: 1px;
+      height: 11px;
+      background: var(--border-line);
+    }
+
+    .flag-icon {
+      width: 16px;
+      height: 11px;
+      border-radius: 1.5px;
+      display: block;
+      opacity: 0.4;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .flag-icon.active {
+      opacity: 1;
+      transform: scale(1.06);
+      box-shadow: 0 0 6px rgba(200, 168, 107, 0.45);
+    }
+
+    .footer-right-group {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
     }
 
     .tool-group {
       display: inline-flex;
       align-items: center;
-      background: #061630;
+      background: var(--glass-btn-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border: 1px solid var(--border-line);
-      border-radius: 3px;
+      border-radius: 4px;
       overflow: hidden;
-      box-shadow: 0 2px 0 #040C1A;
     }
 
     .tool-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.35rem;
       background: transparent;
       border: none;
       color: var(--text-reading);
       font-family: var(--font-sans);
-      font-size: 0.72rem;
-      font-weight: 600;
-      padding: 0.42rem 0.58rem;
+      font-size: 0.68rem;
+      font-weight: 500;
+      padding: 0.32rem 0.48rem;
       cursor: pointer;
       transition: all 0.15s ease;
       line-height: 1;
@@ -193,41 +261,28 @@
 
     .tool-btn:hover {
       color: var(--gold-light);
-      background: rgba(200, 168, 107, 0.12);
+      background: var(--glass-btn-hover);
     }
 
-    .tool-btn.active {
-      background: rgba(200, 168, 107, 0.22);
-      color: #FFFFFF;
-    }
-
-    .flag-icon {
-      width: 16px;
-      height: 12px;
-      border-radius: 1.5px;
-      display: block;
-      box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
-    }
-
-    /* Botón LinkedIn Oficial */
     .btn-linkedin {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 36px;
-      height: 35px;
-      background: linear-gradient(180deg, #11284E 0%, #0A1B36 100%);
+      width: 34px;
+      height: 33px;
+      background: var(--glass-btn-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border: 1px solid var(--border-line);
-      border-radius: 3px;
-      box-shadow: 0 3px 0 #040C1A, 0 4px 8px rgba(0, 0, 0, 0.35);
+      border-radius: 4px;
       color: var(--gold-primary);
-      transition: all 0.15s ease;
+      transition: all 0.2s ease;
       cursor: pointer;
+      flex-shrink: 0;
     }
 
     .btn-linkedin:hover {
-      transform: translateY(2px);
-      box-shadow: 0 1px 0 #040C1A, 0 2px 4px rgba(0, 0, 0, 0.2);
+      background: var(--glass-btn-hover);
       border-color: var(--gold-light);
       color: var(--gold-light);
     }
@@ -236,57 +291,54 @@
       fill: currentColor;
     }
 
-    /* Botón de Acción Directa WhatsApp */
     .btn-consulta {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      font-family: var(--font-serif);
+      gap: 0.45rem;
+      font-family: var(--font-sans);
       font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.11em;
-      text-transform: uppercase;
+      font-weight: 500;
+      letter-spacing: 0.02em;
       color: #FFFFFF;
-      background: linear-gradient(180deg, #163669 0%, #0D2347 100%);
+      background: var(--glass-btn-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border: 1px solid var(--gold-primary);
-      padding: 0.52rem 1rem;
-      border-radius: 3px;
-      box-shadow: 0 3px 0 #040C1A, 0 5px 12px rgba(200, 168, 107, 0.18);
-      transition: all 0.15s ease;
+      padding: 0.42rem 0.85rem;
+      border-radius: 4px;
+      transition: all 0.2s ease;
       cursor: pointer;
+      white-space: nowrap;
     }
 
     .btn-consulta:hover {
-      transform: translateY(2px);
-      box-shadow: 0 1px 0 #040C1A, 0 2px 5px rgba(200, 168, 107, 0.15);
-      background: linear-gradient(180deg, #1B4280 0%, #112D5C 100%);
+      background: var(--glass-btn-hover);
+      border-color: var(--gold-light);
       color: var(--gold-light);
     }
 
     .btn-consulta svg {
       fill: var(--gold-primary);
-      transition: fill 0.2s ease;
-    }
-
-    .btn-consulta:hover svg {
-      fill: var(--gold-light);
+      flex-shrink: 0;
     }
 
     /* ==========================================================================
-       CAPAS DE VIDEO CINEMATOGRÁFICO (HERO PANTALLA COMPLETA + DESPACHO 9:16)
+       HERO CINEMATOGRÁFICO (65%–70% VIDEO DESPEJADO + HUD INFERIOR EN CRISTAL)
        ========================================================================== */
     .hero-section {
       position: relative;
       overflow: hidden;
-      padding: 5.5rem 0 5rem;
+      min-height: calc(100vh - 64px);
+      min-height: calc(100svh - 64px);
+      padding: 1.5rem 0 2.1rem;
       border-bottom: 1px solid var(--border-line);
-      min-height: 82vh;
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      justify-content: flex-end;
     }
 
     .section-bg-video-wrap {
-      position: absolute;
+      position: fixed;
       inset: 0;
       z-index: 0;
       pointer-events: none;
@@ -301,7 +353,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 35%;
+      object-position: center 32%;
       opacity: 0;
       transition: opacity 1.2s ease-in-out;
     }
@@ -310,14 +362,16 @@
       opacity: 1;
     }
 
+    /* Velo graduado ligero que deja el video nítido detrás de todas las cajas de cristal */
     .section-bg-overlay {
       position: absolute;
       inset: 0;
       background: linear-gradient(
-        90deg,
-        rgba(10, 34, 70, 0.76) 0%,
-        rgba(10, 34, 70, 0.64) 55%,
-        rgba(6, 22, 48, 0.76) 100%
+        180deg,
+        rgba(6, 22, 48, 0.18) 0%,
+        rgba(6, 22, 48, 0.08) 42%,
+        rgba(6, 22, 48, 0.38) 72%,
+        rgba(6, 22, 48, 0.52) 100%
       );
       z-index: 1;
     }
@@ -326,170 +380,347 @@
       position: relative;
       z-index: 2;
       width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 1.25rem;
     }
 
-    /* Tarjetas semi-translúcidas */
-    .practice-item {
-      background: rgba(6, 22, 48, 0.82) !important;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-    }
-
-    .hero-content {
-      max-width: 780px;
-      padding: 2rem 0;
-    }
-
-    .hero-tag {
-      display: inline-block;
-      font-size: 0.72rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold-light);
-      margin-bottom: 1rem;
-      border-left: 2px solid var(--gold-primary);
-      padding-left: 0.75rem;
+    /* Fila Superior del HUD Inferior: Título Sereno + Subtítulo Conciso */
+    .hero-hud-top {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      align-items: end;
+      gap: 2rem;
     }
 
     .hero-heading {
       font-family: var(--font-serif);
-      font-size: 3.15rem;
-      font-weight: 600;
+      font-size: clamp(1.45rem, 2.2vw, 2.1rem);
+      font-weight: 500;
       color: var(--text-main);
-      line-height: 1.18;
+      line-height: 1.22;
       letter-spacing: 0.02em;
-      margin-bottom: 1.35rem;
-      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.75);
     }
 
     .hero-subtext {
-      font-size: 1.08rem;
+      font-size: 0.9rem;
       color: var(--text-reading);
-      line-height: 1.75;
-      max-width: 640px;
-      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+      line-height: 1.55;
+      border-left: 1px solid var(--border-line);
+      padding-left: 1.15rem;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.75);
+    }
+
+    /* Indicador superior que invita al clic en Especialidades */
+    .branches-prompt-bar {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: -0.35rem;
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.85);
+    }
+
+    .prompt-pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold-light);
+      box-shadow: 0 0 8px var(--gold-light);
+      animation: dotPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes dotPulse {
+      0%, 100% { transform: scale(0.85); opacity: 0.55; }
+      50% { transform: scale(1.25); opacity: 1; box-shadow: 0 0 12px #FFF3D1, 0 0 20px var(--gold-primary); }
+    }
+
+    /* Las 3 Ramas en Botones de Cristal Transparente con Ola de Destello Secuencial (1 -> 2 -> 3) */
+    .hero-branches-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.9rem;
+    }
+
+    .hero-branch-btn {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      width: 100%;
+      text-align: left;
+      padding: 0.92rem 1.1rem;
+      background: rgba(10, 28, 58, 0.24);
+      backdrop-filter: blur(14px) saturate(140%);
+      -webkit-backdrop-filter: blur(14px) saturate(140%);
+      border: 1px solid rgba(200, 168, 107, 0.45);
+      border-top: 1.5px solid rgba(223, 193, 130, 0.8);
+      border-radius: 5px;
+      color: #FFFFFF;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      transition: all 0.25s ease;
+      animation: branchBorderGlow 5.4s ease-in-out infinite;
+    }
+
+    /* Destello diagonal de oro champán que recorre cada botón */
+    .hero-branch-btn::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -130%;
+      width: 65%;
+      height: 100%;
+      background: linear-gradient(
+        115deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(223, 193, 130, 0.08) 35%,
+        rgba(255, 246, 214, 0.36) 50%,
+        rgba(223, 193, 130, 0.08) 65%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: skewX(-22deg);
+      pointer-events: none;
+      animation: branchSheenSweep 5.4s ease-in-out infinite;
+    }
+
+    /* Cascada secuencial 1 -> 2 -> 3 */
+    .hero-branch-btn:nth-child(1),
+    .hero-branch-btn:nth-child(1)::after {
+      animation-delay: 0s;
+    }
+    .hero-branch-btn:nth-child(2),
+    .hero-branch-btn:nth-child(2)::after {
+      animation-delay: 0.65s;
+    }
+    .hero-branch-btn:nth-child(3),
+    .hero-branch-btn:nth-child(3)::after {
+      animation-delay: 1.3s;
+    }
+
+    @keyframes branchSheenSweep {
+      0% { left: -130%; }
+      24%, 100% { left: 160%; }
+    }
+
+    @keyframes branchBorderGlow {
+      0%, 30%, 100% {
+        border-color: rgba(200, 168, 107, 0.45);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      }
+      12% {
+        border-color: rgba(255, 240, 194, 0.92);
+        box-shadow: 0 8px 26px rgba(200, 168, 107, 0.28), inset 0 0 12px rgba(223, 193, 130, 0.16);
+      }
+    }
+
+    .hero-branch-btn:hover,
+    .hero-branch-btn.active {
+      background: rgba(200, 168, 107, 0.22);
+      border-color: var(--gold-light);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4), 0 0 16px rgba(200, 168, 107, 0.25);
+      transform: translateY(-2px);
+    }
+
+    .branch-btn-left {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      min-width: 0;
+    }
+
+    .branch-arrow {
+      font-size: 1.2rem;
+      line-height: 1;
+      color: var(--gold-light);
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .branch-title {
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      line-height: 1.32;
+      color: #FFFFFF;
+    }
+
+    /* Cápsula circular derecha con flecha desplegable que invita a hacer clic */
+    .branch-expand-badge {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1px solid rgba(223, 193, 130, 0.6);
+      background: rgba(200, 168, 107, 0.14);
+      color: var(--gold-light);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      flex-shrink: 0;
+      transition: transform 0.28s ease, background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+    }
+
+    .hero-branch-btn:hover .branch-expand-badge {
+      background: rgba(200, 168, 107, 0.3);
+      border-color: #FFF3D1;
+      color: #FFFFFF;
+    }
+
+    .hero-branch-btn.active .branch-expand-badge {
+      transform: rotate(180deg);
+      background: var(--gold-primary);
+      border-color: var(--gold-light);
+      color: #06142E;
     }
 
     /* ==========================================================================
-       ESPECIALIDADES FORENSES: 4 PILARES ADMINISTRATIVOS Y DIGITALES
-       (Filtro de Clientes: Casilla SINOE, SUNAFIL, OSCE y ACN)
+       DESPLIEGUE DIRECTO AL HACER CLIC EN CADA RAMA (MISMO CRITERIO PC Y MÓVIL)
        ========================================================================== */
-    .practices-section {
-      padding: 5rem 0;
-      border-bottom: 1px solid var(--border-line);
+    .branch-drawer-wrap {
+      display: none;
+      margin-top: 0.35rem;
+      animation: fadeUnit 0.28s ease;
     }
 
-    .section-header {
-      margin-bottom: 3rem;
-      max-width: 720px;
-    }
-
-    .section-tag {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold-primary);
-      margin-bottom: 0.5rem;
+    .branch-drawer-wrap.open {
       display: block;
     }
 
-    .section-title {
-      font-family: var(--font-serif);
-      font-size: 2.15rem;
-      font-weight: 600;
-      color: var(--text-main);
-      line-height: 1.25;
-      letter-spacing: 0.02em;
-      margin-bottom: 0.75rem;
+    .unit-panel {
+      display: none;
     }
 
-    .section-desc {
-      font-size: 0.925rem;
-      color: var(--text-reading);
-      line-height: 1.65;
+    .unit-panel.active {
+      display: block;
     }
 
-    .practices-grid {
+    @keyframes fadeUnit {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Cuadros informativos de cristal (Estáticos, sin sub-botones adentro) */
+    .fan-list {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+      gap: 0.95rem;
+      align-items: stretch;
     }
 
-    .practice-item {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-line);
-      padding: 2.25rem;
-      transition: all 0.25s ease;
-      position: relative;
+    #panel-u1 .fan-list {
+      grid-template-columns: repeat(3, 1fr);
     }
 
-    .practice-item:hover {
-      border-color: var(--gold-primary);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    #panel-u2 .fan-list,
+    #panel-u3 .fan-list {
+      grid-template-columns: repeat(2, 1fr);
     }
 
-    .practice-header {
+    .fan-item {
       display: flex;
-      align-items: baseline;
-      gap: 0.75rem;
-      margin-bottom: 0.85rem;
-    }
-
-    .practice-number {
-      font-family: var(--font-serif);
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--gold-primary);
-    }
-
-    .practice-name {
-      font-family: var(--font-serif);
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--text-main);
-      line-height: 1.3;
-      letter-spacing: 0.01em;
-    }
-
-    .practice-badge {
-      display: inline-block;
-      font-size: 0.65rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold-light);
-      background: var(--gold-subtle);
+      flex-direction: column;
+      background: rgba(6, 22, 48, 0.28);
+      backdrop-filter: blur(14px) saturate(135%);
+      -webkit-backdrop-filter: blur(14px) saturate(135%);
       border: 1px solid var(--border-line);
-      padding: 0.2rem 0.6rem;
-      margin-bottom: 0.85rem;
+      border-top: 2px solid var(--gold-primary);
+      border-radius: 4px;
+      overflow: hidden;
     }
 
-    .practice-desc {
+    .fan-card-title {
+      padding: 0.9rem 1.15rem 0.75rem;
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--gold-light);
+      font-family: var(--font-sans);
       font-size: 0.9rem;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .fan-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1;
+      padding: 0.9rem 1.15rem 1.05rem;
+    }
+
+    .fan-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .fan-bullets li {
+      position: relative;
+      padding-left: 1rem;
+      font-size: 0.86rem;
       color: var(--text-reading);
-      line-height: 1.65;
+      line-height: 1.5;
+    }
+
+    .fan-bullets li::before {
+      content: "›";
+      position: absolute;
+      left: 0;
+      top: -1px;
+      color: var(--gold-primary);
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .fan-bullets strong {
+      color: #FFFFFF;
+      font-weight: 500;
+    }
+
+    .confidential-note {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--border-subtle);
+      color: var(--gold-light);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
     }
 
     /* ==========================================================================
-       DESPACHO LETRADO Y ENCUADRE LATERAL 9:16 DERECHO
+       SECCIÓN 3: DIRECCIÓN GENERAL & CORPORATIVO (ROSTRO LIMPIO + BOTÓN GLASS)
        ========================================================================== */
     .dispatch-section {
-      padding: 5rem 0;
+      position: relative;
+      z-index: 2;
+      padding: 3.75rem 0;
+      background: rgba(6, 22, 48, 0.12);
     }
 
     .dispatch-grid {
       display: grid;
-      grid-template-columns: 1fr 315px;
+      grid-template-columns: 1fr 330px;
       gap: 0;
-      background: var(--bg-surface);
+      background: var(--glass-card-bg);
+      backdrop-filter: blur(12px) saturate(130%);
+      -webkit-backdrop-filter: blur(12px) saturate(130%);
       border: 1px solid var(--border-line);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+      border-radius: 4px;
       overflow: hidden;
       align-items: stretch;
     }
 
     .dispatch-info {
-      padding: 3.25rem 3.5rem;
+      padding: 2.4rem 2.75rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -498,53 +729,53 @@
     }
 
     .dispatch-tag {
-      font-size: 0.68rem;
-      letter-spacing: 0.2em;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--gold-primary);
-      margin-bottom: 0.45rem;
+      margin-bottom: 0.35rem;
       display: block;
+      font-weight: 500;
     }
 
     .dispatch-info h3 {
       font-family: var(--font-serif);
-      font-size: 2rem;
-      font-weight: 600;
+      font-size: clamp(1.35rem, 1.8vw, 1.75rem);
+      font-weight: 500;
       color: var(--text-main);
-      line-height: 1.2;
-      margin-bottom: 0.35rem;
+      line-height: 1.22;
+      margin-bottom: 0.3rem;
     }
 
     .dispatch-subtitle {
-      font-size: 0.725rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--gold-primary);
-      margin-bottom: 1.5rem;
+      font-size: 0.82rem;
+      color: var(--gold-light);
+      font-weight: 500;
+      margin-bottom: 1.15rem;
       display: block;
     }
 
     .dispatch-narrative {
-      font-size: 0.94rem;
+      font-size: 0.88rem;
       color: var(--text-reading);
-      line-height: 1.72;
-      margin-bottom: 1.85rem;
-      max-width: 68ch;
+      line-height: 1.62;
+      margin-bottom: 1.35rem;
+      max-width: 66ch;
     }
 
     .contact-details {
       list-style: none;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 1.15rem 2rem;
+      gap: 0.9rem 1.5rem;
       border-top: 1px solid var(--border-line);
-      padding-top: 1.5rem;
+      padding-top: 1.15rem;
     }
 
     .contact-line {
       display: flex;
       flex-direction: column;
-      gap: 0.15rem;
+      gap: 0.12rem;
     }
 
     .contact-line.full-span {
@@ -552,14 +783,13 @@
     }
 
     .contact-label {
-      font-size: 0.65rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
+      font-size: 0.68rem;
       color: var(--gold-primary);
+      font-weight: 500;
     }
 
     .contact-value {
-      font-size: 0.95rem;
+      font-size: 0.88rem;
       color: var(--text-main);
     }
 
@@ -570,13 +800,13 @@
     .privacy-notice {
       font-size: 0.72rem;
       color: var(--text-muted);
-      margin-top: 1.5rem;
-      line-height: 1.5;
+      margin-top: 1.15rem;
+      line-height: 1.45;
       border-top: 1px solid var(--border-subtle);
-      padding-top: 1rem;
+      padding-top: 0.8rem;
     }
 
-    /* Columna Derecha: Encuadre Vertical 9:16 Intacto */
+    /* Columna Derecha 9:16: Video Marco 100% Nítido o Escudo en Movimiento */
     .dispatch-video-side {
       position: relative;
       width: 100%;
@@ -592,28 +822,113 @@
       object-fit: cover;
       object-position: center center;
       display: block;
+      transition: opacity 0.4s ease;
     }
 
+    /* Escena Alternativa Punto 7: Escudo Corporativo en Movimiento Cinematográfico */
+    .dispatch-logo-motion {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 42%, #133368 0%, #051229 85%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.45s ease;
+      overflow: hidden;
+    }
+
+    .dispatch-logo-motion.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .dispatch-logo-motion::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: linear-gradient(
+        115deg,
+        transparent 35%,
+        rgba(223, 193, 130, 0.14) 50%,
+        transparent 65%
+      );
+      animation: goldSweep 7s ease-in-out infinite;
+    }
+
+    @keyframes goldSweep {
+      0% { transform: translateX(-45%) rotate(5deg); }
+      50% { transform: translateX(45%) rotate(5deg); }
+      100% { transform: translateX(-45%) rotate(5deg); }
+    }
+
+    .motion-emblem-img {
+      width: 86%;
+      max-width: 230px;
+      height: auto;
+      filter: drop-shadow(0 12px 25px rgba(0, 0, 0, 0.75));
+      animation: emblemCinematics 9s ease-in-out infinite alternate;
+      position: relative;
+      z-index: 2;
+    }
+
+    @keyframes emblemCinematics {
+      0% { transform: scale(0.94) translateY(4px); }
+      100% { transform: scale(1.06) translateY(-4px); }
+    }
+
+    /* Velo sutil solo en el borde izquierdo e inferior, dejando el rostro de Marco 100% limpio */
     .dispatch-video-veil {
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        90deg,
-        rgba(6, 22, 48, 0.85) 0%,
-        rgba(10, 34, 70, 0.52) 28%,
-        rgba(10, 34, 70, 0.58) 100%
-      );
+      background:
+        linear-gradient(90deg, rgba(6, 22, 48, 0.65) 0%, rgba(6, 22, 48, 0) 18%),
+        linear-gradient(0deg, rgba(6, 22, 48, 0.65) 0%, rgba(6, 22, 48, 0) 18%);
       pointer-events: none;
+      z-index: 3;
+    }
+
+    /* Botón Transparente en Cristal para alternar Director / Logo en Movimiento */
+    .media-switch-btn {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      z-index: 5;
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(200, 168, 107, 0.45);
+      color: #FFFFFF;
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 500;
+      padding: 0.35rem 0.65rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .media-switch-btn:hover {
+      background: var(--glass-btn-hover);
+      border-color: var(--gold-light);
+      color: var(--gold-light);
     }
 
     /* ==========================================================================
-       PIE DE PÁGINA INSTITUCIONAL
+       PIE DE PÁGINA MINIMALISTA
        ========================================================================== */
     .site-footer {
+      position: relative;
+      z-index: 2;
       border-top: 1px solid var(--border-line);
-      padding: 1.5rem 0;
-      background: var(--bg-surface);
-      font-size: 0.775rem;
+      padding: 1.15rem 0;
+      background: rgba(6, 22, 48, 0.22);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      font-size: 0.75rem;
       color: var(--text-muted);
     }
 
@@ -621,108 +936,252 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 1rem;
     }
 
     /* ==========================================================================
-       RESPONSIVE
+       1. RESPONSIVE: CELULAR VERTICAL (PORTRAIT 9:16 — ej. 390x844px)
        ========================================================================== */
-    @media (max-width: 900px) {
+    @media (max-width: 900px) and (orientation: portrait) {
+      .container {
+        padding: 0 1.1rem;
+      }
+      .site-header {
+        padding: 0.45rem 0;
+      }
       .brand-logo-img {
-        height: 40px;
+        height: 32px;
       }
-      .brand-mark {
-        justify-content: center;
+      .brand-corp-text,
+      .nav-links,
+      .header-tools .tool-group:nth-child(2) {
+        display: none;
       }
-      .hero-grid,
-      .dispatch-grid {
+      .header-nav {
+        gap: 0.35rem;
+      }
+      .btn-consulta {
+        font-size: 0.72rem;
+        padding: 0.36rem 0.65rem;
+      }
+      .btn-linkedin {
+        width: 30px;
+        height: 30px;
+      }
+
+      /* Hero Vertical: 70% superior del video libre + HUD compacto abajo */
+      .hero-section {
+        min-height: calc(100svh - 50px);
+        padding: 1rem 0 1.35rem;
+        justify-content: flex-end;
+      }
+      .hero-hud-top {
         grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-      .header-layout {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
+        gap: 0.5rem;
       }
       .hero-heading {
-        font-size: 2.15rem;
+        font-size: 1.35rem;
+        line-height: 1.24;
       }
-      .practices-grid,
-      .contact-details {
+      .hero-subtext {
+        display: none;
+      }
+      .hero-branches-grid {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+      }
+      .hero-branch-btn {
+        padding: 0.68rem 0.9rem;
+      }
+      .branch-title {
+        font-size: 0.82rem;
+      }
+
+      /* Despliegue de Especialidades en Vertical: cuadros directos sin sub-botones */
+      #panel-u1 .fan-list,
+      #panel-u2 .fan-list,
+      #panel-u3 .fan-list {
+        grid-template-columns: 1fr;
+        gap: 0.65rem;
+      }
+      .fan-card-title {
+        padding: 0.78rem 1rem 0.65rem;
+        font-size: 0.85rem;
+      }
+      .fan-body {
+        display: flex;
+        padding: 0.8rem 1rem 0.95rem;
+      }
+
+      /* Despacho en Vertical */
+      .dispatch-section {
+        padding: 2.25rem 0;
+      }
+      .dispatch-grid {
         grid-template-columns: 1fr;
       }
       .dispatch-info {
-        padding: 2rem 1.5rem;
+        padding: 1.5rem 1.2rem;
+      }
+      .contact-details {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
       }
       .dispatch-video-side {
-        max-width: 300px;
-        margin: 0 auto 2rem;
+        max-width: 260px;
+        margin: 0 auto 1.5rem;
         border: 1px solid var(--border-line);
+        border-radius: 4px;
       }
       .footer-content {
         flex-direction: column;
-        gap: 0.75rem;
         text-align: center;
+        gap: 0.4rem;
+      }
+    }
+
+    /* ==========================================================================
+       2. RESPONSIVE: CELULAR HORIZONTAL (MOBILE LANDSCAPE — ej. 844x390px)
+       ========================================================================== */
+    @media (orientation: landscape) and (max-height: 540px) {
+      .site-header {
+        position: relative;
+        padding: 0.35rem 0;
+      }
+      .brand-logo-img {
+        height: 28px;
+      }
+      .brand-corp-text,
+      .header-tools .tool-group:nth-child(2) {
+        display: none;
+      }
+      .nav-btn,
+      .btn-consulta {
+        font-size: 0.68rem;
+        padding: 0.3rem 0.55rem;
+      }
+      .btn-linkedin {
+        width: 28px;
+        height: 28px;
+      }
+
+      /* Hero Horizontal en 390px de alto: 60% video libre + 3 ramas en fila horizontal */
+      .hero-section {
+        min-height: calc(100svh - 42px);
+        padding: 0.65rem 0 0.85rem;
+        justify-content: flex-end;
+      }
+      .hero-section > .container {
+        gap: 0.6rem;
+      }
+      .hero-hud-top {
+        grid-template-columns: 1fr;
+      }
+      .hero-heading {
+        font-size: 1.18rem;
+      }
+      .hero-subtext {
+        display: none;
+      }
+      .hero-branches-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+      }
+      .hero-branch-btn {
+        padding: 0.5rem 0.65rem;
+        gap: 0.45rem;
+      }
+      .branch-title {
+        font-size: 0.72rem;
+        line-height: 1.22;
+      }
+
+      /* Especialidades en Celular Horizontal: Grilla horizontal abierta */
+      .dispatch-section {
+        padding: 1.75rem 0;
+      }
+      .fan-card-title {
+        padding: 0.65rem 0.85rem;
+        font-size: 0.8rem;
+      }
+      .fan-body {
+        padding: 0.7rem 0.85rem;
+      }
+      .fan-bullets li {
+        font-size: 0.76rem;
+      }
+
+      /* Despacho en 2 columnas lado a lado: el video 9:16 (185x328px) entra entero en 390px */
+      .dispatch-grid {
+        grid-template-columns: 1fr 185px;
+        align-items: center;
+      }
+      .dispatch-info {
+        padding: 1.15rem 1.35rem;
+      }
+      .dispatch-info h3 {
+        font-size: 1.2rem;
+      }
+      .dispatch-narrative {
+        font-size: 0.78rem;
+        margin-bottom: 0.75rem;
+      }
+      .contact-details {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem 1rem;
+        padding-top: 0.75rem;
+      }
+      .contact-value {
+        font-size: 0.78rem;
+      }
+      .dispatch-video-side {
+        max-width: 185px;
+        margin: 0;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- CABECERA INSTITUCIONAL -->
+  <!-- CABECERA INSTITUCIONAL CON TODOS LOS BOTONES EN CRISTAL TRANSPARENTE -->
   <header class="site-header">
     <div class="container">
       <div class="header-layout">
         
-        <a href="#inicio" class="brand-mark" title="HR & Legal Consulting S.A.C.">
+        <a href="#inicio" class="brand-mark" title="Corporativo HR & Legal Consulting S.A.C.">
           <img src="HR_LEGAL_CONSULTING_white.svg" alt="HR & Legal Consulting" class="brand-logo-img">
+          <div class="brand-corp-text">
+            <span class="brand-corp-top" data-i18n="hdr_corp">Corporativo</span>
+            <span class="brand-corp-sub" data-i18n="hdr_sub">Consultoría Legal Especializada &amp; Gestión Pública</span>
+          </div>
         </a>
 
         <nav class="header-nav">
           <ul class="nav-links">
             <li><a href="#especialidades" class="nav-btn" data-i18n="nav_esp">Especialidades</a></li>
-            <li><a href="#despacho" class="nav-btn" data-i18n="nav_desp">Despacho Letrado</a></li>
+            <li><a href="#despacho" class="nav-btn" data-i18n="nav_desp">Dirección General</a></li>
           </ul>
 
-          <div class="header-tools">
-            <!-- Selector de Idioma con Banderitas -->
-            <div class="tool-group" role="group" aria-label="Idioma / Language">
-              <button type="button" class="tool-btn active" data-lang="es" title="Español">
-                <svg class="flag-icon" viewBox="0 0 24 18" aria-hidden="true">
-                  <rect width="24" height="18" fill="#D91023"/>
-                  <rect x="8" width="8" height="18" fill="#FFFFFF"/>
-                </svg>
-                <span>ES</span>
-              </button>
-              <button type="button" class="tool-btn" data-lang="en" title="English">
-                <svg class="flag-icon" viewBox="0 0 24 18" aria-hidden="true">
-                  <rect width="24" height="18" fill="#B22234"/>
-                  <path d="M0 2.77h24M0 5.54h24M0 8.31h24M0 11.08h24M0 13.85h24M0 16.62h24" stroke="#FFF" stroke-width="1.38"/>
-                  <rect width="10.5" height="9.7" fill="#3C3B6E"/>
-                </svg>
-                <span>EN</span>
-              </button>
-            </div>
-
-            <!-- Selector de Tamaño de Fuente -->
-            <div class="tool-group" role="group" aria-label="Tamaño de fuente">
-              <button type="button" class="tool-btn" id="font-dec" title="Disminuir tamaño de letra">A-</button>
-              <button type="button" class="tool-btn" id="font-inc" title="Aumentar tamaño de letra">A+</button>
-            </div>
-          </div>
-
-          <!-- LinkedIn Oficial -->
-          <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="btn-linkedin" title="LinkedIn · HR & Legal Consulting">
-            <svg width="16" height="16" viewBox="0 0 24 24">
-              <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+          <!-- Un solo botón alargadito con Bandera Española y Bandera Gringa -->
+          <button type="button" class="lang-pill-btn" id="langToggleBtn" title="Español / English" aria-label="Cambiar idioma / Switch language">
+            <svg class="flag-icon active" id="flag-es" viewBox="0 0 24 16" aria-hidden="true">
+              <rect width="24" height="16" fill="#AA151B"/>
+              <rect y="4" width="24" height="8" fill="#F1BF00"/>
             </svg>
-          </a>
+            <span class="lang-pill-divider"></span>
+            <svg class="flag-icon" id="flag-en" viewBox="0 0 24 16" aria-hidden="true">
+              <rect width="24" height="16" fill="#B22234"/>
+              <path d="M0 2.46h24M0 4.92h24M0 7.38h24M0 9.84h24M0 12.3h24M0 14.76h24" stroke="#FFF" stroke-width="1.23"/>
+              <rect width="10.5" height="8.6" fill="#3C3B6E"/>
+            </svg>
+          </button>
 
-          <!-- Consulta WhatsApp -->
-          <a href="https://wa.me/51964046054?text=Estimado%20Abogado%20Marco%20Antonio%20Araujo%20Portocarrero,%20me%20comunico%20para%20una%20consulta%20jur%C3%ADdica%20y%20evaluaci%C3%B3n%20de%20caso." target="_blank" class="btn-consulta">
-            <svg width="15" height="15" viewBox="0 0 24 24">
+          <!-- Consulta WhatsApp Corto: Conversamos -->
+          <a href="https://wa.me/51964046054?text=Estimado%20Mag%C3%ADster%20Marco%20Antonio%20Araujo%20Portocarrero,%20me%20comunico%20para%20solicitar%20una%20cita%20de%20asesor%C3%ADa%20corporativa." target="_blank" class="btn-consulta">
+            <svg width="14" height="14" viewBox="0 0 24 24">
               <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
             </svg>
-            <span data-i18n="nav_wa">Consulta WhatsApp</span>
+            <span data-i18n="nav_wa">Conversamos</span>
           </a>
         </nav>
 
@@ -731,7 +1190,7 @@
   </header>
 
   <main>
-    <!-- HERO CINEMATOGRÁFICO PURO -->
+    <!-- HERO CINEMATOGRÁFICO (HUD EN TERCIO INFERIOR + 3 RAMAS EN GLASS TRANSPARENTE) -->
     <section class="hero-section" id="inicio">
       <div class="section-bg-video-wrap" id="bg-wrap-hero">
         <video class="bg-video-item active" id="hero-vid-1" src="videos/1_palacio.mp4" muted playsinline preload="auto"></video>
@@ -741,129 +1200,207 @@
       </div>
 
       <div class="container">
-        <div class="hero-content">
-          <span class="hero-tag" data-i18n="hero_tag">Patrocinio Corporativo · Defensa Administrativa & Laboral</span>
+        <div class="hero-hud-top">
           <h1 class="hero-heading" data-i18n="hero_title">
             Experiencia, criterio y un consejo claro para que tu empresa avance.
           </h1>
           <p class="hero-subtext" data-i18n="hero_sub">
-            Defensa letrada y patrocinio corporativo especializado en materias administrativas y laborales. Tramitación ágil y directa mediante Casilla SINOE y mesas de partes digitales en todo el territorio nacional.
+            Asesoramiento corporativo externo con equipos especializados en cada división hasta la culminación del procedimiento.
           </p>
+        </div>
+
+        <!-- MICRO-INDICADOR MAGNÉTICO + LAS 3 RAMAS CON OLA DE DESTELLO SECUENCIAL (1 -> 2 -> 3) -->
+        <div class="branches-prompt-bar">
+          <span class="prompt-pulse-dot" aria-hidden="true"></span>
+          <span data-i18n="b_prompt">Seleccione una especialidad para desplegar el detalle</span>
+        </div>
+
+        <div class="hero-branches-grid" id="especialidades">
+          <button type="button" class="hero-branch-btn" data-goto-unit="u1">
+            <span class="branch-btn-left">
+              <span class="branch-arrow">›</span>
+              <span class="branch-title" data-i18n="b1_name">Consultoría Legal &amp; Gestión Pública</span>
+            </span>
+            <span class="branch-expand-badge" aria-hidden="true">▾</span>
+          </button>
+
+          <button type="button" class="hero-branch-btn" data-goto-unit="u2">
+            <span class="branch-btn-left">
+              <span class="branch-arrow">›</span>
+              <span class="branch-title" data-i18n="b2_name">Activos Críticos Nacionales (ACN)</span>
+            </span>
+            <span class="branch-expand-badge" aria-hidden="true">▾</span>
+          </button>
+
+          <button type="button" class="hero-branch-btn" data-goto-unit="u3">
+            <span class="branch-btn-left">
+              <span class="branch-arrow">›</span>
+              <span class="branch-title" data-i18n="b3_name">Gestión del Talento Humano</span>
+            </span>
+            <span class="branch-expand-badge" aria-hidden="true">▾</span>
+          </button>
+        </div>
+
+        <!-- DESPLIEGUE DIRECTO AL HACER CLIC EN UNA RAMA (MISMO CRITERIO PC Y MÓVIL, CERO SUB-BOTONES) -->
+        <div class="branch-drawer-wrap" id="branchDrawer">
+          <!-- =================================================================
+               RAMA 1: CONSULTORÍA LEGAL & GESTIÓN PÚBLICA
+               ================================================================= -->
+          <div class="unit-panel" id="panel-u1">
+            <div class="fan-list">
+              <!-- 1.1: Derecho Administrativo -->
+              <div class="fan-item">
+                <div class="fan-card-title" data-i18n="u1_s1_t">Derecho Administrativo &amp; PAS</div>
+                <div class="fan-body">
+                  <ul class="fan-bullets">
+                    <li data-i18n="u1_s1_i1"><strong>Procedimientos administrativos:</strong> descargos, recursos, nulidades, prescripciones e informe oral.</li>
+                    <li data-i18n="u1_s1_i2"><strong>PAS – SUNAFIL:</strong> actas de fiscalización, descargos, recursos e informes orales.</li>
+                    <li data-i18n="u1_s1_i3"><strong>PAS – OECE y Reguladores:</strong> absolución de cargos, recursos, caducidad y medidas cautelares.</li>
+                    <li data-i18n="u1_s1_i4"><strong>Especialidades del Estado:</strong> contratación pública · gestión pública · SERVIR · empleo público.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- 1.2: Derecho Laboral -->
+              <div class="fan-item">
+                <div class="fan-card-title" data-i18n="u1_s2_t">Derecho Laboral Empresarial</div>
+                <div class="fan-body">
+                  <ul class="fan-bullets">
+                    <li data-i18n="u1_s2_i1"><strong>Relaciones colectivas:</strong> negociación colectiva, sindicatos y prevención de conflictos.</li>
+                    <li data-i18n="u1_s2_i2"><strong>Contratación laboral:</strong> beneficios sociales y defensa frente a actos de hostilidad.</li>
+                    <li data-i18n="u1_s2_i3"><strong>Despidos y desvinculaciones:</strong> patrocinio judicial, administrativo y arbitral.</li>
+                    <li data-i18n="u1_s2_i4"><strong>Auditoría y prevención:</strong> auditorías laborales integrales y Seguridad y Salud en el Trabajo (SST).</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- 1.3: Gestión Pública -->
+              <div class="fan-item">
+                <div class="fan-card-title" data-i18n="u1_s3_t">Gestión Pública &amp; Regulación</div>
+                <div class="fan-body">
+                  <ul class="fan-bullets">
+                    <li data-i18n="u1_s3_i1"><strong>Simplificación administrativa</strong> y optimización de procedimientos TUPA.</li>
+                    <li data-i18n="u1_s3_i2"><strong>Calidad regulatoria</strong> y análisis de impacto normativo.</li>
+                    <li data-i18n="u1_s3_i3"><strong>Contrataciones con el Estado</strong> en todas sus fases operativas y controvertidas.</li>
+                    <li data-i18n="u1_s3_i4"><strong>Regulación de servicios públicos</strong> e infraestructura concesionada.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- =================================================================
+               RAMA 2: ACTIVOS CRÍTICOS NACIONALES (ACN)
+               ================================================================= -->
+          <div class="unit-panel" id="panel-u2">
+            <div class="fan-list">
+              <!-- 2.1: Operadores de ACN -->
+              <div class="fan-item">
+                <div class="fan-card-title" data-i18n="u2_s1_t">Para Operadores de ACN (Obligatorio y Permanente)</div>
+                <div class="fan-body">
+                  <ul class="fan-bullets">
+                    <li data-i18n="u2_s1_i1"><strong>Gestión Integral de Riesgos (GIR):</strong> consultoría general bajo el Reglamento de ACN.</li>
+                    <li data-i18n="u2_s1_i2"><strong>Matrices IER de Operadores:</strong> formulación y actualización metodológica.</li>
+                    <li data-i18n="u2_s1_i3"><strong>Expediente de Identificación ACN:</strong> formulación según el D.S. Nº 106-2017-PCM.</li>
+                    <li data-i18n="u2_s1_i4"><strong>Herramientas y Planes de Seguridad:</strong> diseño de requisitos obligatorios del Reglamento.</li>
+                    <li data-i18n="u2_s1_i5"><strong>Plan de Protección Integral del Operador (PPIO):</strong> formulación integral para garantizar la continuidad operativa.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- 2.2: Sectores Responsables (Ministerios) -->
+              <div class="fan-item">
+                <div class="fan-card-title" data-i18n="u2_s2_t">Para Sectores Responsables (Ministerios)</div>
+                <div class="fan-body">
+                  <ul class="fan-bullets">
+                    <li data-i18n="u2_s2_i1"><strong>Dimensionamiento Sectorial:</strong> asistencia técnica para identificar recursos, infraestructuras y sistemas dentro de las capacidades nacionales y ACN.</li>
+                    <li data-i18n="u2_s2_i2"><strong>Matrices IER Sectoriales:</strong> formulación y actualización anual para Ministerios.</li>
+                    <li data-i18n="u2_s2_i3"><strong>Plan Sectorial:</strong> formulación del Plan Sectorial de protección de Activos Críticos.</li>
+                  </ul>
+                  <div class="confidential-note" data-i18n="u2_conf">
+                    Protocolo de estricta confidencialidad y reserva institucional de la información.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- =================================================================
+               RAMA 3: GESTIÓN DEL TALENTO HUMANO
+               ================================================================= -->
+          <div class="unit-panel" id="panel-u3">
+            <div class="fan-list">
+              <!-- 3.1: Habilidades Blandas y Programas -->
+              <div class="fan-item">
+                <div class="fan-card-title" data-i18n="u3_s1_t">Habilidades Blandas, Liderazgo &amp; Cultura</div>
+                <div class="fan-body">
+                  <ul class="fan-bullets">
+                    <li data-i18n="u3_s1_i1"><strong>Entrenamiento en habilidades blandas (Talleres):</strong> escucha activa, comunicación asertiva y trabajo en equipo.</li>
+                    <li data-i18n="u3_s1_i2"><strong>Programas estratégicos de talento:</strong> desempeño, cultura organizacional, liderazgo y reconocimiento.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- 3.2: Journeys y Diagnóstico Ágil -->
+              <div class="fan-item">
+                <div class="fan-card-title" data-i18n="u3_s2_t">Employee Journeys &amp; Diagnóstico Ágil de Clima</div>
+                <div class="fan-body">
+                  <ul class="fan-bullets">
+                    <li data-i18n="u3_s2_i1"><strong>Diseño de Journeys del Colaborador:</strong> etapas e interacciones clave para optimizar su experiencia en la empresa.</li>
+                    <li data-i18n="u3_s2_i2"><strong>Diagnóstico Organizacional Ágil:</strong> evaluación de clima laboral, experiencia del colaborador y cultura con metodología ágil.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ESPECIALIDADES FORENSES: 4 PILARES ADMINISTRATIVOS Y DIGITALES -->
-    <section class="practices-section" id="especialidades">
-      <div class="container">
-        
-        <div class="section-header">
-          <span class="section-tag" data-i18n="sec_tag">Especialización de Despacho</span>
-          <h2 class="section-title" data-i18n="sec_title">Defensa Administrativa, Laboral, Regulatoria y Jurídica</h2>
-          <p class="section-desc" data-i18n="sec_desc">
-            Casos y materias de alta complejidad gestionados íntegramente por canales digitales y casillas oficiales, garantizando celeridad procesal y dedicación letrada directa.
-          </p>
-        </div>
-
-        <div class="practices-grid">
-          
-          <!-- 01: SUNAFIL -->
-          <div class="practice-item">
-            <div class="practice-header">
-              <span class="practice-number">01</span>
-              <h3 class="practice-name" data-i18n="p1_title">Procedimientos Sancionadores Laborales (SUNAFIL)</h3>
-            </div>
-            <span class="practice-badge" data-i18n="p1_badge">Casilla Electrónica SUNAFIL</span>
-            <p class="practice-desc" data-i18n="p1_desc">
-              Atención de órdenes de fiscalización inspectiva, absolución de medidas de requerimiento, formulación de descargos contra Actas de Infracción y recursos de apelación ante el Tribunal de Fiscalización Laboral.
-            </p>
-          </div>
-
-          <!-- 02: OSCE -->
-          <div class="practice-item">
-            <div class="practice-header">
-              <span class="practice-number">02</span>
-              <h3 class="practice-name" data-i18n="p2_title">Tribunal de Contrataciones del Estado (OSCE)</h3>
-            </div>
-            <span class="practice-badge" data-i18n="p2_badge">Mesa Digital SEACE</span>
-            <p class="practice-desc" data-i18n="p2_desc">
-              Defensa técnica y patrocinio letrado ante el Tribunal de Contrataciones del Estado frente a imputaciones de infracción. Medidas cautelares, informes orales virtuales y recursos de reconsideración contra inhabilitaciones del RNP.
-            </p>
-          </div>
-
-          <!-- 03: PAS Y REGULATORIO -->
-          <div class="practice-item">
-            <div class="practice-header">
-              <span class="practice-number">03</span>
-              <h3 class="practice-name" data-i18n="p3_title">Procedimientos Administrativos Sancionadores (PAS)</h3>
-            </div>
-            <span class="practice-badge" data-i18n="p3_badge">Tramitación Virtual</span>
-            <p class="practice-desc" data-i18n="p3_desc">
-              Absolución de imputaciones, formulación de descargos técnicos, deducción de nulidades y prescripciones ante organismos supervisores (INDECOPI, OEFA, OSINERGMIN) y dependencias del Estado vía mesa de partes digital.
-            </p>
-          </div>
-
-          <!-- 04: ACTIVOS CRÍTICOS NACIONALES -->
-          <div class="practice-item">
-            <div class="practice-header">
-              <span class="practice-number">04</span>
-              <h3 class="practice-name" data-i18n="p4_title">Gestión de Riesgos en Activos Críticos Nacionales</h3>
-            </div>
-            <span class="practice-badge" data-i18n="p4_badge">Decreto Supremo Nº 106-2017-PCM</span>
-            <p class="practice-desc" data-i18n="p4_desc">
-              Consultoría jurídica y técnica de gabinete para operadores de infraestructura estratégica. Elaboración de Planes de Protección Integral del Operador (PPIO) e implementación metodológica GROI.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- DIRECCIÓN LETRADA, REGISTRO FORENSE Y ENCUADRE VERTICAL 9:16 DERECHO -->
+    <!-- SECCIÓN 3: DIRECCIÓN GENERAL & REGISTRO CORPORATIVO -->
     <section class="dispatch-section" id="despacho">
       <div class="container">
         
         <div class="dispatch-grid">
           
           <div class="dispatch-info">
-            <span class="dispatch-tag" data-i18n="d_tag">Registro & Acreditación Forense · Dirección Letrada</span>
-            <h3 data-i18n="d_name">Abogado Marco Antonio Araujo Portocarrero</h3>
-            <span class="dispatch-subtitle" data-i18n="d_sub">Socio Director Titular · HR & LEGAL CONSULTING S.A.C.</span>
+            <span class="dispatch-tag" data-i18n="d_tag">Dirección General &amp; Acreditación Oficial</span>
+            <h3 data-i18n="d_name">Magíster Marco Antonio Araujo Portocarrero</h3>
+            <span class="dispatch-subtitle" data-i18n="d_sub">Gerente General &amp; Director · CORPORATIVO HR &amp; LEGAL CONSULTING S.A.C.</span>
             
             <p class="dispatch-narrative" data-i18n="d_bio">
-              Con más de dos décadas de ejercicio activo del derecho, conduce personalmente la estrategia letrada y el análisis regulatorio de cada expediente asumido por la firma. Criterio ágil, sin intermediarios, optimizado para resolver contingencias complejas mediante tramitación electrónica y patrocinio virtual en todo el país.
+              Con más de dos décadas de trayectoria en el sector público y privado, dirige la estrategia del corporativo y coordina los equipos altamente calificados de las tres divisiones, brindando atención personalizada hasta la culminación de cada controversia.
             </p>
 
             <ul class="contact-details">
               <li class="contact-line">
-                <span class="contact-label" data-i18n="c_lbl_1">Razón Social & RUC Oficial</span>
-                <span class="contact-value" data-i18n="c_val_1">HR & LEGAL CONSULTING S.A.C. · RUC 20610061797 (Activo y Habido)</span>
+                <span class="contact-label" data-i18n="c_lbl_1">Razón Social &amp; RUC Oficial</span>
+                <span class="contact-value" data-i18n="c_val_1">HR &amp; LEGAL CONSULTING S.A.C. · RUC 20610061797 (Activo y Habido)</span>
               </li>
               <li class="contact-line">
-                <span class="contact-label" data-i18n="c_lbl_2">Acreditación Forense & Casilla</span>
+                <span class="contact-label" data-i18n="c_lbl_2">Acreditación Forense &amp; Casilla</span>
                 <span class="contact-value" data-i18n="c_val_2">Colegio de Abogados de Lima Nº 68243 · Casilla SINOE Nº 69164</span>
               </li>
               <li class="contact-line">
-                <span class="contact-label" data-i18n="c_lbl_3">Líneas de Atención Directa</span>
-                <span class="contact-value"><a href="tel:+51964046054">+51 964 046 054</a> &nbsp;/&nbsp; <a href="tel:+51966191661">+51 966 191 661</a></span>
+                <span class="contact-label" data-i18n="c_lbl_3">Comunicaciones Directas (Previa Cita)</span>
+                <span class="contact-value"><a href="https://wa.me/51964046054" target="_blank">WhatsApp: +51 964 046 054</a> &nbsp;/&nbsp; <a href="tel:+51966191661">+51 966 191 661</a></span>
               </li>
               <li class="contact-line">
-                <span class="contact-label" data-i18n="c_lbl_4">Correo Electrónico Institucional</span>
+                <span class="contact-label" data-i18n="c_lbl_4">Correo Institucional</span>
                 <span class="contact-value"><a href="mailto:hrlegalconsulting@proton.me">hrlegalconsulting@proton.me</a></span>
               </li>
               <li class="contact-line full-span">
-                <span class="contact-label" data-i18n="c_lbl_5">Sede y Jurisdicción Nacional</span>
-                <span class="contact-value" data-i18n="c_val_5">Lima, República del Perú · Gestión letrada de expedientes y audiencias virtuales a nivel nacional</span>
+                <span class="contact-label" data-i18n="c_lbl_5">Domicilio Real &amp; Jurisdicción</span>
+                <span class="contact-value" data-i18n="c_val_5">Av. Alejandro Iglesias Nº 105, Chorrillos, Lima, Perú · Atención corporativa a nivel nacional</span>
               </li>
             </ul>
 
             <p class="privacy-notice" data-i18n="d_priv">
-              * Comunicación confidencial amparada bajo el Secreto Profesional (Artículo 2, Inciso 18 de la Constitución Política del Perú y Código de Ética de los Colegios de Abogados del Perú).
+              * Comunicación confidencial amparada bajo el Secreto Profesional (Artículo 2, Inciso 18 de la Constitución Política del Perú).
             </p>
           </div>
 
-          <!-- ENCUADRE LATERAL 9:16 DEL LADO DERECHO -->
+          <!-- ENCUADRE LATERAL 9:16 DEL LADO DERECHO (RETRATO EN VIDEO DEL DIRECTOR) -->
           <div class="dispatch-video-side">
             <video id="dispatch-marco-vid" src="videos/2_marco.mp4" muted playsinline preload="auto"></video>
             <div class="dispatch-video-veil"></div>
@@ -875,15 +1412,23 @@
     </section>
   </main>
 
-  <!-- PIE DE PÁGINA INSTITUCIONAL -->
+  <!-- PIE DE PÁGINA INSTITUCIONAL (CON LINKEDIN Y CONTROL DE FUENTE EN EL CONTRA ABAJO) -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-content">
         <div data-i18n="f_left">
-          © 2026 HR & LEGAL CONSULTING S.A.C. · RUC 20610061797 · Sede Lima, Perú.
+          © 2026 CORPORATIVO HR &amp; LEGAL CONSULTING S.A.C. · Todos los derechos reservados.
         </div>
-        <div data-i18n="f_right">
-          Dirección Letrada: Abogado Marco Antonio Araujo Portocarrero · CAL Nº 68243 · Casilla SINOE Nº 69164
+        <div class="footer-right-group">
+          <div class="tool-group" role="group" aria-label="Tamaño de fuente">
+            <button type="button" class="tool-btn" id="font-dec" title="Disminuir tamaño de letra">A-</button>
+            <button type="button" class="tool-btn" id="font-inc" title="Aumentar tamaño de letra">A+</button>
+          </div>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="btn-linkedin" title="LinkedIn · HR & Legal Consulting">
+            <svg width="15" height="15" viewBox="0 0 24 24">
+              <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+            </svg>
+          </a>
         </div>
       </div>
     </div>
@@ -898,12 +1443,10 @@
         document.getElementById('hero-vid-3')
       ];
       const dispatchVid = document.getElementById('dispatch-marco-vid');
-      const dispatchSection = document.getElementById('despacho');
 
       let heroIndex = 0;
       let marcoPlayed = false;
 
-      // Aplicar velocidad 0.5x a todos los videos
       [...heroVids, dispatchVid].forEach(v => {
         if (v) {
           v.defaultPlaybackRate = SPEED;
@@ -911,7 +1454,6 @@
         }
       });
 
-      // Secuencia en Hero (Palacio -> Manos en Laptop -> Acuerdo en bucle continuo)
       heroVids.forEach((vid, idx) => {
         vid.loop = false;
         vid.addEventListener('ended', () => {
@@ -931,8 +1473,8 @@
         heroVids[0].play().catch(() => {});
       }
 
-      // Video de Marco: se ejecuta 1 sola vez al llegar con el scroll y queda fijo en el último cuadro
-      if (dispatchVid && dispatchSection) {
+      // Video de Marco: observa directamente el elemento <video> con threshold 0.2 para funcionar en vertical y landscape
+      if (dispatchVid) {
         dispatchVid.loop = false;
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
@@ -944,10 +1486,59 @@
               observer.disconnect();
             }
           });
-        }, { threshold: 0.35 });
+        }, { threshold: 0.2 });
 
-        observer.observe(dispatchSection);
+        observer.observe(dispatchVid);
       }
+
+      // Despliegue unificado de Especialidades (1 clic = abre/cierra la rama con toda su información lista en PC y Móvil)
+      const branchDrawer = document.getElementById('branchDrawer');
+
+      function toggleBranch(unitId, forceOpen) {
+        const targetBtn = document.querySelector('.hero-branch-btn[data-goto-unit="' + unitId + '"]');
+        const isAlreadyActive = targetBtn && targetBtn.classList.contains('active');
+        const shouldOpen = forceOpen ? true : !isAlreadyActive;
+
+        document.querySelectorAll('.hero-branch-btn').forEach(b => {
+          b.classList.toggle('active', shouldOpen && b.getAttribute('data-goto-unit') === unitId);
+        });
+
+        document.querySelectorAll('.unit-panel').forEach(p => {
+          p.classList.toggle('active', shouldOpen && p.id === 'panel-' + unitId);
+        });
+
+        if (branchDrawer) {
+          branchDrawer.classList.toggle('open', shouldOpen);
+        }
+
+        if (shouldOpen && branchDrawer) {
+          setTimeout(() => {
+            branchDrawer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }, 60);
+        }
+      }
+
+      // Clic en cualquiera de las 3 Ramas en Glass
+      document.querySelectorAll('.hero-branch-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          toggleBranch(btn.getAttribute('data-goto-unit'), false);
+        });
+      });
+
+      // Clic en el botón "Especialidades" de la cabecera
+      document.querySelectorAll('a[href="#especialidades"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const anyActive = document.querySelector('.hero-branch-btn.active');
+          if (!anyActive) {
+            toggleBranch('u1', true);
+          }
+          const espGrid = document.getElementById('especialidades');
+          if (espGrid) {
+            espGrid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        });
+      });
 
       // Control de Tamaño de Fuente (A- / A+)
       let baseFontSize = 16;
@@ -968,102 +1559,162 @@
         }
       });
 
-      // Selector Bilingüe ES / EN
+      // Traducción Bilingüe Completa ES / EN
       const i18n = {
         es: {
+          hdr_corp: 'Corporativo',
+          hdr_sub: 'Consultoría Legal Especializada & Gestión Pública',
           nav_esp: 'Especialidades',
-          nav_desp: 'Despacho Letrado',
-          nav_wa: 'Consulta WhatsApp',
-          hero_tag: 'Patrocinio Corporativo · Defensa Administrativa & Laboral',
+          nav_desp: 'Dirección General',
+          nav_wa: 'Conversamos',
           hero_title: 'Experiencia, criterio y un consejo claro para que tu empresa avance.',
-          hero_sub: 'Defensa letrada y patrocinio corporativo especializado en materias administrativas y laborales. Tramitación ágil y directa mediante Casilla SINOE y mesas de partes digitales en todo el territorio nacional.',
-          sec_tag: 'Especialización de Despacho',
-          sec_title: 'Defensa Administrativa, Laboral, Regulatoria y Jurídica',
-          sec_desc: 'Casos y materias de alta complejidad gestionados íntegramente por canales digitales y casillas oficiales, garantizando celeridad procesal y dedicación letrada directa.',
-          p1_title: 'Procedimientos Sancionadores Laborales (SUNAFIL)',
-          p1_badge: 'Casilla Electrónica SUNAFIL',
-          p1_desc: 'Atención de órdenes de fiscalización inspectiva, absolución de medidas de requerimiento, formulación de descargos contra Actas de Infracción y recursos de apelación ante el Tribunal de Fiscalización Laboral.',
-          p2_title: 'Tribunal de Contrataciones del Estado (OSCE)',
-          p2_badge: 'Mesa Digital SEACE',
-          p2_desc: 'Defensa técnica y patrocinio letrado ante el Tribunal de Contrataciones del Estado frente a imputaciones de infracción. Medidas cautelares, informes orales virtuales y recursos de reconsideración contra inhabilitaciones del RNP.',
-          p3_title: 'Procedimientos Administrativos Sancionadores (PAS)',
-          p3_badge: 'Tramitación Virtual',
-          p3_desc: 'Absolución de imputaciones, formulación de descargos técnicos, deducción de nulidades y prescripciones ante organismos supervisores (INDECOPI, OEFA, OSINERGMIN) y dependencias del Estado vía mesa de partes digital.',
-          p4_title: 'Gestión de Riesgos en Activos Críticos Nacionales',
-          p4_badge: 'Decreto Supremo Nº 106-2017-PCM',
-          p4_desc: 'Consultoría jurídica y técnica de gabinete para operadores de infraestructura estratégica. Elaboración de Planes de Protección Integral del Operador (PPIO) e implementación metodológica GROI.',
-          d_tag: 'Registro & Acreditación Forense · Dirección Letrada',
-          d_name: 'Abogado Marco Antonio Araujo Portocarrero',
-          d_sub: 'Socio Director Titular · HR & LEGAL CONSULTING S.A.C.',
-          d_bio: 'Con más de dos décadas de ejercicio activo del derecho, conduce personalmente la estrategia letrada y el análisis regulatorio de cada expediente asumido por la firma. Criterio ágil, sin intermediarios, optimizado para resolver contingencias complejas mediante tramitación electrónica y patrocinio virtual en todo el país.',
+          hero_sub: 'Asesoramiento corporativo externo con equipos especializados en cada división hasta la culminación del procedimiento.',
+          b_prompt: 'Seleccione una especialidad para desplegar el detalle',
+          b1_name: 'Consultoría Legal & Gestión Pública',
+          b2_name: 'Activos Críticos Nacionales (ACN)',
+          b3_name: 'Gestión del Talento Humano',
+          sec_title: 'Especialidades',
+          sec_note: 'Equipos especializados por división · Atención corporativa externa',
+          u1_s1_t: 'Derecho Administrativo & PAS',
+          u1_s1_i1: '<strong>Procedimientos administrativos:</strong> descargos, recursos, nulidades, prescripciones e informe oral.',
+          u1_s1_i2: '<strong>PAS – SUNAFIL:</strong> actas de fiscalización, descargos, recursos e informes orales.',
+          u1_s1_i3: '<strong>PAS – OECE y Reguladores:</strong> absolución de cargos, recursos, caducidad y medidas cautelares.',
+          u1_s1_i4: '<strong>Especialidades del Estado:</strong> contratación pública · gestión pública · SERVIR · empleo público.',
+          u1_s2_t: 'Derecho Laboral Empresarial',
+          u1_s2_i1: '<strong>Relaciones colectivas:</strong> negociación colectiva, sindicatos y prevención de conflictos.',
+          u1_s2_i2: '<strong>Contratación laboral:</strong> beneficios sociales y defensa frente a actos de hostilidad.',
+          u1_s2_i3: '<strong>Despidos y desvinculaciones:</strong> patrocinio judicial, administrativo y arbitral.',
+          u1_s2_i4: '<strong>Auditoría y prevención:</strong> auditorías laborales integrales y Seguridad y Salud en el Trabajo (SST).',
+          u1_s3_t: 'Gestión Pública & Regulación',
+          u1_s3_i1: '<strong>Simplificación administrativa</strong> y optimización de procedimientos TUPA.',
+          u1_s3_i2: '<strong>Calidad regulatoria</strong> y análisis de impacto normativo.',
+          u1_s3_i3: '<strong>Contrataciones con el Estado</strong> en todas sus fases operativas y controvertidas.',
+          u1_s3_i4: '<strong>Regulación de servicios públicos</strong> e infraestructura concesionada.',
+          u2_s1_t: 'Para Operadores de ACN (Obligatorio y Permanente)',
+          u2_s1_i1: '<strong>Gestión Integral de Riesgos (GIR):</strong> consultoría general bajo el Reglamento de ACN.',
+          u2_s1_i2: '<strong>Matrices IER de Operadores:</strong> formulación y actualización metodológica.',
+          u2_s1_i3: '<strong>Expediente de Identificación ACN:</strong> formulación según el D.S. Nº 106-2017-PCM.',
+          u2_s1_i4: '<strong>Herramientas y Planes de Seguridad:</strong> diseño de requisitos obligatorios del Reglamento.',
+          u2_s1_i5: '<strong>Plan de Protección Integral del Operador (PPIO):</strong> formulación integral para garantizar la continuidad operativa.',
+          u2_s2_t: 'Para Sectores Responsables (Ministerios)',
+          u2_s2_i1: '<strong>Dimensionamiento Sectorial:</strong> asistencia técnica para identificar recursos, infraestructuras y sistemas dentro de las capacidades nacionales y ACN.',
+          u2_s2_i2: '<strong>Matrices IER Sectoriales:</strong> formulación y actualización anual para Ministerios.',
+          u2_s2_i3: '<strong>Plan Sectorial:</strong> formulación del Plan Sectorial de protección de Activos Críticos.',
+          u2_conf: 'Protocolo de estricta confidencialidad y reserva institucional de la información.',
+          u3_s1_t: 'Habilidades Blandas, Liderazgo & Cultura',
+          u3_s1_i1: '<strong>Entrenamiento en habilidades blandas (Talleres):</strong> escucha activa, comunicación asertiva y trabajo en equipo.',
+          u3_s1_i2: '<strong>Programas estratégicos de talento:</strong> desempeño, cultura organizacional, liderazgo y reconocimiento.',
+          u3_s2_t: 'Employee Journeys & Diagnóstico Ágil de Clima',
+          u3_s2_i1: '<strong>Diseño de Journeys del Colaborador:</strong> etapas e interacciones clave para optimizar su experiencia en la empresa.',
+          u3_s2_i2: '<strong>Diagnóstico Organizacional Ágil:</strong> evaluación de clima laboral, experiencia del colaborador y cultura con metodología ágil.',
+          d_tag: 'Dirección General & Acreditación Oficial',
+          d_name: 'Magíster Marco Antonio Araujo Portocarrero',
+          d_sub: 'Gerente General & Director · CORPORATIVO HR & LEGAL CONSULTING S.A.C.',
+          d_bio: 'Con más de dos décadas de trayectoria en el sector público y privado, dirige la estrategia del corporativo y coordina los equipos altamente calificados de las tres divisiones, brindando atención personalizada hasta la culminación de cada controversia.',
           c_lbl_1: 'Razón Social & RUC Oficial',
           c_val_1: 'HR & LEGAL CONSULTING S.A.C. · RUC 20610061797 (Activo y Habido)',
           c_lbl_2: 'Acreditación Forense & Casilla',
           c_val_2: 'Colegio de Abogados de Lima Nº 68243 · Casilla SINOE Nº 69164',
-          c_lbl_3: 'Líneas de Atención Directa',
-          c_lbl_4: 'Correo Electrónico Institucional',
-          c_lbl_5: 'Sede y Jurisdicción Nacional',
-          c_val_5: 'Lima, República del Perú · Gestión letrada de expedientes y audiencias virtuales a nivel nacional',
-          d_priv: '* Comunicación confidencial amparada bajo el Secreto Profesional (Artículo 2, Inciso 18 de la Constitución Política del Perú y Código de Ética de los Colegios de Abogados del Perú).',
-          f_left: '© 2026 HR & LEGAL CONSULTING S.A.C. · RUC 20610061797 · Sede Lima, Perú.',
-          f_right: 'Dirección Letrada: Abogado Marco Antonio Araujo Portocarrero · CAL Nº 68243 · Casilla SINOE Nº 69164'
+          c_lbl_3: 'Comunicaciones Directas (Previa Cita)',
+          c_lbl_4: 'Correo Institucional',
+          c_lbl_5: 'Domicilio Real & Jurisdicción',
+          c_val_5: 'Av. Alejandro Iglesias Nº 105, Chorrillos, Lima, Perú · Atención corporativa a nivel nacional',
+          d_priv: '* Comunicación confidencial amparada bajo el Secreto Profesional (Artículo 2, Inciso 18 de la Constitución Política del Perú).',
+          f_left: '© 2026 CORPORATIVO HR & LEGAL CONSULTING S.A.C. · Todos los derechos reservados.',
+          f_right: 'Consultoría Legal · Activos Críticos Nacionales (ACN) · Gestión del Talento Humano'
         },
         en: {
-          nav_esp: 'Practice Areas',
-          nav_desp: 'Managing Partner',
-          nav_wa: 'WhatsApp Inquiry',
-          hero_tag: 'Corporate Counsel · Administrative & Labor Defense',
+          hdr_corp: 'Corporate Group',
+          hdr_sub: 'Specialized Legal Consulting & Public Management',
+          nav_esp: 'Specialties',
+          nav_desp: 'Executive Direction',
+          nav_wa: "Let's Talk",
           hero_title: 'Experience, sound judgment, and clear counsel to move your business forward.',
-          hero_sub: 'Specialized legal defense and corporate representation in administrative and labor matters. Agile, direct case management via SINOE electronic judicial mailbox and digital filing platforms nationwide.',
-          sec_tag: 'Firm Specialization',
-          sec_title: 'Administrative, Labor, Regulatory & Legal Defense',
-          sec_desc: 'High-complexity proceedings managed entirely through official digital channels and electronic mailboxes, ensuring procedural speed and direct senior counsel dedication.',
-          p1_title: 'Labor Sanctioning Proceedings (SUNAFIL)',
-          p1_badge: 'SUNAFIL Electronic Mailbox',
-          p1_desc: 'Management of labor inspection orders, responses to compliance requirements, legal defense briefs against Infraction Notices, and appeals before the Labor Inspection Tribunal.',
-          p2_title: 'State Contracting Tribunal (OSCE)',
-          p2_badge: 'SEACE Digital Platform',
-          p2_desc: 'Technical and legal defense before the State Contracting Tribunal against infraction charges. Injunctive relief, virtual oral arguments, and reconsideration appeals against RNP disqualifications.',
-          p3_title: 'Administrative Sanctioning Proceedings (PAS)',
-          p3_badge: 'Virtual Filing',
-          p3_desc: 'Defense briefs, technical rebuttals, nullity petitions, and statute of limitations defenses before regulatory agencies (INDECOPI, OEFA, OSINERGMIN) and State entities via digital filing.',
-          p4_title: 'Risk Management in National Critical Assets',
-          p4_badge: 'Supreme Decree Nº 106-2017-PCM',
-          p4_desc: 'Legal and technical advisory for strategic infrastructure operators. Preparation of Comprehensive Operator Protection Plans (PPIO) and GROI methodology implementation.',
-          d_tag: 'Bar Registration & Credentials · Managing Counsel',
-          d_name: ' Marco Antonio Araujo Portocarrero, Esq.',
-          d_sub: 'Managing Partner · HR & LEGAL CONSULTING S.A.C.',
-          d_bio: 'With over two decades of active legal practice, he personally leads the litigation strategy and regulatory analysis of every case undertaken by the firm. Agile judgment, with zero intermediaries, optimized to resolve complex contingencies through electronic filing and virtual representation nationwide.',
-          c_lbl_1: 'Corporate Name & Tax ID (RUC)',
+          hero_sub: 'External corporate advisory with specialized teams across each division until the conclusion of the proceeding.',
+          b_prompt: 'Select a specialty to expand full details',
+          b1_name: 'Legal Consulting & Public Management',
+          b2_name: 'National Critical Assets (ACN)',
+          b3_name: 'Human Talent Management',
+          sec_title: 'Specialties',
+          sec_note: 'Specialized teams by division · External corporate advisory',
+          u1_s1_t: 'Administrative Law & Sanctioning Proceedings (PAS)',
+          u1_s1_i1: '<strong>Administrative proceedings:</strong> defenses, appeals, nullities, statutes of limitation, and oral hearings.',
+          u1_s1_i2: '<strong>PAS – SUNAFIL:</strong> inspection records, defenses, appeals, and oral hearings.',
+          u1_s1_i3: '<strong>PAS – OECE & Regulators:</strong> defense against charges, appeals, expiration, and precautionary measures.',
+          u1_s1_i4: '<strong>State-related practice:</strong> public procurement · public management · SERVIR · civil service.',
+          u1_s2_t: 'Corporate Labor Law',
+          u1_s2_i1: '<strong>Collective relations:</strong> collective bargaining, labor unions, and conflict prevention.',
+          u1_s2_i2: '<strong>Labor contracting:</strong> statutory benefits and defense against hostility claims.',
+          u1_s2_i3: '<strong>Dismissals & terminations:</strong> judicial, administrative, and arbitral representation.',
+          u1_s2_i4: '<strong>Audits & prevention:</strong> comprehensive labor audits and Occupational Health & Safety (OHS).',
+          u1_s3_t: 'Public Management & Regulation',
+          u1_s3_i1: '<strong>Administrative simplification</strong> and TUPA procedure optimization.',
+          u1_s3_i2: '<strong>Regulatory quality</strong> and normative impact analysis.',
+          u1_s3_i3: '<strong>Public procurement</strong> across all operational and disputed stages.',
+          u1_s3_i4: '<strong>Public utility regulation</strong> and concessioned infrastructure.',
+          u2_s1_t: 'For ACN Operators (Mandatory & Permanent)',
+          u2_s1_i1: '<strong>Comprehensive Risk Management (GIR):</strong> general consulting under the ACN Regulation.',
+          u2_s1_i2: '<strong>Operator IER Matrices:</strong> methodological formulation and updating.',
+          u2_s1_i3: '<strong>ACN Identification Dossier:</strong> formulation pursuant to Supreme Decree Nº 106-2017-PCM.',
+          u2_s1_i4: '<strong>Security Tools & Plans:</strong> design of mandatory regulatory security instruments.',
+          u2_s1_i5: '<strong>Operator Comprehensive Protection Plan (PPIO):</strong> full formulation to ensure operational continuity.',
+          u2_s2_t: 'For Responsible Sectors (Ministries)',
+          u2_s2_i1: '<strong>Sectoral Sizing:</strong> technical assistance to identify resources, infrastructure, and systems within national capabilities and ACN.',
+          u2_s2_i2: '<strong>Sectoral IER Matrices:</strong> annual formulation and updating for Ministries.',
+          u2_s2_i3: '<strong>Sectoral Plan:</strong> comprehensive formulation of the Critical Assets Sectoral Protection Plan.',
+          u2_conf: 'Strict institutional confidentiality and information security protocol.',
+          u3_s1_t: 'Soft Skills, Leadership & Culture',
+          u3_s1_i1: '<strong>Soft skills training (Workshops):</strong> active listening, assertive communication, and teamwork.',
+          u3_s1_i2: '<strong>Strategic talent programs:</strong> performance, organizational culture, leadership, and recognition.',
+          u3_s2_t: 'Employee Journeys & Agile Climate Diagnostics',
+          u3_s2_i1: '<strong>Employee Journey Design:</strong> key stages and interactions to optimize the employee lifecycle.',
+          u3_s2_i2: '<strong>Agile Organizational Diagnostics:</strong> workplace climate, employee experience, and culture assessment.',
+          d_tag: 'Executive Direction & Official Credentials',
+          d_name: 'Master Marco Antonio Araujo Portocarrero',
+          d_sub: 'General Manager & Director · CORPORATIVO HR & LEGAL CONSULTING S.A.C.',
+          d_bio: 'With over two decades of experience in the public and private sectors, he leads the corporate group strategy and coordinates the highly qualified teams across all three divisions, providing personalized representation until the conclusion of every controversy.',
+          c_lbl_1: 'Corporate Name & Official Tax ID (RUC)',
           c_val_1: 'HR & LEGAL CONSULTING S.A.C. · RUC 20610061797 (Active & Compliant)',
           c_lbl_2: 'Bar Registration & Judicial Mailbox',
           c_val_2: 'Lima Bar Association (CAL) Nº 68243 · SINOE Mailbox Nº 69164',
-          c_lbl_3: 'Direct Phone Lines',
+          c_lbl_3: 'Direct Communications (By Appointment)',
           c_lbl_4: 'Institutional Email',
-          c_lbl_5: 'Headquarters & Jurisdiction',
-          c_val_5: 'Lima, Republic of Peru · Nationwide electronic case management and virtual hearings',
-          d_priv: '* Confidential communication protected under Attorney-Client Privilege (Article 2, Section 18 of the Political Constitution of Peru and Code of Ethics of the Peruvian Bar Associations).',
-          f_left: '© 2026 HR & LEGAL CONSULTING S.A.C. · RUC 20610061797 · Lima, Peru.',
-          f_right: 'Managing Counsel: Marco Antonio Araujo Portocarrero, Esq. · CAL Nº 68243 · SINOE Nº 69164'
+          c_lbl_5: 'Registered Office & Jurisdiction',
+          c_val_5: '105 Alejandro Iglesias Ave., Chorrillos, Lima, Peru · Nationwide corporate representation',
+          d_priv: '* Confidential communication protected under Attorney-Client Privilege (Article 2, Section 18 of the Political Constitution of Peru).',
+          f_left: '© 2026 CORPORATIVO HR & LEGAL CONSULTING S.A.C. · All rights reserved.',
+          f_right: 'Legal Consulting · National Critical Assets (ACN) · Human Talent Management'
         }
       };
 
-      document.querySelectorAll('[data-lang]').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const lang = btn.getAttribute('data-lang');
-          document.querySelectorAll('[data-lang]').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          document.documentElement.lang = lang;
+      let currentLang = 'es';
+      const langToggleBtn = document.getElementById('langToggleBtn');
+      const flagEs = document.getElementById('flag-es');
+      const flagEn = document.getElementById('flag-en');
 
-          const dict = i18n[lang];
+      if (langToggleBtn) {
+        langToggleBtn.addEventListener('click', () => {
+          currentLang = currentLang === 'es' ? 'en' : 'es';
+          document.documentElement.lang = currentLang;
+
+          if (flagEs && flagEn) {
+            flagEs.classList.toggle('active', currentLang === 'es');
+            flagEn.classList.toggle('active', currentLang === 'en');
+          }
+
+          const dict = i18n[currentLang];
           document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (dict[key]) {
-              el.textContent = dict[key];
+              if (dict[key].indexOf('<strong>') !== -1) {
+                el.innerHTML = dict[key];
+              } else {
+                el.textContent = dict[key];
+              }
             }
           });
         });
-      });
+      }
     })();
   </script>
 
