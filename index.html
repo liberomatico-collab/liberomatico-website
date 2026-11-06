@@ -1,215 +1,369 @@
 <!DOCTYPE html>
+
 <html lang="es">
+
 <head>
+
   <meta charset="UTF-8" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LiberoMatico // Rodrigo Guillermo Vázquez · Consultor Estratégico, Comercial y Tecnológico</title>
+
+  <title>LiberoMatico // Rodrigo Guillermo Vázquez · Consultoría Estratégica Internacional</title>
+
   <meta name="description" content="Soluciones digitales para estructurar, mostrar y hacer crecer su negocio. Tecnología digital para hacer su negocio imposible de ignorar y estructurar crecimiento con consistencia." />
+
   
+
   <!-- Metadatos de Vista Previa para WhatsApp / Redes Sociales (Open Graph) -->
+
   <meta property="og:type" content="website" />
+
   <meta property="og:url" content="https://www.liberomatico.com/" />
+
   <meta property="og:title" content="Rodrigo Guillermo Vázquez // LiberoMatico" />
+
   <meta property="og:description" content="Soluciones digitales para estructurar, mostrar y hacer crecer su negocio. Presencia visual cinematográfica, software y consultoría estratégica." />
+
   <meta property="og:image" content="https://www.liberomatico.com/assets/og_preview_liberomatico.jpg" />
+
   <meta property="og:image:secure_url" content="https://www.liberomatico.com/assets/og_preview_liberomatico.jpg" />
+
   <meta property="og:image:type" content="image/jpeg" />
+
   <meta property="og:image:width" content="1200" />
+
   <meta property="og:image:height" content="630" />
+
   <meta property="og:image:alt" content="Rodrigo Guillermo Vázquez - LiberoMatico" />
 
   <!-- Twitter Card -->
+
   <meta name="twitter:card" content="summary_large_image" />
+
   <meta name="twitter:title" content="Rodrigo Guillermo Vázquez // LiberoMatico" />
+
   <meta name="twitter:description" content="Soluciones digitales para estructurar, mostrar y hacer crecer su negocio." />
+
   <meta name="twitter:image" content="https://www.liberomatico.com/assets/og_preview_liberomatico.jpg" />
+
   
+
   <!-- Favicon con Logo Transparente -->
+
   <link rel="icon" type="image/png" href="assets/liberomatico-logo-transparent.png" />
 
   <!-- Tipografía Google: Plus Jakarta Sans -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
+
     /* ==========================================================================
+
        RESET Y ARQUITECTURA DE AMPLITUD (SCROLL LIBRE · CERO CAJAS)
+
        ========================================================================== */
+
     *, *::before, *::after {
+
       box-sizing: border-box;
+
       margin: 0;
+
       padding: 0;
+
       -webkit-tap-highlight-color: transparent;
+
     }
 
     :root {
-      --champagne: #e2c992;
-      --champagne-glow: rgba(226, 201, 146, 0.35);
+      --champagne: #93c5fd; /* Azul hielo sobrio ejecutivo */
+      --champagne-glow: rgba(56, 189, 248, 0.35);
       --text-main: #f8fafc;
-      --text-muted: #cbd5e1;
+      --text-muted: #94a3b8;
       --accent-blue: #38bdf8;
       --whatsapp-green: #25d366;
     }
 
     html {
+
       scroll-behavior: smooth;
+
       background-color: #030712;
+
       color: var(--text-main);
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
     }
 
     body {
+
       width: 100%;
+
       min-height: 100vh;
+
       overflow-x: hidden;
+
       overflow-y: auto;
+
       background-color: #030712;
+
     }
 
     /* ==========================================================================
+
        FONDO INMERSIVO UNIVERSAL (FULLSCREEN CON TRANSICIÓN DINÁMICA AL SCROLL)
+
        ========================================================================== */
+
     .bg-stage {
+
       position: fixed;
+
       inset: 0;
+
       width: 100vw;
+
       height: 100vh;
+
       z-index: 0;
+
       overflow: hidden;
+
       pointer-events: none;
+
     }
 
     .bg-slide {
+
       position: absolute;
+
       inset: 0;
+
       width: 100%;
+
       height: 100%;
+
       background-size: cover;
+
       background-position: center center;
+
       background-repeat: no-repeat;
+
       opacity: 0;
+
       transform: scale(1.06);
+
       transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1), transform 2.2s cubic-bezier(0.16, 1, 0.3, 1);
+
       will-change: opacity, transform;
+
     }
 
     .bg-slide.active {
+
       opacity: 1;
+
       transform: scale(1.0);
+
     }
 
     /* Velo atmosférico abierto, sutil y limpio que no oscurece los videos */
+
     .bg-stage::after {
+
       content: "";
+
       position: absolute;
+
       inset: 0;
+
       background: radial-gradient(circle at 50% 30%, rgba(3, 7, 18, 0.08) 0%, rgba(3, 7, 18, 0.45) 100%),
+
                   linear-gradient(180deg, rgba(3, 7, 18, 0.45) 0%, rgba(3, 7, 18, 0.15) 50%, rgba(3, 7, 18, 0.55) 100%);
+
       pointer-events: none;
+
       z-index: 2;
+
     }
 
     .bg-slide video {
+
       position: absolute;
+
       inset: 0;
+
       width: 100%;
+
       height: 100%;
+
       object-fit: cover;
+
       object-position: center 18%;
+
     }
 
     /* Ajustes finos de encuadre por reel según composición */
+
     #bg-1 video { object-position: 50% 30%; }
+
     #bg-2 video { object-position: 50% 25%; }
+
     #bg-3 video { object-position: 50% 20%; }
+
     #bg-4 video { object-position: 50% 25%; }
+
     #bg-5 video { object-position: 50% 15%; }
 
     /* ==========================================================================
+
        ARQUITECTURA ERGONÓMICA ADAPTATIVA:
+
        - PANTALLA ANCHA (PC 16:9): MÁRGENES IZQUIERDO Y DERECHO (TECHO Y PISO 100% LIBRES)
+
        - PANTALLA ALTA (MÓVIL 9:16): TECHO Y PISO (MÁRGENES LATERALES 100% LIBRES)
+
        ========================================================================== */
+
     .top-hud {
+
       position: fixed;
+
       inset: 0;
+
       z-index: 100;
+
       pointer-events: none;
+
     }
 
     .hud-bar {
+
       width: 100%;
+
       height: 100%;
+
     }
 
     /* MARGEN IZQUIERDO: MARCA + ACORDEÓN DE LOS 3 PILARES */
+
     .left-rail {
+
       position: fixed;
+
       top: 2.2rem;
+
       left: 2.6rem;
+
       z-index: 105;
+
       pointer-events: auto;
+
       display: flex;
+
       flex-direction: column;
+
       align-items: flex-start;
+
       gap: 1.5rem;
+
     }
 
     .brand-link {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      text-decoration: none;
-      color: inherit;
-      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95);
-    }
 
-    .brand-logo-frame {
-      width: 40px;
-      height: 40px;
+      display: flex;
+
+      align-items: center;
+
+      gap: 0.8rem;
+
+      text-decoration: none;
+
+      color: inherit;
+
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95);
+
+    }
+.brand-logo-frame {
+      width: 60px;
+      height: 60px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.4));
+      filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.7));
+      transition: transform 0.25s ease;
+    }
+
+    .brand-logo-frame:hover {
+      transform: scale(1.04);
     }
 
     .brand-logo-frame img {
+
       width: 100%;
+
       height: 100%;
+
       object-fit: contain;
+
     }
 
     .brand-text {
+
       display: flex;
+
       flex-direction: column;
+
       gap: 0.15rem;
+
     }
 
     .brand-top-row {
+
       display: flex;
+
       align-items: baseline;
+
       gap: 0.45rem;
+
     }
 
     .brand-title {
+
       font-size: 1.32rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
+
+      font-weight: 600;
+
+      letter-spacing: 0.04em;
+
       text-transform: uppercase;
+
       color: var(--text-main);
+
     }
 
     .brand-author {
+
       font-size: 1.02rem;
+
       font-weight: 600;
+
       letter-spacing: 0.03em;
+
       color: #e2e8f0;
+
     }
 
     /* ACORDEÓN LATERAL IZQUIERDO (CENTRADO ENTRE TECHO Y PISO EN PC) */
-    .left-accordion {
+
+        .left-accordion {
       position: fixed;
       top: 50%;
       transform: translateY(-50%);
@@ -219,1070 +373,1870 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 0.85rem;
+      gap: 0.75rem;
+      max-width: 240px;
+      padding: 1.15rem 1.45rem;
+      background: rgba(6, 11, 22, 0.28);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: none;
+      border-radius: 16px;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .acc-group {
+
       display: flex;
+
       flex-direction: column;
+
       align-items: flex-start;
+
     }
 
     .acc-trigger {
+
       background: none;
+
       border: none;
+
       color: rgba(248, 250, 252, 0.92);
+
       font-family: inherit;
-      font-size: 1.22rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
+
+      font-size: 1.08rem;
+
+      font-weight: 500;
+
+      letter-spacing: 0.02em;
+
       cursor: pointer;
+
       padding: 0.32rem 0;
+
       display: inline-flex;
+
       align-items: center;
+
       gap: 0;
-      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95);
+
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+
       transition: color 0.25s ease, transform 0.25s ease;
+
       text-decoration: none;
+
     }
 
     .acc-trigger:hover {
+
       color: var(--champagne);
+
       transform: translateX(3px);
+
     }
 
     .acc-trigger.active {
+
       color: var(--champagne);
+
       text-shadow: 0 0 16px var(--champagne-glow);
+
     }
 
     .acc-group.open .acc-trigger {
+
       color: var(--champagne);
+
     }
 
     .acc-arrow {
+
       display: none;
+
     }
 
     .acc-panel {
+
       display: flex;
+
       flex-direction: column;
+
       align-items: flex-start;
+
       gap: 0.45rem;
+
       padding-left: 0.75rem;
+
       margin-left: 0;
+
       border-left: 1.5px solid rgba(226, 201, 146, 0.4);
+
       max-height: 0;
+
       opacity: 0;
+
       overflow: hidden;
+
       transition: max-height 0.32s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease, margin-top 0.25s ease;
+
     }
 
     .acc-group.open .acc-panel {
+
       max-height: 220px;
+
       opacity: 1;
+
       margin-top: 0.45rem;
+
       margin-bottom: 0.45rem;
+
     }
 
     .acc-subitem {
+
       color: rgba(248, 250, 252, 0.82);
+
       font-size: 1.02rem;
+
       font-weight: 500;
+
       letter-spacing: 0.03em;
+
       text-decoration: none;
+
       padding: 0.2rem 0;
+
       text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95);
+
       transition: color 0.2s ease, transform 0.2s ease;
+
       white-space: nowrap;
+
     }
 
     .acc-subitem:hover {
+
       color: #ffffff;
+
       transform: translateX(3px);
+
     }
 
     /* MARGEN DERECHO SUPERIOR: CONTROL DE AUDIO SELECTIVO Y SELECTOR DE IDIOMA */
+
     .top-right-tools {
+
       position: fixed;
+
       top: 2.2rem;
+
       right: 3rem;
+
       z-index: 105;
+
       pointer-events: auto;
+
       display: flex;
+
       flex-direction: row;
+
       align-items: center;
+
       gap: 0.85rem;
+
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+
     }
 
     /* BOTÓN SELECTOR DE AUDIO INTELIGENTE (ESTILO CÁPSULA GLASS IDÉNTICO A WHATSAPP) */
+
     @keyframes audioPulseGlow {
       0% {
-        box-shadow: 0 0 0 0 rgba(226, 201, 146, 0.55), 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
-        border-color: rgba(226, 201, 146, 0.5);
+        box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.55), 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        border-color: rgba(56, 189, 248, 0.5);
       }
       50% {
-        box-shadow: 0 0 18px 4px rgba(226, 201, 146, 0.75), 0 8px 24px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+        box-shadow: 0 0 18px 4px rgba(56, 189, 248, 0.65), 0 8px 24px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.25);
         border-color: var(--champagne);
       }
       100% {
-        box-shadow: 0 0 0 0 rgba(226, 201, 146, 0), 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
-        border-color: rgba(226, 201, 146, 0.5);
+        box-shadow: 0 0 0 0 rgba(56, 189, 248, 0), 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        border-color: rgba(56, 189, 248, 0.5);
       }
     }
 
     .btn-audio-toggle {
+
       display: inline-flex;
+
       align-items: center;
+
       justify-content: center;
+
       width: 44px;
+
       height: 44px;
+
       box-sizing: border-box;
+
       padding: 0;
+
       background: rgba(8, 14, 26, 0.68);
+
       backdrop-filter: blur(14px);
+
       -webkit-backdrop-filter: blur(14px);
+
       border: 1px solid rgba(226, 201, 146, 0.5);
+
       border-radius: 9999px;
+
       color: rgba(248, 250, 252, 0.85);
+
       cursor: pointer;
+
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+
       outline: none;
+
       flex-shrink: 0;
+
       animation: audioPulseGlow 2.4s ease-in-out infinite;
+
     }
 
     .btn-audio-toggle:hover {
+
       background: rgba(15, 28, 42, 0.85);
+
       border-color: rgba(226, 201, 146, 0.85);
+
       color: #ffffff;
+
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
       transform: translateY(-2px) scale(1.05);
+
       animation: none;
+
     }
 
     .btn-audio-toggle.active {
+
       background: rgba(15, 28, 42, 0.88);
+
       border-color: var(--champagne);
+
       color: var(--champagne);
+
       box-shadow: 0 0 20px rgba(226, 201, 146, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
       animation: none;
+
     }
 
     .btn-audio-toggle .audio-icon {
+
       width: 22px;
+
       height: 22px;
+
       flex-shrink: 0;
+
       transition: transform 0.25s ease;
+
     }
 
     .btn-audio-toggle:hover .audio-icon {
+
       transform: scale(1.1);
+
     }
 
     .lang-switch {
+
       display: inline-flex;
+
       align-items: center;
+
       gap: 0.35rem;
+
     }
 
     .btn-lang {
+
       display: inline-flex;
+
       align-items: center;
+
       gap: 0.35rem;
+
       padding: 0.3rem 0.6rem;
+
       background: transparent;
+
       border: none;
+
       border-bottom: 2px solid transparent;
+
       color: var(--text-muted);
+
       font-size: 0.88rem;
+
       font-weight: 700;
+
       letter-spacing: 0.06em;
+
       cursor: pointer;
+
       transition: all 0.2s ease;
+
       font-family: inherit;
+
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
+
     }
 
     .btn-lang:hover {
+
       color: #ffffff;
+
     }
 
     .btn-lang.active {
+
       color: var(--champagne);
+
       border-bottom-color: var(--champagne);
+
     }
 
     .flag-icon {
+
       width: 17px;
+
       height: 12px;
+
       border-radius: 2px;
+
       display: inline-block;
+
       flex-shrink: 0;
+
     }
 
     /* MARGEN DERECHO INFERIOR EN PC: EXCLUSIVAMENTE BOTONES DE WHATSAPP (CON FONDO DE GLASS) */
+
     .whatsapp-dock {
+
       position: fixed;
+
       bottom: 2.8rem;
+
       right: 2.6rem;
+
       z-index: 105;
+
       pointer-events: auto;
+
       display: flex;
+
       flex-direction: column;
+
       align-items: flex-end;
+
       gap: 0.75rem;
+
     }
 
     .btn-whatsapp-right {
+
       display: inline-flex;
+
       align-items: center;
+
       justify-content: center;
+
       gap: 0.65rem;
+
       width: 216px;
+
       box-sizing: border-box;
+
       padding: 0.55rem 1rem;
+
       background: rgba(8, 14, 26, 0.68);
+
       backdrop-filter: blur(14px);
+
       -webkit-backdrop-filter: blur(14px);
+
       border: 1px solid rgba(37, 211, 102, 0.4);
+
       border-radius: 9999px;
+
       color: rgba(248, 250, 252, 0.96);
+
       font-size: 0.98rem;
+
       font-weight: 700;
+
       font-variant-numeric: tabular-nums;
+
       text-decoration: none;
+
       letter-spacing: 0.03em;
+
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
+
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+
       white-space: nowrap;
+
     }
 
     .btn-whatsapp-right svg {
+
       width: 24px;
+
       height: 24px;
+
       color: var(--whatsapp-green);
+
       flex-shrink: 0;
+
       transition: transform 0.25s ease;
+
     }
 
     .btn-whatsapp-right:hover {
+
       background: rgba(15, 28, 42, 0.85);
+
       border-color: rgba(37, 211, 102, 0.85);
+
       box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
       transform: translateX(-4px) scale(1.02);
+
     }
 
     .btn-whatsapp-right:hover svg {
+
       transform: scale(1.1);
+
     }
 
     /* ==========================================================================
+
        FLUJO VERTICAL DE SECCIONES ABIERTAS (TECHO Y PISO 100% DESPEJADOS EN PC)
+
        ========================================================================== */
+
     main.open-flow {
+
       position: relative;
+
       z-index: 10;
+
       width: 100%;
+
     }
 
     .open-section {
+
       min-height: 100vh;
+
       width: 100%;
+
       box-sizing: border-box;
-      padding: 3.5rem 19rem 3.5rem 16.5rem;
+
+      padding: 3.5rem 18rem 3.5rem 21rem;
+
       display: flex;
+
       flex-direction: column;
+
       justify-content: center;
+
       align-items: flex-start;
+
     }
 
     @media (min-width: 961px) and (max-width: 1280px) {
+
       .open-section {
-        padding: 3rem 16.5rem 3rem 15rem;
+
+        padding: 3rem 16.5rem 3rem 18.5rem;
+
       }
+
       .pilares-open-grid {
+
         gap: 1.2rem;
+
         max-width: 680px;
+
       }
+
     }
 
     /* SECCIONES CON TEXTO EN PARTE INFERIOR (ROSTROS Y CENTRO 100% DESPEJADOS) */
+
     #sec-1,
+
     #sec-2,
+
     #sec-3 {
+
       justify-content: flex-end;
+
       align-items: flex-start;
+
       padding-bottom: 5.5rem;
+
     }
 
-    .sec-bottom-wrap,
+        .sec-bottom-wrap,
     .sec1-bottom-wrap {
       max-width: 760px;
       margin-top: auto;
       margin-bottom: 0;
+      background: rgba(6, 11, 22, 0.28);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: none;
+      border-radius: 16px;
+      padding: 1.25rem 1.75rem;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
     }
 
     .sec-title-single,
+
     .sec1-title {
+
       font-size: clamp(1.4rem, 2.3vw, 2.15rem);
-      font-weight: 600;
+
+      font-weight: 500;
+
       line-height: 1.35;
+
       color: #ffffff;
-      letter-spacing: -0.015em;
-      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.95), 0 2px 10px rgba(0, 0, 0, 0.9);
+
+      letter-spacing: -0.02em;
+
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+
       margin-bottom: 0;
+
     }
 
     .sec-sub-line {
+
       font-size: clamp(0.95rem, 1.2vw, 1.12rem);
-      font-weight: 500;
+
+      font-weight: 400;
+
       color: var(--champagne);
-      letter-spacing: 0.025em;
+
+      letter-spacing: 0.01em;
+
       margin-top: 0.65rem;
+
       margin-bottom: 0;
+
       line-height: 1.45;
-      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95);
+
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+
     }
 
     /* TIPOGRAFÍA EDITORIAL EQUILIBRADA Y ARMONIOSA */
+
     .open-eyebrow {
+
       display: none;
+
     }
 
     .open-title {
+
       font-size: clamp(1.35rem, 2.1vw, 1.95rem);
+
       font-weight: 600;
+
       line-height: 1.28;
+
       color: #ffffff;
+
       max-width: 640px;
+
       margin-bottom: 0.75rem;
+
       letter-spacing: -0.015em;
+
       text-shadow: 0 3px 18px rgba(0, 0, 0, 0.95);
+
     }
 
     .open-lead {
+
       font-size: clamp(0.9rem, 1.05vw, 1rem);
+
       line-height: 1.5;
+
       color: var(--text-muted);
+
       max-width: 600px;
+
       margin-bottom: 1.3rem;
+
       text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95);
+
     }
 
     /* LOS 3 PILARES EN HORIZONTE ABIERTO (COMPACTO Y ELEGANTE) */
+
     .pilares-open-grid {
+
       display: grid;
+
       grid-template-columns: repeat(3, 1fr);
+
       gap: 1.5rem;
+
       margin: 1.1rem 0 1.6rem 0;
+
       padding-top: 1.1rem;
+
       border-top: 1px solid rgba(226, 201, 146, 0.25);
+
       max-width: 720px;
+
       width: 100%;
+
     }
 
     .pilar-open-col {
+
       display: flex;
+
       flex-direction: column;
+
       gap: 0.35rem;
+
     }
 
     .pilar-num {
+
       display: none;
+
     }
 
     .pilar-open-title {
+
       font-size: 1.05rem;
+
       font-weight: 700;
+
       color: #ffffff;
+
       letter-spacing: -0.01em;
+
       line-height: 1.25;
+
       text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95);
+
     }
 
     .pilar-open-desc {
+
       font-size: 0.86rem;
+
       line-height: 1.45;
+
       color: #cbd5e1;
+
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
+
     }
 
     /* LISTA DE CLIENTES CON LOGOTIPOS */
+
     .demos-open-bar {
+
       margin-top: 1.5rem;
+
       padding-top: 1rem;
+
       max-width: 760px;
+
       width: 100%;
+
     }
 
     .demos-open-list {
+
       display: flex;
+
       flex-wrap: wrap;
+
       gap: 2.2rem;
+
     }
 
     .demo-open-link {
+
       text-decoration: none;
+
       color: inherit;
+
       display: flex;
+
       flex-direction: column;
+
       align-items: flex-start;
+
       gap: 0.25rem;
+
       padding-bottom: 0.6rem;
+
       border-bottom: 1.5px solid rgba(226, 201, 146, 0.35);
+
       transition: all 0.25s ease;
+
       min-width: 160px;
+
     }
 
     .demo-open-link:hover {
+
       border-bottom-color: var(--champagne);
+
       transform: translateY(-3px);
+
     }
 
     .client-logo-box {
+
       height: 42px;
+
       display: flex;
+
       align-items: center;
+
       justify-content: flex-start;
+
       margin-bottom: 0.45rem;
+
     }
 
     .client-logo-img {
+
       max-height: 38px;
+
       max-width: 135px;
+
       width: auto;
+
       height: auto;
+
       object-fit: contain;
+
       filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.7));
+
       transition: transform 0.25s ease, filter 0.25s ease;
+
     }
 
     .demo-open-link:hover .client-logo-img {
+
       transform: scale(1.05);
+
       filter: drop-shadow(0 4px 14px rgba(226, 201, 146, 0.4));
+
     }
 
     .demo-open-name {
+
       font-size: 1.05rem;
+
       font-weight: 700;
+
       color: #ffffff;
+
       line-height: 1.2;
+
     }
 
     .demo-open-tag {
+
       font-size: 0.8rem;
+
       color: var(--champagne);
+
       font-weight: 600;
+
     }
 
     /* SECCIÓN 5: PERFIL Y CONTACTO EDITORIAL SOBRIO (ARMONÍA Y ESCALA REFINADA) */
+
     #sec-5 {
+
       justify-content: flex-end;
+
       align-items: flex-start;
+
       padding-bottom: 5.5rem;
+
     }
 
-    .profile-open-layout {
+        .profile-open-layout {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      max-width: 440px;
+      max-width: 460px;
       margin-top: auto;
       margin-bottom: 0;
       gap: 0;
+      background: rgba(6, 11, 22, 0.28);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: none;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
     }
 
     .profile-name {
+
       font-size: clamp(1.2rem, 1.8vw, 1.5rem);
-      font-weight: 700;
+
+      font-weight: 600;
+
       color: #ffffff;
+
       line-height: 1.25;
+
       letter-spacing: 0.01em;
+
       margin-bottom: 0.25rem;
-      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95);
+
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+
     }
 
     .profile-role {
+
       font-size: 0.88rem;
-      font-weight: 500;
+
+      font-weight: 400;
+
       color: var(--champagne);
+
       line-height: 1.35;
-      letter-spacing: 0.03em;
+
+      letter-spacing: 0.02em;
+
       margin-bottom: 0.65rem;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+
     }
 
     .contact-open-links {
+
       display: flex;
+
       flex-direction: column;
+
       align-items: flex-start;
+
       gap: 0.35rem;
+
       margin-top: 0.35rem;
+
       padding-top: 0.65rem;
+
       border-top: 1px solid rgba(226, 201, 146, 0.25);
+
       width: 100%;
+
     }
 
     .open-contact-item {
+
       color: rgba(248, 250, 252, 0.9);
+
       text-decoration: none;
+
       font-size: 0.84rem;
+
       font-weight: 500;
+
       letter-spacing: 0.02em;
+
       display: inline-flex;
+
       align-items: center;
+
       gap: 0.5rem;
+
       padding: 0.15rem 0;
+
       line-height: 1.3;
+
       transition: all 0.2s ease;
+
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
+
     }
 
     .open-contact-item svg {
+
       width: 14px;
+
       height: 14px;
+
       color: var(--champagne);
+
       flex-shrink: 0;
+
       opacity: 0.85;
+
       transition: opacity 0.2s ease, transform 0.2s ease;
+
     }
 
     .open-contact-item:hover {
+
       color: #ffffff;
+
       transform: translateX(2px);
+
     }
 
     .open-contact-item:hover svg {
+
       opacity: 1;
+
       transform: scale(1.1);
+
     }
 
     /* Ocultamos la foto estática duplicada para que luzca 100% tu reel de video de fondo */
+
     .profile-open-figure {
+
       display: none;
+
     }
 
     /* BOTÓN PRINCIPAL DE ACCIÓN */
+
     .btn-cta-gold {
+
       display: inline-flex;
+
       align-items: center;
+
       gap: 0.65rem;
+
       padding: 0.95rem 2rem;
+
       background: linear-gradient(135deg, #e2c992 0%, #bfa063 100%);
+
       color: #0c0d0e;
+
       font-size: 0.92rem;
+
       font-weight: 800;
+
       text-decoration: none;
+
       border: none;
+
       border-radius: 9999px;
+
       letter-spacing: 0.03em;
+
       cursor: pointer;
+
       box-shadow: 0 12px 30px rgba(226, 201, 146, 0.35);
+
       transition: all 0.25s ease;
+
     }
 
     .btn-cta-gold:hover {
+
       transform: translateY(-2px);
+
       box-shadow: 0 16px 35px rgba(226, 201, 146, 0.55);
+
     }
 
     /* ==========================================================================
+
        MODO PANTALLA ALTA / VERTICAL (9:16 MÓVIL O VENTANA MÁS ALTA QUE ANCHA):
+
        - TECHO: MARCA A LA IZQ + AUDIO E IDIOMA A LA DER (CABECERA ULTRA DESPEJADA)
+
        - PISO IZQUIERDO: MENÚ ESTRATEGIA / PUBLICIDAD / TECNOLOGÍA / CLIENTES / CONTACTO
+
        - PISO DERECHO: BOTONES WHATSAPP FLOTANTES EN LA ESQUINA INFERIOR DERECHA
+
        - ZONA CENTRAL RESERVADA: TEXTO CON TECHO Y PISO BLINDADOS (CERO SOLAPAMIENTOS)
+
        ========================================================================== */
+
     @media (max-aspect-ratio: 1/1), (max-width: 960px) {
+
       html, body {
+
         overflow: hidden;
+
         height: 100%;
+
         height: 100dvh;
+
       }
 
       /* CABECERA COMPACTA DE UNA SOLA LÍNEA HORIZONTAL (CERO SOLAPAMIENTOS) */
+
       .top-hud {
+
         inset: 0 0 auto 0;
+
         width: 100%;
+
         pointer-events: auto;
+
         background: rgba(6, 11, 20, 0.85);
+
         backdrop-filter: blur(14px);
+
         -webkit-backdrop-filter: blur(14px);
+
         border-bottom: 1px solid rgba(226, 201, 146, 0.2);
+
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+
       }
 
       .hud-bar {
+
         padding: 0.55rem 1rem;
+
         display: flex;
+
         flex-direction: row;
+
         justify-content: space-between;
+
         align-items: center;
+
         width: 100%;
+
         box-sizing: border-box;
+
       }
 
       .left-rail {
+
         position: static;
+
         width: auto;
+
         padding-right: 0;
+
         margin: 0;
+
         display: flex;
+
         align-items: center;
+
       }
 
       .brand-link {
+
         width: auto;
+
         display: inline-flex;
+
         align-items: center;
+
         gap: 0.55rem;
+
       }
 
       .brand-logo-frame {
-        width: 28px;
-        height: 28px;
-        min-width: 28px;
-        min-height: 28px;
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+        min-height: 42px;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
+        filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.7));
       }
 
       .brand-title {
+
         font-size: 0.95rem;
+
         letter-spacing: 0.04em;
+
       }
 
       .brand-author {
+
         display: none;
+
       }
 
       /* AUDIO E IDIOMA ALINEADOS EN EL EXTREMO DERECHO DEL TECHO */
+
       .top-right-tools {
+
         position: static;
+
         display: inline-flex;
+
         align-items: center;
+
         gap: 0.5rem;
+
         margin-left: auto;
+
         flex-shrink: 0;
+
       }
 
       .btn-audio-toggle {
+
         width: 36px;
+
         height: 36px;
+
       }
 
       .btn-audio-toggle .audio-icon {
+
         width: 18px;
+
         height: 18px;
+
       }
 
       .lang-switch {
+
         gap: 0.25rem;
+
       }
 
       .btn-lang {
+
         padding: 0.25rem 0.45rem;
+
         font-size: 0.72rem;
+
       }
 
       /* BOTONES DE WHATSAPP REUBICADOS EN EL PISO DERECHO DE LA PANTALLA */
+
       .whatsapp-dock {
+
         position: fixed;
+
         bottom: 1.15rem;
+
         right: 1rem;
+
         z-index: 110;
+
         pointer-events: auto;
+
         display: flex;
+
         flex-direction: column;
+
         align-items: flex-end;
+
         gap: 0.4rem;
+
         width: auto;
+
         max-width: 48vw;
+
       }
 
       .btn-whatsapp-right {
+
         flex: none;
+
         width: auto;
+
         display: inline-flex;
+
         align-items: center;
+
         justify-content: center;
+
         gap: 0.45rem;
+
         padding: 0.42rem 0.75rem;
+
         font-size: 0.78rem;
+
         font-weight: 700;
+
         background: rgba(8, 14, 26, 0.78);
+
         backdrop-filter: blur(14px);
+
         -webkit-backdrop-filter: blur(14px);
+
         border: 1px solid rgba(37, 211, 102, 0.45);
+
         border-radius: 9999px;
+
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
         color: rgba(248, 250, 252, 0.96);
+
         text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+
       }
 
       .btn-whatsapp-right svg {
+
         width: 17px;
+
         height: 17px;
+
       }
 
       .btn-whatsapp-right:hover {
+
         transform: none;
+
         background: rgba(15, 28, 42, 0.88);
+
       }
 
       /* EN MÓVIL ENCUADRAMOS EL VIDEO PARA OCULTAR EL ZÓCALO BLANCO INFERIOR */
+
       .bg-video-hero {
+
         object-position: 50% 10%;
+
         transform: scale(1.28);
+
         transform-origin: 50% 18%;
+
       }
 
       /* MENÚ EN EL PISO DEL LADO IZQUIERDO (MÁXIMO 48% DE PANTALLA) */
-      .left-accordion {
+
+            .left-accordion {
         position: fixed;
         top: auto;
         bottom: 1.15rem;
         left: 1rem;
         transform: none;
         z-index: 110;
-        max-width: 46vw;
+        max-width: 52vw;
         flex-direction: column;
         align-items: flex-start;
-        gap: 0.35rem;
-        padding: 0;
-        background: none;
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
+        gap: 0.3rem;
+        padding: 0.65rem 0.95rem;
+        background: rgba(6, 11, 22, 0.32);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         border: none;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
       }
 
       .acc-trigger {
+
         font-size: 0.88rem;
+
         padding: 0.12rem 0;
+
         line-height: 1.25;
+
       }
 
       .acc-panel {
+
         padding-left: 0.85rem;
+
         margin-left: 0.25rem;
+
         border-left: 1.5px solid rgba(226, 201, 146, 0.5);
+
       }
 
       .acc-subitem {
+
         font-size: 0.82rem;
+
         white-space: normal;
+
         line-height: 1.25;
+
         max-width: 46vw;
+
         padding: 0.15rem 0;
+
       }
 
       /* CONTENEDOR DE SCROLL VERTICAL CON LÍMITES FÍSICOS ESTRICTOS:
+
          - TECHO: 4.8rem (DESPEJA CABECERA Y ROSTROS)
+
          - PISO: 12.5rem (TERMINA FÍSICAMENTE POR ENCIMA DE "ESTRATEGIA", DEL MENÚ Y DE WHATSAPP)
+
          EL TEXTO EXISTE, ENTRA Y SALE EXCLUSIVAMENTE DENTRO DE ESTA VENTANA */
+
       main.open-flow {
+
         position: fixed;
+
         top: 4.8rem;
+
         bottom: 12.5rem;
+
         left: 0;
+
         right: 0;
+
         overflow-y: auto;
+
         overflow-x: hidden;
+
         -webkit-overflow-scrolling: touch;
+
         scroll-snap-type: y mandatory;
+
         scroll-behavior: smooth;
+
         z-index: 20;
+
       }
 
       .open-section {
+
         min-height: 100%;
+
         height: 100%;
+
         box-sizing: border-box;
+
         padding: 1.25rem 1.25rem;
+
         scroll-snap-align: start;
+
         scroll-snap-stop: always;
+
         display: flex;
+
         flex-direction: column;
+
         justify-content: flex-end;
+
         align-items: flex-start;
+
       }
 
       #sec-1,
+
       #sec-2,
+
       #sec-3,
+
       #sec-4,
+
       #sec-5 {
+
         min-height: 100%;
+
         height: auto;
+
         justify-content: flex-end;
+
         align-items: flex-start;
+
         padding: 1.25rem 1.25rem;
+
       }
 
       /* SECCIÓN 4 (CLIENTES) EN MÓVIL: ARQUITECTURA LIMPIA CERO SOLAPAMIENTOS */
+
       #sec-4 {
+
         justify-content: flex-start;
+
         gap: 0.8rem;
+
       }
 
       #sec-4 .open-title {
+
         font-size: 1.28rem;
+
         margin-bottom: 0.2rem;
+
       }
 
       #sec-4 .demos-open-bar {
+
         margin-top: 0;
+
         padding-top: 0;
+
         width: 100%;
+
       }
 
       #sec-4 .demos-open-list {
+
         display: flex;
+
         flex-direction: column;
+
         gap: 0.65rem;
+
         width: 100%;
+
       }
 
       #sec-4 .demo-open-link {
+
         flex-direction: row;
+
         align-items: center;
+
         gap: 0.75rem;
+
         padding: 0.45rem 0.65rem;
+
         border-bottom: none;
+
         border: 1px solid rgba(226, 201, 146, 0.22);
+
         border-radius: 12px;
+
         background: rgba(8, 14, 26, 0.65);
+
         backdrop-filter: blur(8px);
+
         -webkit-backdrop-filter: blur(8px);
+
         min-width: 0;
+
         width: 100%;
+
         box-sizing: border-box;
+
       }
 
       #sec-4 .client-logo-box {
+
         height: 28px;
+
         min-width: 68px;
+
         max-width: 68px;
+
         display: flex;
+
         align-items: center;
+
         justify-content: center;
+
         margin-bottom: 0;
+
         flex-shrink: 0;
+
       }
 
       #sec-4 .client-logo-img {
+
         max-height: 26px;
+
         max-width: 64px;
+
       }
 
       #sec-4 .demo-open-info {
+
         display: flex;
+
         flex-direction: column;
+
         gap: 0.12rem;
+
         overflow: hidden;
+
       }
 
       #sec-4 .demo-open-name {
+
         font-size: 0.88rem;
+
         line-height: 1.2;
+
         white-space: nowrap;
+
         overflow: hidden;
+
         text-overflow: ellipsis;
+
       }
 
       #sec-4 .demo-open-tag {
+
         font-size: 0.72rem;
+
         line-height: 1.2;
+
         white-space: nowrap;
+
         overflow: hidden;
+
         text-overflow: ellipsis;
+
       }
 
       #sec-4 .sec4-btn-wrap {
+
         margin-top: 0.4rem;
+
       }
 
       #sec-4 .btn-cta-gold {
+
         padding: 0.55rem 1.2rem;
+
         font-size: 0.8rem;
+
         box-shadow: 0 8px 20px rgba(226, 201, 146, 0.25);
+
       }
 
-      .sec-bottom-wrap,
+            .sec-bottom-wrap,
       .sec1-bottom-wrap {
         max-width: 100%;
         margin-top: auto;
         margin-bottom: 0;
+        background: rgba(6, 11, 22, 0.32);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: none;
+        border-radius: 12px;
+        padding: 0.85rem 1rem;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
       }
 
       .sec-title-single,
+
       .sec1-title {
+
         font-size: clamp(1.18rem, 5vw, 1.48rem);
+
         font-weight: 600;
+
         letter-spacing: -0.015em;
+
         line-height: 1.35;
+
       }
 
       .sec-sub-line {
+
         font-size: clamp(0.85rem, 3.6vw, 0.95rem);
+
         font-weight: 500;
+
         letter-spacing: 0.025em;
+
         margin-top: 0.45rem;
+
         line-height: 1.4;
+
       }
 
       .pilares-open-grid {
+
         grid-template-columns: 1fr;
+
         gap: 2.2rem;
+
       }
 
       /* #sec-5 HEREDA LA MISMA GEOMETRÍA COMPACTA */
 
-      .profile-open-layout {
+            .profile-open-layout {
         max-width: 100%;
         margin-top: auto;
         margin-bottom: 0;
         gap: 0;
+        background: rgba(6, 11, 22, 0.32);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: none;
+        border-radius: 12px;
+        padding: 0.85rem 1rem;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
       }
 
       .profile-name {
+
         font-size: 1.2rem;
+
         line-height: 1.25;
+
         margin-bottom: 0.2rem;
+
       }
 
       .profile-role {
+
         font-size: 0.8rem;
+
         line-height: 1.3;
+
         margin-bottom: 0.55rem;
+
       }
 
       .contact-open-links {
+
         gap: 0.35rem;
+
         margin-top: 0.25rem;
+
         padding-top: 0.5rem;
+
       }
 
       .open-contact-item {
+
         font-size: 0.78rem;
+
         padding: 0.1rem 0;
+
       }
+
     }
 
     @media (max-width: 640px) {
+
       .brand-author {
+
         display: none;
+
       }
 
       .font-switch {
+
         display: none;
+
       }
 
       .demos-open-list {
+
         gap: 1.4rem;
+
       }
+
     }
+
   </style>
+
 </head>
+
 <body>
 
   <!-- ==========================================================================
+
        1. ESCENARIO DE FONDOS INMERSIVOS (PANTALLA COMPLETA · 5 REELS DINÁMICOS)
+
        ========================================================================== -->
+
   <div class="bg-stage">
+
     <!-- Slide 1: Estrategia (Red & Esfera Global) -->
+
     <div class="bg-slide active" id="bg-1">
+
       <video autoplay muted playsinline preload="auto">
+
         <source src="assets/reel_01_estrategia.mp4" type="video/mp4" />
+
       </video>
+
     </div>
+
     <!-- Slide 2: Publicidad (Dos personas en diálogo) -->
+
     <div class="bg-slide" id="bg-2">
+
       <video muted playsinline preload="metadata">
+
         <source src="assets/reel_02_publicidad.mp4" type="video/mp4" />
+
       </video>
+
     </div>
+
     <!-- Slide 3: Tecnología (Espacio & Vitrina de Diseño) -->
+
     <div class="bg-slide" id="bg-3">
+
       <video muted playsinline preload="metadata">
+
         <source src="assets/reel_03_tecnologia.mp4" type="video/mp4" />
+
       </video>
+
     </div>
+
     <!-- Slide 4: Referentes (POV Catálogo en Celular) -->
+
     <div class="bg-slide" id="bg-4">
+
       <video muted playsinline preload="metadata">
+
         <source src="assets/reel_04_proyectos.mp4" type="video/mp4" />
+
       </video>
+
     </div>
+
     <!-- Slide 5: Información (Rodrigo Guillermo Vázquez - Reel Personal) -->
+
     <div class="bg-slide" id="bg-5">
+
       <video muted playsinline preload="metadata">
+
         <source src="assets/reel_05_contacto.mp4" type="video/mp4" />
+
       </video>
+
     </div>
+
   </div>
 
   <!-- ==========================================================================
+
        2. HUD ADAPTATIVO (LATERALES EN PC / TECHO Y PISO EN VERTICAL)
+
        ========================================================================== -->
+
   <header class="top-hud">
+
     <div class="hud-bar">
 
       <!-- MARGEN IZQUIERDO SUPERIOR: LIBEROMATICO -->
+
       <div class="left-rail">
+
         <a href="#sec-1" class="brand-link">
+
           <div class="brand-logo-frame">
+
             <img src="assets/liberomatico-logo-transparent.png" alt="LiberoMatico Logo" />
+
           </div>
+
           <div class="brand-text">
+
             <span class="brand-title">LiberoMatico</span>
+
           </div>
+
         </a>
+
       </div>
 
       <!-- MARGEN DERECHO SUPERIOR: CONTROL DE AUDIO SELECTIVO + SELECTOR DE IDIOMA -->
+
       <div class="top-right-tools">
+
         <button type="button" class="btn-audio-toggle" id="btnAudioToggle" onclick="toggleAudio()" title="Activar / Silenciar Sonido" aria-label="Control de Sonido">
+
           <svg class="audio-icon audio-icon-muted" viewBox="0 0 24 24" fill="currentColor">
+
             <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+
           </svg>
+
           <svg class="audio-icon audio-icon-active" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+
             <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+
           </svg>
+
         </button>
 
         <div class="lang-switch" role="group" aria-label="Selector de Idioma">
+
           <button type="button" class="btn-lang active" id="btnLangEs" onclick="setLanguage('es')" title="Español">
+
             <svg class="flag-icon" viewBox="0 0 640 480" aria-hidden="true">
+
               <path fill="#c60b1e" d="M0 0h640v480H0z"/>
+
               <path fill="#ffc400" d="M0 120h640v240H0z"/>
+
             </svg>
+
             <span>ES</span>
+
           </button>
+
           <button type="button" class="btn-lang" id="btnLangEn" onclick="setLanguage('en')" title="English">
+
             <svg class="flag-icon" viewBox="0 0 640 480" aria-hidden="true">
+
               <path fill="#012169" d="M0 0h640v480H0z"/>
+
               <path fill="#fff" d="m75 0 245 180L565 0h75v60L435 240l205 180v60h-75L320 300 75 480H0v-60l205-180L0 60V0z"/>
+
               <path fill="#c8102e" d="m420 280 220 160v40L380 310zm-200-80L0 40V0l260 190zm380-160L390 190h70l180-130zM0 440l190-140h-70L0 400z"/>
+
               <path fill="#fff" d="M240 0h160v480H240zM0 160h640v160H0z"/>
+
               <path fill="#c8102e" d="M267 0h106v480H267zM0 187h640v106H0z"/>
+
             </svg>
+
             <span>EN</span>
+
           </button>
+
         </div>
+
       </div>
 
     </div>
+
   </header>
 
   <!-- MENÚ / ACORDEÓN DE NAVEGACIÓN (MARGEN IZQUIERDO) -->
+
   <nav class="left-accordion" role="navigation" aria-label="Navegación LiberoMatico">
 
     <!-- 1. ESTRATEGIA -->
@@ -1299,10 +2253,10 @@
       </a>
     </div>
 
-    <!-- 3. TECNOLOGÍA -->
+    <!-- 3. VALIDACIÓN DIGITAL -->
     <div class="acc-group" id="acc-tec">
       <a href="#sec-3" class="acc-trigger" data-sec="3">
-        <span data-i18n="acc_3_title">Tecnología</span>
+        <span data-i18n="acc_3_title">Validación Digital</span>
       </a>
     </div>
 
@@ -1323,126 +2277,192 @@
   </nav>
 
   <!-- ==========================================================================
+
        BOTONES DE WHATSAPP (ANCLADOS AL PISO INFERIOR DERECHO EN MÓVIL Y PC)
+
        ========================================================================== -->
+
   <aside class="whatsapp-dock" aria-label="Canales directos de WhatsApp">
+
     <a href="https://wa.me/51966788168?text=Hola%20Rodrigo,%20vi%20tu%20web%20LiberoMatico%20y%20deseo%20coordinar" target="_blank" class="btn-whatsapp-right" title="WhatsApp Línea 1">
+
       <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.073-2.115-.515-1.815-.751-2.986-2.597-3.076-2.717-.091-.12-.734-.976-.734-1.862 0-.886.465-1.321.63-1.498.165-.177.36-.222.48-.222.12 0 .241.001.345.006.11.005.258-.042.404.307.147.349.504 1.228.549 1.318.045.09.075.195.015.315-.06.12-.09.195-.18.3-.09.105-.189.234-.27.315-.09.09-.184.188-.079.368.105.18.468.772 1.005 1.25.692.616 1.275.807 1.455.897.18.09.285.075.39-.045.105-.12.45-.525.57-.705.12-.18.24-.15.405-.09.165.06 1.05.495 1.23.585.18.09.3.135.345.21.045.075.045.435-.099.84z"/></svg>
+
       <span>+51 966 788 168</span>
+
     </a>
+
     <a href="https://wa.me/51963504596?text=Hola%20Rodrigo,%20vi%20tu%20web%20LiberoMatico%20y%20deseo%20coordinar" target="_blank" class="btn-whatsapp-right" title="WhatsApp Línea 2">
+
       <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.073-2.115-.515-1.815-.751-2.986-2.597-3.076-2.717-.091-.12-.734-.976-.734-1.862 0-.886.465-1.321.63-1.498.165-.177.36-.222.48-.222.12 0 .241.001.345.006.11.005.258-.042.404.307.147.349.504 1.228.549 1.318.045.09.075.195.015.315-.06.12-.09.195-.18.3-.09.105-.189.234-.27.315-.09.09-.184.188-.079.368.105.18.468.772 1.005 1.25.692.616 1.275.807 1.455.897.18.09.285.075.39-.045.105-.12.45-.525.57-.705.12-.18.24-.15.405-.09.165.06 1.05.495 1.23.585.18.09.3.135.345.21.045.075.045.435-.099.84z"/></svg>
+
       <span>+51 963 504 596</span>
+
     </a>
+
   </aside>
 
   <!-- ==========================================================================
+
        3. DESPLIEGUE CONTINUO CON SCROLL VERTICAL (CERO CAJAS DE ENCIERRO)
+
        ========================================================================== -->
+
   <main class="open-flow">
 
     <!-- SECCIÓN 01: ESTRATEGIA -->
+
     <section class="open-section" id="sec-1" data-index="1">
       <div class="sec-bottom-wrap">
         <h2 class="open-title sec-title-single" data-i18n="sec1_title">
-          Potenciamos su Negocio u Organización
+          Estrategia comercial y digital
         </h2>
         <p class="sec-sub-line" data-i18n="sec1_sub">
-          De forma organizada, orgánica y basada en resultados
+          Analizamos cómo opera su negocio hoy para ordenar su propuesta, enfocar su comunicación y captar clientes de forma consistente.
         </p>
       </div>
     </section>
 
     <!-- SECCIÓN 02: PUBLICIDAD -->
+
     <section class="open-section" id="sec-2" data-index="2">
       <div class="sec-bottom-wrap">
         <h2 class="open-title sec-title-single" data-i18n="sec2_title">
-          Presencia digital para conectar con la gente que necesita su producto.
+          Publicidad y medios digitales
         </h2>
         <p class="sec-sub-line" data-i18n="sec2_sub">
-          Catálogos Online · Webs de Validación · Gráfica digital - Reels Aceleradores de Conversión
+          Producción audiovisual y gráfica diseñada para hacer conocer su trabajo, mostrar sus diferenciales y despertar interés real de compra.
         </p>
       </div>
     </section>
 
     <!-- SECCIÓN 03: TECNOLOGÍA -->
+
     <section class="open-section" id="sec-3" data-index="3">
       <div class="sec-bottom-wrap">
         <h2 class="open-title sec-title-single" data-i18n="sec3_title">
-          Tecnología que impulsa
+          Validación digital
         </h2>
         <p class="sec-sub-line" data-i18n="sec3_sub">
-          Software a medida · Apps captadoras de pedidos · Gestión de recursos · Control organizacional
+          Sitios web y catálogos interactivos que generan confianza en su empresa, respaldan su producto y canalizan cierres directos por WhatsApp.
         </p>
       </div>
     </section>
 
     <!-- SECCIÓN 04: NUESTROS CLIENTES -->
+
     <section class="open-section" id="sec-4" data-index="4">
+
       <h2 class="open-title" data-i18n="sec4_title">
+
         Nuestros Clientes
+
       </h2>
 
       <div class="demos-open-bar">
+
         <div class="demos-open-list">
 
           <a href="https://www.riomayolands.com" target="_blank" rel="noopener noreferrer" class="demo-open-link">
+
             <div class="client-logo-box">
+
               <img src="assets/clients/logo_riomayo.png" alt="Río Mayo Lands" class="client-logo-img" />
+
             </div>
+
             <div class="demo-open-info">
+
               <span class="demo-open-name">Río Mayo Lands</span>
+
               <span class="demo-open-tag" data-i18n="card2_demo_rio">Desarrollo Inmobiliario · Ver Sitio</span>
+
             </div>
+
           </a>
 
           <a href="michaelconstructora/index.html" target="_blank" class="demo-open-link">
+
             <div class="client-logo-box">
+
               <img src="assets/clients/logo_michael.png" alt="Michael Constructora" class="client-logo-img" />
+
             </div>
+
             <div class="demo-open-info">
+
               <span class="demo-open-name">Michael Constructora</span>
+
               <span class="demo-open-tag" data-i18n="card2_demo_const">Ingeniería &amp; Obra Civil · Ver Sitio</span>
+
             </div>
+
           </a>
 
-          <a href="hr-legal/index.html" class="demo-open-link">
+          <a href="https://www.hrylegalconsulting.com" target="_blank" rel="noopener noreferrer" class="demo-open-link">
+
             <div class="client-logo-box">
+
               <img src="assets/clients/logo_hr_legal.svg" alt="HR &amp; Legal" class="client-logo-img" />
+
             </div>
+
             <div class="demo-open-info">
+
               <span class="demo-open-name">HR &amp; Legal</span>
+
               <span class="demo-open-tag" data-i18n="card2_demo_hr">Estudio Jurídico · Ver Sitio</span>
+
             </div>
+
           </a>
 
           <div class="demo-open-link">
+
             <div class="client-logo-box">
+
               <img src="assets/clients/logo_ndc.svg" alt="NDC Arquitectura y Construcción" class="client-logo-img" />
+
             </div>
+
             <div class="demo-open-info">
+
               <span class="demo-open-name">NDC Arquitectura y Construcción</span>
+
               <span class="demo-open-tag" data-i18n="card2_demo_mod">Diseño Modular &amp; Obra</span>
+
             </div>
+
           </div>
 
         </div>
+
       </div>
 
       <div class="sec4-btn-wrap" style="margin-top: 1.8rem;">
+
         <a href="#sec-5" class="btn-cta-gold">
+
           <span data-i18n="btn_contact">Información de Contacto</span>
+
           <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+
         </a>
+
       </div>
+
     </section>
 
     <!-- SECCIÓN 05: MIS DATOS (RODRIGO GUILLERMO VÁZQUEZ) -->
+
     <section class="open-section" id="sec-5" data-index="5">
       <div class="profile-open-layout">
         <h2 class="profile-name">Rodrigo Guillermo Vázquez</h2>
         <p class="profile-role" data-i18n="card3_role">
           Consultor Estratégico, Comercial y Tecnológico
+        </p>
+        <p class="profile-bio" data-i18n="card3_desc">
+          Experiencia y criterio para hacer crecer su negocio.
         </p>
 
         <div class="contact-open-links">
@@ -1468,281 +2488,323 @@
   </main>
 
   <!-- ==========================================================================
+
        4. SINCRONIZACIÓN DE SCROLL Y FONDOS + TRADUCCIÓN BILINGÜE
+
        ========================================================================== -->
+
   <script>
+
     const sections = document.querySelectorAll('.open-section');
+
     const navItems = document.querySelectorAll('.left-accordion .acc-trigger');
+
     const bgSlides = document.querySelectorAll('.bg-slide');
 
     // ==========================================================================
+
     // CONTROL DE AUDIO SELECTIVO (EXCLUSIVO PARA REEL 1 Y REEL DE CONTACTO)
+
     // ==========================================================================
+
     let isAudioEnabled = false;
+
     let currentSection = 1;
+
     // Secciones con audio autorizado: 1 (Estrategia) y 5 (Contacto)
+
     // Secciones 2 (Publicidad), 3 (Tecnología) y 4 (Clientes) permanecen siempre mudas
+
     const AUDIO_ALLOWED_SECTIONS = [1, 5];
 
     function toggleAudio() {
+
       isAudioEnabled = !isAudioEnabled;
+
       const btn = document.getElementById('btnAudioToggle');
+
       const iconMuted = btn ? btn.querySelector('.audio-icon-muted') : null;
+
       const iconActive = btn ? btn.querySelector('.audio-icon-active') : null;
+
       const label = btn ? btn.querySelector('.audio-label') : null;
+
       const trans = translations[currentLang] || translations.es;
 
       if (isAudioEnabled) {
+
         if (btn) {
+
           btn.classList.add('active');
+
           btn.setAttribute('title', trans.audio_toggle_on);
+
           btn.setAttribute('aria-label', trans.audio_toggle_on);
+
         }
+
         if (iconMuted) iconMuted.style.display = 'none';
+
         if (iconActive) iconActive.style.display = 'block';
+
         if (label) label.textContent = trans.audio_toggle_on;
+
       } else {
+
         if (btn) {
+
           btn.classList.remove('active');
+
           btn.setAttribute('title', trans.audio_toggle);
+
           btn.setAttribute('aria-label', trans.audio_toggle);
+
         }
+
         if (iconMuted) iconMuted.style.display = 'block';
+
         if (iconActive) iconActive.style.display = 'none';
+
         if (label) label.textContent = trans.audio_toggle;
+
       }
 
       // Sincronizar de inmediato el video de la sección actual
+
       for (let i = 1; i <= 5; i++) {
+
         const bg = document.getElementById(`bg-${i}`);
+
         if (!bg) continue;
+
         const video = bg.querySelector('video');
+
         if (!video) continue;
 
         if (i === currentSection && isAudioEnabled && AUDIO_ALLOWED_SECTIONS.includes(i)) {
+
           video.muted = false;
+
           video.volume = 1.0;
+
           if (video.ended) {
+
             video.currentTime = 0;
+
           }
+
           video.play().catch(() => {});
+
         } else {
+
           video.muted = true;
+
           video.volume = 0;
+
         }
+
       }
+
     }
 
     function activateSection(secNumber) {
+
       currentSection = secNumber;
 
       // Actualizar Fondos Inmersivos en transición suave y reproducción selectiva
+
       for (let i = 1; i <= 5; i++) {
+
         const bg = document.getElementById(`bg-${i}`);
+
         if (!bg) continue;
+
         const video = bg.querySelector('video');
 
         if (i === secNumber) {
+
           bg.classList.add('active');
+
           if (video) {
+
             // Audio selectivo: solo activo en secciones autorizadas (Reel 1 y Contacto)
+
             if (isAudioEnabled && AUDIO_ALLOWED_SECTIONS.includes(i)) {
+
               video.muted = false;
+
               video.volume = 1.0;
+
               video.currentTime = 0; // Reproduce desde el inicio para escuchar la alocución completa
+
             } else {
+
               video.muted = true;
+
               video.volume = 0;
+
             }
 
             if (!video.ended || (isAudioEnabled && AUDIO_ALLOWED_SECTIONS.includes(i))) {
+
               video.play().catch(() => {});
+
             }
+
           }
+
         } else {
+
           bg.classList.remove('active');
+
           if (video) {
+
             video.muted = true;
+
             video.volume = 0;
+
             if (!video.ended) {
+
               video.pause();
+
             }
+
           }
+
         }
+
       }
 
       // Actualizar indicador activo en el Menú Izquierdo (Estrategia, Publicidad, Tecnología, Proyectos, Contacto)
+
       navItems.forEach((nav) => {
+
         const secIdx = parseInt(nav.getAttribute('data-sec'), 10);
+
         if (secIdx === secNumber) {
+
           nav.classList.add('active');
+
         } else {
+
           nav.classList.remove('active');
+
         }
+
       });
+
     }
 
     // Interceptar clics en enlaces del menú para desplazamiento perfecto en móvil y desktop
+
     navItems.forEach((link) => {
+
       link.addEventListener('click', (e) => {
+
         const href = link.getAttribute('href');
+
         if (href && href.startsWith('#')) {
+
           e.preventDefault();
+
           const target = document.querySelector(href);
+
           if (target) {
+
             target.scrollIntoView({ behavior: 'smooth' });
+
           }
+
         }
+
       });
+
     });
 
     // Observador de Scroll para sincronizar fondos y menú automáticamente al bajar o subir
+
     const isMobileViewport = () => (window.innerWidth <= 960 || window.innerHeight > window.innerWidth);
+
     const scrollContainer = isMobileViewport() ? document.querySelector('main.open-flow') : null;
 
     const observer = new IntersectionObserver((entries) => {
+
       entries.forEach((entry) => {
+
         if (entry.isIntersecting) {
+
           const idx = parseInt(entry.target.getAttribute('data-index'), 10);
+
           if (!isNaN(idx)) {
+
             activateSection(idx);
+
           }
+
         }
+
       });
+
     }, {
+
       root: scrollContainer,
+
       threshold: 0.45
+
     });
 
     sections.forEach((sec) => observer.observe(sec));
 
     // ==========================================================================
+
     // MOTOR BILINGÜE REACTIVO (ESPAÑOL / INGLÉS)
+
     // ==========================================================================
+
     const translations = {
       es: {
         acc_1_title: "Estrategia",
-        acc_1_sub1: "Conocer su Terreno",
-        acc_1_sub2: "Acompañar y Ordenar",
-        acc_1_sub3: "Potenciar su Valor",
         acc_2_title: "Publicidad",
-        acc_2_sub1: "Producción Visual",
-        acc_2_sub2: "Presencia Local",
-        acc_2_sub3: "Catálogos Claros",
-        acc_3_title: "Tecnología",
-        acc_3_sub1: "Consultoría",
-        acc_3_sub2: "Sitios Web",
-        acc_3_sub3: "Aplicaciones Ágiles",
+        acc_3_title: "Validación Digital",
         nav_ref: "Clientes",
         nav_3: "Contacto",
-        sec1_tag: "Estrategia",
-        sec1_title: "Potenciamos su Negocio u Organización",
-        sec1_sub: "De forma organizada, orgánica y basada en resultados",
-        sec1_desc: "Nos sentamos con usted a entender cómo trabaja y qué valoran las personas que le compran. A partir de esa realidad, lo asistimos con tecnología y presencia visual para mostrar con fuerza lo que hace único a su proyecto.",
-        sec1_p1_title: "Conocer su Terreno",
-        sec1_p1_desc: "Entender a fondo cómo funciona su negocio hoy y qué busca exactamente su cliente.",
-        sec1_p2_title: "Acompañar y Ordenar",
-        sec1_p2_desc: "Asistencia práctica para que sus herramientas y canales de contacto respondan con agilidad.",
-        sec1_p3_title: "Potenciar su Valor",
-        sec1_p3_desc: "Producción visual y digital que destaca lo mejor de su oficio y lo vuelve imposible de ignorar.",
-        btn_next_pub: "Ver Publicidad & Audiovisual",
-        sec2_tag: "Publicidad",
-        sec2_title: "Presencia digital para conectar con la gente que necesita su producto.",
-        sec2_sub: "Catálogos Online · Webs de Validación · Gráfica digital - Reels Aceleradores de Conversión",
-        sec2_desc: "Producción de calidad cinematográfica que capta interés genuino y lleva a las personas hacia su catálogo.",
-        sec2_p1_title: "Producción Audiovisual",
-        sec2_p1_desc: "Videos cuidados que comunican con respeto y captan la mirada.",
-        sec2_p2_title: "Presencia Local",
-        sec2_p2_desc: "Ubicación clara en Google Maps y redes para que lo encuentren fácil.",
-        sec2_p3_title: "Catálogos Claros",
-        sec2_p3_desc: "Muestra limpia de productos y servicios con enlace directo a WhatsApp.",
-        btn_next_tec: "Ver Tecnología & Sistemas",
-        sec3_tag: "Tecnología",
-        sec3_title: "Tecnología que impulsa",
-        sec3_sub: "Software a medida · Apps captadoras de pedidos · Gestión de recursos · Control organizacional",
-        sec3_desc: "Software liviano y sitios web que dan confianza y ordenan la relación con sus clientes.",
-        sec3_p1_title: "Consultoría",
-        sec3_p1_desc: "Orientación práctica para incorporar tecnología útil sin complicaciones.",
-        sec3_p2_title: "Sitios Web",
-        sec3_p2_desc: "Páginas claras y modernas que respaldan la seriedad de su empresa.",
-        sec3_p3_title: "Aplicaciones Ágiles",
-        sec3_p3_desc: "Control simple de pedidos, citas y seguimiento conectado a WhatsApp.",
-        btn_next_ref: "Ver Clientes",
-        sec4_tag: "Clientes",
+        sec1_title: "Estrategia comercial y digital",
+        sec1_sub: "Analizamos cómo opera su negocio hoy para ordenar su propuesta, enfocar su comunicación y captar clientes de forma consistente.",
+        sec2_title: "Publicidad y medios digitales",
+        sec2_sub: "Producción audiovisual y gráfica diseñada para hacer conocer su trabajo, mostrar sus diferenciales y despertar interés real de compra.",
+        sec3_title: "Validación digital",
+        sec3_sub: "Sitios web y catálogos interactivos que generan confianza en su empresa, respaldan su producto y canalizan cierres directos por WhatsApp.",
         sec4_title: "Nuestros Clientes",
-        sec4_desc: "Proyectos desarrollados para distintos sectores con dedicación y criterio visual.",
-        card2_demos_title: "Proyectos Activos",
         card2_demo_rio: "Desarrollo Inmobiliario · Ver Sitio",
-        card2_demo_hr: "Estudio Jurídico · Ver Sitio",
         card2_demo_const: "Ingeniería & Obra Civil · Ver Sitio",
+        card2_demo_hr: "Estudio Jurídico · Ver Sitio",
         card2_demo_mod: "Diseño Modular & Obra",
         btn_contact: "Información de Contacto",
-        card3_tag: "Contacto Directo",
-        card3_role: "Consultor Estratégico, Comercial y Tecnológico",
-        card3_desc: "Acompañamiento personal para ordenar procesos, crear presencia digital y aplicar herramientas tecnológicas que sumen valor real a su empresa.",
+        card3_role: "Consultoría Estratégica, Comercial y Tecnológica Internacional",
+        card3_desc: "Experiencia y criterio para hacer crecer su negocio.",
         audio_toggle: "Sonido",
         audio_toggle_on: "Sonido ON"
       },
       en: {
         acc_1_title: "Strategy",
-        acc_1_sub1: "Know Your Ground",
-        acc_1_sub2: "Assist & Structure",
-        acc_1_sub3: "Empower Your Value",
         acc_2_title: "Advertising",
-        acc_2_sub1: "Visual Production",
-        acc_2_sub2: "Local Presence",
-        acc_2_sub3: "Clean Catalogs",
-        acc_3_title: "Technology",
-        acc_3_sub1: "Consulting",
-        acc_3_sub2: "Websites",
-        acc_3_sub3: "Agile Apps",
+        acc_3_title: "Digital Validation",
         nav_ref: "Clients",
         nav_3: "Contact",
-        sec1_tag: "Strategy",
-        sec1_title: "We empower your Business or Organization",
-        sec1_sub: "Organized, organic, and results-driven",
-        sec1_desc: "We sit down with you to understand how you operate and what your clients genuinely value. From that reality, we assist you with tailored technology and visual media to showcase what makes your venture unique.",
-        sec1_p1_title: "Know Your Ground",
-        sec1_p1_desc: "Understanding in depth how your business operates today and what your clients genuinely seek.",
-        sec1_p2_title: "Assist & Structure",
-        sec1_p2_desc: "Hands-on collaboration to ensure your customer contact channels and tools respond with agility.",
-        sec1_p3_title: "Empower Your Value",
-        sec1_p3_desc: "Visual and digital production that spotlights the craft of your work and makes it impossible to ignore.",
-        btn_next_pub: "Explore Advertising & Media",
-        sec2_tag: "Advertising",
-        sec2_title: "Digital presence to connect with the people who need your product.",
-        sec2_sub: "Online Catalogs · Validation Websites · Digital Graphics - Conversion-Accelerating Reels",
-        sec2_desc: "Cinematic quality production that captures genuine attention and guides people toward your catalog.",
-        sec2_p1_title: "Audiovisual Production",
-        sec2_p1_desc: "Crafted videos that communicate with respect and captivate viewers.",
-        sec2_p2_title: "Local Presence",
-        sec2_p2_desc: "Clear positioning on Google Maps and social media so clients find you effortlessly.",
-        sec2_p3_title: "Clean Catalogs",
-        sec2_p3_desc: "Transparent showcase of products and services linked directly to WhatsApp.",
-        btn_next_tec: "Explore Tech & Systems",
-        sec3_tag: "Technology",
-        sec3_title: "Technology that drives",
-        sec3_sub: "Tailored Software · Order-Capturing Apps · Resource Management · Organizational Control",
-        sec3_desc: "Lightweight software and modern websites that build confidence and streamline client relations.",
-        sec3_p1_title: "Consulting",
-        sec3_p1_desc: "Practical guidance to integrate effective technology without unnecessary friction.",
-        sec3_p2_title: "Websites",
-        sec3_p2_desc: "Clean, contemporary platforms that validate the seriousness of your company.",
-        sec3_p3_title: "Agile Apps",
-        sec3_p3_desc: "Simple management of orders, appointments, and follow-ups connected to WhatsApp.",
-        btn_next_ref: "View Clients",
-        sec4_tag: "Clients",
+        sec1_title: "Commercial & Digital Strategy",
+        sec1_sub: "We analyze how your business operates today to structure your proposition, sharpen your messaging, and attract clients consistently.",
+        sec2_title: "Advertising & Digital Media",
+        sec2_sub: "Audiovisual and graphic production engineered to make your work known, highlight your differentials, and awaken genuine buying interest.",
+        sec3_title: "Digital Validation",
+        sec3_sub: "Websites and interactive catalogs that build trust in your company, validate your product, and channel direct closings via WhatsApp.",
         sec4_title: "Our Clients",
-        sec4_desc: "Deployments engineered across diverse sectors with craftsmanship and visual rigor.",
-        card2_demos_title: "Featured Projects",
         card2_demo_rio: "Real Estate Development · View Site",
-        card2_demo_hr: "Legal Firm · View Site",
         card2_demo_const: "Engineering & Civil Works · View Site",
+        card2_demo_hr: "Legal Firm · View Site",
         card2_demo_mod: "Modular Design & Construction",
         btn_contact: "Contact Information",
-        card3_tag: "Direct Contact",
-        card3_role: "Strategic, Commercial & Technology Consultant",
-        card3_desc: "Hands-on collaboration to structure operations, build digital presence, and deploy tailored tech that brings genuine value.",
+        card3_role: "International Strategic, Commercial & Technology Consulting",
+        card3_desc: "Experience and discernment to make your business grow.",
         audio_toggle: "Sound",
         audio_toggle_on: "Sound ON"
       }
@@ -1751,38 +2813,66 @@
     let currentLang = 'es';
 
     function setLanguage(lang) {
+
       if (!translations[lang]) return;
+
       currentLang = lang;
 
       const btnEs = document.getElementById('btnLangEs');
+
       const btnEn = document.getElementById('btnLangEn');
+
       if (btnEs && btnEn) {
+
         if (lang === 'es') {
+
           btnEs.classList.add('active');
+
           btnEn.classList.remove('active');
+
         } else {
+
           btnEn.classList.add('active');
+
           btnEs.classList.remove('active');
+
         }
+
       }
 
       const trans = translations[lang];
+
       document.querySelectorAll('[data-i18n]').forEach((el) => {
+
         const key = el.getAttribute('data-i18n');
+
         if (trans[key]) {
+
           el.textContent = trans[key];
+
         }
+
       });
 
       const audioBtn = document.getElementById('btnAudioToggle');
+
       if (audioBtn) {
+
         const titleText = isAudioEnabled ? trans.audio_toggle_on : trans.audio_toggle;
+
         audioBtn.setAttribute('title', titleText);
+
         audioBtn.setAttribute('aria-label', titleText);
+
       }
 
       document.documentElement.lang = lang;
+
     }
+
   </script>
+
 </body>
+
 </html>
+
