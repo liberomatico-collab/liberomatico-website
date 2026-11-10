@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CONNECTA URBAN LIVING · Santa Catalina | LiberoMatico</title>
+  <style>
+    :root {
+      --bg-dark: #0a0f1d;
+      --bg-card: rgba(15, 23, 42, 0.75);
+      --bg-glass: rgba(30, 41, 59, 0.6);
+      --border-glass: rgba(255, 255, 255, 0.12);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --gold-accent: #d97706;
+      --gold-glow: rgba(217, 119, 6, 0.3);
+      --cyan-accent: #06b6d4;
+      --navy-deep: #0f172a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* INTRO GRAPHIC MOTION OVERLAY */
+    #motion-intro {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(circle at center, #1e293b 0%, #060913 100%);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), visibility 1s ease;
+    }
+
+    #motion-intro.vanish {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .motion-box {
+      text-align: center;
+      animation: pulseIn 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .motion-logo-img {
+      max-width: 180px;
+      height: auto;
+      filter: drop-shadow(0 0 25px var(--gold-glow));
+      margin-bottom: 20px;
+      animation: glowScale 2.5s infinite alternate ease-in-out;
+    }
+
+    .motion-title {
+      font-size: 2.2rem;
+      letter-spacing: 0.35em;
+      font-weight: 800;
+      color: #fff;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, #ffffff 40%, #d97706 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .motion-sub {
+      font-size: 0.85rem;
+      letter-spacing: 0.25em;
+      color: var(--gold-accent);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    @keyframes pulseIn {
+      0% { opacity: 0; transform: scale(0.85); }
+      50% { opacity: 1; transform: scale(1.02); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes glowScale {
+      0% { transform: scale(1); filter: drop-shadow(0 0 15px var(--gold-glow)); }
+      100% { transform: scale(1.04); filter: drop-shadow(0 0 35px rgba(217, 119, 6, 0.6)); }
+    }
+
+    /* HEADER / NAVBAR */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 75px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      background: rgba(10, 15, 29, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-glass);
+      z-index: 1000;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-decoration: none;
+    }
+
+    .nav-logo-badge {
+      height: 38px;
+      width: auto;
+    }
+
+    .nav-titles {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      color: #fff;
+    }
+
+    .brand-by {
+      font-size: 0.65rem;
+      color: var(--gold-accent);
+      letter-spacing: 0.12em;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .nav-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, var(--gold-accent) 0%, #b45309 100%);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 15px var(--gold-glow);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .nav-cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(217, 119, 6, 0.5);
+    }
+
+    /* HERO SECTION */
+    .hero-video-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .hero-section {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 40px 80px 40px;
+      background: url('assets/fachada.jpg') center/cover no-repeat;
+    }
+
+    .hero-gradient-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10, 15, 29, 0.4) 0%, rgba(10, 15, 29, 0.85) 85%, #0a0f1d 100%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+    }
+
+    .badge-pill {
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(217, 119, 6, 0.2);
+      border: 1px solid var(--gold-accent);
+      color: var(--gold-accent);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border-radius: 9999px;
+      margin-bottom: 16px;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      line-height: 1.1;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin-bottom: 18px;
+    }
+
+    .hero-sub {
+      font-size: 1.25rem;
+      color: #cbd5e1;
+      margin-bottom: 28px;
+      max-width: 680px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .btn-main {
+      padding: 14px 32px;
+      background: linear-gradient(135deg, var(--gold-accent) 0%, #b45309 100%);
+      color: #fff;
+      font-weight: 800;
+      border-radius: 8px;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 20px var(--gold-glow);
+      transition: all 0.25s ease;
+    }
+
+    .btn-main:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(217, 119, 6, 0.6);
+    }
+
+    .btn-secondary {
+      padding: 14px 28px;
+      background: var(--bg-glass);
+      color: #fff;
+      font-weight: 700;
+      border-radius: 8px;
+      text-decoration: none;
+      border: 1px solid var(--border-glass);
+      transition: all 0.25s ease;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* SECTIONS COMMON */
+    section {
+      padding: 100px 40px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      margin-bottom: 50px;
+    }
+
+    .section-eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-accent);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+
+    /* AMENITIES SHOWCASE */
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 25px;
+    }
+
+    .amenity-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .amenity-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(217, 119, 6, 0.5);
+    }
+
+    .amenity-media {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .amenity-info {
+      padding: 24px;
+    }
+
+    .amenity-name {
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .amenity-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* AVATARS & COMMUNITY */
+    .avatars-section-bg {
+      background: radial-gradient(circle at bottom, rgba(30, 41, 59, 0.4) 0%, rgba(10, 15, 29, 0) 70%);
+    }
+
+    .avatars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .avatar-card {
+      background: var(--bg-glass);
+      border: 1px solid var(--border-glass);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+    }
+
+    .avatar-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--gold-accent);
+    }
+
+    .avatar-media-box {
+      width: 100%;
+      height: 380px;
+      background: #0f172a;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      transition: transform 0.4s ease;
+    }
+
+    .avatar-card:hover .avatar-img {
+      transform: scale(1.03);
+    }
+
+    .avatar-badge-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(10, 15, 29, 0.85);
+      border: 1px solid var(--border-glass);
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--gold-accent);
+      letter-spacing: 0.05em;
+    }
+
+    .avatar-info {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .avatar-name {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .avatar-role {
+      font-size: 0.8rem;
+      color: var(--cyan-accent);
+      font-weight: 600;
+    }
+
+    .avatar-quote {
+      font-size: 0.85rem;
+      font-style: italic;
+      color: #cbd5e1;
+      margin-top: 6px;
+    }
+
+    /* FLOOR PLANS */
+    .plans-tabs {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .plan-btn {
+      padding: 10px 24px;
+      border-radius: 8px;
+      background: var(--bg-glass);
+      border: 1px solid var(--border-glass);
+      color: #cbd5e1;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .plan-btn.active {
+      background: var(--gold-accent);
+      color: #fff;
+      border-color: var(--gold-accent);
+    }
+
+    .plan-display-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 16px;
+      padding: 30px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .plan-img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      border: 1px solid var(--border-glass);
+      background: #000;
+    }
+
+    .plan-details h3 {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+
+    .plan-specs {
+      list-style: none;
+      margin: 20px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .plan-specs li {
+      font-size: 0.95rem;
+      color: #cbd5e1;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 6px;
+    }
+
+    .plan-specs li strong {
+      color: var(--gold-accent);
+    }
+
+    /* FLOATING WHATSAPP */
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 22px;
+      background: #22c55e;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 0.95rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      box-shadow: 0 10px 25px rgba(34, 197, 94, 0.45);
+      z-index: 999;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .floating-whatsapp:hover {
+      transform: scale(1.05);
+      box-shadow: 0 14px 30px rgba(34, 197, 94, 0.6);
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border-glass);
+      padding: 50px 40px;
+      text-align: center;
+      background: #060913;
+      margin-top: 80px;
+    }
+
+    .footer-brand {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      margin-bottom: 6px;
+    }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 900px) {
+      .hero-title { font-size: 2.5rem; }
+      .plan-display-card { grid-template-columns: 1fr; }
+      header { padding: 0 20px; }
+      section { padding: 60px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- INTRO GRAPHIC MOTION OVERLAY -->
+  <div id="motion-intro">
+    <div class="motion-box">
+      <img src="assets/logo.png" alt="LiberoMatico Logo" class="motion-logo-img">
+      <div class="motion-title">CONNECTA</div>
+      <div class="motion-sub">Urban Living · Santa Catalina</div>
+    </div>
+  </div>
+
+  <!-- NAVIGATION HEADER -->
+  <header>
+    <a href="#" class="nav-brand">
+      <img src="assets/logo.png" alt="Logo" class="nav-logo-badge">
+      <div class="nav-titles">
+        <span class="brand-name">CONNECTA</span>
+        <span class="brand-by">Validación LiberoMatico</span>
+      </div>
+    </a>
+    <a href="https://wa.me/51999999999?text=Hola,%20deseo%20agendar%20una%20visita%20a%20Connecta%20Urban%20Living" target="_blank" class="nav-cta-btn">
+      Agendar Visita Showroom
+    </a>
+  </header>
+
+  <!-- HERO SECTION -->
+  <div class="hero-section">
+    <video class="hero-video-bg" autoplay loop muted playsinline poster="assets/fachada.jpg">
+      <source src="assets/video/People_walking_into_residential_._7a4fdcbb_1080p.mp4" type="video/mp4">
+    </video>
+    <div class="hero-gradient-overlay"></div>
+    <div class="hero-content">
+      <span class="badge-pill">Santa Catalina · Lima</span>
+      <h1 class="hero-title">El punto de partida de tu independencia urbana</h1>
+      <p class="hero-sub">Arquitectura contemporánea con amenidades de resort integrado, coworking ejecutivo y departamentos optimizados al 100% de superficie útil.</p>
+      <div class="hero-actions">
+        <a href="#amenidades" class="btn-main">Explorar Recorrido</a>
+        <a href="#planos" class="btn-secondary">Ver Tipologías</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- AMENIDADES SHOWCASE -->
+  <section id="amenidades">
+    <div class="section-header">
+      <div class="section-eyebrow">Recorrido Guiado</div>
+      <h2 class="section-title">Amenidades que expanden tu departamento</h2>
+    </div>
+
+    <div class="amenities-grid">
+      <div class="amenity-card">
+        <img src="assets/lobby.jpg" alt="Lobby" class="amenity-media">
+        <div class="amenity-info">
+          <div class="amenity-name">Lobby de Doble Altura</div>
+          <div class="amenity-desc">Recepción de vanguardia con control de accesos automatizado y acabados de mármol y maderas nobles.</div>
+        </div>
+      </div>
+
+      <div class="amenity-card">
+        <img src="assets/coworking.jpg" alt="Coworking" class="amenity-media">
+        <div class="amenity-info">
+          <div class="amenity-name">Coworking & Business Hub</div>
+          <div class="amenity-desc">Espacios diseñados para trabajo remoto de alto rendimiento, salas de reuniones privadas y red de alta velocidad.</div>
+        </div>
+      </div>
+
+      <div class="amenity-card">
+        <img src="assets/piscina.jpg" alt="Piscina Rooftop" class="amenity-media">
+        <div class="amenity-info">
+          <div class="amenity-name">Piscina Panorámica en Rooftop</div>
+          <div class="amenity-desc">Vistas completas sobre Lima desde la cima del edificio, con solárium y áreas de descanso.</div>
+        </div>
+      </div>
+
+      <div class="amenity-card">
+        <img src="assets/fogata.jpg" alt="Fogata Lounge" class="amenity-media">
+        <div class="amenity-info">
+          <div class="amenity-name">Fogata Lounge & Bar</div>
+          <div class="amenity-desc">Ambiente distendido al atardecer para compartir con amigos al calor del fuego central.</div>
+        </div>
+      </div>
+
+      <div class="amenity-card">
+        <img src="assets/parrilla.jpg" alt="BBQ Grill" class="amenity-media">
+        <div class="amenity-info">
+          <div class="amenity-name">Zona BBQ Gourmet</div>
+          <div class="amenity-desc">Estaciones parrilleras en acero inoxidable equipadas para celebraciones gastronómicas privadas.</div>
+        </div>
+      </div>
+
+      <div class="amenity-card">
+        <img src="assets/petspa.jpg" alt="Pet Spa" class="amenity-media">
+        <div class="amenity-info">
+          <div class="amenity-name">Pet Spa & Parque Exclusivo</div>
+          <div class="amenity-desc">Espacio especializado de lavado y recreación para mascotas dentro de la comodidad del edificio.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AVATARS & COMMUNITY -->
+  <div class="avatars-section-bg">
+    <section id="comunidad">
+      <div class="section-header">
+        <div class="section-eyebrow">Comunidad Connecta</div>
+        <h2 class="section-title">Quienes eligen vivir con propósito</h2>
+      </div>
+
+      <div class="avatars-grid">
+        <div class="avatar-card">
+          <div class="avatar-media-box">
+            <span class="avatar-badge-tag">Loft 9A · 40.34 m²</span>
+            <img src="../avatars/Avatar_01_Mateo_Hombre_Analista_2K.jpg" alt="Mateo" class="avatar-img">
+          </div>
+          <div class="avatar-info">
+            <div class="avatar-name">Mateo (30 años)</div>
+            <div class="avatar-role">Analista Senior · Trabajo Híbrido</div>
+            <div class="avatar-quote">"Tener el coworking en el edificio y San Isidro a minutos me dio calidad de vida real."</div>
+          </div>
+        </div>
+
+        <div class="avatar-card">
+          <div class="avatar-media-box">
+            <span class="avatar-badge-tag">Loft 9A · 40.34 m²</span>
+            <img src="../avatars/Avatar_02_Camila_Mujer_Creativa_2K.jpg" alt="Camila" class="avatar-img">
+          </div>
+          <div class="avatar-info">
+            <div class="avatar-name">Camila (28 años)</div>
+            <div class="avatar-role">Consultora de Branding</div>
+            <div class="avatar-quote">"El diseño modular aprovecha cada rincón. Es la primera inversión perfecta."</div>
+          </div>
+        </div>
+
+        <div class="avatar-card">
+          <div class="avatar-media-box">
+            <span class="avatar-badge-tag">Flat 2D · 48.00 m²</span>
+            <img src="../avatars/Avatar_07_Mujer_Fitness_Lucia_2K.jpg" alt="Diego" class="avatar-img">
+          </div>
+          <div class="avatar-info">
+            <div class="avatar-name">Diego (34 años)</div>
+            <div class="avatar-role">Estratega Financiero & Renta</div>
+            <div class="avatar-quote">"El metro cuadrado en Santa Catalina ofrece una plusvalía inmediata comprobada."</div>
+          </div>
+        </div>
+
+        <div class="avatar-card">
+          <div class="avatar-media-box">
+            <span class="avatar-badge-tag">Comunidad Urbana</span>
+            <img src="../avatars/Avatar_03_Mujer_Tacones_Elegante_2K.jpg" alt="Valeria" class="avatar-img">
+          </div>
+          <div class="avatar-info">
+            <div class="avatar-name">Valeria (27 años)</div>
+            <div class="avatar-role">Diseñadora & Pet Lover</div>
+            <div class="avatar-quote">"Bajar al pet spa y al parque interno resuelve los paseos de mi mascota a diario."</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- FLOOR PLANS -->
+  <section id="planos">
+    <div class="section-header">
+      <div class="section-eyebrow">Distribución Inteligente</div>
+      <h2 class="section-title">Cien por ciento aprovechamiento útil</h2>
+    </div>
+
+    <div class="plans-tabs">
+      <button class="plan-btn active" onclick="switchPlan('loft')">Loft 9A · 40.34 m²</button>
+      <button class="plan-btn" onclick="switchPlan('flat')">Flat 2D · 48.00 m²</button>
+    </div>
+
+    <div class="plan-display-card" id="card-loft">
+      <img src="assets/plano_loft.jpg" alt="Plano Loft" class="plan-img">
+      <div class="plan-details">
+        <h3>Tipología Loft 9A (1 Dormitorio)</h3>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">Diseño de espacio integrado tipo estudio con cocina americana, balcón amplio y baño completo en suite.</p>
+        <ul class="plan-specs">
+          <li><span>Área Total:</span> <strong>40.34 m²</strong></li>
+          <li><span>Dormitorios:</span> <strong>1 Master Suite</strong></li>
+          <li><span>Baños:</span> <strong>1 Baño Completo</strong></li>
+          <li><span>Ambientes:</span> <strong>Cocina Integrada + Balcón</strong></li>
+        </ul>
+        <a href="https://wa.me/51999999999?text=Hola,%20deseo%20la%20cotizacion%20del%20Loft%2040m2%20de%20Connecta" target="_blank" class="btn-main" style="display: inline-block;">Cotizar Esta Tipología</a>
+      </div>
+    </div>
+
+    <div class="plan-display-card" id="card-flat" style="display: none;">
+      <img src="assets/plano_flat.jpg" alt="Plano Flat" class="plan-img">
+      <div class="plan-details">
+        <h3>Tipología Flat (2 Dormitorios)</h3>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">Distribución funcional pensada para parejas jóvenes o familias que requieren un segundo dormitorio versátil para home office.</p>
+        <ul class="plan-specs">
+          <li><span>Área Total:</span> <strong>48.00 m²</strong></li>
+          <li><span>Dormitorios:</span> <strong>2 Dormitorios</strong></li>
+          <li><span>Baños:</span> <strong>2 Baños Completos</strong></li>
+          <li><span>Ambientes:</span> <strong>Sala Comedor + Balcón + Lavandería</strong></li>
+        </ul>
+        <a href="https://wa.me/51999999999?text=Hola,%20deseo%20la%20cotizacion%20del%20Flat%2048m2%20de%20Connecta" target="_blank" class="btn-main" style="display: inline-block;">Cotizar Esta Tipología</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLOATING WHATSAPP -->
+  <a href="https://wa.me/51999999999?text=Hola,%20solicito%20atencion%20comercial%20para%20Connecta%20Urban%20Living" target="_blank" class="floating-whatsapp">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.275.071.376-.043.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.423-10.416c-4.407 0-8 3.593-8 8 0 1.408.365 2.731 1.002 3.879l-1.064 3.889 3.992-1.047c1.104.602 2.371.945 3.722.945 4.407 0 8-3.593 8-8s-3.593-8.666-8-8.666z"/></svg>
+    Atención Inmediata
+  </a>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">LIBEROMATICO</div>
+    <div class="footer-copy">Soluciones digitales para estructurar, mostrar y hacer crecer su negocio. · connecta.liberomatico.com</div>
+  </footer>
+
+  <script>
+    // INTRO GRAPHIC MOTION FADE OUT
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const intro = document.getElementById('motion-intro');
+        if (intro) {
+          intro.classList.add('vanish');
+        }
+      }, 1800);
+    });
+
+    // PLAN SWITCHER
+    function switchPlan(type) {
+      const cardLoft = document.getElementById('card-loft');
+      const cardFlat = document.getElementById('card-flat');
+      const buttons = document.querySelectorAll('.plan-btn');
+
+      buttons.forEach(btn => btn.classList.remove('active'));
+
+      if (type === 'loft') {
+        cardLoft.style.display = 'grid';
+        cardFlat.style.display = 'none';
+        buttons[0].classList.add('active');
+      } else {
+        cardLoft.style.display = 'none';
+        cardFlat.style.display = 'grid';
+        buttons[1].classList.add('active');
+      }
+    }
+  </script>
+</body>
+</html>

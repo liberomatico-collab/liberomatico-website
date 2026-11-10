@@ -219,7 +219,9 @@
 
     #bg-4 video { object-position: 50% 25%; }
 
-    #bg-5 video { object-position: 50% 15%; }
+    #bg-5 video { object-position: 50% 20%; }
+
+    #bg-6 video { object-position: 50% 15%; }
 
     /* ==========================================================================
 
@@ -316,49 +318,51 @@
     }
 
     .brand-text {
-
       display: flex;
-
       flex-direction: column;
-
       gap: 0.15rem;
-
     }
 
     .brand-top-row {
-
       display: flex;
-
       align-items: baseline;
-
       gap: 0.45rem;
-
     }
 
     .brand-title {
-
       font-size: 1.32rem;
-
       font-weight: 600;
-
       letter-spacing: 0.04em;
-
       text-transform: uppercase;
-
       color: var(--text-main);
-
     }
 
-    .brand-author {
+    .brand-consultant-box {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+      margin-top: 0.15rem;
+      line-height: 1.25;
+    }
 
-      font-size: 1.02rem;
+    .brand-consultant-name {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: 0.02em;
+    }
 
+    .brand-consultant-role {
+      font-size: 0.76rem;
+      font-weight: 500;
+      color: #cbd5e1;
+    }
+
+    .brand-consultant-ruc {
+      font-size: 0.74rem;
       font-weight: 600;
-
-      letter-spacing: 0.03em;
-
-      color: #e2e8f0;
-
+      color: #93c5fd;
+      letter-spacing: 0.02em;
     }
 
     /* ACORDEÓN LATERAL IZQUIERDO (CENTRADO ENTRE TECHO Y PISO EN PC) */
@@ -376,12 +380,12 @@
       gap: 0.75rem;
       max-width: 240px;
       padding: 1.15rem 1.45rem;
-      background: rgba(6, 11, 22, 0.28);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: none;
+      background: rgba(6, 11, 22, 0.10);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      border: 2px solid rgba(147, 197, 253, 0.30);
       border-radius: 16px;
-      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+      box-shadow: none;
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
@@ -828,6 +832,47 @@
 
     }
 
+    .btn-tiktok-dock {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      width: 216px;
+      box-sizing: border-box;
+      padding: 0.55rem 1rem;
+      background: rgba(8, 14, 26, 0.68);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(147, 197, 253, 0.4);
+      border-radius: 9999px;
+      color: rgba(248, 250, 252, 0.96);
+      font-size: 0.98rem;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      white-space: nowrap;
+    }
+
+    .btn-tiktok-dock svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+      color: #38bdf8;
+      flex-shrink: 0;
+      transition: transform 0.25s ease;
+    }
+
+    .btn-tiktok-dock:hover {
+      background: rgba(15, 28, 42, 0.85);
+      border-color: #38bdf8;
+      box-shadow: 0 10px 30px rgba(56, 189, 248, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      transform: translateX(-4px) scale(1.02);
+      color: #ffffff;
+    }
+
     .btn-whatsapp-right:hover svg {
 
       transform: scale(1.1);
@@ -891,17 +936,14 @@
     /* SECCIONES CON TEXTO EN PARTE INFERIOR (ROSTROS Y CENTRO 100% DESPEJADOS) */
 
     #sec-1,
-
     #sec-2,
-
-    #sec-3 {
-
+    #sec-3,
+    #sec-4,
+    #sec-5,
+    #sec-6 {
       justify-content: flex-end;
-
       align-items: flex-start;
-
-      padding-bottom: 5.5rem;
-
+      padding-bottom: 3.8rem;
     }
 
         .sec-bottom-wrap,
@@ -909,33 +951,24 @@
       max-width: 760px;
       margin-top: auto;
       margin-bottom: 0;
-      background: rgba(6, 11, 22, 0.28);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: none;
+      background: rgba(6, 11, 22, 0.10);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      border: 2px solid rgba(147, 197, 253, 0.30);
       border-radius: 16px;
       padding: 1.25rem 1.75rem;
-      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+      box-shadow: none;
     }
 
     .sec-title-single,
-
     .sec1-title {
-
-      font-size: clamp(1.4rem, 2.3vw, 2.15rem);
-
+      font-size: clamp(0.98rem, 1.6vw, 1.5rem);
       font-weight: 500;
-
       line-height: 1.35;
-
       color: #ffffff;
-
       letter-spacing: -0.02em;
-
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
-
       margin-bottom: 0;
-
     }
 
     .sec-sub-line {
@@ -967,23 +1000,14 @@
     }
 
     .open-title {
-
-      font-size: clamp(1.35rem, 2.1vw, 1.95rem);
-
+      font-size: clamp(0.95rem, 1.45vw, 1.36rem);
       font-weight: 600;
-
       line-height: 1.28;
-
       color: #ffffff;
-
       max-width: 640px;
-
       margin-bottom: 0.75rem;
-
       letter-spacing: -0.015em;
-
       text-shadow: 0 3px 18px rgba(0, 0, 0, 0.95);
-
     }
 
     .open-lead {
@@ -1186,16 +1210,11 @@
 
     }
 
-    /* SECCIÓN 5: PERFIL Y CONTACTO EDITORIAL SOBRIO (ARMONÍA Y ESCALA REFINADA) */
-
-    #sec-5 {
-
+    /* SECCIÓN 6: PERFIL Y CONTACTO EDITORIAL SOBRIO (ARMONÍA Y ESCALA REFINADA) */
+    #sec-6 {
       justify-content: flex-end;
-
       align-items: flex-start;
-
-      padding-bottom: 5.5rem;
-
+      padding-bottom: 3.8rem;
     }
 
         .profile-open-layout {
@@ -1633,6 +1652,47 @@
 
       }
 
+      .btn-tiktok-dock {
+        width: auto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.45rem;
+        padding: 0.42rem 0.75rem;
+        font-size: 0.78rem;
+        font-weight: 700;
+        background: rgba(8, 14, 26, 0.78);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border: 1px solid rgba(147, 197, 253, 0.45);
+        border-radius: 9999px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        color: rgba(248, 250, 252, 0.96);
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+      }
+
+      .btn-tiktok-dock svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .btn-tiktok-dock:hover {
+        transform: none;
+        background: rgba(15, 28, 42, 0.88);
+      }
+
+      .brand-consultant-name {
+        font-size: 0.76rem;
+      }
+
+      .brand-consultant-role {
+        font-size: 0.68rem;
+      }
+
+      .brand-consultant-ruc {
+        font-size: 0.67rem;
+      }
+
       /* EN MÓVIL ENCUADRAMOS EL VIDEO PARA OCULTAR EL ZÓCALO BLANCO INFERIOR */
 
       .bg-video-hero {
@@ -1760,35 +1820,16 @@
       }
 
       #sec-1,
-
       #sec-2,
-
       #sec-3,
-
       #sec-4,
-
-      #sec-5 {
-
+      #sec-5,
+      #sec-6 {
         min-height: 100%;
-
         height: auto;
-
         justify-content: flex-end;
-
         align-items: flex-start;
-
-        padding: 1.25rem 1.25rem;
-
-      }
-
-      /* SECCIÓN 4 (CLIENTES) EN MÓVIL: ARQUITECTURA LIMPIA CERO SOLAPAMIENTOS */
-
-      #sec-4 {
-
-        justify-content: flex-start;
-
-        gap: 0.8rem;
-
+        padding: 0.85rem 1rem;
       }
 
       #sec-4 .open-title {
@@ -1940,27 +1981,21 @@
         max-width: 100%;
         margin-top: auto;
         margin-bottom: 0;
-        background: rgba(6, 11, 22, 0.32);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border: none;
+        background: rgba(6, 11, 22, 0.10);
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        border: 2px solid rgba(147, 197, 253, 0.30);
         border-radius: 12px;
         padding: 0.85rem 1rem;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        box-shadow: none;
       }
 
       .sec-title-single,
-
       .sec1-title {
-
-        font-size: clamp(1.18rem, 5vw, 1.48rem);
-
+        font-size: clamp(0.85rem, 3.5vw, 1.05rem);
         font-weight: 600;
-
         letter-spacing: -0.015em;
-
         line-height: 1.35;
-
       }
 
       .sec-sub-line {
@@ -2063,7 +2098,542 @@
 
     }
 
-  </style>
+  
+    /* ==========================================================================
+       TARIFAS B2B Y BADGES DE ANCLAJE COMERCIAL (FILTRO ANTI-CURIOSOS)
+       ========================================================================== */
+    .btn-audio-listen {
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-top: 0.95rem;
+      padding: 0.45rem 1.15rem;
+      background: rgba(15, 23, 42, 0.5);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(147, 197, 253, 0.4);
+      border-radius: 30px;
+      color: #f8fafc;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3), 0 0 12px rgba(56, 189, 248, 0.15);
+      transition: all 0.24s ease;
+    }
+
+    .btn-audio-listen::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -120%;
+      width: 45%;
+      height: 100%;
+      background: linear-gradient(
+        115deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(147, 197, 253, 0.35) 50%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: skewX(-20deg);
+      pointer-events: none;
+      animation: audioGlowSweep 4.5s ease-in-out infinite;
+    }
+
+    @keyframes audioGlowSweep {
+      0%, 70% { left: -120%; }
+      85%, 100% { left: 160%; }
+    }
+
+    .btn-audio-listen:hover {
+      background: rgba(147, 197, 253, 0.2);
+      border-color: rgba(147, 197, 253, 0.85);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(56, 189, 248, 0.3);
+    }
+
+    .btn-audio-listen.playing {
+      background: rgba(147, 197, 253, 0.28);
+      border-color: #93c5fd;
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.4);
+    }
+
+    .audio-head-icon {
+      width: 17px;
+      height: 17px;
+      color: #93c5fd;
+      flex-shrink: 0;
+      transition: transform 0.25s ease;
+    }
+
+    .btn-audio-listen:hover .audio-head-icon {
+      transform: scale(1.08);
+      color: #ffffff;
+    }
+
+    .audio-wave-bars {
+      display: none;
+      align-items: center;
+      gap: 2.5px;
+      height: 12px;
+    }
+
+    .btn-audio-listen.playing .audio-wave-bars {
+      display: inline-flex;
+    }
+
+    .btn-audio-listen.playing .audio-head-icon {
+      display: none;
+    }
+
+    .audio-bar {
+      width: 2.5px;
+      height: 100%;
+      background: #93c5fd;
+      border-radius: 1px;
+      animation: barJump 1.1s ease-in-out infinite alternate;
+    }
+
+    .audio-bar:nth-child(2) { animation-delay: 0.2s; }
+    .audio-bar:nth-child(3) { animation-delay: 0.4s; }
+    .audio-bar:nth-child(4) { animation-delay: 0.15s; }
+
+    @keyframes barJump {
+      0% { height: 20%; }
+      50% { height: 100%; }
+      100% { height: 35%; }
+    }
+
+    .demo-icon-badge {
+      font-size: 1.5rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+    }
+
+    .demo-open-link.highlight-demo {
+      background: rgba(56, 189, 248, 0.06);
+      border-radius: 8px;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+
+    .about-partner-link {
+      color: #93c5fd;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+    .about-partner-link:hover {
+      color: #ffffff;
+    }
+    .about-intro, .about-alliance, .about-empathy {
+      margin-bottom: 0.55rem;
+      line-height: 1.45;
+    }
+    .about-alliance {
+      color: #e2e8f0;
+      font-weight: 500;
+    }
+    .acc-subitem {
+      font-size: 0.86rem;
+      padding: 0.12rem 0;
+      color: rgba(226, 232, 240, 0.85);
+      transition: all 0.2s ease;
+    }
+    .acc-subitem:hover {
+      color: #93c5fd;
+      transform: translateX(3px);
+    }
+    .acc-panel {
+      border-left: 1.5px solid rgba(147, 197, 253, 0.45);
+    }
+
+    /* === ESTILOS EJECUTIVOS PARA CUADROS DE SERVICIO Y CLIENTES (LIBEROMATICO) === */
+    .acc-subitem.active {
+      color: var(--champagne) !important;
+      font-weight: 600;
+      text-shadow: 0 0 14px var(--champagne-glow);
+      transform: translateX(4px);
+    }
+
+    .service-box-inner {
+      background: transparent;
+      border: none;
+      padding: 0;
+      margin-top: 0.45rem;
+    }
+
+    .service-bullet-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0 0 0.55rem 0;
+    }
+
+    .service-bullet-list li {
+      position: relative;
+      padding-left: 1.15rem;
+      margin-bottom: 0.35rem;
+      font-size: 0.88rem;
+      line-height: 1.38;
+      color: #f8fafc;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.92), 0 1px 3px rgba(0, 0, 0, 0.95);
+    }
+
+    .service-bullet-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .service-bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0.25rem;
+      top: 0;
+      color: #38bdf8;
+      font-weight: bold;
+    }
+
+    .service-bullet-list li strong {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .service-footer-bar {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.55rem;
+      margin-top: 0.6rem;
+      padding-top: 0.55rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .service-actions-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem 1rem;
+    }
+
+    .btn-inversion-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.42rem 0.95rem;
+      background: rgba(15, 23, 42, 0.72);
+      color: #93c5fd;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.83rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(147, 197, 253, 0.35);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      letter-spacing: 0.02em;
+    }
+
+    .btn-inversion-toggle:hover,
+    .btn-inversion-toggle.active {
+      background: rgba(56, 189, 248, 0.18);
+      color: #ffffff;
+      border-color: #38bdf8;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
+    }
+
+    .service-pricing-info {
+      display: none;
+      flex-direction: column;
+      gap: 0.35rem;
+      font-size: 0.83rem;
+      background: rgba(6, 11, 22, 0.10);
+      border: 2px solid rgba(147, 197, 253, 0.30);
+      border-radius: 10px;
+      padding: 0.65rem 0.95rem;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.92), 0 1px 3px rgba(0, 0, 0, 0.95);
+    }
+
+    .service-pricing-info.open {
+      display: flex;
+    }
+
+    .inv-top-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.4rem 1rem;
+      border-bottom: 1px solid rgba(147, 197, 253, 0.2);
+      padding-bottom: 0.3rem;
+    }
+
+    .inv-detail-text {
+      color: #f8fafc;
+      font-size: 0.81rem;
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    .inv-detail-text strong {
+      color: #93c5fd;
+      font-weight: 600;
+    }
+
+    .inv-bottom-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.4rem 1rem;
+      padding-top: 0.15rem;
+    }
+
+    .integral-formula-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.35rem 0.5rem;
+      margin: 0.35rem 0 0.45rem 0;
+    }
+
+    .integral-pill {
+      background: rgba(6, 11, 22, 0.10);
+      border: 2px solid rgba(147, 197, 253, 0.30);
+      color: #ffffff;
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.24rem 0.65rem;
+      border-radius: 6px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.92), 0 1px 3px rgba(0, 0, 0, 0.95);
+    }
+
+    .integral-plus {
+      color: #38bdf8;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .service-price-val {
+      font-weight: 700;
+      font-size: 0.96rem;
+      color: #38bdf8;
+      letter-spacing: 0.01em;
+    }
+
+    .service-price-pen {
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: #cbd5e1;
+    }
+
+    .service-time-val {
+      color: #93c5fd;
+      font-weight: 500;
+    }
+
+    .service-terms-val {
+      color: #94a3b8;
+      font-size: 0.78rem;
+    }
+
+    .btn-service-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.48rem 1.05rem;
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: #ffffff !important;
+      font-weight: 600;
+      font-size: 0.84rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
+      transition: all 0.22s ease;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    .btn-service-cta:hover {
+      background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(14, 165, 233, 0.5);
+    }
+
+    /* PÍLDORAS DE DEMOS EN VIVO EN SECCIÓN 3 */
+    .live-demos-strip {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.45rem;
+      margin-top: 0.65rem;
+    }
+
+    .live-demos-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-right: 0.2rem;
+    }
+
+    .demo-pill-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.28rem 0.75rem;
+      background: rgba(6, 11, 22, 0.10);
+      border: 2px solid rgba(147, 197, 253, 0.30);
+      border-radius: 9999px;
+      color: #f8fafc;
+      font-size: 0.78rem;
+      font-weight: 500;
+      text-decoration: none;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.92);
+      transition: all 0.2s ease;
+    }
+
+    .demo-pill-link:hover {
+      background: rgba(6, 11, 22, 0.10);
+      border-color: rgba(56, 189, 248, 0.7);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    /* CUADRÍCULA DE LOS 4 CLIENTES OFICIALES CON LOGOTIPOS (SECCIÓN 5) */
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.85rem;
+      margin-top: 0.85rem;
+      width: 100%;
+    }
+
+    .client-card {
+      background: rgba(6, 11, 22, 0.10);
+      border: 2px solid rgba(147, 197, 253, 0.30);
+      border-radius: 12px;
+      padding: 0.9rem 1.1rem;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.95rem;
+      text-decoration: none;
+      color: inherit;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.92), 0 1px 3px rgba(0, 0, 0, 0.95);
+    }
+
+    a.client-card:hover {
+      border-color: rgba(56, 189, 248, 0.65);
+      transform: translateY(-2px);
+      background: rgba(6, 11, 22, 0.10);
+      box-shadow: none;
+    }
+
+    .client-logo-frame {
+      width: 64px;
+      height: 52px;
+      min-width: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(6, 11, 22, 0.10);
+      border: 2px solid rgba(147, 197, 253, 0.30);
+      border-radius: 8px;
+      padding: 6px;
+      flex-shrink: 0;
+    }
+
+    .client-logo-frame img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6));
+    }
+
+    .client-card-body {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      min-width: 0;
+    }
+
+    .client-card-top {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .client-title {
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.2;
+    }
+
+    .client-badge {
+      font-size: 0.66rem;
+      font-weight: 700;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      padding: 1px 6px;
+      border-radius: 4px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .client-domain {
+      font-size: 0.78rem;
+      color: #93c5fd;
+      font-weight: 500;
+    }
+
+    .client-desc {
+      font-size: 0.8rem;
+      line-height: 1.35;
+      color: #cbd5e1;
+      margin: 0;
+    }
+
+    @media (max-aspect-ratio: 1/1), (max-width: 960px) {
+      .clients-grid {
+        grid-template-columns: 1fr;
+        gap: 0.55rem;
+      }
+      .client-card {
+        padding: 0.65rem 0.85rem;
+      }
+      .client-logo-frame {
+        width: 50px;
+        height: 40px;
+        min-width: 50px;
+      }
+      .service-box-inner {
+        padding: 0.65rem 0.85rem;
+        margin-top: 0.45rem;
+      }
+      .service-bullet-list li {
+        font-size: 0.8rem;
+        margin-bottom: 0.25rem;
+      }
+      .sec-bottom-wrap {
+        max-height: 100%;
+        overflow-y: auto;
+      }
+    }
+</style>
 
 </head>
 
@@ -2076,67 +2646,43 @@
        ========================================================================== -->
 
   <div class="bg-stage">
-
-    <!-- Slide 1: Estrategia (Red & Esfera Global) -->
-
+    <!-- Slide 1: Conócenos / Hero (Secuencia continua: 1. Bienvenidos soy Rodrigo [reel_05] -> 2. Si me permite ayudarle [reel_01]) -->
     <div class="bg-slide active" id="bg-1">
-
-      <video autoplay muted playsinline preload="auto">
-
-        <source src="assets/reel_01_estrategia.mp4" type="video/mp4" />
-
-      </video>
-
-    </div>
-
-    <!-- Slide 2: Publicidad (Dos personas en diálogo) -->
-
-    <div class="bg-slide" id="bg-2">
-
-      <video muted playsinline preload="metadata">
-
-        <source src="assets/reel_02_publicidad.mp4" type="video/mp4" />
-
-      </video>
-
-    </div>
-
-    <!-- Slide 3: Tecnología (Espacio & Vitrina de Diseño) -->
-
-    <div class="bg-slide" id="bg-3">
-
-      <video muted playsinline preload="metadata">
-
-        <source src="assets/reel_03_tecnologia.mp4" type="video/mp4" />
-
-      </video>
-
-    </div>
-
-    <!-- Slide 4: Referentes (POV Catálogo en Celular) -->
-
-    <div class="bg-slide" id="bg-4">
-
-      <video muted playsinline preload="metadata">
-
-        <source src="assets/reel_04_proyectos.mp4" type="video/mp4" />
-
-      </video>
-
-    </div>
-
-    <!-- Slide 5: Información (Rodrigo Guillermo Vázquez - Reel Personal) -->
-
-    <div class="bg-slide" id="bg-5">
-
-      <video muted playsinline preload="metadata">
-
+      <video id="heroVid1" autoplay playsinline preload="auto" style="opacity: 1; transition: opacity 0.55s ease; object-position: 50% 15%;">
         <source src="assets/reel_05_contacto.mp4" type="video/mp4" />
-
       </video>
-
+      <video id="heroVid2" playsinline preload="auto" style="opacity: 0; transition: opacity 0.55s ease; pointer-events: none; object-position: 50% 30%;">
+        <source src="assets/reel_01_estrategia.mp4" type="video/mp4" />
+      </video>
     </div>
 
+    <!-- Slide 2: Estrategia Digital (Reunión corporativa de par a par) -->
+    <div class="bg-slide" id="bg-2">
+      <video muted playsinline preload="metadata">
+        <source src="assets/reel_02_publicidad.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <!-- Slide 3: Presencia Digital Web (Vitrina & Catálogo Interactivo) -->
+    <div class="bg-slide" id="bg-3">
+      <video muted playsinline preload="metadata">
+        <source src="assets/reel_03_tecnologia.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <!-- Slide 4: Publicidad para Redes (Producción Audiovisual) -->
+    <div class="bg-slide" id="bg-4">
+      <video muted playsinline preload="metadata">
+        <source src="assets/reel_02_publicidad.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <!-- Slide 5: Nuestros Clientes (Recorrido de Proyectos) -->
+    <div class="bg-slide" id="bg-5">
+      <video muted playsinline preload="metadata">
+        <source src="assets/reel_04_proyectos.mp4" type="video/mp4" />
+      </video>
+    </div>
   </div>
 
   <!-- ==========================================================================
@@ -2164,6 +2710,12 @@
           <div class="brand-text">
 
             <span class="brand-title">LiberoMatico</span>
+
+            <div class="brand-consultant-box">
+              <span class="brand-consultant-name">Rodrigo Guillermo Vázquez</span>
+              <span class="brand-consultant-role" data-i18n="left_footer_role">Consultor Comercial y Tecnológico</span>
+              <span class="brand-consultant-ruc">RUC 15615689529</span>
+            </div>
 
           </div>
 
@@ -2239,38 +2791,35 @@
 
   <nav class="left-accordion" role="navigation" aria-label="Navegación LiberoMatico">
 
-    <!-- 1. ESTRATEGIA -->
-    <div class="acc-group" id="acc-est">
-      <a href="#sec-1" class="acc-trigger" data-sec="1">
-        <span data-i18n="acc_1_title">Estrategia</span>
+    <!-- 1. CONÓCENOS -->
+    <div class="acc-group" id="acc-about">
+      <a href="#sec-1" class="acc-trigger active" data-sec="1">
+        <span data-i18n="nav_about">Conócenos</span>
       </a>
     </div>
 
-    <!-- 2. PUBLICIDAD -->
-    <div class="acc-group" id="acc-pub">
+    <!-- 2. NUESTROS SERVICIOS -->
+    <div class="acc-group open" id="acc-services">
       <a href="#sec-2" class="acc-trigger" data-sec="2">
-        <span data-i18n="acc_2_title">Publicidad</span>
+        <span data-i18n="nav_services">Nuestros Servicios</span>
       </a>
+      <div class="acc-panel">
+        <a href="#sec-2" class="acc-subitem" data-sec="2">
+          <span data-i18n="srv_estrategia">- Estrategia Digital</span>
+        </a>
+        <a href="#sec-3" class="acc-subitem" data-sec="3">
+          <span data-i18n="srv_presencia">- Presencia Digital Web</span>
+        </a>
+        <a href="#sec-4" class="acc-subitem" data-sec="4">
+          <span data-i18n="srv_publicidad">- Publicidad para Redes</span>
+        </a>
+      </div>
     </div>
 
-    <!-- 3. VALIDACIÓN DIGITAL -->
-    <div class="acc-group" id="acc-tec">
-      <a href="#sec-3" class="acc-trigger" data-sec="3">
-        <span data-i18n="acc_3_title">Validación Digital</span>
-      </a>
-    </div>
-
-    <!-- 4. CLIENTES -->
-    <div class="acc-group" id="acc-proy">
-      <a href="#sec-4" class="acc-trigger" data-sec="4">
-        <span data-i18n="nav_ref">Clientes</span>
-      </a>
-    </div>
-
-    <!-- 5. CONTACTO -->
-    <div class="acc-group" id="acc-cont">
+    <!-- 3. NUESTROS CLIENTES -->
+    <div class="acc-group" id="acc-clients">
       <a href="#sec-5" class="acc-trigger" data-sec="5">
-        <span data-i18n="nav_3">Contacto</span>
+        <span data-i18n="nav_clients">Nuestros Clientes</span>
       </a>
     </div>
 
@@ -2278,11 +2827,18 @@
 
   <!-- ==========================================================================
 
-       BOTONES DE WHATSAPP (ANCLADOS AL PISO INFERIOR DERECHO EN MÓVIL Y PC)
+       BOTONES DE CONTACTO FLOTANTES (TIKTOK + WHATSAPP EN EL PISO INFERIOR DERECHO)
 
        ========================================================================== -->
 
-  <aside class="whatsapp-dock" aria-label="Canales directos de WhatsApp">
+  <aside class="whatsapp-dock" aria-label="Canales directos de Contacto y Redes">
+
+    <a href="https://www.tiktok.com/@liberomatico" target="_blank" rel="noopener noreferrer" class="btn-tiktok-dock" title="TikTok @liberomatico" aria-label="TikTok @liberomatico">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+      </svg>
+      <span>@liberomatico</span>
+    </a>
 
     <a href="https://wa.me/51966788168?text=Hola%20Rodrigo,%20vi%20tu%20web%20LiberoMatico%20y%20deseo%20coordinar" target="_blank" class="btn-whatsapp-right" title="WhatsApp Línea 1">
 
@@ -2310,176 +2866,209 @@
 
   <main class="open-flow">
 
-    <!-- SECCIÓN 01: ESTRATEGIA -->
-
-    <section class="open-section" id="sec-1" data-index="1">
+    <!-- SECCIÓN 01: ACERCA DE LIBEROMATICO (HERO) -->
+    <section class="open-section active" id="sec-1" data-index="1">
       <div class="sec-bottom-wrap">
-        <h2 class="open-title sec-title-single" data-i18n="sec1_title">
-          Estrategia comercial y digital
+        <h2 class="open-title sec-title-single" data-i18n="about_title">
+          Soluciones digitales para hacer crecer su negocio, con criterio comercial y tecnología.
         </h2>
-        <p class="sec-sub-line" data-i18n="sec1_sub">
-          Analizamos cómo opera su negocio hoy para ordenar su propuesta, enfocar su comunicación y captar clientes de forma consistente.
+        <p class="sec-sub-line about-alliance" style="margin-bottom: 0;">
+          <span data-i18n="about_sig">LiberoMatico en alianza con</span>
+          <a href="https://www.hrylegalconsulting.com" target="_blank" rel="noopener noreferrer" class="about-partner-link">HR &amp; LEGAL Consulting SAC.</a>
         </p>
       </div>
     </section>
 
-    <!-- SECCIÓN 02: PUBLICIDAD -->
-
+    <!-- SECCIÓN 02: ESTRATEGIA DIGITAL -->
     <section class="open-section" id="sec-2" data-index="2">
       <div class="sec-bottom-wrap">
         <h2 class="open-title sec-title-single" data-i18n="sec2_title">
-          Publicidad y medios digitales
+          Estrategia Comercial y Digital
         </h2>
-        <p class="sec-sub-line" data-i18n="sec2_sub">
-          Producción audiovisual y gráfica diseñada para hacer conocer su trabajo, mostrar sus diferenciales y despertar interés real de compra.
+
+        <p class="sec-sub-line" style="margin-bottom: 0.45rem;" data-i18n="sec2_intro">
+          Analizamos su empresa, cliente, competidores y coyuntura para:
         </p>
+
+        <div class="service-box-inner">
+          <ul class="service-bullet-list">
+            <li data-i18n="sec2_bullet1">Definir cómo destacar sus diferenciales.</li>
+            <li data-i18n="sec2_bullet2">Creamos guiones persuasivos para su comunicación digital y conversión de ventas.</li>
+            <li data-i18n="sec2_bullet3">Entrega de Dossier Estratégico y de comunicación comercial.</li>
+          </ul>
+
+          <div class="service-footer-bar">
+            <div class="service-actions-row">
+              <a href="https://wa.me/51966788168?text=Hola%20Rodrigo,%20vi%20el%20detalle%20de%20Estrategia%20Digital%20y%20Cierre%20Comercial%20en%20LiberoMatico%20y%20deseo%20consultar%20por%20este%20servicio." target="_blank" rel="noopener noreferrer" class="btn-service-cta" data-i18n="btn_cta_estrategia">
+                Consultar Estrategia Digital por WhatsApp &nearr;
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- SECCIÓN 03: TECNOLOGÍA -->
-
+    <!-- SECCIÓN 03: PRESENCIA DIGITAL WEB (CATÁLOGO VIVENCIAL) -->
     <section class="open-section" id="sec-3" data-index="3">
       <div class="sec-bottom-wrap">
         <h2 class="open-title sec-title-single" data-i18n="sec3_title">
-          Validación digital
+          Presencia Digital Web (Catálogo Vivencial)
         </h2>
-        <p class="sec-sub-line" data-i18n="sec3_sub">
-          Sitios web y catálogos interactivos que generan confianza en su empresa, respaldan su producto y canalizan cierres directos por WhatsApp.
-        </p>
-      </div>
-    </section>
 
-    <!-- SECCIÓN 04: NUESTROS CLIENTES -->
+        <div class="service-box-inner">
+          <ul class="service-bullet-list">
+            <li data-i18n="sec3_bullet1">Catálogos Web vivenciales de inmuebles, productos o servicios, optimizados para todo tipo de dispositivos (smartphones, tablets y computadoras).</li>
+            <li data-i18n="sec3_bullet2">Recorridos inmersivos en video para mostrar sus inmuebles, productos y servicios, con el fin de generar confianza y estimular su demanda.</li>
+            <li data-i18n="sec3_bullet3">Canalización inmediata al WhatsApp de su equipo comercial.</li>
+          </ul>
 
-    <section class="open-section" id="sec-4" data-index="4">
-
-      <h2 class="open-title" data-i18n="sec4_title">
-
-        Nuestros Clientes
-
-      </h2>
-
-      <div class="demos-open-bar">
-
-        <div class="demos-open-list">
-
-          <a href="https://www.riomayolands.com" target="_blank" rel="noopener noreferrer" class="demo-open-link">
-
-            <div class="client-logo-box">
-
-              <img src="assets/clients/logo_riomayo.png" alt="Río Mayo Lands" class="client-logo-img" />
-
+          <div class="service-footer-bar">
+            <div class="service-actions-row">
+              <a href="https://wa.me/51966788168?text=Hola%20Rodrigo,%20vi%20el%20detalle%20de%20Presencia%20Digital%20Web%20(Cat%C3%A1logo%20Vivencial)%20en%20LiberoMatico%20y%20deseo%20consultar%20por%20este%20servicio." target="_blank" rel="noopener noreferrer" class="btn-service-cta" data-i18n="btn_cta_catalogo">
+                Consultar Presencia Digital Web por WhatsApp &nearr;
+              </a>
             </div>
-
-            <div class="demo-open-info">
-
-              <span class="demo-open-name">Río Mayo Lands</span>
-
-              <span class="demo-open-tag" data-i18n="card2_demo_rio">Desarrollo Inmobiliario · Ver Sitio</span>
-
-            </div>
-
-          </a>
-
-          <a href="michaelconstructora/index.html" target="_blank" class="demo-open-link">
-
-            <div class="client-logo-box">
-
-              <img src="assets/clients/logo_michael.png" alt="Michael Constructora" class="client-logo-img" />
-
-            </div>
-
-            <div class="demo-open-info">
-
-              <span class="demo-open-name">Michael Constructora</span>
-
-              <span class="demo-open-tag" data-i18n="card2_demo_const">Ingeniería &amp; Obra Civil · Ver Sitio</span>
-
-            </div>
-
-          </a>
-
-          <a href="https://www.hrylegalconsulting.com" target="_blank" rel="noopener noreferrer" class="demo-open-link">
-
-            <div class="client-logo-box">
-
-              <img src="assets/clients/logo_hr_legal.svg" alt="HR &amp; Legal" class="client-logo-img" />
-
-            </div>
-
-            <div class="demo-open-info">
-
-              <span class="demo-open-name">HR &amp; Legal</span>
-
-              <span class="demo-open-tag" data-i18n="card2_demo_hr">Estudio Jurídico · Ver Sitio</span>
-
-            </div>
-
-          </a>
-
-          <div class="demo-open-link">
-
-            <div class="client-logo-box">
-
-              <img src="assets/clients/logo_ndc.svg" alt="NDC Arquitectura y Construcción" class="client-logo-img" />
-
-            </div>
-
-            <div class="demo-open-info">
-
-              <span class="demo-open-name">NDC Arquitectura y Construcción</span>
-
-              <span class="demo-open-tag" data-i18n="card2_demo_mod">Diseño Modular &amp; Obra</span>
-
-            </div>
-
           </div>
-
         </div>
 
+        <div class="live-demos-strip">
+          <span class="live-demos-label" data-i18n="demos_label">Demos en vivo:</span>
+          <a href="https://www.riomayolands.com" target="_blank" rel="noopener noreferrer" class="demo-pill-link">Río Mayo Lands &nearr;</a>
+          <a href="connecta/index.html" target="_blank" rel="noopener noreferrer" class="demo-pill-link">Connecta Urban &nearr;</a>
+          <a href="michaelconstructora/index.html" target="_blank" rel="noopener noreferrer" class="demo-pill-link">Michael Constructora &nearr;</a>
+          <a href="hr-legal/index.html" target="_blank" rel="noopener noreferrer" class="demo-pill-link">HR &amp; Legal &nearr;</a>
+          <a href="elombu/index.html" target="_blank" rel="noopener noreferrer" class="demo-pill-link">El Ombú &nearr;</a>
+        </div>
       </div>
-
-      <div class="sec4-btn-wrap" style="margin-top: 1.8rem;">
-
-        <a href="#sec-5" class="btn-cta-gold">
-
-          <span data-i18n="btn_contact">Información de Contacto</span>
-
-          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
-
-        </a>
-
-      </div>
-
     </section>
 
-    <!-- SECCIÓN 05: MIS DATOS (RODRIGO GUILLERMO VÁZQUEZ) -->
+    <!-- SECCIÓN 04: PUBLICIDAD PARA REDES -->
+    <section class="open-section" id="sec-4" data-index="4">
+      <div class="sec-bottom-wrap">
+        <h2 class="open-title sec-title-single" data-i18n="sec4_title">
+          Publicidad para Redes
+        </h2>
 
+        <!-- Cuadro 3: Publicidad Audiovisual -->
+        <div class="service-box-inner">
+          <ul class="service-bullet-list">
+            <li data-i18n="sec4_bullet1"><strong>Reels Cinematográficos:</strong> Narrativa comercial y vivencial que frena el scroll y genera confianza.</li>
+            <li data-i18n="sec4_bullet2"><strong>Diseño Sonoro y Subtítulos Cinéticos:</strong> Voces en off, animación gráfica y lectura dinámica sin audio.</li>
+            <li data-i18n="sec4_bullet3"><strong>Formatos 9:16 y 16:9:</strong> Para TikTok, Instagram, Facebook, WhatsApp, web y video walls.</li>
+          </ul>
+
+          <div class="service-footer-bar">
+            <div class="service-actions-row">
+              <a href="https://wa.me/51966788168?text=Hola%20Rodrigo,%20vi%20el%20detalle%20de%20Publicidad%20para%20Redes%20en%20LiberoMatico%20y%20deseo%20consultar%20por%20este%20servicio." target="_blank" rel="noopener noreferrer" class="btn-service-cta" data-i18n="btn_cta_publicidad">
+                Consultar Publicidad para Redes por WhatsApp &nearr;
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cuadro 4: Paquete Integral Compacto -->
+        <div class="service-box-inner" style="margin-top: 0.55rem; padding-top: 0.5rem; border-top: 1px solid rgba(147, 197, 253, 0.25);">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.4rem;">
+            <div class="integral-formula-row" style="margin:0;">
+              <strong style="color:#38bdf8; font-size:0.88rem; margin-right:0.2rem;" data-i18n="pkg_integral_label">Paquete Integral:</strong>
+              <span class="integral-pill" data-i18n="pkg_item1">Estrategia</span>
+              <span class="integral-plus">+</span>
+              <span class="integral-pill" data-i18n="pkg_item2">Web con Catálogo</span>
+              <span class="integral-plus">+</span>
+              <span class="integral-pill" data-i18n="pkg_item3">Piezas Publicitarias</span>
+              <span class="integral-plus">+</span>
+              <span class="integral-pill" data-i18n="pkg_item4">Medición de Resultados</span>
+            </div>
+          </div>
+
+          <div class="service-footer-bar" style="margin-top:0.35rem; padding-top:0.35rem; border-top:none;">
+            <div class="service-actions-row">
+              <a href="https://wa.me/51966788168?text=Hola%20Rodrigo,%20vi%20el%20detalle%20del%20Paquete%20Integral%20en%20LiberoMatico%20y%20deseo%20consultar%20por%20este%20servicio." target="_blank" rel="noopener noreferrer" class="btn-service-cta" data-i18n="btn_cta_integral">
+                Consultar Paquete Integral por WhatsApp &nearr;
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 05: CLIENTES QUE CONFÍAN EN NOSOTROS -->
     <section class="open-section" id="sec-5" data-index="5">
-      <div class="profile-open-layout">
-        <h2 class="profile-name">Rodrigo Guillermo Vázquez</h2>
-        <p class="profile-role" data-i18n="card3_role">
-          Consultor Estratégico, Comercial y Tecnológico
-        </p>
-        <p class="profile-bio" data-i18n="card3_desc">
-          Experiencia y criterio para hacer crecer su negocio.
+      <div class="sec-bottom-wrap">
+        <h2 class="open-title sec-title-single" data-i18n="sec5_title">
+          Clientes que confían en nosotros
+        </h2>
+        <p class="sec-sub-line" data-i18n="sec5_sub">
+          Empresas e instituciones que respaldan el criterio comercial, tecnológico y estratégico de LiberoMatico.
         </p>
 
-        <div class="contact-open-links">
-          <a href="https://www.liberomatico.com" target="_blank" class="open-contact-item">
-            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
-            <span>www.liberomatico.com</span>
+        <div class="clients-grid">
+          <!-- 1. riomayolands.com -->
+          <a href="https://www.riomayolands.com" target="_blank" rel="noopener noreferrer" class="client-card">
+            <div class="client-logo-frame">
+              <img src="assets/clients/logo_riomayo.png" alt="Río Mayo Lands" />
+            </div>
+            <div class="client-card-body">
+              <div class="client-card-top">
+                <strong class="client-title" data-i18n="client1_name">Río Mayo Lands</strong>
+                <span class="client-badge" data-i18n="client1_badge">Inmobiliario</span>
+              </div>
+              <span class="client-domain">riomayolands.com &nearr;</span>
+              <p class="client-desc" data-i18n="client1_desc">
+                Desarrollo inmobiliario y residencial en Tarapoto. Catálogo interactivo vivencial y canalización de ventas.
+              </p>
+            </div>
           </a>
-          <a href="mailto:liberomatico@gmail.com" class="open-contact-item">
-            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-            <span>liberomatico@gmail.com</span>
+
+          <!-- 2. HR & Legal Consulting -->
+          <a href="https://www.hrylegalconsulting.com" target="_blank" rel="noopener noreferrer" class="client-card">
+            <div class="client-logo-frame">
+              <img src="assets/clients/logo_hr_legal.svg" alt="HR &amp; Legal Consulting" />
+            </div>
+            <div class="client-card-body">
+              <div class="client-card-top">
+                <strong class="client-title" data-i18n="client2_name">HR &amp; Legal Consulting</strong>
+                <span class="client-badge" data-i18n="client2_badge">Consultoría Legal</span>
+              </div>
+              <span class="client-domain">hrylegalconsulting.com &nearr;</span>
+              <p class="client-desc" data-i18n="client2_desc">
+                Firma especializada en asesoría legal, auditoría laboral y compliance corporativo. Alianza estratégica.
+              </p>
+            </div>
           </a>
-          <a href="https://www.tiktok.com/@liberomatico" target="_blank" class="open-contact-item">
-            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-            <span>@liberomatico</span>
+
+          <!-- 3. Michael Constructora -->
+          <a href="michaelconstructora/index.html" target="_blank" rel="noopener noreferrer" class="client-card">
+            <div class="client-logo-frame">
+              <img src="assets/clients/logo_michael.png" alt="Michael Constructora" />
+            </div>
+            <div class="client-card-body">
+              <div class="client-card-top">
+                <strong class="client-title" data-i18n="client3_name">Michael Constructora</strong>
+                <span class="client-badge" data-i18n="client3_badge">Construcción</span>
+              </div>
+              <span class="client-domain" data-i18n="client3_domain">Ingeniería &amp; Edificación &nearr;</span>
+              <p class="client-desc" data-i18n="client3_desc">
+                Proyectos de infraestructura urbana, obras civiles y edificaciones multifamiliares en Lima.
+              </p>
+            </div>
           </a>
-          <div class="open-contact-item" style="color: var(--champagne); opacity: 0.95;">
-            <span>RUC: 15615689529 · Lima, Perú</span>
+
+          <!-- 4. NDC Constructora -->
+          <div class="client-card">
+            <div class="client-logo-frame">
+              <img src="assets/clients/logo_ndc.svg" alt="NDC Constructora" />
+            </div>
+            <div class="client-card-body">
+              <div class="client-card-top">
+                <strong class="client-title" data-i18n="client4_name">NDC Constructora</strong>
+                <span class="client-badge" data-i18n="client4_badge">Construcción</span>
+              </div>
+              <span class="client-domain" data-i18n="client4_domain">Arquitectura &amp; Obras Civiles</span>
+              <p class="client-desc" data-i18n="client4_desc">
+                Desarrollo de proyectos constructivos, infraestructura y estructuración técnica comercial.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -2497,229 +3086,302 @@
 
     const sections = document.querySelectorAll('.open-section');
 
-    const navItems = document.querySelectorAll('.left-accordion .acc-trigger');
+    const navItems = document.querySelectorAll('.left-accordion .acc-trigger, .left-accordion .acc-subitem');
 
     const bgSlides = document.querySelectorAll('.bg-slide');
 
     // ==========================================================================
 
-    // CONTROL DE AUDIO SELECTIVO (EXCLUSIVO PARA REEL 1 Y REEL DE CONTACTO)
+    // CONTROL DE AUDIO Y SECUENCIA HERO (REEL 5 -> REEL 1 CON VOZ ACTIVA)
 
     // ==========================================================================
 
-    let isAudioEnabled = false;
+    let isAudioEnabled = true;
 
     let currentSection = 1;
 
-    // Secciones con audio autorizado: 1 (Estrategia) y 5 (Contacto)
+    let currentHeroStep = 1; // 1 = reel_05 (Bienvenidos, soy Rodrigo), 2 = reel_01 (Si me permite ayudarle...)
 
-    // Secciones 2 (Publicidad), 3 (Tecnología) y 4 (Clientes) permanecen siempre mudas
+    let heroInitialized = false;
 
-    const AUDIO_ALLOWED_SECTIONS = [1, 5];
+    let waitingForGestureUnlock = false;
 
-    function toggleAudio() {
+    const heroVid1 = document.getElementById('heroVid1');
+    const heroVid2 = document.getElementById('heroVid2');
 
-      isAudioEnabled = !isAudioEnabled;
+    function getActiveHeroVideo() {
+      return currentHeroStep === 2 ? heroVid2 : heroVid1;
+    }
 
+    function updateAudioUI() {
       const btn = document.getElementById('btnAudioToggle');
-
       const iconMuted = btn ? btn.querySelector('.audio-icon-muted') : null;
-
       const iconActive = btn ? btn.querySelector('.audio-icon-active') : null;
-
       const label = btn ? btn.querySelector('.audio-label') : null;
-
-      const trans = translations[currentLang] || translations.es;
+      const langKey = (typeof currentLang !== 'undefined' && currentLang) ? currentLang : 'es';
+      const dict = (typeof translations !== 'undefined' && translations[langKey]) ? translations[langKey] : {
+        audio_toggle: 'Sonido',
+        audio_toggle_on: 'Sonido ON'
+      };
 
       if (isAudioEnabled) {
-
         if (btn) {
-
           btn.classList.add('active');
-
-          btn.setAttribute('title', trans.audio_toggle_on);
-
-          btn.setAttribute('aria-label', trans.audio_toggle_on);
-
+          btn.setAttribute('title', dict.audio_toggle_on);
+          btn.setAttribute('aria-label', dict.audio_toggle_on);
         }
-
         if (iconMuted) iconMuted.style.display = 'none';
-
         if (iconActive) iconActive.style.display = 'block';
-
-        if (label) label.textContent = trans.audio_toggle_on;
-
+        if (label) label.textContent = dict.audio_toggle_on;
       } else {
-
         if (btn) {
-
           btn.classList.remove('active');
-
-          btn.setAttribute('title', trans.audio_toggle);
-
-          btn.setAttribute('aria-label', trans.audio_toggle);
-
+          btn.setAttribute('title', dict.audio_toggle);
+          btn.setAttribute('aria-label', dict.audio_toggle);
         }
-
         if (iconMuted) iconMuted.style.display = 'block';
-
         if (iconActive) iconActive.style.display = 'none';
-
-        if (label) label.textContent = trans.audio_toggle;
-
+        if (label) label.textContent = dict.audio_toggle;
       }
+    }
+
+    // Desbloquea heroVid2 dentro del gesto del usuario para que al terminar heroVid1 suene sin bloqueo del navegador
+    function primeHeroVid2ForAudio() {
+      if (!heroVid2) return;
+      heroVid2.muted = false;
+      heroVid2.volume = 0;
+      const p = heroVid2.play();
+      if (p !== undefined) {
+        p.then(() => {
+          if (currentHeroStep === 1) {
+            heroVid2.pause();
+            heroVid2.currentTime = 0;
+            heroVid2.volume = 1.0;
+          }
+        }).catch(() => {});
+      }
+    }
+
+    function switchHeroToStep(step, fromUserGesture = false) {
+      currentHeroStep = step;
+      if (!heroVid1 || !heroVid2) return;
+      const wantAudio = Boolean(isAudioEnabled && currentSection === 1);
+
+      if (step === 1) {
+        if (fromUserGesture && wantAudio) {
+          primeHeroVid2ForAudio();
+        } else {
+          heroVid2.pause();
+        }
+        heroVid2.style.opacity = '0';
+        heroVid1.style.opacity = '1';
+        heroVid1.currentTime = 0;
+        heroVid1.muted = !wantAudio;
+        heroVid1.volume = wantAudio ? 1.0 : 0;
+
+        const playPromise = heroVid1.play();
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            if (wantAudio) {
+              waitingForGestureUnlock = false;
+              updateAudioUI();
+            }
+          }).catch(() => {
+            // El navegador bloqueó el autoplay con voz antes del primer clic: reproducimos imagen y activamos voz al primer toque
+            waitingForGestureUnlock = true;
+            isAudioEnabled = false;
+            updateAudioUI();
+            heroVid1.muted = true;
+            heroVid1.volume = 0;
+            heroVid1.play().catch(() => {});
+          });
+        }
+      } else {
+        heroVid1.pause();
+        heroVid1.muted = true;
+        heroVid1.style.opacity = '0';
+        heroVid2.style.opacity = '1';
+        heroVid2.currentTime = 0;
+        heroVid2.muted = !wantAudio;
+        heroVid2.volume = wantAudio ? 1.0 : 0;
+
+        const playPromise2 = heroVid2.play();
+        if (playPromise2 !== undefined) {
+          playPromise2.catch(() => {
+            heroVid2.muted = true;
+            heroVid2.volume = 0;
+            heroVid2.play().catch(() => {});
+          });
+        }
+      }
+    }
+
+    if (heroVid1) {
+      heroVid1.addEventListener('ended', () => {
+        if (currentSection === 1) {
+          switchHeroToStep(2, false);
+        }
+      });
+    }
+
+    // Si el navegador requirió interacción previa para soltar el audio, el primer clic en cualquier parte activa la voz y saluda
+    function handleFirstUserGesture(e) {
+      if (!waitingForGestureUnlock) return;
+      const audioBtn = document.getElementById('btnAudioToggle');
+      if (audioBtn && audioBtn.contains(e.target)) {
+        // toggleAudio() se encarga directamente
+        waitingForGestureUnlock = false;
+        return;
+      }
+      waitingForGestureUnlock = false;
+      isAudioEnabled = true;
+      updateAudioUI();
+      if (currentSection === 1) {
+        switchHeroToStep(1, true);
+      } else {
+        primeHeroVid2ForAudio();
+      }
+    }
+
+    document.addEventListener('pointerdown', handleFirstUserGesture, { passive: true });
+    document.addEventListener('keydown', handleFirstUserGesture, { passive: true });
+
+    // Sección con audio autorizado: 1 (Secuencia Hero: Reel 5 + Reel 1)
+    const AUDIO_ALLOWED_SECTIONS = [1];
+
+    function toggleAudio() {
+      waitingForGestureUnlock = false;
+      isAudioEnabled = !isAudioEnabled;
+      updateAudioUI();
 
       // Sincronizar de inmediato el video de la sección actual
-
       for (let i = 1; i <= 5; i++) {
-
         const bg = document.getElementById(`bg-${i}`);
-
         if (!bg) continue;
-
-        const video = bg.querySelector('video');
-
-        if (!video) continue;
-
-        if (i === currentSection && isAudioEnabled && AUDIO_ALLOWED_SECTIONS.includes(i)) {
-
-          video.muted = false;
-
-          video.volume = 1.0;
-
-          if (video.ended) {
-
-            video.currentTime = 0;
-
+        if (i === 1) {
+          if (currentSection === 1 && isAudioEnabled) {
+            switchHeroToStep(1, true);
+          } else {
+            if (heroVid1) { heroVid1.muted = true; heroVid1.volume = 0; }
+            if (heroVid2) { heroVid2.muted = true; heroVid2.volume = 0; }
           }
-
-          video.play().catch(() => {});
-
-        } else {
-
-          video.muted = true;
-
-          video.volume = 0;
-
+          continue;
         }
-
+        const video = bg.querySelector('video');
+        if (!video) continue;
+        video.muted = true;
+        video.volume = 0;
       }
-
     }
 
     function activateSection(secNumber) {
-
+      const previousSection = currentSection;
+      const sectionChanged = (secNumber !== previousSection);
       currentSection = secNumber;
 
       // Actualizar Fondos Inmersivos en transición suave y reproducción selectiva
-
       for (let i = 1; i <= 5; i++) {
-
         const bg = document.getElementById(`bg-${i}`);
-
         if (!bg) continue;
 
-        const video = bg.querySelector('video');
-
-        if (i === secNumber) {
-
-          bg.classList.add('active');
-
-          if (video) {
-
-            // Audio selectivo: solo activo en secciones autorizadas (Reel 1 y Contacto)
-
-            if (isAudioEnabled && AUDIO_ALLOWED_SECTIONS.includes(i)) {
-
-              video.muted = false;
-
-              video.volume = 1.0;
-
-              video.currentTime = 0; // Reproduce desde el inicio para escuchar la alocución completa
-
+        if (i === 1) {
+          if (secNumber === 1) {
+            bg.classList.add('active');
+            if (!heroInitialized) {
+              heroInitialized = true;
+              updateAudioUI();
+              switchHeroToStep(1, false);
+            } else if (sectionChanged) {
+              switchHeroToStep(1, false);
             } else {
-
-              video.muted = true;
-
-              video.volume = 0;
-
+              const activeHero = getActiveHeroVideo();
+              if (activeHero && activeHero.ended) {
+                switchHeroToStep(1, false);
+              }
             }
-
-            if (!video.ended || (isAudioEnabled && AUDIO_ALLOWED_SECTIONS.includes(i))) {
-
-              video.play().catch(() => {});
-
-            }
-
+          } else {
+            bg.classList.remove('active');
+            if (heroVid1) { heroVid1.muted = true; heroVid1.volume = 0; heroVid1.pause(); }
+            if (heroVid2) { heroVid2.muted = true; heroVid2.volume = 0; heroVid2.pause(); }
           }
-
-        } else {
-
-          bg.classList.remove('active');
-
-          if (video) {
-
-            video.muted = true;
-
-            video.volume = 0;
-
-            if (!video.ended) {
-
-              video.pause();
-
-            }
-
-          }
-
+          continue;
         }
 
+        const video = bg.querySelector('video');
+        if (i === secNumber) {
+          bg.classList.add('active');
+          if (video) {
+            video.muted = true;
+            video.volume = 0;
+            if (video.ended || sectionChanged) {
+              video.currentTime = 0;
+            }
+            video.play().catch(() => {});
+          }
+        } else {
+          bg.classList.remove('active');
+          if (video) {
+            video.muted = true;
+            video.volume = 0;
+            if (!video.ended) {
+              video.pause();
+            }
+          }
+        }
       }
 
-      // Actualizar indicador activo en el Menú Izquierdo (Estrategia, Publicidad, Tecnología, Proyectos, Contacto)
-
+      // Actualizar indicador activo en el Menú Izquierdo (Conócenos, Servicios, Clientes)
       navItems.forEach((nav) => {
-
         const secIdx = parseInt(nav.getAttribute('data-sec'), 10);
-
-        if (secIdx === secNumber) {
-
+        const isServicesTrigger = nav.classList.contains('acc-trigger') && nav.parentElement && nav.parentElement.id === 'acc-services';
+        if (isServicesTrigger) {
+          if (secNumber >= 2 && secNumber <= 4) {
+            nav.classList.add('active');
+          } else {
+            nav.classList.remove('active');
+          }
+        } else if (secIdx === secNumber) {
           nav.classList.add('active');
-
         } else {
-
           nav.classList.remove('active');
-
         }
-
       });
-
     }
 
-    // Interceptar clics en enlaces del menú para desplazamiento perfecto en móvil y desktop
-
+    // Interceptar clics en enlaces del menú para desplazamiento perfecto y reactivación de saludo en Conócenos
     navItems.forEach((link) => {
-
       link.addEventListener('click', (e) => {
-
         const href = link.getAttribute('href');
-
-        if (href && href.startsWith('#')) {
-
-          e.preventDefault();
-
-          const target = document.querySelector(href);
-
-          if (target) {
-
-            target.scrollIntoView({ behavior: 'smooth' });
-
+        const secIdx = parseInt(link.getAttribute('data-sec'), 10);
+        if (secIdx === 1) {
+          waitingForGestureUnlock = false;
+          isAudioEnabled = true;
+          updateAudioUI();
+          if (currentSection === 1) {
+            switchHeroToStep(1, true);
           }
-
         }
-
+        if (href && href.startsWith('#')) {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
       });
-
     });
+
+    const brandLink = document.querySelector('.brand-link');
+    if (brandLink) {
+      brandLink.addEventListener('click', () => {
+        waitingForGestureUnlock = false;
+        isAudioEnabled = true;
+        updateAudioUI();
+        if (currentSection === 1) {
+          switchHeroToStep(1, true);
+        }
+      });
+    }
 
     // Observador de Scroll para sincronizar fondos y menú automáticamente al bajar o subir
 
@@ -2763,54 +3425,206 @@
 
     const translations = {
       es: {
-        acc_1_title: "Estrategia",
-        acc_2_title: "Publicidad",
-        acc_3_title: "Validación Digital",
-        nav_ref: "Clientes",
-        nav_3: "Contacto",
-        sec1_title: "Estrategia comercial y digital",
-        sec1_sub: "Analizamos cómo opera su negocio hoy para ordenar su propuesta, enfocar su comunicación y captar clientes de forma consistente.",
-        sec2_title: "Publicidad y medios digitales",
-        sec2_sub: "Producción audiovisual y gráfica diseñada para hacer conocer su trabajo, mostrar sus diferenciales y despertar interés real de compra.",
-        sec3_title: "Validación digital",
-        sec3_sub: "Sitios web y catálogos interactivos que generan confianza en su empresa, respaldan su producto y canalizan cierres directos por WhatsApp.",
-        sec4_title: "Nuestros Clientes",
-        card2_demo_rio: "Desarrollo Inmobiliario · Ver Sitio",
-        card2_demo_const: "Ingeniería & Obra Civil · Ver Sitio",
-        card2_demo_hr: "Estudio Jurídico · Ver Sitio",
-        card2_demo_mod: "Diseño Modular & Obra",
-        btn_contact: "Información de Contacto",
-        card3_role: "Consultoría Estratégica, Comercial y Tecnológica Internacional",
+        nav_about: "Conócenos",
+        nav_services: "Nuestros Servicios",
+        srv_estrategia: "- Estrategia Digital",
+        srv_presencia: "- Presencia Digital Web",
+        srv_publicidad: "- Publicidad para Redes",
+        nav_clients: "Nuestros Clientes",
+        nav_contact: "Contacto",
+        left_footer_role: "Consultor Comercial y Tecnológico",
+        about_title: "Soluciones digitales para hacer crecer su negocio, con criterio comercial y tecnología.",
+        about_desc: "Criterio comercial y vocación de escucha para traducir la tecnología y la inteligencia artificial en herramientas sencillas, transparentes y seguras para su empresa.",
+        about_sig: "LiberoMatico en alianza con",
+        sec2_title: "Estrategia Comercial y Digital",
+        sec2_intro: "Analizamos su empresa, cliente, competidores y coyuntura para:",
+        sec2_bullet1: "Definir cómo destacar sus diferenciales.",
+        sec2_bullet2: "Creamos guiones persuasivos para su comunicación digital y conversión de ventas.",
+        sec2_bullet3: "Entrega de Dossier Estratégico y de comunicación comercial.",
+        sec3_title: "Presencia Digital Web (Catálogo Vivencial)",
+        sec3_bullet1: "Catálogos Web vivenciales de inmuebles, productos o servicios, optimizados para todo tipo de dispositivos (smartphones, tablets y computadoras).",
+        sec3_bullet2: "Recorridos inmersivos en video para mostrar sus inmuebles, productos y servicios, con el fin de generar confianza y estimular su demanda.",
+        sec3_bullet3: "Canalización inmediata al WhatsApp de su equipo comercial.",
+        demos_label: "Demos en vivo:",
+        sec4_title: "Publicidad para Redes",
+        sec4_bullet1: "<strong>Reels Cinematográficos:</strong> Narrativa comercial y vivencial que frena el scroll y genera confianza.",
+        sec4_bullet2: "<strong>Diseño Sonoro y Subtítulos Cinéticos:</strong> Voces en off, animación gráfica y lectura dinámica sin audio.",
+        sec4_bullet3: "<strong>Formatos 9:16 y 16:9:</strong> Para TikTok, Instagram, Facebook, WhatsApp, web y video walls.",
+        pkg_integral_label: "Paquete Integral:",
+        pkg_item1: "Estrategia",
+        pkg_item2: "Web con Catálogo",
+        pkg_item3: "Piezas Publicitarias",
+        pkg_item4: "Medición de Resultados",
+        inv_ref_label: "Inversión base de referencia:",
+        inv_sec2_detail: "<strong>¿Qué incluye esta inversión?</strong> Reunión 1 a 1 con gerencia para auditar el flujo comercial actual y detectar fugas de cierre + Definición de diferenciales competitivos y perfil de comprador + Entrega de Dossier Estratégico y Guiones de Cierre listos para WhatsApp y sala de ventas.",
+        inv_sec3_detail: "<strong>¿Qué incluye esta inversión?</strong> Diseño y programación a medida de su sitio web con catálogo interactivo vivencial + Integración de galerías HD, planos interactivos, ubicación y botones de cierre directo a WhatsApp + Dominio propio (.com), certificado SSL y 1 año de hosting corporativo incluido.",
+        inv_sec4_detail: "<strong>¿Qué incluye esta inversión?</strong> Conceptualización creativa, guion comercial de alta retención y dirección audiovisual + Producción con diseño sonoro envolvente, voz en off profesional, animación gráfica y subtítulos cinéticos + Entrega de masters HD en formato vertical (9:16) y horizontal (16:9).",
+        inv_pkg_detail: "<strong>¿Qué incluye esta inversión?</strong> Implementación coordinada de principio a fin: Diagnóstico y guiones comerciales + Desarrollo de sitio web con catálogo interactivo vivencial (dominio y hosting anual incluidos) + Producción de piezas publicitarias digitales (Reels 9:16 y 16:9) + Informes periódicos de medición de resultados y conversión.",
+        terms_full: "Condiciones: 50% de anticipo al inicio / 50% contra entrega · Propuesta a medida según la escala de su empresa.",
+        btn_cta_integral: "Consultar Paquete Integral por WhatsApp ↗",
+        sec5_title: "Clientes que confían en nosotros",
+        sec5_sub: "Empresas e instituciones que respaldan el criterio comercial, tecnológico y estratégico de LiberoMatico.",
+        client1_badge: "Inmobiliario",
+        client1_name: "Río Mayo Lands",
+        client1_desc: "Desarrollo inmobiliario y residencial en Tarapoto. Catálogo interactivo vivencial y canalización de ventas.",
+        client2_badge: "Consultoría Legal",
+        client2_name: "HR & Legal Consulting",
+        client2_desc: "Firma especializada en asesoría legal, auditoría laboral y compliance corporativo. Alianza estratégica.",
+        client3_badge: "Construcción",
+        client3_name: "Michael Constructora",
+        client3_domain: "Ingeniería & Edificación ↗",
+        client3_desc: "Proyectos de infraestructura urbana, obras civiles y edificaciones multifamiliares en Lima.",
+        client4_badge: "Construcción",
+        client4_name: "NDC Constructora",
+        client4_domain: "Arquitectura & Obras Civiles",
+        client4_desc: "Desarrollo de proyectos constructivos, infraestructura y estructuración técnica comercial.",
+        time_4d: "Plazo: 4 días hábiles",
+        time_5_6d: "Plazo: 5 a 6 días hábiles",
+        time_3_4d: "Plazo: 3 a 4 días hábiles",
+        time_8_10d: "Plazo: 8 a 10 días hábiles",
+        terms_standard: "50% anticipo / 50% contra entrega",
+        btn_inversion: "Inversión",
+        btn_cta_estrategia: "Consultar Estrategia Digital por WhatsApp ↗",
+        btn_cta_catalogo: "Consultar Presencia Digital Web por WhatsApp ↗",
+        btn_cta_publicidad: "Consultar Publicidad para Redes por WhatsApp ↗",
+        btn_whatsapp: "Conversar directamente por WhatsApp",
+        card3_role: "Consultor Estratégico, Comercial y Tecnológico",
         card3_desc: "Experiencia y criterio para hacer crecer su negocio.",
         audio_toggle: "Sonido",
         audio_toggle_on: "Sonido ON"
       },
       en: {
-        acc_1_title: "Strategy",
-        acc_2_title: "Advertising",
-        acc_3_title: "Digital Validation",
-        nav_ref: "Clients",
-        nav_3: "Contact",
-        sec1_title: "Commercial & Digital Strategy",
-        sec1_sub: "We analyze how your business operates today to structure your proposition, sharpen your messaging, and attract clients consistently.",
-        sec2_title: "Advertising & Digital Media",
-        sec2_sub: "Audiovisual and graphic production engineered to make your work known, highlight your differentials, and awaken genuine buying interest.",
-        sec3_title: "Digital Validation",
-        sec3_sub: "Websites and interactive catalogs that build trust in your company, validate your product, and channel direct closings via WhatsApp.",
-        sec4_title: "Our Clients",
-        card2_demo_rio: "Real Estate Development · View Site",
-        card2_demo_const: "Engineering & Civil Works · View Site",
-        card2_demo_hr: "Legal Firm · View Site",
-        card2_demo_mod: "Modular Design & Construction",
-        btn_contact: "Contact Information",
-        card3_role: "International Strategic, Commercial & Technology Consulting",
+        nav_about: "About Us",
+        nav_services: "Our Services",
+        srv_estrategia: "- Digital Strategy",
+        srv_presencia: "- Web Digital Presence",
+        srv_publicidad: "- Social Media Advertising",
+        nav_clients: "Our Clients",
+        nav_contact: "Contact us",
+        left_footer_role: "Commercial & Technology Consultant",
+        about_title: "Digital solutions to grow your business, with commercial discernment and technology.",
+        about_desc: "Commercial discernment and active listening to translate technology and artificial intelligence into simple, transparent, and dependable tools for your business.",
+        about_sig: "LiberoMatico in alliance with",
+        sec2_title: "Commercial & Digital Strategy",
+        sec2_intro: "We analyze your company, client, competitors, and market context to:",
+        sec2_bullet1: "Define how to highlight your unique differentials.",
+        sec2_bullet2: "We craft persuasive scripts for your digital communication and sales conversion.",
+        sec2_bullet3: "Delivery of Strategic and Commercial Communication Dossier.",
+        sec3_title: "Web Digital Presence (Interactive Showcase)",
+        sec3_bullet1: "Experiential web catalogs for properties, products, or services, optimized for all devices (smartphones, tablets, and computers).",
+        sec3_bullet2: "Immersive video tours to showcase your properties, products, and services, building trust and stimulating demand.",
+        sec3_bullet3: "Immediate channeling to your sales team's WhatsApp.",
+        demos_label: "Live Demos:",
+        sec4_title: "Social Media Advertising",
+        sec4_bullet1: "<strong>Cinematic Reels:</strong> Commercial and experiential storytelling that stops the scroll and builds trust.",
+        sec4_bullet2: "<strong>Sound Design & Kinetic Subtitles:</strong> Voiceovers, motion graphics, and dynamic readability without sound.",
+        sec4_bullet3: "<strong>9:16 & 16:9 Formats:</strong> For TikTok, Instagram, Facebook, WhatsApp, web, and video walls.",
+        pkg_integral_label: "Comprehensive Package:",
+        pkg_item1: "Strategy",
+        pkg_item2: "Web + Catalog",
+        pkg_item3: "Ad Pieces",
+        pkg_item4: "Results Measurement",
+        inv_ref_label: "Reference base investment:",
+        inv_sec2_detail: "<strong>What does this investment include?</strong> 1-on-1 executive session to audit your current sales flow and detect closing leaks + Competitive differentials and buyer persona definition + Strategic Dossier and Closing Scripts ready for WhatsApp and sales floors.",
+        inv_sec3_detail: "<strong>What does this investment include?</strong> Custom design and development of your interactive showcase website + Integration of HD galleries, interactive floor plans, location, and direct WhatsApp closing buttons + Custom domain (.com), SSL certificate, and 1 year of corporate hosting included.",
+        inv_sec4_detail: "<strong>What does this investment include?</strong> Creative conceptualization, high-retention commercial script, and full audiovisual direction + Production with immersive sound design, professional voiceover, motion graphics, and kinetic subtitles + HD master delivery in vertical (9:16) and horizontal (16:9) formats.",
+        inv_pkg_detail: "<strong>What does this investment include?</strong> End-to-end coordinated implementation: Commercial diagnosis and closing scripts + Interactive showcase website development (domain and annual hosting included) + Digital advertising pieces (9:16 and 16:9 Reels) + Periodic results and conversion measurement reports.",
+        terms_full: "Terms: 50% deposit upon start / 50% upon delivery · Final scope tailored by consensus to your company's scale.",
+        btn_cta_integral: "Inquire About Comprehensive Package on WhatsApp ↗",
+        sec5_title: "Clients Who Trust Us",
+        sec5_sub: "Companies and institutions that endorse LiberoMatico's commercial, technology, and strategic discernment.",
+        client1_badge: "Real Estate",
+        client1_name: "Río Mayo Lands",
+        client1_desc: "Real estate and residential development in Tarapoto. Interactive showcase and direct sales funnel.",
+        client2_badge: "Legal Consulting",
+        client2_name: "HR & Legal Consulting",
+        client2_desc: "Specialized legal advisory, labor audit, and corporate compliance firm. Strategic alliance partner.",
+        client3_badge: "Construction",
+        client3_name: "Michael Constructora",
+        client3_domain: "Engineering & Building ↗",
+        client3_desc: "Urban infrastructure, civil works, and multifamily residential projects in Lima.",
+        client4_badge: "Construction",
+        client4_name: "NDC Constructora",
+        client4_domain: "Architecture & Civil Works",
+        client4_desc: "Construction project development, infrastructure, and technical commercial structuring.",
+        time_4d: "Timeline: 4 business days",
+        time_5_6d: "Timeline: 5 to 6 business days",
+        time_3_4d: "Timeline: 3 to 4 business days",
+        time_8_10d: "Timeline: 8 to 10 business days",
+        terms_standard: "50% deposit / 50% upon delivery",
+        btn_inversion: "Investment",
+        btn_cta_estrategia: "Inquire About Digital Strategy on WhatsApp ↗",
+        btn_cta_catalogo: "Inquire About Web Presence on WhatsApp ↗",
+        btn_cta_publicidad: "Inquire About Social Media Ads on WhatsApp ↗",
+        btn_whatsapp: "Talk directly on WhatsApp",
+        card3_role: "Strategic, Commercial & Technology Consultant",
         card3_desc: "Experience and discernment to make your business grow.",
         audio_toggle: "Sound",
         audio_toggle_on: "Sound ON"
       }
     };
 
+    function toggleInversion(btn) {
+      if (!btn) return;
+      const footer = btn.closest('.service-footer-bar');
+      if (!footer) return;
+      const pricing = footer.querySelector('.service-pricing-info');
+      if (!pricing) return;
+      const isOpen = pricing.classList.toggle('open');
+      btn.classList.toggle('active', isOpen);
+    }
+
     let currentLang = 'es';
+
+    let currentPlayingAudio = null;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.btn-audio-listen').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const targetId = btn.getAttribute('data-audio-target');
+          const audioEl = document.getElementById(targetId);
+          if (!audioEl) return;
+
+          if (currentPlayingAudio === audioEl) {
+            if (audioEl.paused) {
+              audioEl.play().catch(() => {});
+              btn.classList.add('playing');
+              const txt = btn.querySelector('.audio-btn-text');
+              if (txt) txt.textContent = (currentLang === 'en') ? 'Pause synthesis' : 'Pausar síntesis';
+            } else {
+              audioEl.pause();
+              btn.classList.remove('playing');
+              const txt = btn.querySelector('.audio-btn-text');
+              if (txt) txt.textContent = (currentLang === 'en') ? 'Listen synthesis' : 'Escuchar síntesis';
+            }
+          } else {
+            if (currentPlayingAudio) {
+              currentPlayingAudio.pause();
+              currentPlayingAudio.currentTime = 0;
+              document.querySelectorAll('.btn-audio-listen').forEach(b => {
+                b.classList.remove('playing');
+                const t = b.querySelector('.audio-btn-text');
+                if (t) t.textContent = (currentLang === 'en') ? 'Listen synthesis' : 'Escuchar síntesis';
+              });
+            }
+            audioEl.play().then(() => {
+              currentPlayingAudio = audioEl;
+              btn.classList.add('playing');
+              const txt = btn.querySelector('.audio-btn-text');
+              if (txt) txt.textContent = (currentLang === 'en') ? 'Pause synthesis' : 'Pausar síntesis';
+            }).catch(() => {});
+
+            audioEl.onended = () => {
+              btn.classList.remove('playing');
+              const txt = btn.querySelector('.audio-btn-text');
+              if (txt) txt.textContent = (currentLang === 'en') ? 'Listen synthesis' : 'Escuchar síntesis';
+              currentPlayingAudio = null;
+            };
+          }
+        });
+      });
+    });
 
     function setLanguage(lang) {
 
@@ -2848,7 +3662,7 @@
 
         if (trans[key]) {
 
-          el.textContent = trans[key];
+          el.innerHTML = trans[key];
 
         }
 
