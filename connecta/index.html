@@ -277,7 +277,7 @@
 
     .section-content-card:hover {
       border-color: rgba(217, 119, 6, 0.45);
-      background: rgba(10, 15, 29, 0.18);
+      background: rgba(10, 15, 29, 0.10);
     }
 
     .chapter-badge {
@@ -593,8 +593,8 @@
   <!-- NAVIGATION -->
   <!-- DUAL PING-PONG CINEMATIC VIDEO ENGINE (EXACTO 2 DECODIFICADORES EN ANDROID & PC) -->
   <div id="bg-video-container">
-    <video id="bg-video-a" class="bg-video-player" src="assets/video/video_entrada.mp4" autoplay loop muted playsinline webkit-playsinline x5-playsinline preload="auto" style="opacity: 1; z-index: 2;"></video>
-    <video id="bg-video-b" class="bg-video-player" autoplay loop muted playsinline webkit-playsinline x5-playsinline preload="auto" style="opacity: 0; z-index: 1;"></video>
+    <video id="bg-video-a" class="bg-video-player" src="assets/video/video_entrada.mp4" poster="assets/posters/poster_entrada.jpg" autoplay loop muted playsinline webkit-playsinline x5-playsinline preload="auto" style="opacity: 1; z-index: 2;"></video>
+    <video id="bg-video-b" class="bg-video-player" poster="assets/posters/poster_entrada.jpg" autoplay loop muted playsinline webkit-playsinline x5-playsinline preload="auto" style="opacity: 0; z-index: 1;"></video>
     <div id="bg-video-overlay"></div>
   </div>
 
@@ -624,7 +624,7 @@
   </div>
 
   <!-- SECCIÓN 01: LA LLEGADA / HERO -->
-  <section id="sec-llegada" class="video-section" data-video="assets/video/video_entrada.mp4">
+  <section id="sec-llegada" class="video-section" data-video="assets/video/video_entrada.mp4" data-poster="assets/posters/poster_entrada.jpg">
     
     <div class="section-overlay"></div>
     <div class="section-content-card">
@@ -645,7 +645,7 @@
   </section>
 
   <!-- SECCIÓN 02: EL LOBBY DE VANGUARDIA -->
-  <section id="sec-lobby" class="video-section align-right" data-video="assets/video/video_lobby.mp4">
+  <section id="sec-lobby" class="video-section align-right" data-video="assets/video/video_lobby.mp4" data-poster="assets/posters/poster_lobby.jpg">
     
     <div class="section-overlay"></div>
     <div class="section-content-card">
@@ -665,7 +665,7 @@
   </section>
 
   <!-- SECCIÓN 03: CIRCULACIÓN & PRIVACIDAD -->
-  <section id="sec-pasillo" class="video-section" data-video="assets/video/video_pasillo.mp4">
+  <section id="sec-pasillo" class="video-section" data-video="assets/video/video_pasillo.mp4" data-poster="assets/posters/poster_pasillo.jpg">
     
     <div class="section-overlay"></div>
     <div class="section-content-card">
@@ -685,7 +685,7 @@
   </section>
 
   <!-- SECCIÓN 04: COWORKING & BUSINESS HUB -->
-  <section id="sec-coworking" class="video-section align-right" data-video="assets/video/video_coworking.mp4">
+  <section id="sec-coworking" class="video-section align-right" data-video="assets/video/video_coworking.mp4" data-poster="assets/posters/poster_coworking.jpg">
     
     <div class="section-overlay"></div>
     <div class="section-content-card">
@@ -705,7 +705,7 @@
   </section>
 
   <!-- SECCIÓN 05: CENTRO FITNESS & GIMNASIO -->
-  <section id="sec-gym" class="video-section" data-video="assets/video/video_gym.mp4">
+  <section id="sec-gym" class="video-section" data-video="assets/video/video_gym.mp4" data-poster="assets/posters/poster_gym.jpg">
     
     <div class="section-overlay"></div>
     <div class="section-content-card">
@@ -725,7 +725,7 @@
   </section>
 
   <!-- SECCIÓN 06: PISCINA PANORÁMICA EN ROOFTOP -->
-  <section id="sec-piscina" class="video-section align-right" data-video="assets/video/video_piscina.mp4">
+  <section id="sec-piscina" class="video-section align-right" data-video="assets/video/video_piscina.mp4" data-poster="assets/posters/poster_piscina.jpg">
     
     <div class="section-overlay"></div>
     <div class="section-content-card">
@@ -745,7 +745,7 @@
   </section>
 
   <!-- SECCIÓN 07: CELEBRACIONES & BBQ GRILL -->
-  <section id="sec-celebracion" class="video-section" data-video="assets/video/video_celebracion.mp4">
+  <section id="sec-celebracion" class="video-section" data-video="assets/video/video_celebracion.mp4" data-poster="assets/posters/poster_celebracion.jpg">
     
     <div class="section-overlay"></div>
     <div class="section-content-card">
@@ -945,6 +945,16 @@
       // 3. Comprobar si ya tiene cargado este origen para evitar re-buffering innecesario
       const alreadyLoaded = incoming.src && (incoming.src.endsWith(newSrc) || incoming.getAttribute('src') === newSrc);
       if (!alreadyLoaded) {
+        // Poster del frame 0 (data-poster de la sección) para cero fotogramas negros antes de decodificar
+        const posterSec = Array.from(videoSections).find(s => s.getAttribute('data-video') === newSrc);
+        const posterUrl = posterSec && posterSec.getAttribute('data-poster');
+        if (posterUrl) {
+          incoming.poster = posterUrl;
+          // Capa de respaldo detrás de ambos reproductores: nunca negro
+          bgContainer.style.backgroundImage = 'url("' + posterUrl + '")';
+          bgContainer.style.backgroundSize = 'cover';
+          bgContainer.style.backgroundPosition = 'center 6%';
+        }
         incoming.src = newSrc;
       } else {
         incoming.currentTime = 0;
@@ -1095,6 +1105,17 @@
     }
     ['touchstart', 'touchend', 'click'].forEach(evt => {
       window.addEventListener(evt, unlockMedia, { passive: true });
+    });
+
+    // Pausar todo al ocultar la pestaña y reanudar solo el reproductor activo al volver
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        playerA.pause();
+        playerB.pause();
+      } else {
+        const active = (activePlayer === 'A') ? playerA : playerB;
+        if (bgContainer.style.opacity !== '0') active.play().catch(() => {});
+      }
     });
 
     document.addEventListener('DOMContentLoaded', () => {
