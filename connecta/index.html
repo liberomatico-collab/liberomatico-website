@@ -616,7 +616,7 @@
   <!-- SECCIÓN 02: EL LOBBY DE VANGUARDIA -->
   <section id="sec-lobby" class="video-section align-right" data-video="assets/video/video_lobby.mp4" data-poster="assets/posters/poster_lobby.jpg">
     <div class="video-bg-wrap">
-      <video class="section-bg-video" src="assets/video/video_lobby.mp4" poster="assets/posters/poster_lobby.jpg" loop muted playsinline webkit-playsinline preload="metadata"></video>
+      <video class="section-bg-video" src="assets/video/video_lobby.mp4" poster="assets/posters/poster_lobby.jpg" autoplay loop muted playsinline webkit-playsinline preload="auto"></video>
       <div class="section-overlay"></div>
     </div>
     <div class="section-content-card">
@@ -638,7 +638,7 @@
   <!-- SECCIÓN 03: CIRCULACIÓN & PRIVACIDAD -->
   <section id="sec-pasillo" class="video-section" data-video="assets/video/video_pasillo.mp4" data-poster="assets/posters/poster_pasillo.jpg">
     <div class="video-bg-wrap">
-      <video class="section-bg-video" src="assets/video/video_pasillo.mp4" poster="assets/posters/poster_pasillo.jpg" loop muted playsinline webkit-playsinline preload="metadata"></video>
+      <video class="section-bg-video" src="assets/video/video_pasillo.mp4" poster="assets/posters/poster_pasillo.jpg" autoplay loop muted playsinline webkit-playsinline preload="auto"></video>
       <div class="section-overlay"></div>
     </div>
     <div class="section-content-card">
@@ -660,7 +660,7 @@
   <!-- SECCIÓN 04: COWORKING & BUSINESS HUB -->
   <section id="sec-coworking" class="video-section align-right" data-video="assets/video/video_coworking.mp4" data-poster="assets/posters/poster_coworking.jpg">
     <div class="video-bg-wrap">
-      <video class="section-bg-video" src="assets/video/video_coworking.mp4" poster="assets/posters/poster_coworking.jpg" loop muted playsinline webkit-playsinline preload="metadata"></video>
+      <video class="section-bg-video" src="assets/video/video_coworking.mp4" poster="assets/posters/poster_coworking.jpg" autoplay loop muted playsinline webkit-playsinline preload="auto"></video>
       <div class="section-overlay"></div>
     </div>
     <div class="section-content-card">
@@ -682,7 +682,7 @@
   <!-- SECCIÓN 05: CENTRO FITNESS & GIMNASIO -->
   <section id="sec-gym" class="video-section" data-video="assets/video/video_gym.mp4" data-poster="assets/posters/poster_gym.jpg">
     <div class="video-bg-wrap">
-      <video class="section-bg-video" src="assets/video/video_gym.mp4" poster="assets/posters/poster_gym.jpg" loop muted playsinline webkit-playsinline preload="metadata"></video>
+      <video class="section-bg-video" src="assets/video/video_gym.mp4" poster="assets/posters/poster_gym.jpg" autoplay loop muted playsinline webkit-playsinline preload="auto"></video>
       <div class="section-overlay"></div>
     </div>
     <div class="section-content-card">
@@ -704,7 +704,7 @@
   <!-- SECCIÓN 06: PISCINA PANORÁMICA EN ROOFTOP -->
   <section id="sec-piscina" class="video-section align-right" data-video="assets/video/video_piscina.mp4" data-poster="assets/posters/poster_piscina.jpg">
     <div class="video-bg-wrap">
-      <video class="section-bg-video" src="assets/video/video_piscina.mp4" poster="assets/posters/poster_piscina.jpg" loop muted playsinline webkit-playsinline preload="metadata"></video>
+      <video class="section-bg-video" src="assets/video/video_piscina.mp4" poster="assets/posters/poster_piscina.jpg" autoplay loop muted playsinline webkit-playsinline preload="auto"></video>
       <div class="section-overlay"></div>
     </div>
     <div class="section-content-card">
@@ -726,7 +726,7 @@
   <!-- SECCIÓN 07: CELEBRACIONES & BBQ GRILL -->
   <section id="sec-celebracion" class="video-section" data-video="assets/video/video_celebracion.mp4" data-poster="assets/posters/poster_celebracion.jpg">
     <div class="video-bg-wrap">
-      <video class="section-bg-video" src="assets/video/video_celebracion.mp4" poster="assets/posters/poster_celebracion.jpg" loop muted playsinline webkit-playsinline preload="metadata"></video>
+      <video class="section-bg-video" src="assets/video/video_celebracion.mp4" poster="assets/posters/poster_celebracion.jpg" autoplay loop muted playsinline webkit-playsinline preload="auto"></video>
       <div class="section-overlay"></div>
     </div>
     <div class="section-content-card">
@@ -856,23 +856,25 @@
       }
     }
 
-    // REPRODUCCIÓN AUTOMÁTICA EN SCROLL · ESTÁNDAR LIBEROMATICO (IDÉNTICO A HR & LEGAL)
+    // REPRODUCCIÓN CONTINUA DE FONDOS · ESTÁNDAR EXACTO HR & LEGAL
     const allVideos = document.querySelectorAll('.section-bg-video');
     const allSections = document.querySelectorAll('.video-section');
     const sideDots = document.querySelectorAll('.scroll-dot');
 
+    // Reproducción directa de todos los videos de fondo
+    allVideos.forEach(v => {
+      v.play().catch(() => {});
+    });
+
+    // Observador para dots de navegación lateral
     if ('IntersectionObserver' in window) {
       const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-          const vid = entry.target.querySelector('.section-bg-video');
           const id = entry.target.getAttribute('id');
           if (entry.isIntersecting) {
-            if (vid) vid.play().catch(() => {});
             sideDots.forEach(d => {
               d.classList.toggle('active', d.getAttribute('href') === '#' + id);
             });
-          } else {
-            if (vid) vid.pause();
           }
         });
       }, { threshold: 0.25 });
@@ -884,7 +886,6 @@
         const planosObserver = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
-              allVideos.forEach(v => v.pause());
               sideDots.forEach(d => {
                 d.classList.toggle('active', d.getAttribute('href') === '#sec-planos');
               });
@@ -893,19 +894,18 @@
         }, { threshold: 0.2 });
         planosObserver.observe(planosSection);
       }
-    } else {
-      allVideos.forEach(v => v.play().catch(() => {}));
     }
 
-    // Desbloqueo inicial ante primer gesto del usuario en Android
+    // Desbloqueo garantizado ante primer gesto táctil en Android
     function unlockAllMedia() {
-      const firstVid = document.querySelector('.section-bg-video');
-      if (firstVid && firstVid.paused) {
-        firstVid.play().catch(() => {});
-      }
+      allVideos.forEach(v => {
+        if (v.paused) {
+          v.play().catch(() => {});
+        }
+      });
     }
-    ['touchstart', 'touchend', 'click', 'scroll'].forEach(evt => {
-      window.addEventListener(evt, unlockAllMedia, { once: true, passive: true });
+    ['touchstart', 'touchend', 'click', 'scroll', 'pointerdown'].forEach(evt => {
+      window.addEventListener(evt, unlockAllMedia, { passive: true });
     });
 
     document.addEventListener('visibilitychange', () => {
