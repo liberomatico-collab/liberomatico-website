@@ -2905,100 +2905,74 @@
 
     // ==========================================================================
 
-    // CONTROL DE AUDIO Y SECUENCIA HERO (REEL MAESTRO COMPLETO Y CONTINUO)
+    // CONTROL DE AUDIO Y SECUENCIA HERO ROBUSTO (PC + MÓVIL)
 
     // ==========================================================================
 
-    let isAudioEnabled = true;
+    let isAudioEnabled = false;
     let currentSection = 1;
-    let waitingForGestureUnlock = false;
     const heroVid = document.getElementById('heroVid');
 
     function updateAudioUI() {
       const btn = document.getElementById('btnAudioToggle');
-      const iconMuted = btn ? btn.querySelector('.audio-icon-muted') : null;
-      const iconActive = btn ? btn.querySelector('.audio-icon-active') : null;
-      const label = btn ? btn.querySelector('.audio-label') : null;
+      if (!btn) return;
+      const iconMuted = btn.querySelector('.audio-icon-muted');
+      const iconActive = btn.querySelector('.audio-icon-active');
       const langKey = (typeof currentLang !== 'undefined' && currentLang) ? currentLang : 'es';
       const dict = (typeof translations !== 'undefined' && translations[langKey]) ? translations[langKey] : {
-        audio_toggle: 'Sonido',
-        audio_toggle_on: 'Sonido ON'
+        audio_toggle: 'Activar Sonido',
+        audio_toggle_on: 'Silenciar Sonido'
       };
 
       if (isAudioEnabled) {
-        if (btn) {
-          btn.classList.add('active');
-          btn.setAttribute('title', dict.audio_toggle_on);
-          btn.setAttribute('aria-label', dict.audio_toggle_on);
-        }
+        btn.classList.add('active');
+        btn.setAttribute('title', dict.audio_toggle_on);
+        btn.setAttribute('aria-label', dict.audio_toggle_on);
         if (iconMuted) iconMuted.style.display = 'none';
         if (iconActive) iconActive.style.display = 'block';
-        if (label) label.textContent = dict.audio_toggle_on;
       } else {
-        if (btn) {
-          btn.classList.remove('active');
-          btn.setAttribute('title', dict.audio_toggle);
-          btn.setAttribute('aria-label', dict.audio_toggle);
-        }
+        btn.classList.remove('active');
+        btn.setAttribute('title', dict.audio_toggle);
+        btn.setAttribute('aria-label', dict.audio_toggle);
         if (iconMuted) iconMuted.style.display = 'block';
         if (iconActive) iconActive.style.display = 'none';
-        if (label) label.textContent = dict.audio_toggle;
+      }
+    }
+
+    function toggleAudio() {
+      if (!heroVid) return;
+      isAudioEnabled = !isAudioEnabled;
+
+      if (isAudioEnabled) {
+        heroVid.muted = false;
+        heroVid.volume = 1.0;
+        const p = heroVid.play();
+        if (p !== undefined) {
+          p.catch(() => {
+            // Si el navegador bloquea audio, forzar muting
+            heroVid.muted = true;
+            isAudioEnabled = false;
+          }).finally(() => {
+            updateAudioUI();
+          });
+        } else {
+          updateAudioUI();
+        }
+      } else {
+        heroVid.muted = true;
+        heroVid.volume = 0;
+        updateAudioUI();
       }
     }
 
     function initHeroAudio() {
       if (!heroVid) return;
-      heroVid.muted = !isAudioEnabled;
-      heroVid.volume = isAudioEnabled ? 1.0 : 0;
-      const playPromise = heroVid.play();
-      if (playPromise !== undefined) {
-        playPromise.then(() => {
-          waitingForGestureUnlock = false;
-          updateAudioUI();
-        }).catch(() => {
-          // El navegador bloqueó el autoplay con voz previo al gesto: reproducimos video silenciado y activamos voz al primer toque
-          waitingForGestureUnlock = true;
-          isAudioEnabled = false;
-          heroVid.muted = true;
-          heroVid.volume = 0;
-          heroVid.play().catch(() => {});
-          updateAudioUI();
-        });
-      }
-    }
-
-    function handleFirstUserGesture(e) {
-      if (!waitingForGestureUnlock) return;
-      const audioBtn = document.getElementById('btnAudioToggle');
-      if (audioBtn && audioBtn.contains(e.target)) {
-        waitingForGestureUnlock = false;
-        return;
-      }
-      waitingForGestureUnlock = false;
-      isAudioEnabled = true;
+      // Los navegadores exigen que arranque silenciado para el autoplay inicial
+      heroVid.muted = true;
+      heroVid.volume = 0;
+      isAudioEnabled = false;
+      heroVid.play().catch(() => {});
       updateAudioUI();
-      if (heroVid && currentSection === 1) {
-        heroVid.muted = false;
-        heroVid.volume = 1.0;
-        heroVid.play().catch(() => {});
-      }
-    }
-
-    document.addEventListener('pointerdown', handleFirstUserGesture, { passive: true });
-    document.addEventListener('keydown', handleFirstUserGesture, { passive: true });
-
-    function toggleAudio() {
-      waitingForGestureUnlock = false;
-      isAudioEnabled = !isAudioEnabled;
-      updateAudioUI();
-
-      if (heroVid && currentSection === 1) {
-        heroVid.muted = !isAudioEnabled;
-        heroVid.volume = isAudioEnabled ? 1.0 : 0;
-        if (isAudioEnabled) {
-          heroVid.play().catch(() => {});
-        }
-      }
     }
 
     function activateSection(secNumber) {
@@ -3083,7 +3057,7 @@
         const href = link.getAttribute('href');
         const secIdx = parseInt(link.getAttribute('data-sec'), 10);
         if (secIdx === 1) {
-          waitingForGestureUnlock = false;
+          // gesture unlock
           isAudioEnabled = true;
           updateAudioUI();
           if (heroVid && currentSection === 1) {
@@ -3110,7 +3084,7 @@
     const brandLink = document.querySelector('.brand-link');
     if (brandLink) {
       brandLink.addEventListener('click', () => {
-        waitingForGestureUnlock = false;
+        // gesture unlock
         isAudioEnabled = true;
         updateAudioUI();
         if (heroVid && currentSection === 1) {
