@@ -2462,24 +2462,21 @@
        ========================================================================== -->
 
   <div class="bg-stage">
-    <!-- Slide 1: Conócenos / Hero (Secuencia continua: 1. Bienvenidos soy Rodrigo [reel_05] -> 2. Si me permite ayudarle [reel_01]) -->
+    <!-- Slide 1: Conócenos / Hero (Secuencia completa y continua: 1. Bienvenidos soy Rodrigo -> 2. Si me permite ayudarle) -->
     <div class="bg-slide active" id="bg-1">
-      <video id="heroVid1" autoplay playsinline preload="auto" style="opacity: 1; transition: opacity 0.55s ease; object-position: 50% 15%;">
-        <source src="assets/reel_05_contacto.mp4" type="video/mp4" />
-      </video>
-      <video id="heroVid2" playsinline preload="auto" style="opacity: 0; transition: opacity 0.55s ease; pointer-events: none; object-position: 50% 30%;">
-        <source src="assets/reel_01_estrategia.mp4" type="video/mp4" />
+      <video id="heroVid" autoplay muted loop playsinline preload="auto" style="object-position: 50% 18%;">
+        <source src="assets/reel_00_intro_maestro.mp4" type="video/mp4" />
       </video>
     </div>
 
     <!-- Slide 2: Estrategia Digital (Reunión corporativa de par a par) -->
     <div class="bg-slide" id="bg-2">
-      <video muted playsinline preload="metadata">
-        <source src="assets/reel_02_publicidad.mp4" type="video/mp4" />
+      <video muted loop playsinline preload="metadata" style="object-position: 50% 25%;">
+        <source src="assets/reel_01_estrategia.mp4" type="video/mp4" />
       </video>
     </div>
 
-    <!-- Slide 3: Presencia Digital Web (Vitrina & Catálogo Interactivo) -->
+    <!-- Slide 3: Presencia Digital Web<!-- Slide 3: Presencia Digital Web (Vitrina & Catálogo Interactivo) -->
     <div class="bg-slide" id="bg-3">
       <video muted playsinline preload="metadata">
         <source src="assets/reel_03_tecnologia.mp4" type="video/mp4" />
@@ -2908,26 +2905,14 @@
 
     // ==========================================================================
 
-    // CONTROL DE AUDIO Y SECUENCIA HERO (REEL 5 -> REEL 1 CON VOZ ACTIVA)
+    // CONTROL DE AUDIO Y SECUENCIA HERO (REEL MAESTRO COMPLETO Y CONTINUO)
 
     // ==========================================================================
 
     let isAudioEnabled = true;
-
     let currentSection = 1;
-
-    let currentHeroStep = 1; // 1 = reel_05 (Bienvenidos, soy Rodrigo), 2 = reel_01 (Si me permite ayudarle...)
-
-    let heroInitialized = false;
-
     let waitingForGestureUnlock = false;
-
-    const heroVid1 = document.getElementById('heroVid1');
-    const heroVid2 = document.getElementById('heroVid2');
-
-    function getActiveHeroVideo() {
-      return currentHeroStep === 2 ? heroVid2 : heroVid1;
-    }
+    const heroVid = document.getElementById('heroVid');
 
     function updateAudioUI() {
       const btn = document.getElementById('btnAudioToggle');
@@ -2961,132 +2946,58 @@
       }
     }
 
-    // Desbloquea heroVid2 dentro del gesto del usuario para que al terminar heroVid1 suene sin bloqueo del navegador
-    function primeHeroVid2ForAudio() {
-      if (!heroVid2) return;
-      heroVid2.muted = false;
-      heroVid2.volume = 0;
-      const p = heroVid2.play();
-      if (p !== undefined) {
-        p.then(() => {
-          if (currentHeroStep === 1) {
-            heroVid2.pause();
-            heroVid2.currentTime = 0;
-            heroVid2.volume = 1.0;
-          }
-        }).catch(() => {});
+    function initHeroAudio() {
+      if (!heroVid) return;
+      heroVid.muted = !isAudioEnabled;
+      heroVid.volume = isAudioEnabled ? 1.0 : 0;
+      const playPromise = heroVid.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          waitingForGestureUnlock = false;
+          updateAudioUI();
+        }).catch(() => {
+          // El navegador bloqueó el autoplay con voz previo al gesto: reproducimos video silenciado y activamos voz al primer toque
+          waitingForGestureUnlock = true;
+          isAudioEnabled = false;
+          heroVid.muted = true;
+          heroVid.volume = 0;
+          heroVid.play().catch(() => {});
+          updateAudioUI();
+        });
       }
     }
 
-    function switchHeroToStep(step, fromUserGesture = false) {
-      currentHeroStep = step;
-      if (!heroVid1 || !heroVid2) return;
-      const wantAudio = Boolean(isAudioEnabled && currentSection === 1);
-
-      if (step === 1) {
-        if (fromUserGesture && wantAudio) {
-          primeHeroVid2ForAudio();
-        } else {
-          heroVid2.pause();
-        }
-        heroVid2.style.opacity = '0';
-        heroVid1.style.opacity = '1';
-        heroVid1.currentTime = 0;
-        heroVid1.muted = !wantAudio;
-        heroVid1.volume = wantAudio ? 1.0 : 0;
-
-        const playPromise = heroVid1.play();
-        if (playPromise !== undefined) {
-          playPromise.then(() => {
-            if (wantAudio) {
-              waitingForGestureUnlock = false;
-              updateAudioUI();
-            }
-          }).catch(() => {
-            // El navegador bloqueó el autoplay con voz antes del primer clic: reproducimos imagen y activamos voz al primer toque
-            waitingForGestureUnlock = true;
-            isAudioEnabled = false;
-            updateAudioUI();
-            heroVid1.muted = true;
-            heroVid1.volume = 0;
-            heroVid1.play().catch(() => {});
-          });
-        }
-      } else {
-        heroVid1.pause();
-        heroVid1.muted = true;
-        heroVid1.style.opacity = '0';
-        heroVid2.style.opacity = '1';
-        heroVid2.currentTime = 0;
-        heroVid2.muted = !wantAudio;
-        heroVid2.volume = wantAudio ? 1.0 : 0;
-
-        const playPromise2 = heroVid2.play();
-        if (playPromise2 !== undefined) {
-          playPromise2.catch(() => {
-            heroVid2.muted = true;
-            heroVid2.volume = 0;
-            heroVid2.play().catch(() => {});
-          });
-        }
-      }
-    }
-
-    if (heroVid1) {
-      heroVid1.addEventListener('ended', () => {
-        if (currentSection === 1) {
-          switchHeroToStep(2, false);
-        }
-      });
-    }
-
-    // Si el navegador requirió interacción previa para soltar el audio, el primer clic en cualquier parte activa la voz y saluda
     function handleFirstUserGesture(e) {
       if (!waitingForGestureUnlock) return;
       const audioBtn = document.getElementById('btnAudioToggle');
       if (audioBtn && audioBtn.contains(e.target)) {
-        // toggleAudio() se encarga directamente
         waitingForGestureUnlock = false;
         return;
       }
       waitingForGestureUnlock = false;
       isAudioEnabled = true;
       updateAudioUI();
-      if (currentSection === 1) {
-        switchHeroToStep(1, true);
-      } else {
-        primeHeroVid2ForAudio();
+      if (heroVid && currentSection === 1) {
+        heroVid.muted = false;
+        heroVid.volume = 1.0;
+        heroVid.play().catch(() => {});
       }
     }
 
     document.addEventListener('pointerdown', handleFirstUserGesture, { passive: true });
     document.addEventListener('keydown', handleFirstUserGesture, { passive: true });
 
-    // Sección con audio autorizado: 1 (Secuencia Hero: Reel 5 + Reel 1)
-    const AUDIO_ALLOWED_SECTIONS = [1];
-
     function toggleAudio() {
       waitingForGestureUnlock = false;
       isAudioEnabled = !isAudioEnabled;
       updateAudioUI();
 
-      // Sincronizar de inmediato el video de la sección actual
-      for (let i = 1; i <= 5; i++) {
-        const bg = document.getElementById(`bg-${i}`);
-        if (!bg) continue;
-        if (i === 1) {
-          if (currentSection === 1 && isAudioEnabled) {
-            switchHeroToStep(1, true);
-          } else {
-            if (heroVid1) { heroVid1.muted = true; heroVid1.volume = 0; }
-            if (heroVid2) { heroVid2.muted = true; heroVid2.volume = 0; }
-          }
-          continue;
+      if (heroVid && currentSection === 1) {
+        heroVid.muted = !isAudioEnabled;
+        heroVid.volume = isAudioEnabled ? 1.0 : 0;
+        if (isAudioEnabled) {
+          heroVid.play().catch(() => {});
         }
-        const video = bg.querySelector('video');
-        if (!video) continue;
-        video.muted = true;
-        video.volume = 0;
       }
     }
 
@@ -3103,22 +3014,21 @@
         if (i === 1) {
           if (secNumber === 1) {
             bg.classList.add('active');
-            if (!heroInitialized) {
-              heroInitialized = true;
-              updateAudioUI();
-              switchHeroToStep(1, false);
-            } else if (sectionChanged) {
-              switchHeroToStep(1, false);
-            } else {
-              const activeHero = getActiveHeroVideo();
-              if (activeHero && activeHero.ended) {
-                switchHeroToStep(1, false);
+            if (heroVid) {
+              heroVid.muted = !isAudioEnabled;
+              heroVid.volume = isAudioEnabled ? 1.0 : 0;
+              if (sectionChanged) {
+                heroVid.currentTime = 0;
               }
+              heroVid.play().catch(() => {});
             }
           } else {
             bg.classList.remove('active');
-            if (heroVid1) { heroVid1.muted = true; heroVid1.volume = 0; heroVid1.pause(); }
-            if (heroVid2) { heroVid2.muted = true; heroVid2.volume = 0; heroVid2.pause(); }
+            if (heroVid) {
+              heroVid.muted = true;
+              heroVid.volume = 0;
+              heroVid.pause();
+            }
           }
           continue;
         }
@@ -3164,6 +3074,9 @@
       });
     }
 
+    // Inicializar audio y reproducción en carga
+    initHeroAudio();
+
     // Interceptar clics en enlaces del menú para desplazamiento perfecto y reactivación de saludo en Conócenos
     navItems.forEach((link) => {
       link.addEventListener('click', (e) => {
@@ -3173,8 +3086,11 @@
           waitingForGestureUnlock = false;
           isAudioEnabled = true;
           updateAudioUI();
-          if (currentSection === 1) {
-            switchHeroToStep(1, true);
+          if (heroVid && currentSection === 1) {
+            heroVid.currentTime = 0;
+            heroVid.muted = false;
+            heroVid.volume = 1.0;
+            heroVid.play().catch(() => {});
           }
         }
         if (href && href.startsWith('#')) {
@@ -3186,6 +3102,10 @@
         }
       });
     });
+          }
+        }
+      });
+    });
 
     const brandLink = document.querySelector('.brand-link');
     if (brandLink) {
@@ -3193,10 +3113,14 @@
         waitingForGestureUnlock = false;
         isAudioEnabled = true;
         updateAudioUI();
-        if (currentSection === 1) {
-          switchHeroToStep(1, true);
+        if (heroVid && currentSection === 1) {
+          heroVid.currentTime = 0;
+          heroVid.muted = false;
+          heroVid.volume = 1.0;
+          heroVid.play().catch(() => {});
         }
       });
+    }
     }
 
     // Observador de Scroll para sincronizar fondos y menú automáticamente al bajar o subir
