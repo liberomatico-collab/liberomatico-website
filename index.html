@@ -2465,6 +2465,7 @@
     <!-- Slide 1: Conócenos / Hero (Secuencia completa y continua: 1. Bienvenidos soy Rodrigo -> 2. Si me permite ayudarle) -->
     <div class="bg-slide active" id="bg-1">
       <video id="heroVid" autoplay muted loop playsinline preload="auto" style="object-position: 50% 18%;">
+        <source src="assets/reel_00_intro_maestro.mp4" type="video/mp4" />
         <source src="assets/reel_00_bienvenida.mp4" type="video/mp4" />
       </video>
     </div>
@@ -2476,23 +2477,23 @@
       </video>
     </div>
 
-    <!-- Slide 3: Presencia Digital Web<!-- Slide 3: Presencia Digital Web (Vitrina & Catálogo Interactivo) -->
+    <!-- Slide 3: Presencia Digital Web (Vitrina & Catálogo Interactivo) -->
     <div class="bg-slide" id="bg-3">
-      <video muted playsinline preload="metadata">
+      <video muted loop playsinline preload="metadata">
         <source src="assets/reel_03_tecnologia.mp4" type="video/mp4" />
       </video>
     </div>
 
     <!-- Slide 4: Publicidad para Redes (Producción Audiovisual) -->
     <div class="bg-slide" id="bg-4">
-      <video muted playsinline preload="metadata">
+      <video muted loop playsinline preload="metadata">
         <source src="assets/reel_02_publicidad.mp4" type="video/mp4" />
       </video>
     </div>
 
     <!-- Slide 5: Nuestros Clientes (Recorrido de Proyectos) -->
     <div class="bg-slide" id="bg-5">
-      <video muted playsinline preload="metadata">
+      <video muted loop playsinline preload="metadata">
         <source src="assets/reel_04_proyectos.mp4" type="video/mp4" />
       </video>
     </div>
@@ -2689,10 +2690,25 @@
           <span data-i18n="about_sig">LiberoMatico en alianza con</span>
           <a href="https://www.hrylegalconsulting.com" target="_blank" rel="noopener noreferrer" class="about-partner-link">HR &amp; LEGAL Consulting SAC.</a>
         </p>
+        <div style="margin-top: 0.65rem;">
+          <button type="button" class="btn-audio-listen" id="btnHeroAudioCard" onclick="toggleAudio()" title="Activar Sonido">
+            <svg class="audio-head-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+              <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+            </svg>
+            <div class="audio-wave-bars">
+              <span class="audio-bar"></span>
+              <span class="audio-bar"></span>
+              <span class="audio-bar"></span>
+              <span class="audio-bar"></span>
+            </div>
+            <span class="audio-listen-text" data-i18n="btn_audio_listen">Escuchar Presentación con Audio</span>
+          </button>
+        </div>
       </div>
     </section>
 
-    <!-- SECCIÓN 02: ESTRATEGIA DIGITAL -->
+    <!-- SECCIÓN 02: ESTRATEGIA DIGITAL --><!-- SECCIÓN 02: ESTRATEGIA DIGITAL -->
     <section class="open-section" id="sec-2" data-index="2">
       <div class="sec-bottom-wrap">
         <h2 class="open-title sec-title-single" data-i18n="sec2_title">
@@ -2903,75 +2919,144 @@
 
     const bgSlides = document.querySelectorAll('.bg-slide');
 
-    // ==========================================================================
-
-    // CONTROL DE AUDIO Y SECUENCIA HERO ROBUSTO (PC + MÓVIL)
+    let currentLang = 'es';
 
     // ==========================================================================
 
-    let isAudioEnabled = false;
+    // CONTROL DE AUDIO Y SECUENCIA HERO (REEL MAESTRO COMPLETO Y CONTINUO)
+
+    // ==========================================================================
+
+    let isAudioEnabled = true;
     let currentSection = 1;
+    let waitingForGestureUnlock = false;
     const heroVid = document.getElementById('heroVid');
 
     function updateAudioUI() {
       const btn = document.getElementById('btnAudioToggle');
-      if (!btn) return;
-      const iconMuted = btn.querySelector('.audio-icon-muted');
-      const iconActive = btn.querySelector('.audio-icon-active');
-      const langKey = (typeof currentLang !== 'undefined' && currentLang) ? currentLang : 'es';
-      const dict = (typeof translations !== 'undefined' && translations[langKey]) ? translations[langKey] : {
-        audio_toggle: 'Activar Sonido',
-        audio_toggle_on: 'Silenciar Sonido'
+      const iconMuted = btn ? btn.querySelector('.audio-icon-muted') : null;
+      const iconActive = btn ? btn.querySelector('.audio-icon-active') : null;
+      const label = btn ? btn.querySelector('.audio-label') : null;
+
+      const cardBtn = document.getElementById('btnHeroAudioCard');
+      const cardText = cardBtn ? cardBtn.querySelector('.audio-listen-text') : null;
+
+      const langKey = currentLang || 'es';
+      const dict = {
+        audio_toggle: (langKey === 'en') ? 'Sound' : 'Sonido',
+        audio_toggle_on: (langKey === 'en') ? 'Sound ON' : 'Sonido ON',
+        btn_audio_listen: (langKey === 'en') ? 'Listen to Presentation with Audio' : 'Escuchar Presentación con Audio'
       };
 
       if (isAudioEnabled) {
-        btn.classList.add('active');
-        btn.setAttribute('title', dict.audio_toggle_on);
-        btn.setAttribute('aria-label', dict.audio_toggle_on);
+        if (btn) {
+          btn.classList.add('active');
+          btn.setAttribute('title', dict.audio_toggle_on);
+          btn.setAttribute('aria-label', dict.audio_toggle_on);
+        }
         if (iconMuted) iconMuted.style.display = 'none';
         if (iconActive) iconActive.style.display = 'block';
-      } else {
-        btn.classList.remove('active');
-        btn.setAttribute('title', dict.audio_toggle);
-        btn.setAttribute('aria-label', dict.audio_toggle);
-        if (iconMuted) iconMuted.style.display = 'block';
-        if (iconActive) iconActive.style.display = 'none';
-      }
-    }
+        if (label) label.textContent = dict.audio_toggle_on;
 
-    function toggleAudio() {
-      if (!heroVid) return;
-      isAudioEnabled = !isAudioEnabled;
-
-      if (isAudioEnabled) {
-        heroVid.muted = false;
-        heroVid.volume = 1.0;
-        const p = heroVid.play();
-        if (p !== undefined) {
-          p.catch(() => {
-            // Si el navegador bloquea audio, forzar muting
-            heroVid.muted = true;
-            isAudioEnabled = false;
-          }).finally(() => {
-            updateAudioUI();
-          });
-        } else {
-          updateAudioUI();
+        if (cardBtn) {
+          cardBtn.classList.add('playing');
+          cardBtn.setAttribute('title', dict.audio_toggle_on);
+          if (cardText) {
+            cardText.textContent = (langKey === 'en') ? 'Audio Active (Click to Mute)' : 'Audio Activo (Clic para Silenciar)';
+          }
         }
       } else {
-        heroVid.muted = true;
-        heroVid.volume = 0;
-        updateAudioUI();
+        if (btn) {
+          btn.classList.remove('active');
+          btn.setAttribute('title', dict.audio_toggle);
+          btn.setAttribute('aria-label', dict.audio_toggle);
+        }
+        if (iconMuted) iconMuted.style.display = 'block';
+        if (iconActive) iconActive.style.display = 'none';
+        if (label) label.textContent = dict.audio_toggle;
+
+        if (cardBtn) {
+          cardBtn.classList.remove('playing');
+          cardBtn.setAttribute('title', dict.audio_toggle);
+          if (cardText) {
+            if (waitingForGestureUnlock) {
+              cardText.textContent = (langKey === 'en') ? 'Click here or tap screen to activate Audio' : 'Clic aquí o en la pantalla para activar Audio';
+            } else {
+              cardText.textContent = (langKey === 'en') ? 'Listen to Presentation with Audio' : 'Escuchar Presentación con Audio';
+            }
+          }
+        }
       }
     }
 
     function initHeroAudio() {
       if (!heroVid) return;
-      // Los navegadores exigen que arranque silenciado para el autoplay inicial
-      heroVid.muted = true;
-      heroVid.volume = 0;
-      isAudioEnabled = false;
-      heroVid.play().catch(() => {});
+      heroVid.muted = false;
+      heroVid.volume = 1.0;
+      isAudioEnabled = true;
+
+      const playPromise = heroVid.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          waitingForGestureUnlock = false;
+          isAudioEnabled = true;
+          updateAudioUI();
+        }).catch(() => {
+          // Si el navegador bloqueó el autoplay con voz previo al gesto, reproducir silenciado y habilitar al primer clic válido
+          waitingForGestureUnlock = true;
+          isAudioEnabled = false;
+          heroVid.muted = true;
+          heroVid.volume = 0;
+          heroVid.play().catch(() => {});
+          updateAudioUI();
+        });
+      }
+    }
+
+    function handleFirstUserGesture(e) {
+      if (!waitingForGestureUnlock || !heroVid) return;
+      const audioBtn = document.getElementById('btnAudioToggle');
+      const cardAudioBtn = document.getElementById('btnHeroAudioCard');
+      if ((audioBtn && audioBtn.contains(e.target)) || (cardAudioBtn && cardAudioBtn.contains(e.target))) {
+        return;
+      }
+      if (currentSection === 1) {
+        heroVid.muted = false;
+        heroVid.volume = 1.0;
+        heroVid.currentTime = 0;
+        const p = heroVid.play();
+        if (p !== undefined) {
+          p.then(() => {
+            waitingForGestureUnlock = false;
+            isAudioEnabled = true;
+            updateAudioUI();
+          }).catch(() => {
+            heroVid.muted = true;
+            heroVid.volume = 0;
+            heroVid.play().catch(() => {});
+          });
+        }
+      }
+    }
+
+    document.addEventListener('click', handleFirstUserGesture, { passive: true });
+    document.addEventListener('pointerup', handleFirstUserGesture, { passive: true });
+    document.addEventListener('touchend', handleFirstUserGesture, { passive: true });
+    document.addEventListener('keydown', handleFirstUserGesture, { passive: true });
+
+    function toggleAudio() {
+      if (!heroVid) return;
+      const wasLocked = waitingForGestureUnlock;
+      waitingForGestureUnlock = false;
+      isAudioEnabled = !isAudioEnabled;
+      heroVid.muted = !isAudioEnabled;
+      heroVid.volume = isAudioEnabled ? 1.0 : 0;
+      if (isAudioEnabled) {
+        if (wasLocked) {
+          heroVid.currentTime = 0;
+        }
+        heroVid.play().catch(() => {});
+      }
       updateAudioUI();
     }
 
@@ -2994,7 +3079,11 @@
               if (sectionChanged) {
                 heroVid.currentTime = 0;
               }
-              heroVid.play().catch(() => {});
+              heroVid.play().catch(() => {
+                heroVid.muted = true;
+                heroVid.volume = 0;
+                heroVid.play().catch(() => {});
+              });
             }
           } else {
             bg.classList.remove('active');
@@ -3057,7 +3146,7 @@
         const href = link.getAttribute('href');
         const secIdx = parseInt(link.getAttribute('data-sec'), 10);
         if (secIdx === 1) {
-          // gesture unlock
+          waitingForGestureUnlock = false;
           isAudioEnabled = true;
           updateAudioUI();
           if (heroVid && currentSection === 1) {
@@ -3076,15 +3165,11 @@
         }
       });
     });
-          }
-        }
-      });
-    });
 
     const brandLink = document.querySelector('.brand-link');
     if (brandLink) {
       brandLink.addEventListener('click', () => {
-        // gesture unlock
+        waitingForGestureUnlock = false;
         isAudioEnabled = true;
         updateAudioUI();
         if (heroVid && currentSection === 1) {
@@ -3094,7 +3179,6 @@
           heroVid.play().catch(() => {});
         }
       });
-    }
     }
 
     // Observador de Scroll para sincronizar fondos y menú automáticamente al bajar o subir
@@ -3150,6 +3234,7 @@
         about_title: "Soluciones digitales para hacer crecer su negocio, con criterio comercial y tecnología.",
         about_desc: "Criterio comercial y vocación de escucha para traducir la tecnología y la inteligencia artificial en herramientas sencillas, transparentes y seguras para su empresa.",
         about_sig: "LiberoMatico en alianza con",
+        btn_audio_listen: "Escuchar Presentación con Audio",
         sec2_title: "Estrategia Comercial y Digital",
         sec2_intro: "Analizamos su empresa, cliente, competidores y coyuntura para:",
         sec2_bullet1: "Definir cómo destacar sus diferenciales.",
@@ -3219,6 +3304,7 @@
         about_title: "Digital solutions to grow your business, with commercial discernment and technology.",
         about_desc: "Commercial discernment and active listening to translate technology and artificial intelligence into simple, transparent, and dependable tools for your business.",
         about_sig: "LiberoMatico in alliance with",
+        btn_audio_listen: "Listen to Presentation with Audio",
         sec2_title: "Commercial & Digital Strategy",
         sec2_intro: "We analyze your company, client, competitors, and market context to:",
         sec2_bullet1: "Define how to highlight your unique differentials.",
@@ -3288,12 +3374,10 @@
       btn.classList.toggle('active', isOpen);
     }
 
-    let currentLang = 'es';
-
     let currentPlayingAudio = null;
 
     document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.btn-audio-listen').forEach(btn => {
+      document.querySelectorAll('.btn-audio-listen[data-audio-target]').forEach(btn => {
         btn.addEventListener('click', (e) => {
           e.stopPropagation();
           const targetId = btn.getAttribute('data-audio-target');
@@ -3316,7 +3400,7 @@
             if (currentPlayingAudio) {
               currentPlayingAudio.pause();
               currentPlayingAudio.currentTime = 0;
-              document.querySelectorAll('.btn-audio-listen').forEach(b => {
+              document.querySelectorAll('.btn-audio-listen[data-audio-target]').forEach(b => {
                 b.classList.remove('playing');
                 const t = b.querySelector('.audio-btn-text');
                 if (t) t.textContent = (currentLang === 'en') ? 'Listen synthesis' : 'Escuchar síntesis';
