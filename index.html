@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LiberoMatico | Rodrigo Guillermo Vázquez · Consultor Comercial y Tecnológico · Lima - Perú</title>
-  <meta name="description" content="Soluciones digitales para hacer crecer su negocio con criterio comercial y tecnología en Lima, Perú. Estrategia comercial, catálogos web vivenciales con recorridos en video y publicidad audiovisual para redes con canalización directa a WhatsApp.">
-  <meta name="keywords" content="LiberoMatico, Rodrigo Guillermo Vázquez, consultoría comercial, estrategia digital, catálogos web interactivos, publicidad para redes, reels cinematográficos, Lima, Perú">
-  <meta property="og:title" content="LiberoMatico | Rodrigo Guillermo Vázquez · Consultor Comercial y Tecnológico">
-  <meta property="og:description" content="Soluciones digitales para hacer crecer su negocio con criterio comercial y tecnología en Lima, Perú. Estrategia comercial, catálogos web vivenciales y publicidad audiovisual para redes.">
+  <title>LiberoMatico | Rodrigo Guillermo Vázquez · Lic. en Administración de Empresas UTN (Arg) · Consultor Comercial y Tecnológico · Lima - Perú</title>
+  <meta name="description" content="Rodrigo Guillermo Vázquez, Lic. en Administración de Empresas UTN (Arg) y Consultor Comercial y Tecnológico en Lima, Perú. Soluciones digitales, estrategia comercial, catálogos web vivenciales y publicidad audiovisual.">
+  <meta name="keywords" content="LiberoMatico, Rodrigo Guillermo Vázquez, Licenciado en Administración de Empresas, UTN, consultoría comercial, estrategia digital, catálogos web interactivos, publicidad para redes, Lima, Perú">
+  <meta property="og:title" content="LiberoMatico | Rodrigo Guillermo Vázquez · Lic. en Administración de Empresas UTN (Arg)">
+  <meta property="og:description" content="Lic. en Administración de Empresas UTN (Arg) · Consultor Comercial y Tecnológico en Lima, Perú. Soluciones digitales, catálogos web vivenciales y publicidad audiovisual.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_PE">
   <meta property="og:site_name" content="LiberoMatico">
@@ -17,10 +17,10 @@
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="LiberoMatico · Rodrigo Guillermo Vázquez · Consultor Comercial y Tecnológico">
+  <meta property="og:image:alt" content="LiberoMatico · Rodrigo Guillermo Vázquez · Lic. en Administración de Empresas UTN (Arg)">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="LiberoMatico | Rodrigo Guillermo Vázquez · Consultor Comercial y Tecnológico">
-  <meta name="twitter:description" content="Soluciones digitales para hacer crecer su negocio con criterio comercial y tecnología en Lima, Perú. Estrategia comercial, catálogos web vivenciales y publicidad para redes.">
+  <meta name="twitter:title" content="LiberoMatico | Rodrigo Guillermo Vázquez · Lic. en Administración de Empresas UTN (Arg)">
+  <meta name="twitter:description" content="Lic. en Administración de Empresas UTN (Arg) · Consultor Comercial y Tecnológico en Lima, Perú.">
   <meta name="twitter:image" content="https://www.liberomatico.com/assets/og_preview_liberomatico.jpg?v=2">
   <link rel="canonical" href="https://www.liberomatico.com/">
   <link rel="icon" type="image/png" href="assets/liberomatico-logo-transparent.png">
@@ -247,11 +247,12 @@
     }
 
     .brand-link {
-      display: flex;
+      display: inline-flex;
       flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 0.45rem;
+      align-items: stretch;
+      width: 240px;
+      max-width: 100%;
+      gap: 0.72rem;
       text-decoration: none;
       color: inherit;
       text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95);
@@ -261,12 +262,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.68rem;
+      width: 100%;
+      gap: 0.62rem;
     }
 
     .brand-logo-frame {
-      width: 48px;
-      height: 48px;
+      width: 44px;
+      height: 44px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -298,9 +300,9 @@
     }
 
     .brand-title {
-      font-size: 1.34rem;
+      font-size: 1.32rem;
       font-weight: 700;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
       color: var(--text-main);
       line-height: 1.1;
@@ -311,32 +313,49 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      gap: 0.14rem;
-      margin-top: 0.05rem;
-      padding-top: 0.45rem;
-      border-top: 1px solid rgba(147, 197, 253, 0.38);
+      gap: 0.16rem;
+      margin-top: 0;
+      padding-top: 1.05rem;
+      border-top: 1px solid rgba(147, 197, 253, 0.42);
       width: 100%;
-      line-height: 1.28;
+      line-height: 1.25;
+    }
+
+    .brand-consultant-box span {
+      display: block;
+      width: 100%;
+      text-align: center;
+      white-space: nowrap;
     }
 
     .brand-consultant-name {
-      font-size: 0.9rem;
+      font-size: 0.91rem;
       font-weight: 700;
       color: #ffffff;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.03em;
+    }
+
+    .brand-consultant-degree {
+      font-size: 0.72rem;
+      font-weight: 400;
+      color: #93c5fd;
+      letter-spacing: 0.015em;
+      line-height: 1.22;
+      white-space: normal !important;
     }
 
     .brand-consultant-role {
-      font-size: 0.78rem;
+      font-size: 0.77rem;
       font-weight: 500;
       color: #cbd5e1;
+      letter-spacing: 0.025em;
     }
 
     .brand-consultant-ruc {
-      font-size: 0.74rem;
+      font-size: 0.77rem;
       font-weight: 600;
       color: #93c5fd;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.04em;
     }
 
     /* ACORDEÓN LATERAL IZQUIERDO (CENTRADO ENTRE TECHO Y PISO EN PC) */
@@ -1434,12 +1453,13 @@
       }
 
       .brand-link {
-        width: 100%;
+        width: 196px;
+        max-width: 100%;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
         text-align: center;
-        gap: 0.2rem;
+        gap: 0.36rem;
         min-width: 0;
       }
 
@@ -1476,7 +1496,7 @@
       .brand-title {
         font-size: 0.86rem;
         font-weight: 700;
-        letter-spacing: 0.03em;
+        letter-spacing: 0.04em;
         line-height: 1.1;
         white-space: nowrap;
         overflow: hidden;
@@ -1492,38 +1512,56 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
-        gap: 0.02rem;
+        gap: 0.04rem;
         margin-top: 0;
-        padding-top: 0.2rem;
-        border-top: 1px solid rgba(147, 197, 253, 0.32);
+        padding-top: 0.56rem;
+        border-top: 1px solid rgba(147, 197, 253, 0.38);
         width: 100%;
         line-height: 1.15;
         min-width: 0;
         overflow: hidden;
       }
 
+      .brand-consultant-box span {
+        display: block;
+        width: 100%;
+        text-align: center;
+      }
+
       .brand-consultant-name {
-        font-size: 0.68rem;
-        font-weight: 600;
+        font-size: 0.72rem;
+        font-weight: 700;
         color: #ffffff;
+        letter-spacing: 0.02em;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
       }
 
+      .brand-consultant-degree {
+        font-size: 0.56rem;
+        font-weight: 400;
+        color: #93c5fd;
+        line-height: 1.15;
+        white-space: normal !important;
+        overflow: visible;
+      }
+
       .brand-consultant-role {
-        font-size: 0.59rem;
+        font-size: 0.61rem;
         font-weight: 500;
         color: #cbd5e1;
+        letter-spacing: 0.015em;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
       }
 
       .brand-consultant-ruc {
-        font-size: 0.58rem;
+        font-size: 0.61rem;
         font-weight: 600;
         color: #93c5fd;
+        letter-spacing: 0.025em;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -2516,6 +2554,7 @@
 
           <div class="brand-consultant-box">
             <span class="brand-consultant-name">Rodrigo Guillermo Vázquez</span>
+            <span class="brand-consultant-degree" data-i18n="left_footer_degree">Lic. en Administración<br>de Empresas UTN (Arg)</span>
             <span class="brand-consultant-role" data-i18n="left_footer_role">Consultor Comercial y Tecnológico</span>
             <span class="brand-consultant-ruc" data-i18n="left_footer_ruc">RUC 15615689529 · Lima - Perú</span>
           </div>
@@ -3225,6 +3264,7 @@
         srv_publicidad: "- Publicidad para Redes",
         nav_clients: "Nuestros Clientes",
         nav_contact: "Contacto",
+        left_footer_degree: "Lic. en Administración<br>de Empresas UTN (Arg)",
         left_footer_role: "Consultor Comercial y Tecnológico",
         left_footer_ruc: "RUC 15615689529 · Lima - Perú",
         about_title: "Soluciones digitales para hacer crecer su negocio, con criterio comercial y tecnología.",
@@ -3305,6 +3345,7 @@
         srv_publicidad: "- Social Media Advertising",
         nav_clients: "Our Clients",
         nav_contact: "Contact us",
+        left_footer_degree: "B.A. in Business<br>Administration UTN (Arg)",
         left_footer_role: "Commercial & Technology Consultant",
         left_footer_ruc: "RUC 15615689529 · Lima - Peru",
         about_title: "Digital solutions to grow your business, with commercial discernment and technology.",
