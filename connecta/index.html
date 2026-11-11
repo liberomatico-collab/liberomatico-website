@@ -186,7 +186,51 @@
       transform: scale(1.35);
     }
 
-    /* SECCIONES CINEMATOGRÁFICAS DE VIDEO */
+        /* DUAL PING-PONG CINEMATIC VIDEO ENGINE */
+    #bg-video-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+      background-color: var(--bg-dark);
+      transition: opacity 0.5s ease;
+    }
+
+    .bg-video-player {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      object-position: center 10%;
+      display: block;
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    #bg-video-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+      background: linear-gradient(180deg, 
+        #070a12 0%, 
+        rgba(7, 10, 18, 0.45) 3%, 
+        transparent 12%, 
+        transparent 84%, 
+        rgba(7, 10, 18, 0.75) 94%, 
+        #070a12 100%
+      );
+    }
+
+    /* SECCIONES CINEMATOGRÁFICAS TRANSPARENTES */
     .video-section {
       position: relative;
       min-height: 100vh;
@@ -197,37 +241,8 @@
       justify-content: flex-start;
       padding: 120px 60px 80px 60px;
       overflow: hidden;
-      background-color: var(--bg-dark);
-    }
-
-    .video-section-bg {
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 10%;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    /* DIFUMINADO SUAVE Y CONTINUO ENTRE VIDEOS (CERO CORTES VISUALES) */
-    .video-section::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 2;
-      background: linear-gradient(180deg, 
-        #070a12 0%, 
-        rgba(7, 10, 18, 0.45) 3%, 
-        transparent 12%, 
-        transparent 84%, 
-        rgba(7, 10, 18, 0.75) 94%, 
-        #070a12 100%
-      );
+      background-color: transparent;
+      z-index: 4;
     }
 
     .section-overlay {
@@ -469,12 +484,15 @@
       color: var(--text-muted);
     }
 
-    @media (max-width: 900px) {
+        @media (max-width: 900px) {
+      .bg-video-player {
+        object-position: center 6%;
+      }
       .video-section { 
         min-height: 100vh;
         min-height: 100dvh;
-        width: 100vw;
-        max-width: 100vw;
+        width: 100%;
+        max-width: 100%;
         padding: 58px 14px 18px 14px; 
         display: flex;
         flex-direction: column;
@@ -482,34 +500,22 @@
         justify-content: flex-end;
         position: relative;
         overflow: hidden;
+        background-color: transparent;
       }
       .video-section.align-right {
         justify-content: flex-end;
       }
-      .video-section-bg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        min-width: 100%;
-        min-height: 100%;
-        object-fit: cover;
-        object-position: center 6%;
-        z-index: 1;
-        pointer-events: none;
-      }
       .section-overlay {
         position: absolute;
         inset: 0;
-        background: linear-gradient(180deg, rgba(7, 10, 18, 0.0) 0%, rgba(7, 10, 18, 0.2) 50%, rgba(7, 10, 18, 0.85) 90%);
+        background: linear-gradient(180deg, rgba(7, 10, 18, 0.0) 0%, rgba(7, 10, 18, 0.15) 50%, rgba(7, 10, 18, 0.85) 90%);
         z-index: 2;
         pointer-events: none;
       }
       .video-section.align-right .section-overlay {
         position: absolute;
         inset: 0;
-        background: linear-gradient(180deg, rgba(7, 10, 18, 0.0) 0%, rgba(7, 10, 18, 0.2) 50%, rgba(7, 10, 18, 0.85) 90%);
+        background: linear-gradient(180deg, rgba(7, 10, 18, 0.0) 0%, rgba(7, 10, 18, 0.15) 50%, rgba(7, 10, 18, 0.85) 90%);
         z-index: 2;
         pointer-events: none;
       }
@@ -585,6 +591,13 @@
   </div>
 
   <!-- NAVIGATION -->
+  <!-- DUAL PING-PONG CINEMATIC VIDEO ENGINE (EXACTO 2 DECODIFICADORES EN ANDROID & PC) -->
+  <div id="bg-video-container">
+    <video id="bg-video-a" class="bg-video-player" src="assets/video/video_entrada.mp4" autoplay loop muted playsinline webkit-playsinline x5-playsinline preload="auto" style="opacity: 1; z-index: 2;"></video>
+    <video id="bg-video-b" class="bg-video-player" loop muted playsinline webkit-playsinline x5-playsinline preload="none" style="opacity: 0; z-index: 1;"></video>
+    <div id="bg-video-overlay"></div>
+  </div>
+
   <header>
     <a href="#" class="nav-brand">
       <img src="assets/logo.png" alt="Logo" class="nav-logo-badge">
@@ -611,10 +624,8 @@
   </div>
 
   <!-- SECCIÓN 01: LA LLEGADA / HERO -->
-  <section id="sec-llegada" class="video-section">
-    <video class="video-section-bg" src="assets/video/video_entrada.mp4" autoplay loop muted playsinline webkit-playsinline x5-playsinline preload="auto">
-      <source src="assets/video/video_entrada.mp4" type="video/mp4">
-    </video>
+  <section id="sec-llegada" class="video-section" data-video="assets/video/video_entrada.mp4">
+    
     <div class="section-overlay"></div>
     <div class="section-content-card">
       <div class="chapter-badge">Capítulo 01 · Santa Catalina</div>
@@ -634,10 +645,8 @@
   </section>
 
   <!-- SECCIÓN 02: EL LOBBY DE VANGUARDIA -->
-  <section id="sec-lobby" class="video-section align-right">
-    <video class="video-section-bg" src="assets/video/video_lobby.mp4" autoplay loop muted playsinline webkit-playsinline x5-playsinline preload="auto">
-      <source src="assets/video/video_lobby.mp4" type="video/mp4">
-    </video>
+  <section id="sec-lobby" class="video-section align-right" data-video="assets/video/video_lobby.mp4">
+    
     <div class="section-overlay"></div>
     <div class="section-content-card">
       <div class="chapter-badge">Capítulo 02 · Primer Impacto</div>
@@ -656,10 +665,8 @@
   </section>
 
   <!-- SECCIÓN 03: CIRCULACIÓN & PRIVACIDAD -->
-  <section id="sec-pasillo" class="video-section">
-    <video class="video-section-bg" src="assets/video/video_pasillo.mp4" autoplay loop muted playsinline webkit-playsinline x5-playsinline preload="auto">
-      <source src="assets/video/video_pasillo.mp4" type="video/mp4">
-    </video>
+  <section id="sec-pasillo" class="video-section" data-video="assets/video/video_pasillo.mp4">
+    
     <div class="section-overlay"></div>
     <div class="section-content-card">
       <div class="chapter-badge">Capítulo 03 · Circulación</div>
@@ -678,10 +685,8 @@
   </section>
 
   <!-- SECCIÓN 04: COWORKING & BUSINESS HUB -->
-  <section id="sec-coworking" class="video-section align-right">
-    <video class="video-section-bg" src="assets/video/video_coworking.mp4" autoplay loop muted playsinline webkit-playsinline x5-playsinline preload="auto">
-      <source src="assets/video/video_coworking.mp4" type="video/mp4">
-    </video>
+  <section id="sec-coworking" class="video-section align-right" data-video="assets/video/video_coworking.mp4">
+    
     <div class="section-overlay"></div>
     <div class="section-content-card">
       <div class="chapter-badge">Capítulo 04 · Productividad</div>
@@ -700,10 +705,8 @@
   </section>
 
   <!-- SECCIÓN 05: CENTRO FITNESS & GIMNASIO -->
-  <section id="sec-gym" class="video-section">
-    <video class="video-section-bg" src="assets/video/video_gym.mp4" autoplay loop muted playsinline webkit-playsinline x5-playsinline preload="auto">
-      <source src="assets/video/video_gym.mp4" type="video/mp4">
-    </video>
+  <section id="sec-gym" class="video-section" data-video="assets/video/video_gym.mp4">
+    
     <div class="section-overlay"></div>
     <div class="section-content-card">
       <div class="chapter-badge">Capítulo 05 · Bienestar</div>
@@ -722,10 +725,8 @@
   </section>
 
   <!-- SECCIÓN 06: PISCINA PANORÁMICA EN ROOFTOP -->
-  <section id="sec-piscina" class="video-section align-right">
-    <video class="video-section-bg" src="assets/video/video_piscina.mp4" autoplay loop muted playsinline webkit-playsinline x5-playsinline preload="auto">
-      <source src="assets/video/video_piscina.mp4" type="video/mp4">
-    </video>
+  <section id="sec-piscina" class="video-section align-right" data-video="assets/video/video_piscina.mp4">
+    
     <div class="section-overlay"></div>
     <div class="section-content-card">
       <div class="chapter-badge">Capítulo 06 · Resort Privado</div>
@@ -744,10 +745,8 @@
   </section>
 
   <!-- SECCIÓN 07: CELEBRACIONES & BBQ GRILL -->
-  <section id="sec-celebracion" class="video-section">
-    <video class="video-section-bg" src="assets/video/video_celebracion.mp4" autoplay loop muted playsinline webkit-playsinline x5-playsinline preload="auto">
-      <source src="assets/video/video_celebracion.mp4" type="video/mp4">
-    </video>
+  <section id="sec-celebracion" class="video-section" data-video="assets/video/video_celebracion.mp4">
+    
     <div class="section-overlay"></div>
     <div class="section-content-card">
       <div class="chapter-badge">Capítulo 07 · Vida Social</div>
@@ -846,16 +845,15 @@
     <div class="footer-copy">Soluciones digitales para estructurar, mostrar y hacer crecer su negocio. · connecta.liberomatico.com</div>
   </footer>
 
-      <script>
+        <script>
     // CONTROL DEL INTRO MOTION
     function hideIntro() {
       const intro = document.getElementById('motion-intro');
       if (intro && !intro.classList.contains('vanish')) {
         intro.classList.add('vanish');
       }
-      wakeAllVideos();
     }
-    window.addEventListener('load', () => setTimeout(hideIntro, 600));
+    window.addEventListener('load', () => setTimeout(hideIntro, 500));
     setTimeout(hideIntro, 1200);
 
     // PLAN TAB SWITCHER
@@ -877,56 +875,253 @@
       }
     }
 
-    // MOTOR MULTIMEDIA INMERSIVO TOTAL PARA MOBILE Y PC
-    const sections = document.querySelectorAll('.video-section, .plans-section-wrapper');
+    // MOTOR DUAL PING-PONG DE VIDEO INMERSIVO (BLINDADO PARA ANDROID Y PC)
+    // Utiliza exactamente 2 decodificadores de hardware con alternancia ping-pong.
+    // Garantiza 0 bloqueos por MediaCodec, cero parpadeos negros y transiciones cinematográficas fluidas.
+    const bgContainer = document.getElementById('bg-video-container');
+    const playerA = document.getElementById('bg-video-a');
+    const playerB = document.getElementById('bg-video-b');
+    const videoSections = document.querySelectorAll('.video-section');
     const dots = document.querySelectorAll('.scroll-dot');
-    const allVideos = document.querySelectorAll('video');
 
-    function wakeAllVideos() {
-      allVideos.forEach(v => {
-        v.muted = true;
-        v.defaultMuted = true;
-        v.playsInline = true;
-        v.setAttribute('muted', '');
-        v.setAttribute('playsinline', '');
-        v.setAttribute('webkit-playsinline', '');
-        v.setAttribute('x5-playsinline', '');
-        if (v.paused) {
-          const p = v.play();
-          if (p && p.catch) p.catch(() => {});
+    let activePlayer = 'A';
+    let currentSrc = 'assets/video/video_entrada.mp4';
+    let isTransitioning = false;
+    let pendingSrc = null;
+
+    playerA.cleanupTimer = null;
+    playerB.cleanupTimer = null;
+
+    function initPlayer(p) {
+      if (!p) return;
+      p.muted = true;
+      p.defaultMuted = true;
+      p.playsInline = true;
+      p.setAttribute('muted', '');
+      p.setAttribute('playsinline', '');
+      p.setAttribute('webkit-playsinline', '');
+      p.setAttribute('x5-playsinline', '');
+    }
+    initPlayer(playerA);
+    initPlayer(playerB);
+
+    function crossfadeTo(newSrc) {
+      if (!newSrc) return;
+      
+      // Si el video solicitado es el que ya está activo o en transición y no hay cola pendiente
+      if (newSrc === currentSrc && !pendingSrc) {
+        const active = (activePlayer === 'A') ? playerA : playerB;
+        if (active && active.paused) {
+          active.play().catch(() => {});
+        }
+        return;
+      }
+
+      // Si hay una transición en curso, encolar el nuevo objetivo y no saturar el decodificador
+      if (isTransitioning) {
+        pendingSrc = newSrc;
+        return;
+      }
+
+      isTransitioning = true;
+      pendingSrc = null;
+
+      const incoming = (activePlayer === 'A') ? playerB : playerA;
+      const outgoing = (activePlayer === 'A') ? playerA : playerB;
+      const nextSlot = (activePlayer === 'A') ? 'B' : 'A';
+
+      // 1. Cancelar cualquier temporizador de limpieza previo sobre el reproductor entrante
+      if (incoming.cleanupTimer) {
+        clearTimeout(incoming.cleanupTimer);
+        incoming.cleanupTimer = null;
+      }
+
+      // 2. Configurar el orden visual dinámico: incoming encima (z-index: 2), outgoing abajo (z-index: 1)
+      incoming.style.zIndex = '2';
+      outgoing.style.zIndex = '1';
+
+      initPlayer(incoming);
+
+      // 3. Comprobar si ya tiene cargado este origen para evitar re-buffering innecesario
+      const alreadyLoaded = incoming.src && (incoming.src.endsWith(newSrc) || incoming.getAttribute('src') === newSrc);
+      if (!alreadyLoaded) {
+        incoming.src = newSrc;
+        incoming.load();
+      } else {
+        incoming.currentTime = 0;
+      }
+
+      let crossfaded = false;
+      const triggerCrossfade = () => {
+        if (crossfaded) return;
+        crossfaded = true;
+
+        // Ejecutar fundido cruzado visual suave
+        incoming.style.opacity = '1';
+        outgoing.style.opacity = '0';
+
+        currentSrc = newSrc;
+        activePlayer = nextSlot;
+
+        // Limpieza controlada post-transición (650ms coincide con transition CSS de 0.65s)
+        outgoing.cleanupTimer = setTimeout(() => {
+          // Si el reproductor saliente sigue inactivo, pausarlo para liberar ciclos de decodificación en Android
+          if (activePlayer !== (outgoing === playerA ? 'A' : 'B')) {
+            outgoing.pause();
+          }
+          outgoing.cleanupTimer = null;
+          isTransitioning = false;
+
+          // Si mientras ocurría la transición el usuario scrolleó hacia otra sección, procesar el último destino
+          if (pendingSrc && pendingSrc !== currentSrc) {
+            const queuedTarget = pendingSrc;
+            pendingSrc = null;
+            crossfadeTo(queuedTarget);
+          }
+        }, 650);
+      };
+
+      // Esperar a que el decodificador de Android realmente empiece a emitir fotogramas para evitar parpadeos negros
+      const onPlaying = () => {
+        incoming.removeEventListener('playing', onPlaying);
+        incoming.removeEventListener('canplay', onCanPlay);
+        triggerCrossfade();
+      };
+
+      const onCanPlay = () => {
+        incoming.removeEventListener('playing', onPlaying);
+        incoming.removeEventListener('canplay', onCanPlay);
+        const pPlay = incoming.play();
+        if (pPlay && pPlay.catch) pPlay.catch(() => {});
+        triggerCrossfade();
+      };
+
+      incoming.addEventListener('playing', onPlaying, { once: true });
+      incoming.addEventListener('canplay', onCanPlay, { once: true });
+
+      const playPromise = incoming.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          triggerCrossfade();
+        }).catch((err) => {
+          // Si es AbortError por scroll rápido, no bloquear el motor ni congelar el estado
+          if (err && err.name === 'AbortError') {
+            isTransitioning = false;
+            if (pendingSrc) {
+              const queuedTarget = pendingSrc;
+              pendingSrc = null;
+              crossfadeTo(queuedTarget);
+            }
+            return;
+          }
+          // Para cualquier otra restricción (ej. política de interacción), activar el fundido
+          triggerCrossfade();
+        });
+      }
+
+      // Temporizador de seguridad por si el dispositivo móvil retrasa eventos nativos
+      setTimeout(() => {
+        if (!crossfaded) {
+          triggerCrossfade();
+        }
+      }, 450);
+    }
+
+    // Comprobación de sección activa con aceleración y protección contra saturación de eventos (rAF)
+    let isEvaluating = false;
+    function checkActiveSection() {
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      const vhMid = vh / 2;
+
+      // Si está en la sección de planos, desvanecer videos suavemente y pausar
+      const planosSec = document.getElementById('sec-planos');
+      if (planosSec) {
+        const pRect = planosSec.getBoundingClientRect();
+        if (pRect.top <= vh * 0.45) {
+          bgContainer.style.opacity = '0';
+          dots.forEach(d => {
+            d.classList.toggle('active', d.getAttribute('href') === '#sec-planos');
+          });
+          playerA.pause();
+          playerB.pause();
+          return;
+        }
+      }
+
+      // Localizar la sección de video con mayor alineación al centro del viewport
+      let bestSec = null;
+      let minDistance = Infinity;
+
+      videoSections.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        const secMid = rect.top + rect.height / 2;
+        const dist = Math.abs(secMid - vhMid);
+        if (rect.bottom > 100 && rect.top < vh - 100 && dist < minDistance) {
+          minDistance = dist;
+          bestSec = sec;
         }
       });
+
+      if (bestSec) {
+        bgContainer.style.opacity = '1';
+        const vsrc = bestSec.getAttribute('data-video');
+        const id = bestSec.getAttribute('id');
+
+        dots.forEach(d => {
+          d.classList.toggle('active', d.getAttribute('href') === '#' + id);
+        });
+
+        if (vsrc) {
+          crossfadeTo(vsrc);
+        }
+      }
     }
 
-    // Ejecución inmediata
-    wakeAllVideos();
-    document.addEventListener('DOMContentLoaded', wakeAllVideos);
-    window.addEventListener('load', wakeAllVideos);
+    function throttledCheckActiveSection() {
+      if (!isEvaluating) {
+        isEvaluating = true;
+        requestAnimationFrame(() => {
+          checkActiveSection();
+          isEvaluating = false;
+        });
+      }
+    }
 
-    // Desbloqueo pasivo en cualquier interacción táctil o scroll
-    ['touchstart', 'touchend', 'scroll', 'click'].forEach(evt => {
-      window.addEventListener(evt, wakeAllVideos, { passive: true });
+    // Observador de intersección nativo (eficiente y sin jank en el hilo principal)
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(() => {
+        throttledCheckActiveSection();
+      }, {
+        threshold: [0.15, 0.35, 0.55, 0.75]
+      });
+
+      videoSections.forEach(sec => observer.observe(sec));
+      const planosSec = document.getElementById('sec-planos');
+      if (planosSec) observer.observe(planosSec);
+    }
+
+    // Escucha pasiva de scroll y gestos táctiles mediante requestAnimationFrame
+    window.addEventListener('scroll', throttledCheckActiveSection, { passive: true });
+    window.addEventListener('touchmove', throttledCheckActiveSection, { passive: true });
+
+    // Desbloqueo inicial del reproductor ante el primer gesto del usuario
+    function unlockMedia() {
+      const active = (activePlayer === 'A') ? playerA : playerB;
+      if (active && active.paused) {
+        initPlayer(active);
+        active.play().catch(() => {});
+      }
+    }
+    ['touchstart', 'touchend', 'click'].forEach(evt => {
+      window.addEventListener(evt, unlockMedia, { passive: true });
     });
 
-    // SCROLL SPY PARA INDICADORES LATERALES
-    if ('IntersectionObserver' in window) {
-      const dotObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const id = entry.target.getAttribute('id');
-            dots.forEach(dot => {
-              if (dot.getAttribute('href') === '#' + id) {
-                dot.classList.add('active');
-              } else {
-                dot.classList.remove('active');
-              }
-            });
-          }
-        });
-      }, { threshold: 0.3 });
-
-      sections.forEach(s => dotObserver.observe(s));
-    }
+    document.addEventListener('DOMContentLoaded', () => {
+      checkActiveSection();
+    });
+    window.addEventListener('load', () => {
+      checkActiveSection();
+    });
   </script>
 </body>
 </html>
