@@ -594,7 +594,7 @@
   <!-- DUAL PING-PONG CINEMATIC VIDEO ENGINE (EXACTO 2 DECODIFICADORES EN ANDROID & PC) -->
   <div id="bg-video-container">
     <video id="bg-video-a" class="bg-video-player" src="assets/video/video_entrada.mp4" autoplay loop muted playsinline webkit-playsinline x5-playsinline preload="auto" style="opacity: 1; z-index: 2;"></video>
-    <video id="bg-video-b" class="bg-video-player" loop muted playsinline webkit-playsinline x5-playsinline preload="none" style="opacity: 0; z-index: 1;"></video>
+    <video id="bg-video-b" class="bg-video-player" autoplay loop muted playsinline webkit-playsinline x5-playsinline preload="auto" style="opacity: 0; z-index: 1;"></video>
     <div id="bg-video-overlay"></div>
   </div>
 
@@ -946,7 +946,6 @@
       const alreadyLoaded = incoming.src && (incoming.src.endsWith(newSrc) || incoming.getAttribute('src') === newSrc);
       if (!alreadyLoaded) {
         incoming.src = newSrc;
-        incoming.load();
       } else {
         incoming.currentTime = 0;
       }
@@ -981,50 +980,32 @@
         }, 650);
       };
 
-      // Esperar a que el decodificador de Android realmente empiece a emitir fotogramas para evitar parpadeos negros
-      const onPlaying = () => {
-        incoming.removeEventListener('playing', onPlaying);
-        incoming.removeEventListener('canplay', onCanPlay);
-        triggerCrossfade();
-      };
-
-      const onCanPlay = () => {
-        incoming.removeEventListener('playing', onPlaying);
-        incoming.removeEventListener('canplay', onCanPlay);
-        const pPlay = incoming.play();
-        if (pPlay && pPlay.catch) pPlay.catch(() => {});
-        triggerCrossfade();
-      };
-
-      incoming.addEventListener('playing', onPlaying, { once: true });
-      incoming.addEventListener('canplay', onCanPlay, { once: true });
-
       const playPromise = incoming.play();
       if (playPromise !== undefined) {
-        playPromise.then(() => {
-          triggerCrossfade();
-        }).catch((err) => {
-          // Si es AbortError por scroll rápido, no bloquear el motor ni congelar el estado
-          if (err && err.name === 'AbortError') {
-            isTransitioning = false;
-            if (pendingSrc) {
-              const queuedTarget = pendingSrc;
-              pendingSrc = null;
-              crossfadeTo(queuedTarget);
-            }
-            return;
-          }
-          // Para cualquier otra restricción (ej. política de interacción), activar el fundido
-          triggerCrossfade();
-        });
+        playPromise.catch(() => {});
       }
 
-      // Temporizador de seguridad por si el dispositivo móvil retrasa eventos nativos
-      setTimeout(() => {
-        if (!crossfaded) {
+      // Si el reproductor entrante ya tiene fotogramas decodificados en memoria, fundir inmediatamente
+      if (incoming.readyState >= 2) {
+        triggerCrossfade();
+      } else {
+        // Esperar a que el decodificador de Android realmente emita fotogramas para eliminar por completo parpadeos negros
+        const onFrameReady = () => {
+          incoming.removeEventListener('loadeddata', onFrameReady);
+          incoming.removeEventListener('playing', onFrameReady);
+          incoming.removeEventListener('canplay', onFrameReady);
+          incoming.removeEventListener('timeupdate', onFrameReady);
           triggerCrossfade();
-        }
-      }, 450);
+        };
+
+        incoming.addEventListener('loadeddata', onFrameReady, { once: true });
+        incoming.addEventListener('playing', onFrameReady, { once: true });
+        incoming.addEventListener('canplay', onFrameReady, { once: true });
+        incoming.addEventListener('timeupdate', onFrameReady, { once: true });
+
+        // Temporizador de seguridad extendido por si la red o el códec toma unos milisegundos más
+        setTimeout(onFrameReady, 1200);
+      }
     }
 
     // Comprobación de sección activa con aceleración y protección contra saturación de eventos (rAF)
