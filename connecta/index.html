@@ -201,6 +201,7 @@
     }
 
     .video-section-bg {
+      display: block;
       position: absolute;
       top: 0;
       left: 0;
@@ -845,17 +846,17 @@
     <div class="footer-copy">Soluciones digitales para estructurar, mostrar y hacer crecer su negocio. · connecta.liberomatico.com</div>
   </footer>
 
-    <script>
+      <script>
     // CONTROL DEL INTRO MOTION
     function hideIntro() {
       const intro = document.getElementById('motion-intro');
       if (intro && !intro.classList.contains('vanish')) {
         intro.classList.add('vanish');
       }
-      playActiveVideoOnly();
+      wakeAllVideos();
     }
-    window.addEventListener('load', () => setTimeout(hideIntro, 800));
-    setTimeout(hideIntro, 1800); // Respaldo estricto para redes móviles
+    window.addEventListener('load', () => setTimeout(hideIntro, 600));
+    setTimeout(hideIntro, 1200);
 
     // PLAN TAB SWITCHER
     function switchPlan(type) {
@@ -876,13 +877,12 @@
       }
     }
 
-    // MOTOR EXCLUSIVO DE VIDEO INMERSIVO EN ANDROID Y PC
+    // MOTOR MULTIMEDIA INMERSIVO TOTAL PARA MOBILE Y PC
     const sections = document.querySelectorAll('.video-section, .plans-section-wrapper');
     const dots = document.querySelectorAll('.scroll-dot');
     const allVideos = document.querySelectorAll('video');
 
-    // Inicialización de atributos requeridos por Android Chrome e iOS Safari
-    function setupVideoAttributes() {
+    function wakeAllVideos() {
       allVideos.forEach(v => {
         v.muted = true;
         v.defaultMuted = true;
@@ -891,40 +891,29 @@
         v.setAttribute('playsinline', '');
         v.setAttribute('webkit-playsinline', '');
         v.setAttribute('x5-playsinline', '');
+        if (v.paused) {
+          const p = v.play();
+          if (p && p.catch) p.catch(() => {});
+        }
       });
     }
-    setupVideoAttributes();
 
-    // GESTIÓN DE DECODIFICADOR ÚNICO:
-    // En Android Chrome, reproducir 7 videos al mismo tiempo colapsa el hardware.
-    // Esta función garantiza que SOLO el video que está en pantalla se reproduce,
-    // liberando el 100% de la GPU para fluidez absoluta e inicio instantáneo.
-    let isUpdating = false;
-    function playActiveVideoOnly() {
-      if (isUpdating) return;
-      isUpdating = true;
-      requestAnimationFrame(() => {
-        const vh = window.innerHeight;
-        let activeFound = false;
+    // Ejecución inmediata
+    wakeAllVideos();
+    document.addEventListener('DOMContentLoaded', wakeAllVideos);
+    window.addEventListener('load', wakeAllVideos);
 
-        sections.forEach(sec => {
-          const video = sec.querySelector('video');
-          const rect = sec.getBoundingClientRect();
-          const mid = rect.top + rect.height / 2;
-          const isCurrent = (mid >= 0 && mid <= vh) || (rect.top <= vh * 0.45 && rect.bottom >= vh * 0.55);
+    // Desbloqueo pasivo en cualquier interacción táctil o scroll
+    ['touchstart', 'touchend', 'scroll', 'click'].forEach(evt => {
+      window.addEventListener(evt, wakeAllVideos, { passive: true });
+    });
 
-          if (isCurrent && !activeFound) {
-            activeFound = true;
-            if (video) {
-              video.muted = true;
-              if (video.paused) {
-                const playPromise = video.play();
-                if (playPromise !== undefined) {
-                  playPromise.catch(() => {});
-                }
-              }
-            }
-            const id = sec.getAttribute('id');
+    // SCROLL SPY PARA INDICADORES LATERALES
+    if ('IntersectionObserver' in window) {
+      const dotObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
             dots.forEach(dot => {
               if (dot.getAttribute('href') === '#' + id) {
                 dot.classList.add('active');
@@ -932,37 +921,11 @@
                 dot.classList.remove('active');
               }
             });
-          } else {
-            if (video && !video.paused) {
-              video.pause();
-            }
           }
         });
-        isUpdating = false;
-      });
-    }
+      }, { threshold: 0.3 });
 
-    // Activación pasiva inmediata en cualquier interacción táctil o scroll
-    ['touchstart', 'touchmove', 'touchend', 'scroll', 'click'].forEach(evtName => {
-      window.addEventListener(evtName, playActiveVideoOnly, { passive: true });
-    });
-
-    document.addEventListener('DOMContentLoaded', () => {
-      setupVideoAttributes();
-      playActiveVideoOnly();
-    });
-
-    // IntersectionObserver de alta sensibilidad
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            playActiveVideoOnly();
-          }
-        });
-      }, { threshold: [0.1, 0.4] });
-
-      sections.forEach(s => observer.observe(s));
+      sections.forEach(s => dotObserver.observe(s));
     }
   </script>
 </body>
