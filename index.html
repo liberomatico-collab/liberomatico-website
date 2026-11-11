@@ -8,9 +8,9 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>LiberoMatico // Rodrigo Guillermo Vázquez · Consultoría Estratégica Internacional</title>
+  <title>LiberoMatico // Rodrigo Guillermo Vázquez · Consultor Comercial y Tecnológico · Lima - Perú</title>
 
-  <meta name="description" content="Soluciones digitales para estructurar, mostrar y hacer crecer su negocio. Tecnología digital para hacer su negocio imposible de ignorar y estructurar crecimiento con consistencia." />
+  <meta name="description" content="Soluciones digitales para estructurar, mostrar y hacer crecer su negocio en Lima - Perú. Tecnología digital para hacer su negocio imposible de ignorar y estructurar crecimiento con consistencia." />
 
   
 
@@ -278,23 +278,24 @@
     }
 
     .brand-link {
-
       display: flex;
-
-      align-items: center;
-
-      gap: 0.8rem;
-
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.45rem;
       text-decoration: none;
-
       color: inherit;
-
       text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95);
-
     }
-.brand-logo-frame {
-      width: 60px;
-      height: 60px;
+
+    .brand-header-row {
+      display: flex;
+      align-items: center;
+      gap: 0.68rem;
+    }
+
+    .brand-logo-frame {
+      width: 48px;
+      height: 48px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -308,13 +309,9 @@
     }
 
     .brand-logo-frame img {
-
       width: 100%;
-
       height: 100%;
-
       object-fit: contain;
-
     }
 
     .brand-text {
@@ -330,30 +327,34 @@
     }
 
     .brand-title {
-      font-size: 1.32rem;
-      font-weight: 600;
+      font-size: 1.34rem;
+      font-weight: 700;
       letter-spacing: 0.04em;
       text-transform: uppercase;
       color: var(--text-main);
+      line-height: 1.1;
     }
 
     .brand-consultant-box {
       display: flex;
       flex-direction: column;
-      gap: 0.1rem;
-      margin-top: 0.15rem;
-      line-height: 1.25;
+      gap: 0.14rem;
+      margin-top: 0.05rem;
+      padding-top: 0.45rem;
+      border-top: 1px solid rgba(147, 197, 253, 0.38);
+      width: 100%;
+      line-height: 1.28;
     }
 
     .brand-consultant-name {
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       font-weight: 700;
       color: #ffffff;
       letter-spacing: 0.02em;
     }
 
     .brand-consultant-role {
-      font-size: 0.76rem;
+      font-size: 0.78rem;
       font-weight: 500;
       color: #cbd5e1;
     }
@@ -1461,17 +1462,26 @@
 
       .brand-link {
         width: 100%;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.45rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.2rem;
         min-width: 0;
       }
 
+      .brand-header-row {
+        display: flex;
+        align-items: center;
+        gap: 0.38rem;
+        min-width: 0;
+        width: 100%;
+      }
+
       .brand-logo-frame {
-        width: 36px;
-        height: 36px;
-        min-width: 36px;
-        min-height: 36px;
+        width: 24px;
+        height: 24px;
+        min-width: 24px;
+        min-height: 24px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1488,10 +1498,10 @@
       }
 
       .brand-title {
-        font-size: 0.88rem;
+        font-size: 0.86rem;
         font-weight: 700;
         letter-spacing: 0.03em;
-        line-height: 1.15;
+        line-height: 1.1;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -1505,6 +1515,10 @@
         display: flex;
         flex-direction: column;
         gap: 0.02rem;
+        margin-top: 0;
+        padding-top: 0.2rem;
+        border-top: 1px solid rgba(147, 197, 253, 0.32);
+        width: 100%;
         line-height: 1.15;
         min-width: 0;
         overflow: hidden;
@@ -2264,12 +2278,12 @@
       transform: translateY(-1px);
     }
 
-    /* CUADRÍCULA DE LOS 4 CLIENTES OFICIALES CON LOGOTIPOS (SECCIÓN 5) */
+    /* CUADRÍCULA DE CLIENTES OFICIALES CON LOGOTIPOS (SECCIÓN 5) */
     .clients-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 0.85rem;
-      margin-top: 0.85rem;
+      gap: 0.65rem;
+      margin-top: 0.65rem;
       width: 100%;
     }
 
@@ -2277,13 +2291,13 @@
       background: rgba(6, 11, 22, 0.10);
       border: 2px solid rgba(147, 197, 253, 0.30);
       border-radius: 12px;
-      padding: 0.9rem 1.1rem;
+      padding: 0.68rem 0.95rem;
       backdrop-filter: none;
       -webkit-backdrop-filter: none;
       transition: all 0.25s ease;
       display: flex;
       align-items: center;
-      gap: 0.95rem;
+      gap: 0.85rem;
       text-decoration: none;
       color: inherit;
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.92), 0 1px 3px rgba(0, 0, 0, 0.95);
@@ -2515,22 +2529,17 @@
 
         <a href="#sec-1" class="brand-link">
 
-          <div class="brand-logo-frame">
-
-            <img src="assets/liberomatico-logo-transparent.png" alt="LiberoMatico Logo" />
-
+          <div class="brand-header-row">
+            <div class="brand-logo-frame">
+              <img src="assets/liberomatico-logo-transparent.png" alt="LiberoMatico Logo" />
+            </div>
+            <span class="brand-title">LiberoMatico</span>
           </div>
 
-          <div class="brand-text">
-
-            <span class="brand-title">LiberoMatico</span>
-
-            <div class="brand-consultant-box">
-              <span class="brand-consultant-name">Rodrigo Guillermo Vázquez</span>
-              <span class="brand-consultant-role" data-i18n="left_footer_role">Consultor Comercial y Tecnológico</span>
-              <span class="brand-consultant-ruc">RUC 15615689529</span>
-            </div>
-
+          <div class="brand-consultant-box">
+            <span class="brand-consultant-name">Rodrigo Guillermo Vázquez</span>
+            <span class="brand-consultant-role" data-i18n="left_footer_role">Consultor Comercial y Tecnológico</span>
+            <span class="brand-consultant-ruc" data-i18n="left_footer_ruc">RUC 15615689529 · Lima - Perú</span>
           </div>
 
         </a>
@@ -2563,9 +2572,11 @@
 
             <svg class="flag-icon" viewBox="0 0 640 480" aria-hidden="true">
 
-              <path fill="#c60b1e" d="M0 0h640v480H0z"/>
+              <path fill="#74acdf" d="M0 0h640v480H0z"/>
 
-              <path fill="#ffc400" d="M0 120h640v240H0z"/>
+              <path fill="#fff" d="M0 160h640v160H0z"/>
+
+              <circle cx="320" cy="240" r="42" fill="#f6b40e" stroke="#85340a" stroke-width="6"/>
 
             </svg>
 
@@ -2577,15 +2588,25 @@
 
             <svg class="flag-icon" viewBox="0 0 640 480" aria-hidden="true">
 
-              <path fill="#012169" d="M0 0h640v480H0z"/>
+              <path fill="#bd3d44" d="M0 0h640v480H0"/>
 
-              <path fill="#fff" d="m75 0 245 180L565 0h75v60L435 240l205 180v60h-75L320 300 75 480H0v-60l205-180L0 60V0z"/>
+              <path stroke="#fff" stroke-width="37" d="M0 55.3h640M0 129h640M0 203h640M0 277h640M0 351h640M0 425h640"/>
 
-              <path fill="#c8102e" d="m420 280 220 160v40L380 310zm-200-80L0 40V0l260 190zm380-160L390 190h70l180-130zM0 440l190-140h-70L0 400z"/>
+              <path fill="#192f5d" d="M0 0h296v258.5H0"/>
 
-              <path fill="#fff" d="M240 0h160v480H240zM0 160h640v160H0z"/>
+              <g fill="#fff">
 
-              <path fill="#c8102e" d="M267 0h106v480H267zM0 187h640v106H0z"/>
+                <circle cx="42" cy="38" r="11"/><circle cx="102" cy="38" r="11"/><circle cx="162" cy="38" r="11"/><circle cx="222" cy="38" r="11"/><circle cx="268" cy="38" r="11"/>
+
+                <circle cx="72" cy="78" r="11"/><circle cx="132" cy="78" r="11"/><circle cx="192" cy="78" r="11"/><circle cx="246" cy="78" r="11"/>
+
+                <circle cx="42" cy="118" r="11"/><circle cx="102" cy="118" r="11"/><circle cx="162" cy="118" r="11"/><circle cx="222" cy="118" r="11"/><circle cx="268" cy="118" r="11"/>
+
+                <circle cx="72" cy="158" r="11"/><circle cx="132" cy="158" r="11"/><circle cx="192" cy="158" r="11"/><circle cx="246" cy="158" r="11"/>
+
+                <circle cx="42" cy="198" r="11"/><circle cx="102" cy="198" r="11"/><circle cx="162" cy="198" r="11"/><circle cx="222" cy="198" r="11"/><circle cx="268" cy="198" r="11"/>
+
+              </g>
 
             </svg>
 
@@ -2605,10 +2626,10 @@
 
   <nav class="left-accordion" role="navigation" aria-label="Navegación LiberoMatico">
 
-    <!-- 1. CONÓCENOS -->
+    <!-- 1. INICIO -->
     <div class="acc-group" id="acc-about">
       <a href="#sec-1" class="acc-trigger active" data-sec="1">
-        <span data-i18n="nav_about">Conócenos</span>
+        <span data-i18n="nav_about">Inicio</span>
       </a>
     </div>
 
@@ -2689,6 +2710,7 @@
         <p class="sec-sub-line about-alliance" style="margin-bottom: 0;">
           <span data-i18n="about_sig">LiberoMatico en alianza con</span>
           <a href="https://www.hrylegalconsulting.com" target="_blank" rel="noopener noreferrer" class="about-partner-link">HR &amp; LEGAL Consulting SAC.</a>
+          <span data-i18n="about_loc" style="color: #93c5fd; font-weight: 600;"> · Lima - Perú</span>
         </p>
         <div style="margin-top: 0.65rem;">
           <button type="button" class="btn-audio-listen" id="btnHeroAudioCard" onclick="toggleAudio()" title="Activar Sonido">
@@ -2866,7 +2888,24 @@
             </div>
           </a>
 
-          <!-- 3. Michael Constructora -->
+          <!-- 3. El Ombú -->
+          <a href="elombu/index.html" target="_blank" rel="noopener noreferrer" class="client-card">
+            <div class="client-logo-frame" style="padding: 2px; overflow: hidden;">
+              <img src="assets/clients/logo_elombu.png" alt="Pastelería El Ombú" style="border-radius: 5px; object-fit: cover; width: 100%; height: 100%;" />
+            </div>
+            <div class="client-card-body">
+              <div class="client-card-top">
+                <strong class="client-title" data-i18n="client5_name">Pastelería El Ombú</strong>
+                <span class="client-badge" data-i18n="client5_badge">Gastronomía</span>
+              </div>
+              <span class="client-domain" data-i18n="client5_domain">Tradición desde 1989 &nearr;</span>
+              <p class="client-desc" data-i18n="client5_desc">
+                Fábrica de alfajores artesanales y pastelería tradicional en Lima. Catálogo digital vivencial y pedidos por WhatsApp.
+              </p>
+            </div>
+          </a>
+
+          <!-- 4. Michael Constructora -->
           <a href="michaelconstructora/index.html" target="_blank" rel="noopener noreferrer" class="client-card">
             <div class="client-logo-frame">
               <img src="assets/clients/logo_michael.png" alt="Michael Constructora" />
@@ -3223,7 +3262,7 @@
 
     const translations = {
       es: {
-        nav_about: "Conócenos",
+        nav_about: "Inicio",
         nav_services: "Nuestros Servicios",
         srv_estrategia: "- Estrategia Digital",
         srv_presencia: "- Presencia Digital Web",
@@ -3231,9 +3270,11 @@
         nav_clients: "Nuestros Clientes",
         nav_contact: "Contacto",
         left_footer_role: "Consultor Comercial y Tecnológico",
+        left_footer_ruc: "RUC 15615689529 · Lima - Perú",
         about_title: "Soluciones digitales para hacer crecer su negocio, con criterio comercial y tecnología.",
         about_desc: "Criterio comercial y vocación de escucha para traducir la tecnología y la inteligencia artificial en herramientas sencillas, transparentes y seguras para su empresa.",
         about_sig: "LiberoMatico en alianza con",
+        about_loc: " · Lima - Perú",
         btn_audio_listen: "Escuchar Presentación con Audio",
         sec2_title: "Estrategia Comercial y Digital",
         sec2_intro: "Analizamos su empresa, cliente, competidores y coyuntura para:",
@@ -3277,6 +3318,10 @@
         client4_name: "NDC Constructora",
         client4_domain: "Arquitectura & Obras Civiles",
         client4_desc: "Desarrollo de proyectos constructivos, infraestructura y estructuración técnica comercial.",
+        client5_badge: "Gastronomía",
+        client5_name: "Pastelería El Ombú",
+        client5_domain: "Tradición desde 1989 ↗",
+        client5_desc: "Fábrica de alfajores artesanales y pastelería tradicional en Lima. Catálogo digital vivencial y pedidos por WhatsApp.",
         time_4d: "Plazo: 4 días hábiles",
         time_5_6d: "Plazo: 5 a 6 días hábiles",
         time_3_4d: "Plazo: 3 a 4 días hábiles",
@@ -3293,7 +3338,7 @@
         audio_toggle_on: "Sonido ON"
       },
       en: {
-        nav_about: "About Us",
+        nav_about: "Home",
         nav_services: "Our Services",
         srv_estrategia: "- Digital Strategy",
         srv_presencia: "- Web Digital Presence",
@@ -3301,9 +3346,11 @@
         nav_clients: "Our Clients",
         nav_contact: "Contact us",
         left_footer_role: "Commercial & Technology Consultant",
+        left_footer_ruc: "RUC 15615689529 · Lima - Peru",
         about_title: "Digital solutions to grow your business, with commercial discernment and technology.",
         about_desc: "Commercial discernment and active listening to translate technology and artificial intelligence into simple, transparent, and dependable tools for your business.",
         about_sig: "LiberoMatico in alliance with",
+        about_loc: " · Lima - Peru",
         btn_audio_listen: "Listen to Presentation with Audio",
         sec2_title: "Commercial & Digital Strategy",
         sec2_intro: "We analyze your company, client, competitors, and market context to:",
@@ -3347,6 +3394,10 @@
         client4_name: "NDC Constructora",
         client4_domain: "Architecture & Civil Works",
         client4_desc: "Construction project development, infrastructure, and technical commercial structuring.",
+        client5_badge: "Gastronomy",
+        client5_name: "El Ombú Bakery",
+        client5_domain: "Tradition Since 1989 ↗",
+        client5_desc: "Artisanal alfajores factory and traditional bakery in Lima. Interactive digital catalog and WhatsApp ordering.",
         time_4d: "Timeline: 4 business days",
         time_5_6d: "Timeline: 5 to 6 business days",
         time_3_4d: "Timeline: 3 to 4 business days",
