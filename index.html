@@ -2488,12 +2488,30 @@
       }
       .left-accordion {
         box-sizing: border-box;
-        max-width: calc(100vw - 10.6rem);
+        min-width: 0;
+        width: auto;
+        max-width: calc(100vw - 10.4rem);
+        padding: 0.38rem 0.52rem;
+      }
+      .acc-trigger {
+        font-size: 0.68rem;
+      }
+      .acc-panel {
+        padding-left: 0.42rem;
+        margin-left: 0.1rem;
       }
       .acc-subitem {
-        font-size: 0.64rem;
-        padding: 0.05rem 0;
+        font-size: 0.60rem;
+        padding: 0.04rem 0;
         max-width: 100%;
+      }
+      #sec-5 {
+        padding-bottom: calc(6.8rem + env(safe-area-inset-bottom, 0px));
+      }
+      #sec-5 .sec-bottom-wrap {
+        max-height: calc(100dvh - 14.8rem);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
       }
     }
 </style>
