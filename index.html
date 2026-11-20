@@ -944,18 +944,24 @@
       padding-bottom: 3.8rem;
     }
 
-        .sec-bottom-wrap,
+    .sec-bottom-wrap,
     .sec1-bottom-wrap {
-      max-width: 760px;
+      max-width: 640px;
       margin-top: auto;
       margin-bottom: 0;
       background: rgba(6, 11, 22, 0.10);
       backdrop-filter: none;
       -webkit-backdrop-filter: none;
-      border: 2px solid rgba(147, 197, 253, 0.30);
-      border-radius: 16px;
-      padding: 1.25rem 1.75rem;
+      border: 1px solid rgba(147, 197, 253, 0.24);
+      border-radius: 14px;
+      padding: 0.85rem 1.25rem;
       box-shadow: none;
+    }
+
+    #sec-5 .sec-bottom-wrap {
+      max-width: 760px;
+      max-height: 48vh;
+      overflow-y: auto;
     }
 
     .sec-title-single,
@@ -971,7 +977,7 @@
 
     .sec-sub-line {
 
-      font-size: clamp(0.95rem, 1.2vw, 1.12rem);
+      font-size: clamp(0.84rem, 1.05vw, 0.96rem);
 
       font-weight: 400;
 
@@ -979,11 +985,11 @@
 
       letter-spacing: 0.01em;
 
-      margin-top: 0.65rem;
+      margin-top: 0.35rem;
 
       margin-bottom: 0;
 
-      line-height: 1.45;
+      line-height: 1.35;
 
       text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
 
@@ -998,12 +1004,12 @@
     }
 
     .open-title {
-      font-size: clamp(0.95rem, 1.45vw, 1.36rem);
+      font-size: clamp(0.95rem, 1.3vw, 1.22rem);
       font-weight: 600;
       line-height: 1.28;
       color: #ffffff;
       max-width: 640px;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.35rem;
       letter-spacing: -0.015em;
       text-shadow: 0 3px 18px rgba(0, 0, 0, 0.95);
     }
@@ -1804,9 +1810,9 @@
         background: rgba(6, 11, 22, 0.10);
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
-        border: 1.5px solid rgba(147, 197, 253, 0.32);
+        border: 1px solid rgba(147, 197, 253, 0.24);
         border-radius: 12px;
-        padding: 0.75rem 0.85rem;
+        padding: 0.55rem 0.72rem;
         box-shadow: none;
         overflow: visible;
         max-height: none;
@@ -2063,21 +2069,21 @@
       background: transparent;
       border: none;
       padding: 0;
-      margin-top: 0.45rem;
+      margin-top: 0.28rem;
     }
 
     .service-bullet-list {
       list-style: none;
       padding-left: 0;
-      margin: 0 0 0.55rem 0;
+      margin: 0;
     }
 
     .service-bullet-list li {
       position: relative;
-      padding-left: 1.15rem;
-      margin-bottom: 0.35rem;
-      font-size: 0.88rem;
-      line-height: 1.38;
+      padding-left: 1.05rem;
+      margin-bottom: 0.2rem;
+      font-size: 0.84rem;
+      line-height: 1.32;
       color: #f8fafc;
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.92), 0 1px 3px rgba(0, 0, 0, 0.95);
     }
@@ -2306,22 +2312,22 @@
     .clients-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 0.65rem;
-      margin-top: 0.65rem;
+      gap: 0.48rem;
+      margin-top: 0.48rem;
       width: 100%;
     }
 
     .client-card {
       background: rgba(6, 11, 22, 0.10);
-      border: 2px solid rgba(147, 197, 253, 0.30);
-      border-radius: 12px;
-      padding: 0.68rem 0.95rem;
+      border: 1px solid rgba(147, 197, 253, 0.24);
+      border-radius: 10px;
+      padding: 0.48rem 0.72rem;
       backdrop-filter: none;
       -webkit-backdrop-filter: none;
       transition: all 0.25s ease;
       display: flex;
       align-items: center;
-      gap: 0.85rem;
+      gap: 0.65rem;
       text-decoration: none;
       color: inherit;
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.92), 0 1px 3px rgba(0, 0, 0, 0.95);
@@ -2335,16 +2341,16 @@
     }
 
     .client-logo-frame {
-      width: 64px;
-      height: 52px;
-      min-width: 64px;
+      width: 48px;
+      height: 40px;
+      min-width: 48px;
       display: flex;
       align-items: center;
       justify-content: center;
       background: rgba(6, 11, 22, 0.10);
-      border: 2px solid rgba(147, 197, 253, 0.30);
+      border: 1px solid rgba(147, 197, 253, 0.24);
       border-radius: 8px;
-      padding: 6px;
+      padding: 4px;
       flex-shrink: 0;
     }
 
@@ -2372,7 +2378,7 @@
     }
 
     .client-title {
-      font-size: 0.96rem;
+      font-size: 0.88rem;
       font-weight: 700;
       color: #ffffff;
       line-height: 1.2;
@@ -2397,8 +2403,8 @@
     }
 
     .client-desc {
-      font-size: 0.8rem;
-      line-height: 1.35;
+      font-size: 0.74rem;
+      line-height: 1.25;
       color: #cbd5e1;
       margin: 0;
     }
@@ -2406,44 +2412,44 @@
     @media (max-aspect-ratio: 1/1), (max-width: 960px) {
       .clients-grid {
         grid-template-columns: 1fr;
-        gap: 0.45rem;
-        margin-top: 0.55rem;
+        gap: 0.4rem;
+        margin-top: 0.45rem;
         width: 100%;
       }
       .client-card {
-        padding: 0.52rem 0.68rem;
-        gap: 0.65rem;
+        padding: 0.42rem 0.6rem;
+        gap: 0.55rem;
         border-radius: 10px;
       }
       .client-logo-frame {
-        width: 44px;
-        height: 36px;
-        min-width: 44px;
+        width: 42px;
+        height: 34px;
+        min-width: 42px;
         padding: 3px;
       }
       .client-title {
-        font-size: 0.84rem;
+        font-size: 0.82rem;
       }
       .client-badge {
-        font-size: 0.60rem;
+        font-size: 0.58rem;
         padding: 1px 4px;
       }
       .client-domain {
-        font-size: 0.70rem;
+        font-size: 0.68rem;
       }
       .client-desc {
-        font-size: 0.72rem;
-        line-height: 1.25;
+        font-size: 0.70rem;
+        line-height: 1.22;
       }
       .service-box-inner {
         padding: 0;
-        margin-top: 0.35rem;
+        margin-top: 0.28rem;
       }
       .service-bullet-list li {
-        font-size: 0.78rem;
-        margin-bottom: 0.22rem;
-        line-height: 1.32;
-        padding-left: 0.95rem;
+        font-size: 0.74rem;
+        margin-bottom: 0.16rem;
+        line-height: 1.26;
+        padding-left: 0.9rem;
       }
       .service-bullet-list li::before {
         left: 0.1rem;
@@ -2470,17 +2476,17 @@
         width: 100%;
       }
       .live-demos-strip {
-        gap: 0.35rem;
-        margin-top: 0.45rem;
+        gap: 0.28rem;
+        margin-top: 0.35rem;
       }
       .live-demos-label {
-        font-size: 0.72rem;
+        font-size: 0.68rem;
         width: 100%;
-        margin-bottom: 0.15rem;
+        margin-bottom: 0.1rem;
       }
       .demo-pill-link {
-        padding: 0.22rem 0.55rem;
-        font-size: 0.72rem;
+        padding: 0.16rem 0.46rem;
+        font-size: 0.68rem;
       }
       .sec-bottom-wrap {
         max-height: none;
@@ -2509,7 +2515,7 @@
         padding-bottom: calc(6.8rem + env(safe-area-inset-bottom, 0px));
       }
       #sec-5 .sec-bottom-wrap {
-        max-height: calc(100dvh - 14.8rem);
+        max-height: 44dvh;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
       }
@@ -2735,7 +2741,7 @@
       <span>@liberomatico</span>
     </a>
 
-    <a href="https://wa.me/51966788168?text=Hola%20Rodrigo,%20vi%20tu%20web%20LiberoMatico%20y%20deseo%20coordinar" target="_blank" class="btn-whatsapp-right" title="WhatsApp Línea 1">
+    <a href="https://wa.me/51966788168?text=Hola%20Rodrigo,%20vi%20tu%20web%20LiberoMatico%20y%20deseo%20coordinar" target="_blank" class="btn-whatsapp-right" data-wa-phone="51966788168" title="WhatsApp Línea 1">
 
       <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.073-2.115-.515-1.815-.751-2.986-2.597-3.076-2.717-.091-.12-.734-.976-.734-1.862 0-.886.465-1.321.63-1.498.165-.177.36-.222.48-.222.12 0 .241.001.345.006.11.005.258-.042.404.307.147.349.504 1.228.549 1.318.045.09.075.195.015.315-.06.12-.09.195-.18.3-.09.105-.189.234-.27.315-.09.09-.184.188-.079.368.105.18.468.772 1.005 1.25.692.616 1.275.807 1.455.897.18.09.285.075.39-.045.105-.12.45-.525.57-.705.12-.18.24-.15.405-.09.165.06 1.05.495 1.23.585.18.09.3.135.345.21.045.075.045.435-.099.84z"/></svg>
 
@@ -2743,7 +2749,7 @@
 
     </a>
 
-    <a href="https://wa.me/51963504596?text=Hola%20Rodrigo,%20vi%20tu%20web%20LiberoMatico%20y%20deseo%20coordinar" target="_blank" class="btn-whatsapp-right" title="WhatsApp Línea 2">
+    <a href="https://wa.me/51963504596?text=Hola%20Rodrigo,%20vi%20tu%20web%20LiberoMatico%20y%20deseo%20coordinar" target="_blank" class="btn-whatsapp-right" data-wa-phone="51963504596" title="WhatsApp Línea 2">
 
       <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.073-2.115-.515-1.815-.751-2.986-2.597-3.076-2.717-.091-.12-.734-.976-.734-1.862 0-.886.465-1.321.63-1.498.165-.177.36-.222.48-.222.12 0 .241.001.345.006.11.005.258-.042.404.307.147.349.504 1.228.549 1.318.045.09.075.195.015.315-.06.12-.09.195-.18.3-.09.105-.189.234-.27.315-.09.09-.184.188-.079.368.105.18.468.772 1.005 1.25.692.616 1.275.807 1.455.897.18.09.285.075.39-.045.105-.12.45-.525.57-.705.12-.18.24-.15.405-.09.165.06 1.05.495 1.23.585.18.09.3.135.345.21.045.075.045.435-.099.84z"/></svg>
 
@@ -2782,24 +2788,16 @@
           Estrategia Comercial y Digital
         </h2>
 
-        <p class="sec-sub-line" style="margin-bottom: 0.45rem;" data-i18n="sec2_intro">
-          Analizamos su empresa, cliente, competidores y coyuntura para:
+        <p class="sec-sub-line" style="margin-bottom: 0.35rem;" data-i18n="sec2_intro">
+          Auditamos su empresa, cliente y mercado:
         </p>
 
         <div class="service-box-inner">
           <ul class="service-bullet-list">
-            <li data-i18n="sec2_bullet1">Definir cómo destacar sus diferenciales.</li>
-            <li data-i18n="sec2_bullet2">Creamos guiones persuasivos para su comunicación digital y conversión de ventas.</li>
-            <li data-i18n="sec2_bullet3">Entrega de Dossier Estratégico y de comunicación comercial.</li>
+            <li data-i18n="sec2_bullet1">Definimos su diferencial competitivo real.</li>
+            <li data-i18n="sec2_bullet2">Guiones de cierre para redes y WhatsApp.</li>
+            <li data-i18n="sec2_bullet3">Dossier Estratégico listo para ejecutar.</li>
           </ul>
-
-          <div class="service-footer-bar">
-            <div class="service-actions-row">
-              <a href="https://wa.me/51966788168?text=Hola%20Rodrigo,%20vi%20el%20detalle%20de%20Estrategia%20Digital%20y%20Cierre%20Comercial%20en%20LiberoMatico%20y%20deseo%20consultar%20por%20este%20servicio." target="_blank" rel="noopener noreferrer" class="btn-service-cta" data-i18n="btn_cta_estrategia">
-                Consultar Estrategia Digital por WhatsApp &nearr;
-              </a>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -2813,18 +2811,10 @@
 
         <div class="service-box-inner">
           <ul class="service-bullet-list">
-            <li data-i18n="sec3_bullet1">Catálogos Web vivenciales de inmuebles, productos o servicios, optimizados para todo tipo de dispositivos (smartphones, tablets y computadoras).</li>
-            <li data-i18n="sec3_bullet2">Recorridos inmersivos en video para mostrar sus inmuebles, productos y servicios, con el fin de generar confianza y estimular su demanda.</li>
-            <li data-i18n="sec3_bullet3">Canalización inmediata al WhatsApp de su equipo comercial.</li>
+            <li data-i18n="sec3_bullet1">Catálogos web vivenciales optimizados para móvil y PC.</li>
+            <li data-i18n="sec3_bullet2">Recorridos en video inmersivo que generan confianza.</li>
+            <li data-i18n="sec3_bullet3">Derivación directa al WhatsApp de su equipo comercial.</li>
           </ul>
-
-          <div class="service-footer-bar">
-            <div class="service-actions-row">
-              <a href="https://wa.me/51966788168?text=Hola%20Rodrigo,%20vi%20el%20detalle%20de%20Presencia%20Digital%20Web%20(Cat%C3%A1logo%20Vivencial)%20en%20LiberoMatico%20y%20deseo%20consultar%20por%20este%20servicio." target="_blank" rel="noopener noreferrer" class="btn-service-cta" data-i18n="btn_cta_catalogo">
-                Consultar Presencia Digital Web por WhatsApp &nearr;
-              </a>
-            </div>
-          </div>
         </div>
 
         <div class="live-demos-strip">
@@ -2849,22 +2839,14 @@
         <!-- Cuadro 3: Publicidad Audiovisual -->
         <div class="service-box-inner">
           <ul class="service-bullet-list">
-            <li data-i18n="sec4_bullet1"><strong>Reels Cinematográficos:</strong> Narrativa comercial y vivencial que frena el scroll y genera confianza.</li>
-            <li data-i18n="sec4_bullet2"><strong>Diseño Sonoro y Subtítulos Cinéticos:</strong> Voces en off, animación gráfica y lectura dinámica sin audio.</li>
-            <li data-i18n="sec4_bullet3"><strong>Formatos 9:16 y 16:9:</strong> Para TikTok, Instagram, Facebook, WhatsApp, web y video walls.</li>
+            <li data-i18n="sec4_bullet1"><strong>Reels Cinematográficos:</strong> Narrativa que frena el scroll y convence.</li>
+            <li data-i18n="sec4_bullet2"><strong>Sonido y Subtítulos Cinéticos:</strong> Lectura dinámica de alto impacto.</li>
+            <li data-i18n="sec4_bullet3"><strong>Formatos 9:16 y 16:9:</strong> TikTok, Instagram, WhatsApp y web.</li>
           </ul>
-
-          <div class="service-footer-bar">
-            <div class="service-actions-row">
-              <a href="https://wa.me/51966788168?text=Hola%20Rodrigo,%20vi%20el%20detalle%20de%20Publicidad%20para%20Redes%20en%20LiberoMatico%20y%20deseo%20consultar%20por%20este%20servicio." target="_blank" rel="noopener noreferrer" class="btn-service-cta" data-i18n="btn_cta_publicidad">
-                Consultar Publicidad para Redes por WhatsApp &nearr;
-              </a>
-            </div>
-          </div>
         </div>
 
         <!-- Cuadro 4: Paquete Integral Compacto -->
-        <div class="service-box-inner" style="margin-top: 0.55rem; padding-top: 0.5rem; border-top: 1px solid rgba(147, 197, 253, 0.25);">
+        <div class="service-box-inner" style="margin-top: 0.38rem; padding-top: 0.35rem; border-top: 1px solid rgba(147, 197, 253, 0.25);">
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.4rem;">
             <div class="integral-formula-row" style="margin:0;">
               <strong style="color:#38bdf8; font-size:0.88rem; margin-right:0.2rem;" data-i18n="pkg_integral_label">Paquete Integral:</strong>
@@ -2875,14 +2857,6 @@
               <span class="integral-pill" data-i18n="pkg_item3">Piezas Publicitarias</span>
               <span class="integral-plus">+</span>
               <span class="integral-pill" data-i18n="pkg_item4">Medición de Resultados</span>
-            </div>
-          </div>
-
-          <div class="service-footer-bar" style="margin-top:0.35rem; padding-top:0.35rem; border-top:none;">
-            <div class="service-actions-row">
-              <a href="https://wa.me/51966788168?text=Hola%20Rodrigo,%20vi%20el%20detalle%20del%20Paquete%20Integral%20en%20LiberoMatico%20y%20deseo%20consultar%20por%20este%20servicio." target="_blank" rel="noopener noreferrer" class="btn-service-cta" data-i18n="btn_cta_integral">
-                Consultar Paquete Integral por WhatsApp &nearr;
-              </a>
             </div>
           </div>
         </div>
@@ -2917,7 +2891,24 @@
             </div>
           </a>
 
-          <!-- 2. HR & Legal Consulting -->
+          <!-- 2. Connecta Urban Living -->
+          <a href="connecta/index.html" target="_blank" rel="noopener noreferrer" class="client-card">
+            <div class="client-logo-frame" style="padding: 3px; background: rgba(10, 25, 49, 0.45);">
+              <img src="assets/clients/logo_connecta.png" alt="Connecta Urban Living" style="width: 100%; height: 100%; object-fit: contain;" />
+            </div>
+            <div class="client-card-body">
+              <div class="client-card-top">
+                <strong class="client-title" data-i18n="client7_name">Connecta Urban Living</strong>
+                <span class="client-badge" data-i18n="client7_badge">Inmobiliario</span>
+              </div>
+              <span class="client-domain" data-i18n="client7_domain">Santa Catalina &middot; Lima &nearr;</span>
+              <p class="client-desc" data-i18n="client7_desc">
+                Desarrollo inmobiliario de departamentos y lofts en Santa Catalina. Cat&aacute;logo vivencial interactivo y agendamiento directo.
+              </p>
+            </div>
+          </a>
+
+          <!-- 3. HR & Legal Consulting -->
           <a href="https://www.hrylegalconsulting.com" target="_blank" rel="noopener noreferrer" class="client-card">
             <div class="client-logo-frame">
               <img src="assets/clients/logo_hr_legal.svg" alt="HR &amp; Legal Consulting" />
@@ -3137,6 +3128,36 @@
       updateAudioUI();
     }
 
+    const waSectionMessages = {
+      es: {
+        1: 'Hola Rodrigo, vi tu web LiberoMatico y deseo coordinar',
+        2: 'Hola Rodrigo, vi Estrategia Comercial y Digital en LiberoMatico y deseo coordinar',
+        3: 'Hola Rodrigo, vi Presencia Digital Web en LiberoMatico y deseo coordinar',
+        4: 'Hola Rodrigo, vi Publicidad para Redes y Paquete Integral en LiberoMatico y deseo coordinar',
+        5: 'Hola Rodrigo, vi los proyectos y clientes de LiberoMatico y deseo coordinar'
+      },
+      en: {
+        1: 'Hi Rodrigo, I visited your LiberoMatico website and would like to connect',
+        2: 'Hi Rodrigo, I saw Commercial & Digital Strategy on LiberoMatico and would like to connect',
+        3: 'Hi Rodrigo, I saw Web Digital Presence on LiberoMatico and would like to connect',
+        4: 'Hi Rodrigo, I saw Social Media Advertising & Comprehensive Package on LiberoMatico and would like to connect',
+        5: 'Hi Rodrigo, I saw LiberoMatico projects and clients and would like to connect'
+      }
+    };
+
+    function updateWhatsAppContext(secNumber) {
+      const langKey = (currentLang === 'en') ? 'en' : 'es';
+      const dict = waSectionMessages[langKey] || waSectionMessages.es;
+      const msg = dict[secNumber] || dict[1];
+      const encoded = encodeURIComponent(msg);
+      document.querySelectorAll('.btn-whatsapp-right[data-wa-phone]').forEach((link) => {
+        const phone = link.getAttribute('data-wa-phone');
+        if (phone) {
+          link.setAttribute('href', `https://wa.me/${phone}?text=${encoded}`);
+        }
+      });
+    }
+
     function activateSection(secNumber) {
       const previousSection = currentSection;
       const sectionChanged = (secNumber !== previousSection);
@@ -3212,10 +3233,13 @@
           nav.classList.remove('active');
         }
       });
+
+      updateWhatsAppContext(secNumber);
     }
 
     // Inicializar audio y reproducción en carga
     initHeroAudio();
+    updateWhatsAppContext(currentSection);
 
     // Interceptar clics en enlaces del menú para desplazamiento perfecto y reactivación de saludo en Conócenos
     navItems.forEach((link) => {
@@ -3316,19 +3340,19 @@
         about_loc: " · Lima - Perú",
         btn_audio_listen: "Escuchar Presentación con Audio",
         sec2_title: "Estrategia Comercial y Digital",
-        sec2_intro: "Analizamos su empresa, cliente, competidores y coyuntura para:",
-        sec2_bullet1: "Definir cómo destacar sus diferenciales.",
-        sec2_bullet2: "Creamos guiones persuasivos para su comunicación digital y conversión de ventas.",
-        sec2_bullet3: "Entrega de Dossier Estratégico y de comunicación comercial.",
+        sec2_intro: "Auditamos su empresa, cliente y mercado:",
+        sec2_bullet1: "Definimos su diferencial competitivo real.",
+        sec2_bullet2: "Guiones de cierre para redes y WhatsApp.",
+        sec2_bullet3: "Dossier Estratégico listo para ejecutar.",
         sec3_title: "Presencia Digital Web (Catálogo Vivencial)",
-        sec3_bullet1: "Catálogos Web vivenciales de inmuebles, productos o servicios, optimizados para todo tipo de dispositivos (smartphones, tablets y computadoras).",
-        sec3_bullet2: "Recorridos inmersivos en video para mostrar sus inmuebles, productos y servicios, con el fin de generar confianza y estimular su demanda.",
-        sec3_bullet3: "Canalización inmediata al WhatsApp de su equipo comercial.",
+        sec3_bullet1: "Catálogos web vivenciales optimizados para móvil y PC.",
+        sec3_bullet2: "Recorridos en video inmersivo que generan confianza.",
+        sec3_bullet3: "Derivación directa al WhatsApp de su equipo comercial.",
         demos_label: "Demos en vivo:",
         sec4_title: "Publicidad para Redes",
-        sec4_bullet1: "<strong>Reels Cinematográficos:</strong> Narrativa comercial y vivencial que frena el scroll y genera confianza.",
-        sec4_bullet2: "<strong>Diseño Sonoro y Subtítulos Cinéticos:</strong> Voces en off, animación gráfica y lectura dinámica sin audio.",
-        sec4_bullet3: "<strong>Formatos 9:16 y 16:9:</strong> Para TikTok, Instagram, Facebook, WhatsApp, web y video walls.",
+        sec4_bullet1: "<strong>Reels Cinematográficos:</strong> Narrativa que frena el scroll y convence.",
+        sec4_bullet2: "<strong>Sonido y Subtítulos Cinéticos:</strong> Lectura dinámica de alto impacto.",
+        sec4_bullet3: "<strong>Formatos 9:16 y 16:9:</strong> TikTok, Instagram, WhatsApp y web.",
         pkg_integral_label: "Paquete Integral:",
         pkg_item1: "Estrategia",
         pkg_item2: "Web con Catálogo",
@@ -3365,6 +3389,10 @@
         client6_name: "Roxana Store",
         client6_domain: "Joyería & Accesorios ↗",
         client6_desc: "Catálogo web interactivo con carrito de compras y pedidos directos a WhatsApp para joyería fina y accesorios.",
+        client7_badge: "Inmobiliario",
+        client7_name: "Connecta Urban Living",
+        client7_domain: "Santa Catalina · Lima ↗",
+        client7_desc: "Desarrollo inmobiliario de departamentos y lofts en Santa Catalina. Catálogo vivencial interactivo y agendamiento directo.",
         time_4d: "Plazo: 4 días hábiles",
         time_5_6d: "Plazo: 5 a 6 días hábiles",
         time_3_4d: "Plazo: 3 a 4 días hábiles",
@@ -3397,19 +3425,19 @@
         about_loc: " · Lima - Peru",
         btn_audio_listen: "Listen to Presentation with Audio",
         sec2_title: "Commercial & Digital Strategy",
-        sec2_intro: "We analyze your company, client, competitors, and market context to:",
-        sec2_bullet1: "Define how to highlight your unique differentials.",
-        sec2_bullet2: "We craft persuasive scripts for your digital communication and sales conversion.",
-        sec2_bullet3: "Delivery of Strategic and Commercial Communication Dossier.",
+        sec2_intro: "We audit your business, client, and market:",
+        sec2_bullet1: "Define your real competitive edge.",
+        sec2_bullet2: "Closing scripts for social media and WhatsApp.",
+        sec2_bullet3: "Action-ready Strategic Dossier.",
         sec3_title: "Web Digital Presence (Interactive Showcase)",
-        sec3_bullet1: "Experiential web catalogs for properties, products, or services, optimized for all devices (smartphones, tablets, and computers).",
-        sec3_bullet2: "Immersive video tours to showcase your properties, products, and services, building trust and stimulating demand.",
-        sec3_bullet3: "Immediate channeling to your sales team's WhatsApp.",
+        sec3_bullet1: "Experiential web catalogs built for mobile and desktop.",
+        sec3_bullet2: "Immersive video tours that build immediate trust.",
+        sec3_bullet3: "Direct handoff to your sales team's WhatsApp.",
         demos_label: "Live Demos:",
         sec4_title: "Social Media Advertising",
-        sec4_bullet1: "<strong>Cinematic Reels:</strong> Commercial and experiential storytelling that stops the scroll and builds trust.",
-        sec4_bullet2: "<strong>Sound Design & Kinetic Subtitles:</strong> Voiceovers, motion graphics, and dynamic readability without sound.",
-        sec4_bullet3: "<strong>9:16 & 16:9 Formats:</strong> For TikTok, Instagram, Facebook, WhatsApp, web, and video walls.",
+        sec4_bullet1: "<strong>Cinematic Reels:</strong> Storytelling that stops the scroll and builds trust.",
+        sec4_bullet2: "<strong>Sound &amp; Kinetic Subtitles:</strong> High-impact visual readability.",
+        sec4_bullet3: "<strong>9:16 &amp; 16:9 Formats:</strong> TikTok, Instagram, WhatsApp, and web.",
         pkg_integral_label: "Comprehensive Package:",
         pkg_item1: "Strategy",
         pkg_item2: "Web + Catalog",
@@ -3446,6 +3474,10 @@
         client6_name: "Roxana Store",
         client6_domain: "Jewelry & Accessories ↗",
         client6_desc: "Interactive web catalog with shopping bag and direct WhatsApp order channeling for fine jewelry and accessories.",
+        client7_badge: "Real Estate",
+        client7_name: "Connecta Urban Living",
+        client7_domain: "Santa Catalina · Lima ↗",
+        client7_desc: "Residential development of apartments and lofts in Santa Catalina. Interactive digital showcase and direct booking.",
         time_4d: "Timeline: 4 business days",
         time_5_6d: "Timeline: 5 to 6 business days",
         time_3_4d: "Timeline: 3 to 4 business days",
@@ -3578,6 +3610,8 @@
       }
 
       document.documentElement.lang = lang;
+
+      updateWhatsAppContext(currentSection);
 
     }
 
