@@ -1,0 +1,3 @@
+INSTRUCCIONES PARA EL VIDEO DEL HERO VIVENCIAL:
+Guarda aquí tu video exportado de Google Flow con el nombre exacto: hero.mp4
+Al recargar la web, detectará assets/video/hero.mp4 automáticamente y lo reproducirá en el Hero con control de sonido.

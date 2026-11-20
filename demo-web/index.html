@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kaffata Coffee Market · Café de Especialidad &amp; Soluciones B2B · Surco, Lima</title>
+  <meta name="description" content="Kaffata Coffee Market en Santiago de Surco. Diez orígenes trazables de café peruano de altura, equipamiento profesional Gaggia y Mahlkönig, kits corporativos y barra de especialidad." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Header Sticky -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="#hero" class="brand-mark" aria-label="Kaffata Coffee Market Inicio">
+        <img src="assets/logo-kaffata-tree.png" alt="Logo Kaffata Coffee Market" class="brand-logo" />
+        <div class="brand-text">
+          <span class="brand-name">Kaffata</span>
+          <span class="brand-sub">COFFEE MARKET</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Navegación principal">
+        <a href="#b2b">Empresas B2B</a>
+        <a href="#origenes">10 Orígenes</a>
+        <a href="#market">Coffee Market</a>
+        <a href="#barra">Barra</a>
+        <a href="#sedes">Sedes</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="cart-trigger" id="openCartBtn" type="button" aria-label="Abrir mi pedido">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+            <path d="M3 6h18" />
+            <path d="M16 10a4 4 0 0 1-8 0" />
+          </svg>
+          <span class="cart-label">Mi Pedido</span>
+          <span class="cart-badge" id="cartCount">0</span>
+        </button>
+
+        <a href="https://wa.me/51993357804?text=Hola%20Kaffata%2C%20quisiera%20conversar%20sobre%20sus%20caf%C3%A9s%20y%20servicios." target="_blank" rel="noopener noreferrer" class="btn btn-espresso btn-sm header-wa">
+          WhatsApp
+        </a>
+
+        <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Abrir menú" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sección 1: Hero Vivencial -->
+  <section class="hero" id="hero">
+    <!-- Video nativo: al guardar assets/video/hero.mp4 se activa automáticamente -->
+    <video id="heroVideo" class="hero-video" autoplay muted loop playsinline preload="metadata">
+      <source src="assets/video/hero.mp4" type="video/mp4" />
+    </video>
+
+    <!-- Secuencia cinematográfica de 2 actos (activa por defecto hasta insertar hero.mp4) -->
+    <div class="hero-fallback" id="heroFallback">
+      <div class="hero-slide is-active" data-scene="0">
+        <img src="assets/hero-scene-1.png" alt="Espresso cayendo en taza de cerámica Kaffata con vapor caliente" class="hero-img kb-zoom" />
+        <div class="steam-layer" aria-hidden="true">
+          <span class="steam-wisp s1"></span>
+          <span class="steam-wisp s2"></span>
+          <span class="steam-wisp s3"></span>
+        </div>
+      </div>
+      <div class="hero-slide" data-scene="1">
+        <img src="assets/hero-scene-2.png" alt="Dos amigos riendo y disfrutando café de especialidad en Kaffata" class="hero-img kb-pan" />
+      </div>
+    </div>
+
+    <div class="hero-scrim" aria-hidden="true"></div>
+
+    <!-- Controles discretos en esquina superior derecha -->
+    <div class="hero-controls">
+      <div class="scene-switcher" id="sceneSwitcher" role="tablist" aria-label="Escenas del Hero Vivencial">
+        <button type="button" class="scene-pill is-active" data-target="0" role="tab" aria-selected="true">
+          01 · El Ritual del Vertido
+        </button>
+        <button type="button" class="scene-pill" data-target="1" role="tab" aria-selected="false">
+          02 · El Momento Compartido
+        </button>
+      </div>
+      <button type="button" class="sound-toggle" id="soundToggleBtn" aria-pressed="false">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+          <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+        </svg>
+        <span id="soundLabel">Activar Sonido</span>
+      </button>
+    </div>
+
+    <!-- Contenido anclado al tercio inferior para mantener despejados la taza y los rostros -->
+    <div class="container hero-content">
+      <span class="hero-kicker">SANTIAGO DE SURCO · LIMA · CAFÉ DE ESPECIALIDAD</span>
+      <h1 class="hero-title">Sensaciones, sabores y emociones en cada taza.</h1>
+      <p class="hero-subtitle">
+        Diez orígenes trazables de altura, equipamiento profesional y experiencias de café de autor para tu empresa y tu ritual diario.
+      </p>
+      <div class="hero-ctas">
+        <a href="#b2b" class="btn btn-espresso">Soluciones Empresas B2B</a>
+        <a href="#origenes" class="btn btn-glass">Explorar los 10 Orígenes</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección 2: Manifiesto Sensorial y Confianza -->
+  <section class="section philosophy-section" id="filosofia">
+    <div class="container philosophy-grid">
+      <div class="philosophy-media reveal">
+        <div class="photo-frame">
+          <img src="assets/tienda-tolvas.jpg" alt="Pared iluminada de Kaffata con 10 tolvas de café a granel y árbol insignia" loading="lazy" />
+        </div>
+        <span class="photo-caption">Tienda 154 · Chacarilla, Santiago de Surco</span>
+      </div>
+
+      <div class="philosophy-copy reveal">
+        <span class="section-eyebrow">MANIFIESTO KAFFATA</span>
+        <blockquote class="brand-quote">
+          “Su aroma colmará tu ambiente de notas suaves pero profundas y su sabor especial cantará alegorías llenas de energía para ti.”
+        </blockquote>
+        <p class="lead-text">
+          En Kaffata Coffee Market seleccionamos lotes peruanos de altura con trazabilidad de finca, variedad y caficultor, combinando la precisión de la barra profesional con la cercanía del mercado de barrio.
+        </p>
+
+        <div class="trust-metrics">
+          <div class="metric-card">
+            <span class="metric-value">4.9 ★</span>
+            <span class="metric-label">Calificación verificada en Google</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-value">10 Orígenes</span>
+            <span class="metric-label">Trazabilidad por finca y altura</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-value">2 Sedes</span>
+            <span class="metric-label">Chacarilla y Mercado Monterrico</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección 3: Kaffata para Empresas y Negocios (B2B Protagonista) -->
+  <section class="section b2b-section" id="b2b">
+    <div class="container">
+      <div class="section-header-split">
+        <div>
+          <span class="badge-seasonal">CAMPAÑA CORPORATIVA NOV – DIC</span>
+          <h2 class="section-title">Kaffata para Empresas y Negocios</h2>
+        </div>
+        <p class="section-intro">
+          Lleva café peruano de especialidad, máquinas de gama y regalos corporativos memorables a tu oficina, restaurante, hotel o directorio con atención directa.
+        </p>
+      </div>
+
+      <div class="b2b-cards-grid">
+        <article class="b2b-card reveal">
+          <div class="card-media">
+            <img src="assets/tienda-tolvas.jpg" alt="Abastecimiento de café en grano por volumen en tolvas Kaffata" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <span class="card-tag">PROVISIÓN CONTINUA</span>
+            <h3>Abastecimiento por Volumen</h3>
+            <p>
+              Suministro semanal o mensual por kilo para oficinas, directorios, restaurantes y hoteles boutique. Entregamos grano entero o molienda calibrada exactamente para el equipo de tu empresa.
+            </p>
+          </div>
+        </article>
+
+        <article class="b2b-card reveal">
+          <div class="card-media">
+            <img src="assets/b2b-gaggia.jpg" alt="Cafetera profesional Gaggia y molino Mahlkönig en tienda Kaffata" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <span class="card-tag">EQUIPAMIENTO DE GAMA</span>
+            <h3>Equipos Gaggia &amp; Mahlkönig</h3>
+            <p>
+              Venta y asesoría en cafeteras superautomáticas y espresso Gaggia, molinos profesionales de precisión y puesta a punto integral para barras corporativas y hostelería.
+            </p>
+          </div>
+        </article>
+
+        <article class="b2b-card reveal">
+          <div class="card-media card-media-split">
+            <img src="assets/b2b-termos.jpg" alt="Termos térmicos weCOOL para kits corporativos" loading="lazy" />
+            <img src="assets/miel-chanchamayo.jpg" alt="Miel pura de abejas de Chanchamayo para regalos de fin de año" class="media-inset" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <span class="card-tag">FIN DE AÑO Y EVENTOS</span>
+            <h3>Kits y Regalos Corporativos</h3>
+            <p>
+              Cajas ejecutivas de fin de año armadas a medida con café de autor en bolsa kraft, miel pura de Chanchamayo, termos térmicos weCOOL y métodos Bialetti o Chemex.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <!-- Cotizador Rápido B2B -->
+      <div class="b2b-quoter reveal">
+        <div class="quoter-head">
+          <div>
+            <span class="section-eyebrow">COTIZADOR B2B INMEDIATO</span>
+            <h3>Arma tu requerimiento empresarial en segundos</h3>
+          </div>
+          <span class="quoter-note">Respuesta directa de gerencia vía WhatsApp</span>
+        </div>
+
+        <form id="b2bForm" class="quoter-form">
+          <div class="quoter-field">
+            <label for="b2bLine">Línea de solución</label>
+            <select id="b2bLine" name="b2bLine">
+              <option value="Provisión de Café por Kilo">Provisión de Café por Kilo</option>
+              <option value="Equipos Gaggia / Mahlkönig">Equipos Gaggia / Mahlkönig</option>
+              <option value="Kits Corporativos Fin de Año">Kits Corporativos Fin de Año</option>
+            </select>
+          </div>
+
+          <div class="quoter-field">
+            <label for="b2bScale">Escala de atención</label>
+            <select id="b2bScale" name="b2bScale">
+              <option value="Oficina / Equipo (5–15 personas)">Oficina / Equipo (5–15 personas)</option>
+              <option value="Empresa / Restaurante (15–50 personas)">Empresa / Restaurante (15–50 personas)</option>
+              <option value="Corporativo (50+ personas)">Corporativo (50+ personas)</option>
+            </select>
+          </div>
+
+          <div class="quoter-field">
+            <label for="b2bCompany">Empresa o contacto (opcional)</label>
+            <input type="text" id="b2bCompany" name="b2bCompany" placeholder="Ej. Estudio / Hotel / Empresa" />
+          </div>
+
+          <div class="quoter-submit">
+            <button type="submit" class="btn btn-espresso btn-full">
+              Solicitar Propuesta B2B por WhatsApp
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección 4: Selector Sensorial de Orígenes (10 Orígenes Verificados) -->
+  <section class="section origins-section" id="origenes">
+    <div class="container">
+      <div class="section-header-center">
+        <span class="section-eyebrow">ELIGE TU SENSACIÓN</span>
+        <h2 class="section-title">Nuestros 10 Orígenes a Granel</h2>
+        <p class="section-intro">
+          Selecciona el perfil de sabor que conecta contigo, elige el gramaje exacto desde 150g hasta 1 kilo y la molienda ideal para tu método.
+        </p>
+      </div>
+
+      <div class="filter-pills" id="originFilters" role="tablist" aria-label="Filtrar orígenes por perfil sensorial">
+        <button type="button" class="pill is-active" data-filter="all">Todos (10)</button>
+        <button type="button" class="pill" data-filter="firma">Firma &amp; Intenso</button>
+        <button type="button" class="pill" data-filter="chocolatoso">Chocolatoso &amp; Dulce</button>
+        <button type="button" class="pill" data-filter="citrico">Cítrico &amp; Frutal</button>
+        <button type="button" class="pill" data-filter="clasico">Clásicos &amp; Descafeinado</button>
+      </div>
+
+      <div class="origins-grid" id="originsGrid">
+        <!-- Renderizado dinámico con los 10 orígenes reales en app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección 5: El Ritual en Casa / Coffee Market -->
+  <section class="section market-section" id="market">
+    <div class="container">
+      <div class="section-header-split">
+        <div>
+          <span class="section-eyebrow">EQUIPAMIENTO &amp; DESPENSA</span>
+          <h2 class="section-title">Coffee Market: El Ritual en Casa</h2>
+        </div>
+        <p class="section-intro">
+          Todo lo necesario para replicar la extracción de cafetería en tu cocina u oficina, con asesoría directa de nuestros baristas.
+        </p>
+      </div>
+
+      <div class="market-grid">
+        <article class="market-card reveal">
+          <div class="card-media">
+            <img src="assets/market-metodos.jpg" alt="Métodos de extracción manual Chemex y V60 en tienda Kaffata" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <h3>Métodos Chemex &amp; V60</h3>
+            <p>Jarras Chemex originales, conos V60 en cerámica y vidrio, y filtros de papel Brew Rite y Hario.</p>
+            <a href="https://wa.me/51993357804?text=Hola%20Kaffata%2C%20quisiera%20consultar%20disponibilidad%20y%20precios%20de%20m%C3%A9todos%20Chemex%2C%20V60%20y%20filtros." target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">Consultar por WhatsApp</a>
+          </div>
+        </article>
+
+        <article class="market-card reveal">
+          <div class="card-media">
+            <img src="assets/market-bialetti.jpg" alt="Cafeteras moka italianas Bialetti y AeroPress" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <h3>Bialetti Moka &amp; AeroPress</h3>
+            <p>Cafeteras italianas Bialetti de colección, prensas francesas y kits AeroPress listos para viaje u hogar.</p>
+            <a href="https://wa.me/51993357804?text=Hola%20Kaffata%2C%20quisiera%20consultar%20modelos%20de%20cafeteras%20Bialetti%20y%20AeroPress." target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">Consultar por WhatsApp</a>
+          </div>
+        </article>
+
+        <article class="market-card reveal">
+          <div class="card-media">
+            <img src="assets/market-hario.jpg" alt="Tetera cuello de cisne Hario V60 en acero inoxidable" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <h3>Tetera Hario Cuello de Cisne</h3>
+            <p>Vertido controlado de precisión en acero inoxidable para resaltar la dulzura y claridad de tus filtrados.</p>
+            <a href="https://wa.me/51993357804?text=Hola%20Kaffata%2C%20me%20interesa%20la%20tetera%20cuello%20de%20cisne%20Hario%20V60." target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">Consultar por WhatsApp</a>
+          </div>
+        </article>
+
+        <article class="market-card reveal">
+          <div class="card-media">
+            <img src="assets/market-balanzas.jpg" alt="Balanzas digitales con timer para café de especialidad" loading="lazy" />
+          </div>
+          <div class="card-body">
+            <h3>Balanzas con Timer &amp; Barista</h3>
+            <p>Balanzas digitales de precisión, tampers, jarras de leche, molinos manuales y hornillas eléctricas.</p>
+            <a href="https://wa.me/51993357804?text=Hola%20Kaffata%2C%20quisiera%20consultar%20por%20balanzas%20con%20timer%20y%20accesorios%20barista." target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">Consultar por WhatsApp</a>
+          </div>
+        </article>
+      </div>
+
+      <!-- Tira complementaria: Miel de Chanchamayo y Termos weCOOL -->
+      <div class="complements-strip reveal">
+        <div class="complement-item">
+          <img src="assets/miel-chanchamayo.jpg" alt="Miel pura de abejas Chanchamayo" loading="lazy" />
+          <div class="complement-info">
+            <span class="card-tag">COMPLEMENTO ARTESANAL</span>
+            <h4>Miel Pura de Chanchamayo</h4>
+            <p>Cosecha multifloral de valle selva central para endulzar bebidas o sumar en cajas de regalo.</p>
+            <a href="https://wa.me/51993357804?text=Hola%20Kaffata%2C%20quisiera%20consultar%20por%20la%20Miel%20de%20Chanchamayo." target="_blank" rel="noopener noreferrer" class="text-link">Consultar disponibilidad →</a>
+          </div>
+        </div>
+
+        <div class="complement-item">
+          <img src="assets/b2b-termos.jpg" alt="Termos y vasos térmicos weCOOL en varios colores" loading="lazy" />
+          <div class="complement-info">
+            <span class="card-tag">PARA LLEVAR</span>
+            <h4>Termos Térmicos weCOOL</h4>
+            <p>Vasos y termos térmicos de acero en paleta pastel y mate para conservar la temperatura por horas.</p>
+            <a href="https://wa.me/51993357804?text=Hola%20Kaffata%2C%20quisiera%20ver%20colores%20disponibles%20de%20termos%20weCOOL." target="_blank" rel="noopener noreferrer" class="text-link">Consultar colores →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección 6: Carta Real de Barra -->
+  <section class="section bar-section" id="barra">
+    <div class="container bar-layout">
+      <div class="bar-visual reveal">
+        <div class="bar-photo-wrap">
+          <img src="assets/bebida-barra.jpg" alt="Bebida fría de especialidad servida en la barra de Kaffata" loading="lazy" />
+        </div>
+        <div class="bar-note-card">
+          <strong>Preparación al paso o en barra</strong>
+          <span>Pide desde aquí y recoge recién extraído en Chacarilla o Monterrico.</span>
+        </div>
+      </div>
+
+      <div class="bar-menu-panel reveal">
+        <span class="section-eyebrow">BARRA DE ESPECIALIDAD</span>
+        <h2 class="section-title">Carta de Barra</h2>
+        <p class="section-intro">
+          Extracciones con nuestros granos de altura y bebidas de autor listas en minutos.
+        </p>
+
+        <div class="bar-tabs" id="barTabs" role="tablist">
+          <button type="button" class="bar-tab is-active" data-tab="calientes" role="tab" aria-selected="true">Bebidas Calientes</button>
+          <button type="button" class="bar-tab" data-tab="frias" role="tab" aria-selected="false">Bebidas Frías</button>
+          <button type="button" class="bar-tab" data-tab="extras" role="tab" aria-selected="false">Adicionales</button>
+        </div>
+
+        <div class="bar-list" id="barList">
+          <!-- Renderizado dinámico de carta real desde app.js -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección 7: Nuestras 2 Sedes en Surco -->
+  <section class="section locations-section" id="sedes">
+    <div class="container">
+      <div class="section-header-center">
+        <span class="section-eyebrow">VISÍTANOS EN SANTIAGO DE SURCO</span>
+        <h2 class="section-title">Nuestras 2 Sedes</h2>
+        <p class="section-intro">
+          Atención directa todos los días para disfrutar tu bebida en barra, moler tu café al instante o elegir tu equipo.
+        </p>
+      </div>
+
+      <div class="locations-gallery reveal">
+        <div class="gallery-frame">
+          <img src="assets/fachada-chacarilla.jpg" alt="Fachada Kaffata Coffee Market Tienda 154 Chacarilla" loading="lazy" />
+          <span class="gallery-tag">Fachada · C.C. Chacarilla Tienda 154</span>
+        </div>
+        <div class="gallery-frame">
+          <img src="assets/barra-equipo.jpg" alt="Atención personalizada en la barra de Kaffata Coffee Market" loading="lazy" />
+          <span class="gallery-tag">Atención cercana en barra todos los días</span>
+        </div>
+      </div>
+
+      <div class="locations-cards">
+        <article class="location-card reveal">
+          <div class="loc-header">
+            <span class="card-tag">SEDE CHACARILLA</span>
+            <h3>Centro Comercial Chacarilla · Tienda 154</h3>
+          </div>
+          <ul class="loc-details">
+            <li><strong>Dirección:</strong> Av. Primavera 246, Tienda 154 (frente al Wong de Chacarilla), Santiago de Surco</li>
+            <li><strong>Horario:</strong> Lunes a Domingo · 8:00 a.m. – 8:00 p.m.</li>
+            <li><strong>WhatsApp:</strong> +51 993 357 804</li>
+          </ul>
+          <div class="loc-actions">
+            <a href="https://www.google.com/maps/search/?api=1&query=Av.+Primavera+246+Santiago+de+Surco+Lima" target="_blank" rel="noopener noreferrer" class="btn btn-espresso btn-sm">Cómo llegar (Maps)</a>
+            <a href="https://wa.me/51993357804?text=Hola%20Kaffata%20Chacarilla%2C%20quisiera%20hacer%20una%20consulta." target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">Escribir por WhatsApp</a>
+          </div>
+        </article>
+
+        <article class="location-card reveal">
+          <div class="loc-header">
+            <span class="card-tag">SEDE MONTERRICO</span>
+            <h3>Mercado C. C. Monterrico · Puesto 47</h3>
+          </div>
+          <ul class="loc-details">
+            <li><strong>Dirección:</strong> Av. La Encalada 704, Puesto interior 47, Santiago de Surco</li>
+            <li><strong>Horario:</strong> Lunes a Domingo · 8:00 a.m. – 7:15 p.m.</li>
+            <li><strong>WhatsApp:</strong> +51 993 357 804</li>
+          </ul>
+          <div class="loc-actions">
+            <a href="https://www.google.com/maps/search/?api=1&query=Av.+La+Encalada+704+Santiago+de+Surco+Lima" target="_blank" rel="noopener noreferrer" class="btn btn-espresso btn-sm">Cómo llegar (Maps)</a>
+            <a href="https://wa.me/51993357804?text=Hola%20Kaffata%20Monterrico%2C%20quisiera%20hacer%20una%20consulta." target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">Escribir por WhatsApp</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="assets/logo-kaffata-tree.png" alt="Logo Kaffata" class="footer-logo" />
+        <div>
+          <strong class="footer-name">Kaffata Coffee Market</strong>
+          <p class="footer-tagline">Café peruano de especialidad, equipamiento y experiencias corporativas en Santiago de Surco.</p>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <a href="https://www.instagram.com/kaffata_coffee_market/" target="_blank" rel="noopener noreferrer">@kaffata_coffee_market</a>
+        <span>·</span>
+        <a href="https://wa.me/51993357804" target="_blank" rel="noopener noreferrer">WhatsApp +51 993 357 804</a>
+      </div>
+
+      <div class="footer-credit">
+        <span>Demo Interactiva · </span>
+        <a href="https://www.liberomatico.com" target="_blank" rel="noopener noreferrer"><strong>LiberoMatico</strong> (www.liberomatico.com)</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botón flotante móvil rápido para ver pedido -->
+  <button type="button" class="floating-cart-btn" id="floatingCartBtn" aria-label="Ver pedido actual">
+    <span>Ver Mi Pedido</span>
+    <span class="floating-cart-meta" id="floatingCartMeta">0 ítems · S/ 0.00</span>
+  </button>
+
+  <!-- Drawer Lateral de Pedido -->
+  <div class="drawer-backdrop" id="drawerBackdrop" aria-hidden="true"></div>
+  <aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="cartDrawerTitle">
+    <div class="drawer-header">
+      <div>
+        <span class="section-eyebrow">PEDIDO DIRECTO</span>
+        <h3 id="cartDrawerTitle">Tu Selección Kaffata</h3>
+      </div>
+      <button type="button" class="drawer-close" id="closeCartBtn" aria-label="Cerrar panel de pedido">✕</button>
+    </div>
+
+    <div class="drawer-body" id="cartItemsContainer">
+      <!-- Renderizado dinámico de ítems o guía de inicio -->
+    </div>
+
+    <div class="drawer-footer">
+      <div class="delivery-selector">
+        <label for="deliveryMode">Modalidad de entrega</label>
+        <select id="deliveryMode">
+          <option value="Delivery Surco / Lima">Delivery Surco / Lima</option>
+          <option value="Recojo en Chacarilla (Av. Primavera 246, Tienda 154)">Recojo en Chacarilla (Tienda 154)</option>
+          <option value="Recojo en Monterrico (Av. La Encalada 704, Puesto 47)">Recojo en Monterrico (Puesto 47)</option>
+        </select>
+      </div>
+
+      <div class="drawer-subtotal">
+        <span>Subtotal estimado</span>
+        <strong id="cartSubtotal">S/ 0.00</strong>
+      </div>
+
+      <button type="button" class="btn btn-espresso btn-full" id="sendWhatsappOrderBtn">
+        Enviar Pedido por WhatsApp (+51 993 357 804)
+      </button>
+    </div>
+  </aside>
+
+  <!-- Toast de confirmación -->
+  <div class="toast" id="toastNotice" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
