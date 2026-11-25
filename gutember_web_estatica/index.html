@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GUTEMBER | Trajes y Camisas a Medida · San Isidro</title>
+  <meta name="description" content="Sastrería Gutember en Av. Canaval y Moreyra 238, San Isidro. Trajes, camisas y blazers a medida con telas Huddersfield, Albini 1876 y Creditex." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="#inicio" class="brand-lockup" aria-label="Gutember Sastrería">
+        <svg class="brand-crest" viewBox="0 0 64 74" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M18 14L24 6L32 13L40 6L46 14L43 21H21L18 14Z" fill="currentColor" />
+          <circle cx="24" cy="5" r="2.2" fill="currentColor" />
+          <circle cx="32" cy="4" r="2.5" fill="currentColor" />
+          <circle cx="40" cy="5" r="2.2" fill="currentColor" />
+          <path d="M12 27L32 21L52 27L47 56L32 69L17 56L12 27Z" stroke="currentColor" stroke-width="2.5" />
+          <path d="M23 36L32 33L41 36L39 45L32 49L25 45L23 36Z" fill="currentColor" opacity="0.92" />
+          <path d="M27 51L32 54L37 51L35 58L32 60L29 58L27 51Z" fill="currentColor" opacity="0.75" />
+        </svg>
+        <span>
+          <span class="brand-name">GUTEMBER</span>
+          <span class="brand-sub">Sastrería · San Isidro</span>
+        </span>
+      </a>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a href="#coleccion">Colección</a>
+        <a href="#telas">Tejidos</a>
+        <a href="#configurador">A Medida</a>
+        <a href="#atelier">Atelier</a>
+      </nav>
+
+      <a href="https://wa.me/51958825440?text=Hola%20Sastrer%C3%ADa%20Gutember%2C%20quisiera%20agendar%20una%20visita." target="_blank" rel="noopener noreferrer" class="btn-header-cta">WhatsApp</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Visual (6 escenas 4K limpias, listas para micro-videos MP4) -->
+    <section class="hero-reel" id="inicio">
+      <div class="reel-stage">
+        <div class="reel-slide active"><img src="assets/editorial/01_trazo_tiza_4k.jpg" alt="Trazo con tiza en el taller Gutember" /></div>
+        <div class="reel-slide"><img src="assets/editorial/05_corte_cenital_4k.jpg" alt="Corte artesanal con tijeras" /></div>
+        <div class="reel-slide"><img src="assets/editorial/08_costura_dedal_4k.jpg" alt="Costura a mano con dedal" /></div>
+        <div class="reel-slide"><img src="assets/editorial/02_bordado_mano_4k.jpg" alt="Bordado de iniciales Gutember Camisería" /></div>
+        <div class="reel-slide"><img src="assets/editorial/07_ajustando_cintura_4k.jpg" alt="Ajuste de saco azul cruzado" /></div>
+        <div class="reel-slide"><img src="assets/editorial/03_terno_cruzado_4k.jpg" alt="Terno cruzado azul marino" /></div>
+      </div>
+      <div class="reel-vignette"></div>
+
+      <div class="container hero-bottom">
+        <div class="hero-bar">
+          <div class="hero-copy">
+            <p class="hero-kicker">San Isidro · Hecho a Medida</p>
+            <h1 class="hero-title">Tu presencia <em>habla antes que tú</em>.</h1>
+            <div class="hero-actions">
+              <a href="https://wa.me/51958825440?text=Hola%20Sastrer%C3%ADa%20Gutember%2C%20quisiera%20agendar%20una%20visita%20en%20San%20Isidro." target="_blank" rel="noopener noreferrer" class="btn-primary">Agendar Visita</a>
+              <a href="#coleccion" class="btn-secondary">Ver Colección</a>
+            </div>
+          </div>
+
+          <div class="reel-strip" aria-label="Control de escenas">
+            <span class="reel-label" id="reelLabel">01 · El Trazo</span>
+            <div class="reel-dots" id="reelDots">
+              <button type="button" class="reel-dot-btn active" data-chapter="0" aria-label="El Trazo"></button>
+              <button type="button" class="reel-dot-btn" data-chapter="1" aria-label="El Corte"></button>
+              <button type="button" class="reel-dot-btn" data-chapter="2" aria-label="La Puntada"></button>
+              <button type="button" class="reel-dot-btn" data-chapter="3" aria-label="Tus Iniciales"></button>
+              <button type="button" class="reel-dot-btn" data-chapter="4" aria-label="El Entalle"></button>
+              <button type="button" class="reel-dot-btn" data-chapter="5" aria-label="El Porte"></button>
+              <button type="button" class="reel-mini-btn" id="reelPlayToggle">Pausar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Colección Visual (Google Sheets + Cloudinary Ready) -->
+    <section class="section section-sand" id="coleccion">
+      <div class="container">
+        <div class="section-top">
+          <div>
+            <p class="section-kicker">Colección</p>
+            <h2 class="section-title">Trajes, camisas y blazers.</h2>
+          </div>
+
+          <div class="catalog-filters" id="catalogFilters">
+            <button type="button" class="filter-btn active" data-filter="todos">Todos</button>
+            <button type="button" class="filter-btn" data-filter="trajes">Trajes</button>
+            <button type="button" class="filter-btn" data-filter="camisas">Camisas</button>
+            <button type="button" class="filter-btn" data-filter="blazers">Blazers</button>
+          </div>
+        </div>
+
+        <div class="catalog-grid" id="catalogGrid"></div>
+      </div>
+    </section>
+
+    <!-- Casas Textiles (fotos orientadas y recortadas limpiamente) -->
+    <section class="section section-navy-alt" id="telas">
+      <div class="container">
+        <div class="section-top">
+          <div>
+            <p class="section-kicker">Tejidos</p>
+            <h2 class="section-title">Casas textiles en taller.</h2>
+          </div>
+        </div>
+
+        <div class="fabrics-grid">
+          <article class="fabric-card">
+            <div class="fabric-media">
+              <img src="assets/real/huddersfield_clean.jpg" alt="Huddersfield Fine Worsteds Chelsea V" loading="lazy" />
+            </div>
+            <div class="fabric-meta">
+              <h3 class="fabric-title">Huddersfield · Chelsea V</h3>
+              <span class="fabric-origin">Inglaterra</span>
+            </div>
+          </article>
+
+          <article class="fabric-card">
+            <div class="fabric-media">
+              <img src="assets/real/albini_clean.jpg" alt="Cotonificio Albini 1876" loading="lazy" />
+            </div>
+            <div class="fabric-meta">
+              <h3 class="fabric-title">Cotonificio Albini 1876</h3>
+              <span class="fabric-origin">Italia</span>
+            </div>
+          </article>
+
+          <article class="fabric-card">
+            <div class="fabric-media">
+              <img src="assets/real/creditex_clean.jpg" alt="Creditex Algodón con Bambú" loading="lazy" />
+            </div>
+            <div class="fabric-meta">
+              <h3 class="fabric-title">Creditex · Bambú</h3>
+              <span class="fabric-origin">Perú</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Configurador A Medida -->
+    <section class="section" id="configurador">
+      <div class="container">
+        <div class="section-top">
+          <div>
+            <p class="section-kicker">A Medida</p>
+            <h2 class="section-title">Define tu prenda.</h2>
+          </div>
+        </div>
+
+        <div class="configurator-wrap">
+          <div>
+            <div class="config-group">
+              <span class="config-label">1. Prenda</span>
+              <div class="option-pills" id="garmentOptions">
+                <button type="button" class="option-pill active" data-value="Ambo Completo" data-time="1 mes (Express 7–15 d)">Ambo</button>
+                <button type="button" class="option-pill" data-value="Traje 3 Piezas" data-time="1 mes (Express 7–15 d)">3 Piezas / Novio</button>
+                <button type="button" class="option-pill" data-value="Blazer a Medida" data-time="3 semanas">Blazer</button>
+                <button type="button" class="option-pill" data-value="Camisa a Medida" data-time="1 semana">Camisa</button>
+              </div>
+            </div>
+
+            <div class="config-group">
+              <span class="config-label">2. Tejido</span>
+              <div class="option-pills" id="fabricOptions">
+                <button type="button" class="option-pill active" data-value="Huddersfield Super 120's">Huddersfield</button>
+                <button type="button" class="option-pill" data-value="Cotonificio Albini 1876">Albini 1876</button>
+                <button type="button" class="option-pill" data-value="Creditex Algodón con Bambú">Creditex Bambú</button>
+              </div>
+            </div>
+
+            <div class="config-group">
+              <span class="config-label">3. Corte</span>
+              <div class="option-pills" id="detailOptions">
+                <button type="button" class="option-pill active" data-value="Clásico">Clásico</button>
+                <button type="button" class="option-pill" data-value="Cruzado">Cruzado</button>
+                <button type="button" class="option-pill" data-value="Gala / Etiqueta">Gala</button>
+              </div>
+            </div>
+
+            <div class="config-group" style="margin-bottom:0;">
+              <label class="config-label" for="monogramInput">4. Iniciales</label>
+              <input id="monogramInput" class="monogram-input" type="text" maxlength="4" value="C.M.C" placeholder="I.R." />
+            </div>
+          </div>
+
+          <div class="config-summary">
+            <div>
+              <div class="summary-crest">
+                <span style="font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold);">Ficha</span>
+                <div class="monogram-badge" id="monogramPreview">C.M.C</div>
+              </div>
+              <div class="summary-rows">
+                <div class="summary-row"><span>Prenda</span><strong id="sumGarment">Ambo Completo</strong></div>
+                <div class="summary-row"><span>Tejido</span><strong id="sumFabric">Huddersfield Super 120's</strong></div>
+                <div class="summary-row"><span>Corte</span><strong id="sumDetail">Clásico</strong></div>
+                <div class="summary-row"><span>Entrega</span><strong id="sumTime">1 mes (Express 7–15 d)</strong></div>
+              </div>
+            </div>
+
+            <a href="#" class="btn-primary" id="sendWhatsAppConfig" target="_blank" rel="noopener noreferrer">
+              Enviar por WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- El Atelier + Ubicación Real (único lugar con dirección y cita) -->
+    <section class="section section-navy-alt" id="atelier">
+      <div class="container atelier-grid">
+        <div class="atelier-photos">
+          <img class="span-2" src="assets/editorial/04_fachada_san_isidro_4k.jpg" alt="Tienda Sastrería Gutember en Av. Canaval y Moreyra 238, San Isidro" loading="lazy" />
+          <img src="assets/editorial/09_toma_medidas_4k.jpg" alt="Toma de medidas en San Isidro" loading="lazy" />
+          <img src="assets/editorial/06_midiendo_mesa_4k.jpg" alt="Mesa de corte en taller Gutember" loading="lazy" />
+        </div>
+
+        <div>
+          <p class="section-kicker">Atelier · +15 Años</p>
+          <h2 class="section-title">Canaval y Moreyra 238.</h2>
+
+          <blockquote class="heritage-quote">
+            “La verdadera elegancia no se improvisa: se aprende, se perfecciona y se lleva con orgullo.”
+            <footer style="font-family:var(--font-sans); font-size:0.72rem; font-style:normal; color:var(--text-muted); margin-top:0.45rem; letter-spacing:0.14em; text-transform:uppercase;">
+              — Leonidas España · Escuela de Misael España Osorio
+            </footer>
+          </blockquote>
+
+          <div class="atelier-details">
+            <div><strong>Dirección:</strong> Av. Canaval y Moreyra 238, San Isidro</div>
+            <div><strong>WhatsApp:</strong> <a href="https://wa.me/51958825440" target="_blank" rel="noopener noreferrer">+51 958 825 440</a></div>
+            <div><strong>Instagram:</strong> <a href="https://www.instagram.com/sastreria_gutember" target="_blank" rel="noopener noreferrer">@sastreria_gutember</a></div>
+          </div>
+
+          <div class="hero-actions">
+            <a href="https://wa.me/51958825440?text=Hola%20Sastrer%C3%ADa%20Gutember%2C%20quisiera%20agendar%20una%20visita%20a%20Canaval%20y%20Moreyra%20238." target="_blank" rel="noopener noreferrer" class="btn-primary">Agendar por WhatsApp</a>
+            <a href="https://maps.google.com/?q=Av.+Canaval+y+Moreyra+238,+San+Isidro,+Lima" target="_blank" rel="noopener noreferrer" class="btn-secondary">Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div><strong style="color:var(--text-light); letter-spacing:0.2em;">GUTEMBER</strong> · San Isidro, Lima</div>
+      <div style="display:flex; gap:1.25rem; flex-wrap:wrap;">
+        <span>Estilo · Calidad · Confianza</span>
+        <a href="https://wa.me/51958825440" target="_blank" rel="noopener noreferrer" style="color:var(--gold-light);">958 825 440</a>
+        <a href="https://www.instagram.com/sastreria_gutember" target="_blank" rel="noopener noreferrer" style="color:var(--gold-light);">@sastreria_gutember</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
